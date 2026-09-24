@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/granpara", "destination": "/granpara/index.html" },
+    { "source": "/granpara/", "destination": "/granpara/index.html" }
+  ]
+}

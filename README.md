@@ -1,0 +1,26 @@
+# Páginas de prospecção
+
+Este repositório reúne páginas independentes de apresentação e prospecção. A página inicial lista as campanhas existentes; cada nova campanha fica em uma pasta própria, com seus estilos, scripts e imagens.
+
+## Estrutura
+
+```text
+.
+├── index.html              # índice de campanhas
+├── vercel.json             # rota curta /granpara
+└── granpara/
+    ├── index.html
+    ├── styles.css
+    ├── script.js
+    └── assets/              # imagens e logo da Gran Pará
+```
+
+## Publicar na Vercel
+
+Importe o repositório do GitHub na Vercel usando a pasta raiz como Root Directory. Não é necessário comando de build nem instalação de dependências; o projeto é estático. Após o deploy, a campanha estará em `/granpara` e também em `/granpara/`.
+
+Para adicionar outra empresa, crie uma pasta com o slug em minúsculas (por exemplo, `outra-empresa/`), coloque ali o HTML, CSS, JavaScript e assets daquela página e adicione um link no `index.html` da raiz. Se a rota curta sem barra for necessária, inclua uma rewrite correspondente em `vercel.json`.
+
+## Visualização local
+
+Abra `index.html` para ver o índice. Para visualizar a campanha Gran Pará com seus caminhos de publicação, rode um servidor estático na raiz deste diretório e acesse `/granpara/`.
