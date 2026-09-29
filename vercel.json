@@ -1,6 +1,20 @@
 {
   "rewrites": [
-    { "source": "/granpara", "destination": "/granpara/index.html" },
-    { "source": "/granpara/", "destination": "/granpara/index.html" }
+    {
+      "source": "/granpara",
+      "destination": "/granpara/index.html"
+    },
+    {
+      "source": "/granpara/",
+      "destination": "/granpara/index.html"
+    },
+    {
+      "source": "/dranayane",
+      "destination": "/dranayane/index.html"
+    },
+    {
+      "source": "/dranayane/",
+      "destination": "/dranayane/index.html"
+    }
   ]
 }
