@@ -208,15 +208,15 @@
       });
     });
 
-    /* ---------- 3a. Resultados (carrossel) ---------- */
-    blurWords('.results__heading');
-    maskLines('.results__text');
-    riseIn(['.results__note', '.results__actions'], '.results__copy', { y: 20, stagger: 0.1 });
-    // o anel "entra" deslizando da borda esquerda (no mobile, de baixo)
+    /* ---------- 3a. O espaço (carrossel) ---------- */
+    blurWords('.space__heading');
+    maskLines('.space__text');
+    // o anel sobe e "abre" de leve ao entrar na tela
     gsap.from('.reel', {
-      xPercent: desktop ? -18 : 0, yPercent: desktop ? 0 : 8, autoAlpha: 0, duration: 1.6, ease: 'expo.out',
-      scrollTrigger: { trigger: '.results', start: 'top 80%', once: true }
+      yPercent: 8, scale: 0.94, autoAlpha: 0, duration: 1.6, ease: 'expo.out',
+      scrollTrigger: { trigger: '.reel', start: 'top 85%', once: true }
     });
+    riseIn('.space__controls', '.reel', { y: 16 });
 
     /* ---------- 3b. Como funciona ---------- */
     blurWords('.steps__heading');

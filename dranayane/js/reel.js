@@ -15,15 +15,16 @@
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = matchMedia('(max-width: 820px)');
 
-  // Desktop: meia elipse saindo da borda esquerda, card da frente à direita (ao lado do texto).
-  // Mobile: anel inteiro centralizado, card da frente embaixo.
+  // Anel centralizado, card da frente embaixo. `spread` é a distância mínima entre
+  // vizinhos na frente do anel, em larguras de card: acima de 1 eles nunca se sobrepõem,
+  // então a troca de camada na hora do giro não aparece.
   const configs = {
-    desktop: { cx: 0, rx: 0.72, ry: 0.3, front: 0, w: 300, h: 375, min: 0.4, spread: 1.05 },
-    mobile: { cx: 0.5, rx: 0.34, ry: 0.26, front: Math.PI / 2, w: 190, h: 238, min: 0.5, spread: 0.9 }
+    desktop: { cx: 0.5, rx: 0.36, ry: 0.2, front: Math.PI / 2, w: 260, h: 347, min: 0.42, spread: 1.18 },
+    mobile: { cx: 0.5, rx: 0.42, ry: 0.22, front: Math.PI / 2, w: 170, h: 227, min: 0.45, spread: 1.3 }
   };
 
-  const HOLD = 1800;   // tempo parado com um card na frente (ms)
-  const STEP = 800;    // duração de um passo (ms)
+  const HOLD = 1100;   // tempo parado com um card na frente (ms)
+  const STEP = 650;    // duração de um passo (ms)
 
   const originals = [...stage.querySelectorAll('.reel__card')];
   const count = originals.length;
@@ -39,12 +40,16 @@
     W = stage.offsetWidth; H = stage.offsetHeight;
     rx = W * cfg.rx; ry = H * cfg.ry;
 
-    // O anel é dimensionado pelo palco e preenchido repetindo as fotos,
-    // para ficar denso em qualquer largura.
-    const next = clamp(
-      Math.ceil(TAU * Math.max(rx / (cfg.w * cfg.spread), ry / (cfg.h * cfg.spread))),
-      count, Math.max(count, 24)
-    );
+    // tamanho do card primeiro (cabe na altura do palco)
+    const fit = clamp(H / (2 * ry + cfg.h), 0.5, 1);
+    cardW = cfg.w * fit; cardH = cfg.h * fit;
+
+    // Quantos cards cabem no anel sem encostar um no outro na frente. Se as fotos
+    // não cabem, o anel cresce (no mobile os vizinhos "espiam" pelas bordas da tela)
+    // em vez de empilhar cards — era isso que causava a sobreposição estranha.
+    const gap = cardW * cfg.spread;
+    const next = clamp(Math.floor((TAU * rx) / gap), count, Math.max(count, 24));
+    rx = Math.max(rx, (next * gap) / TAU);
     if (next !== slots || cards.length !== next) {
       cards.slice(count).forEach((c) => c.remove());
       cards = originals.slice();
@@ -59,8 +64,6 @@
     }
     step = TAU / slots;
 
-    const fit = clamp(Math.min(W / (rx * (cfg.cx ? 2 : 1) + cfg.w), H / (2 * ry + cfg.h)), 0.45, 1);
-    cardW = cfg.w * fit; cardH = cfg.h * fit;
     cards.forEach((c) => {
       c.style.width = cardW + 'px';
       c.style.height = cardH + 'px';
