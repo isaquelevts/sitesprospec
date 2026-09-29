@@ -7,12 +7,16 @@ Este repositório reúne páginas independentes de apresentação e prospecção
 ```text
 .
 ├── index.html              # índice de campanhas
-├── vercel.json             # rota curta /granpara
-└── granpara/
-    ├── index.html
-    ├── styles.css
-    ├── script.js
-    └── assets/              # imagens e logo da Gran Pará
+├── vercel.json             # rotas curtas /granpara e /dranayane
+├── granpara/
+│   ├── index.html
+│   ├── styles.css
+│   ├── script.js
+│   └── assets/              # imagens e logo da Gran Pará
+└── dranayane/               # Dra. Nayane de Paula — ortodontista
+    ├── index.html           # HTML + CSS
+    ├── js/animacoes.js      # GSAP + ScrollTrigger + SplitText + Lenis
+    └── img/
 ```
 
 ## Publicar na Vercel
