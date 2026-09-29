@@ -208,6 +208,18 @@
       });
     });
 
+    /* ---------- 3a. Serviços em detalhe ---------- */
+    blurWords('.svc__heading');
+    maskLines('.svc__lead');
+    $$('.svc__item').forEach((item) => {
+      const tl = gsap.timeline({ scrollTrigger: { trigger: item, start: 'top 85%', once: true } });
+      tl.fromTo(item, { '--rule': 0 }, { '--rule': 1, duration: 1.2, ease: 'expo.inOut' }, 0)
+        .from([$('.svc__num', item), $('.svc__title', item), $('.svc__body', item)],
+          { y: 30, autoAlpha: 0, duration: 1, stagger: 0.08 }, 0.15)
+        .from($$('.svc__tags li', item), { y: 12, autoAlpha: 0, duration: 0.6, stagger: 0.05 }, 0.45)
+        .from($('.svc__go', item), { scale: 0, rotation: -90, duration: 0.9, ease: 'back.out(2)' }, 0.3);
+    });
+
     /* ---------- 3b. Como funciona ---------- */
     blurWords('.steps__heading');
     maskLines('.steps__intro p');

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <base href="/dranayane/" />
 <title>Dra. Nayane de Paula | Ortodontista em Parauapebas</title>
-<meta name="description" content="Dra. Nayane de Paula — cirurgiã-dentista especialista em ortodontia em Parauapebas/PA. Aparelhos, alinhadores invisíveis, estética do sorriso, implantes e cirurgias." />
+<meta name="description" content="Dra. Nayane de Paula — cirurgiã-dentista especialista em ortodontia em Parauapebas/PA. Aparelhos ortodônticos, facetas e lentes de contato dental, restaurações e limpeza." />
 <script>
   /* Esconde o hero até o GSAP montar a entrada (com fallback de 3s) */
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -263,6 +263,28 @@
     .classes__card:hover .go svg:last-child, .go:is(a):hover svg:last-child { translate: 0 0; }
   }
 
+  /* ============ SERVIÇOS EM DETALHE ============ */
+  .svc { margin-top: calc(120 * var(--dpx)); }
+  .svc__head { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: calc(48 * var(--dpx)); }
+  .svc__heading { font-size: var(--fs-section); line-height: var(--lh-section); letter-spacing: var(--tracking-display); }
+  .svc__lead { max-width: 24.7em; color: var(--c-muted); }
+  .svc__item {
+    position: relative; display: grid; grid-template-columns: calc(96 * var(--dpx)) minmax(0, calc(380 * var(--dpx))) minmax(0, 1fr) auto;
+    column-gap: calc(40 * var(--dpx)); align-items: start; padding: calc(40 * var(--dpx)) 0;
+  }
+  .svc__item::before, .svc__item:last-child::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 1px; background: rgb(22 20 18 / .12);
+    transform-origin: left; transform: scaleX(var(--rule, 1));
+  }
+  .svc__item::before { top: 0; }
+  .svc__item:last-child::after { bottom: 0; }
+  .svc__num { font-family: var(--font-figure); font-style: italic; font-size: var(--fs-card-title); line-height: var(--lh-card-title); letter-spacing: var(--tracking-figure); color: var(--c-muted); }
+  .svc__title { font-size: max(1.5rem, calc(34 * var(--dpx))); line-height: 1.15; letter-spacing: var(--tracking-display); }
+  .svc__body p { max-width: 34em; color: var(--c-muted); }
+  .svc__tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+  .svc__tags li { padding: .35em .8em; font-size: var(--fs-ui); letter-spacing: var(--tracking-ui); background: var(--c-paper); border-radius: var(--r-sm); }
+  .svc__go { align-self: start; }
+
   /* ============ COMO FUNCIONA ============ */
   .steps { overflow-x: clip; }
   .steps__head { display: flex; align-items: center; justify-content: space-between; gap: max(2rem, calc(48 * var(--dpx))); }
@@ -470,6 +492,13 @@
     .foot__wordmark { bottom: -.22em; left: -.04em; font-size: calc((100cqw + var(--foot-pad) * 2) / 4); }
   }
   @media (max-width: 820px) {
+    .svc { margin-top: 4rem; }
+    .svc__head { flex-direction: column; align-items: stretch; gap: 1rem; margin-bottom: 1.5rem; }
+    .svc__item { grid-template-columns: minmax(0, 1fr) auto; column-gap: 1rem; row-gap: .35rem; padding: 1.75rem 0; }
+    .svc__num { grid-column: 1; grid-row: 1; }
+    .svc__title { grid-column: 1; grid-row: 2; }
+    .svc__go { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+    .svc__body { grid-column: 1 / -1; margin-top: .75rem; }
     .steps__head { flex-direction: column; align-items: stretch; gap: 1.25rem; }
     .steps__heading { flex-basis: auto; }
     .steps__cta { margin-top: 1.25rem; }
@@ -636,39 +665,90 @@
   </header>
 
   <div class="classes__deck">
-    <a class="classes__card anim" style="--step: 0;" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Quero%20saber%20mais%20sobre%20aparelhos%20ortod%C3%B4nticos." target="_blank" rel="noopener">
+    <a class="classes__card anim" style="--step: 0;" href="#servico-aparelhos">
       <img src="img/trat-aparelhos.webp" alt="Sorriso com aparelho ortodôntico metálico" width="1448" height="1086" loading="lazy" style="object-position: 50% 30%;" />
       <span class="go classes__go"><span class="go__mask">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </span></span>
       <div class="classes__foot">
         <h3 class="classes__title">Aparelhos ortodônticos</h3>
-        <p class="classes__body">Metálico, estético ou autoligado — o aparelho certo para o seu&nbsp;caso.</p>
+        <p class="classes__body">Alinhamento dos dentes e da mordida, com planejamento para o seu&nbsp;caso.</p>
         <span class="classes__more">Saiba mais</span>
       </div>
     </a>
-    <a class="classes__card anim" style="--step: 1;" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Quero%20saber%20mais%20sobre%20alinhadores%20invis%C3%ADveis." target="_blank" rel="noopener">
-      <img src="img/trat-alinhadores.webp" alt="Alinhador transparente sobre modelo odontológico" width="1448" height="1086" loading="lazy" style="object-position: 50% 15%;" />
-      <span class="go classes__go"><span class="go__mask">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
-      </span></span>
-      <div class="classes__foot">
-        <h3 class="classes__title">Alinhadores invisíveis</h3>
-        <p class="classes__body">Placas transparentes e removíveis, discretas na sua&nbsp;rotina.</p>
-        <span class="classes__more">Saiba mais</span>
-      </div>
-    </a>
-    <a class="classes__card anim" style="--step: 2;" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Quero%20saber%20mais%20sobre%20est%C3%A9tica%20e%20cirurgias." target="_blank" rel="noopener">
+    <a class="classes__card anim" style="--step: 1;" href="#servico-facetas">
       <img src="img/trat-estetica.webp" alt="Escala de cores dentais ao lado de um modelo odontológico" width="1448" height="1086" loading="lazy" style="object-position: 50% 10%;" />
       <span class="go classes__go"><span class="go__mask">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </span></span>
       <div class="classes__foot">
-        <h3 class="classes__title">Estética e cirurgias</h3>
-        <p class="classes__body">Clareamento, lentes, implantes, canal e cirurgia de&nbsp;sisos.</p>
+        <h3 class="classes__title">Facetas e lentes</h3>
+        <p class="classes__body">Cor, forma e tamanho dos dentes em harmonia com o seu&nbsp;sorriso.</p>
         <span class="classes__more">Saiba mais</span>
       </div>
     </a>
+    <a class="classes__card anim" style="--step: 2;" href="#servico-restauracoes">
+      <img src="img/atendimento.jpg" alt="Dra. Nayane em atendimento clínico" width="1100" height="1467" loading="lazy" style="object-position: 50% 42%;" />
+      <span class="go classes__go"><span class="go__mask">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </span></span>
+      <div class="classes__foot">
+        <h3 class="classes__title">Limpeza e restaurações</h3>
+        <p class="classes__body">Prevenção e reconstrução para manter o sorriso&nbsp;saudável.</p>
+        <span class="classes__more">Saiba mais</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="svc">
+    <header class="svc__head">
+      <h3 class="svc__heading">Cada tratamento,<br />em detalhe</h3>
+      <p class="svc__lead">O que é, para que serve e o que esperar de cada serviço realizado pela Dra.&nbsp;Nayane.</p>
+    </header>
+    <article class="svc__item" id="servico-aparelhos">
+      <span class="svc__num">01</span>
+      <h3 class="svc__title">Aparelhos ortodônticos</h3>
+      <div class="svc__body">
+        <p>Corrigem dentes tortos, espaçados ou apinhados e ajustam a mordida, melhorando a estética e a função do sorriso. Tudo começa com uma avaliação detalhada e um planejamento feito para o seu caso, com acompanhamento em cada manutenção até o resultado final.</p>
+        <ul class="svc__tags"><li>Metálico, estético ou autoligado</li><li>Crianças, adolescentes e adultos</li><li>Manutenções periódicas</li></ul>
+      </div>
+      <a class="go svc__go" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Quero%20saber%20mais%20sobre%20aparelhos%20ortod%C3%B4nticos." target="_blank" rel="noopener" aria-label="Agendar: Aparelhos ortodônticos">
+        <span class="go__mask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+      </a>
+    </article>
+    <article class="svc__item" id="servico-facetas">
+      <span class="svc__num">02</span>
+      <h3 class="svc__title">Facetas e lentes de contato dental</h3>
+      <div class="svc__body">
+        <p>Lâminas finas de resina ou porcelana aplicadas sobre a frente dos dentes para corrigir cor, formato, tamanho e pequenos espaços. O planejamento considera o seu rosto e o seu sorriso, para um resultado harmônico e natural.</p>
+        <ul class="svc__tags"><li>Resina ou porcelana</li><li>Cor, forma e tamanho</li><li>Resultado natural</li></ul>
+      </div>
+      <a class="go svc__go" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Quero%20saber%20mais%20sobre%20facetas%20e%20lentes%20de%20contato%20dental." target="_blank" rel="noopener" aria-label="Agendar: Facetas e lentes de contato dental">
+        <span class="go__mask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+      </a>
+    </article>
+    <article class="svc__item" id="servico-restauracoes">
+      <span class="svc__num">03</span>
+      <h3 class="svc__title">Restaurações</h3>
+      <div class="svc__body">
+        <p>Reconstroem dentes afetados por cárie, fraturas ou desgaste, devolvendo a forma, a função e a aparência do dente. O material na cor natural do dente deixa a restauração praticamente imperceptível.</p>
+        <ul class="svc__tags"><li>Tratamento de cáries</li><li>Dentes quebrados ou desgastados</li><li>Na cor do dente</li></ul>
+      </div>
+      <a class="go svc__go" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Quero%20saber%20mais%20sobre%20restaura%C3%A7%C3%B5es." target="_blank" rel="noopener" aria-label="Agendar: Restaurações">
+        <span class="go__mask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+      </a>
+    </article>
+    <article class="svc__item" id="servico-limpeza">
+      <span class="svc__num">04</span>
+      <h3 class="svc__title">Limpeza</h3>
+      <div class="svc__body">
+        <p>Remove a placa bacteriana e o tártaro que a escovação não alcança, com polimento e orientações de higiene. É o cuidado que previne cáries e problemas na gengiva — e fica ainda mais importante durante o uso de aparelho.</p>
+        <ul class="svc__tags"><li>Remoção de tártaro</li><li>Polimento</li><li>Em geral, a cada 6 meses</li></ul>
+      </div>
+      <a class="go svc__go" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Gostaria%20de%20agendar%20uma%20limpeza." target="_blank" rel="noopener" aria-label="Agendar: Limpeza">
+        <span class="go__mask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+      </a>
+    </article>
   </div>
 </section>
 
@@ -740,9 +820,9 @@
           <p class="teachers__cro">Cirurgiã-dentista · CRO-PA 00000</p>
           <div class="teachers__bios">
             <p class="teachers__bio" data-bio="0" aria-hidden="false">Aparelhos metálicos, estéticos e autoligados, planejados para o seu rosto e a sua&nbsp;rotina.</p>
-            <p class="teachers__bio" data-bio="1" aria-hidden="true">Alinhadores transparentes e removíveis, praticamente imperceptíveis no dia a&nbsp;dia.</p>
-            <p class="teachers__bio" data-bio="2" aria-hidden="true">Clareamento, lentes e facetas para um sorriso harmônico e&nbsp;natural.</p>
-            <p class="teachers__bio" data-bio="3" aria-hidden="true">Sisos, canal, implantes e prevenção — tudo com a mesma profissional de&nbsp;confiança.</p>
+            <p class="teachers__bio" data-bio="1" aria-hidden="true">Lentes e facetas para corrigir cor, forma e tamanho dos dentes, com resultado&nbsp;natural.</p>
+            <p class="teachers__bio" data-bio="2" aria-hidden="true">Restaurações na cor do dente, que devolvem forma e função sem&nbsp;aparecer.</p>
+            <p class="teachers__bio" data-bio="3" aria-hidden="true">Limpeza, remoção de tártaro e orientação de higiene para manter o sorriso&nbsp;saudável.</p>
           </div>
         </div>
         <a class="go anim" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Agendar com a Dra. Nayane">
@@ -752,17 +832,17 @@
         </a>
       </div>
       <ol class="teachers__list">
-        <li class="anim"><button type="button" data-pick="0" aria-pressed="true"><span class="teachers__index">01 -</span><span class="teachers__label">Ortodontia</span></button></li>
-        <li class="anim"><button type="button" data-pick="1" aria-pressed="false"><span class="teachers__index">02 -</span><span class="teachers__label">Alinhadores invisíveis</span></button></li>
-        <li class="anim"><button type="button" data-pick="2" aria-pressed="false"><span class="teachers__index">03 -</span><span class="teachers__label">Estética do sorriso</span></button></li>
-        <li class="anim"><button type="button" data-pick="3" aria-pressed="false"><span class="teachers__index">04 -</span><span class="teachers__label">Cirurgias e clínica geral</span></button></li>
+        <li class="anim"><button type="button" data-pick="0" aria-pressed="true"><span class="teachers__index">01 -</span><span class="teachers__label">Aparelhos ortodônticos</span></button></li>
+        <li class="anim"><button type="button" data-pick="1" aria-pressed="false"><span class="teachers__index">02 -</span><span class="teachers__label">Facetas e lentes</span></button></li>
+        <li class="anim"><button type="button" data-pick="2" aria-pressed="false"><span class="teachers__index">03 -</span><span class="teachers__label">Restaurações</span></button></li>
+        <li class="anim"><button type="button" data-pick="3" aria-pressed="false"><span class="teachers__index">04 -</span><span class="teachers__label">Limpeza e prevenção</span></button></li>
       </ol>
     </div>
     <div class="teachers__stage anim">
       <img data-shot="0" src="img/dra-nayane-retrato.webp" alt="Retrato da Dra. Nayane de Paula de terninho branco" width="1125" height="2000" loading="lazy" aria-hidden="false" style="object-position: 50% 28%;" />
-      <img data-shot="1" src="img/dra-nayane-2.jpg" alt="Dra. Nayane de Paula na Clínica Perfecta" width="900" height="1600" loading="lazy" aria-hidden="true" style="object-position: 50% 25%;" />
-      <img data-shot="2" src="img/detalhes.jpg" alt="Detalhes do cuidado com o paciente" width="1100" height="1467" loading="lazy" aria-hidden="true" />
-      <img data-shot="3" src="img/atendimento.jpg" alt="Dra. Nayane em atendimento clínico" width="1100" height="1467" loading="lazy" aria-hidden="true" />
+      <img data-shot="1" src="img/trat-estetica.webp" alt="Escala de cores dentais usada no planejamento de facetas e lentes" width="1448" height="1086" loading="lazy" aria-hidden="true" style="object-position: 40% 30%;" />
+      <img data-shot="2" src="img/atendimento.jpg" alt="Dra. Nayane em atendimento clínico" width="1100" height="1467" loading="lazy" aria-hidden="true" style="object-position: 50% 40%;" />
+      <img data-shot="3" src="img/dra-nayane-2.jpg" alt="Dra. Nayane de Paula na Clínica Perfecta" width="900" height="1600" loading="lazy" aria-hidden="true" style="object-position: 50% 25%;" />
     </div>
   </div>
 </section>
@@ -826,14 +906,14 @@
         <span class="faq__question">Adulto ainda pode usar&nbsp;aparelho?</span>
         <span class="faq__mark"><svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><svg class="faq__minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg></span>
       </button></h3>
-      <div class="faq__answer" id="faq-1"><div><p>Sim! Não existe idade limite para a ortodontia, desde que dentes e gengiva estejam saudáveis. Para adultos, os alinhadores invisíveis e o aparelho estético são opções muito procuradas.</p></div></div>
+      <div class="faq__answer" id="faq-1"><div><p>Sim! Não existe idade limite para a ortodontia, desde que dentes e gengiva estejam saudáveis. Para adultos, o aparelho estético, com braquetes na cor do dente, é uma opção bem discreta.</p></div></div>
     </div>
     <div class="faq__item anim">
       <h3><button type="button" aria-expanded="false" aria-controls="faq-2">
-        <span class="faq__question">Alinhador invisível funciona para qualquer&nbsp;caso?</span>
+        <span class="faq__question">Lentes de contato dental estragam os&nbsp;dentes?</span>
         <span class="faq__mark"><svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><svg class="faq__minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg></span>
       </button></h3>
-      <div class="faq__answer" id="faq-2"><div><p>Os alinhadores tratam a grande maioria dos casos, mas nem todos. Durante o planejamento avaliamos se ele é a melhor indicação ou se outro tipo de aparelho trará um resultado superior.</p></div></div>
+      <div class="faq__answer" id="faq-2"><div><p>Não, quando bem indicadas e planejadas. Na avaliação a Dra. Nayane verifica se lentes ou facetas são a melhor opção para o seu caso e explica cada etapa, inclusive se será preciso algum preparo nos dentes.</p></div></div>
     </div>
     <div class="faq__item anim">
       <h3><button type="button" aria-expanded="false" aria-controls="faq-3">
@@ -844,10 +924,10 @@
     </div>
     <div class="faq__item anim">
       <h3><button type="button" aria-expanded="false" aria-controls="faq-4">
-        <span class="faq__question">Posso fazer clareamento usando&nbsp;aparelho?</span>
+        <span class="faq__question">De quanto em quanto tempo devo fazer&nbsp;limpeza?</span>
         <span class="faq__mark"><svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><svg class="faq__minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg></span>
       </button></h3>
-      <div class="faq__answer" id="faq-4"><div><p>Com alinhadores é possível em alguns casos. Com aparelho fixo, o ideal é clarear após a remoção dos braquetes para um resultado uniforme.</p></div></div>
+      <div class="faq__answer" id="faq-4"><div><p>Em geral, a cada seis meses. Quem usa aparelho ou tem mais tendência a acumular tártaro pode precisar de intervalos menores — a Dra. indica o ideal para você na consulta.</p></div></div>
     </div>
     <div class="faq__item anim">
       <h3><button type="button" aria-expanded="false" aria-controls="faq-5">
@@ -927,7 +1007,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 8 .4 2.5 1 5.5 2.5 5.5S9.5 17 12 17s3 4 4.5 4 2.1-3 2.5-5.5c.5-3.5 2-5 2-8C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></svg>
         <span class="foot__word">Dra. Nayane de Paula</span>
       </a>
-      <p class="foot__blurb anim">Ortodontia e odontologia completa em Parauapebas. Atendimento acolhedor, planejamento cuidadoso e um sorriso feito para durar.</p>
+      <p class="foot__blurb anim">Ortodontia, estética e prevenção em Parauapebas. Atendimento acolhedor, planejamento cuidadoso e um sorriso feito para durar.</p>
       <p class="foot__copy">© <span id="year"></span> Dra. Nayane de Paula</p>
     </div>
     <nav class="foot__links" aria-label="Rodapé">
@@ -1020,6 +1100,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
-<script src="js/animacoes.js?v=5"></script>
+<script src="js/animacoes.js?v=6"></script>
 </body>
 </html>
