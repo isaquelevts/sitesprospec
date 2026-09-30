@@ -23,14 +23,13 @@
     mobile: { cx: 0.5, rx: 0.42, ry: 0.22, front: Math.PI / 2, w: 170, h: 227, min: 0.45, spread: 1.3 }
   };
 
-  const HOLD = 1100;   // tempo parado com um card na frente (ms)
-  const STEP = 650;    // duração de um passo (ms)
+  const STEP = 650;    // duração do avanço pelas setas (ms)
 
   const originals = [...stage.querySelectorAll('.reel__card')];
   const count = originals.length;
   if (!count) return;
 
-  let cfg, W = 0, H = 0, rx = 0, ry = 0, step = 0, slots = count, cardW = 0, cardH = 0;
+  let cfg, W = 0, H = 0, CY = 0, rx = 0, ry = 0, step = 0, slots = count, cardW = 0, cardH = 0;
   let cards = originals.slice();
   let rotation = 0;
 
@@ -40,9 +39,15 @@
     W = stage.offsetWidth; H = stage.offsetHeight;
     rx = W * cfg.rx; ry = H * cfg.ry;
 
-    // tamanho do card primeiro (cabe na altura do palco)
-    const fit = clamp(H / (2 * ry + cfg.h), 0.5, 1);
+    // Tamanho do card: o anel (card de trás pequeno em cima + card da frente grande
+    // embaixo) precisa caber no palco com folga para a sombra nas duas pontas.
+    const SHADOW = 56;
+    const span = (h) => 2 * ry + (h * (1 + cfg.min)) / 2;   // altura ocupada pelo anel
+    const fit = clamp((H - 2 * SHADOW - 2 * ry) / ((cfg.h * (1 + cfg.min)) / 2), 0.5, 1);
     cardW = cfg.w * fit; cardH = cfg.h * fit;
+    // centro vertical do anel: sobra igual em cima e embaixo (a frente é maior que o fundo)
+    const topExt = ry + (cfg.min * cardH) / 2;
+    CY = (H - span(cardH)) / 2 + topExt;
 
     // Quantos cards cabem no anel sem encostar um no outro na frente. Se as fotos
     // não cabem, o anel cresce (no mobile os vizinhos "espiam" pelas bordas da tela)
@@ -68,10 +73,10 @@
       c.style.width = cardW + 'px';
       c.style.height = cardH + 'px';
       c.style.left = cfg.cx * 100 + '%';
+      c.style.top = CY + 'px';
       c.style.marginLeft = -cardW / 2 + 'px';
       c.style.marginTop = -cardH / 2 + 'px';
     });
-    rotation = snapValue(rotation);
     render();
   };
 
@@ -90,34 +95,45 @@
   // card 0 começa na frente; o encaixe é sempre relativo à frente
   const snapValue = (r) => cfg.front + Math.round((r - cfg.front) / step) * step;
 
-  /* ---------- tween (rAF, sem dependências) ---------- */
-  let raf = 0;
+  /* ---------- tween (setas e teclado) ---------- */
+  let tweening = false, tRaf = 0;
   const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-  const tweenTo = (target, ms, done) => {
-    cancelAnimationFrame(raf);
-    if (reduce.matches || ms <= 0) { rotation = target; render(); done && done(); return; }
+  const tweenTo = (target, ms) => {
+    cancelAnimationFrame(tRaf);
+    if (reduce.matches || ms <= 0) { rotation = target; render(); return; }
+    tweening = true;
     const from = rotation, t0 = performance.now();
     const frame = (now) => {
       const p = Math.min(1, (now - t0) / ms);
       rotation = from + (target - from) * ease(p);
       render();
-      if (p < 1) raf = requestAnimationFrame(frame); else done && done();
+      if (p < 1) tRaf = requestAnimationFrame(frame); else tweening = false;
     };
-    raf = requestAnimationFrame(frame);
+    tRaf = requestAnimationFrame(frame);
   };
 
-  /* ---------- autoplay ---------- */
-  let timer = 0, hovering = false, dragging = false, visible = false;
-  const schedule = () => {
-    clearTimeout(timer);
-    if (reduce.matches) return;
-    timer = setTimeout(() => {
-      if (hovering || dragging || !visible) return schedule();
-      tweenTo(snapValue(rotation) - step, STEP, schedule);
-    }, HOLD);
+  /* ---------- giro contínuo (infinito, sem paradas) ----------
+     A velocidade é suavizada: ao passar o mouse o anel desacelera sem parar;
+     ao arrastar ele obedece ao dedo e, ao soltar, retoma o giro aos poucos. */
+  const CARDS_PER_SEC = 0.55;      // quantos cards passam pela frente por segundo
+  const HOVER_FACTOR = 0.3;        // velocidade com o mouse em cima (30%)
+  let hovering = false, dragging = false, visible = false;
+  let velocity = 0, last = 0;
+
+  const loop = (now) => {
+    const dt = last ? Math.min(0.05, (now - last) / 1000) : 0;
+    last = now;
+    const base = step * CARDS_PER_SEC;
+    const target = reduce.matches || dragging || tweening || !visible ? 0 : base * (hovering ? HOVER_FACTOR : 1);
+    velocity += (target - velocity) * Math.min(1, dt * 3);   // acelera/desacelera suave
+    if (Math.abs(velocity) > 1e-5 && !dragging && !tweening) {
+      rotation -= velocity * dt;
+      render();
+    }
+    requestAnimationFrame(loop);
   };
 
-  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0.15 }).observe(stage);
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0.1 }).observe(stage);
   stage.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hovering = true; });
   stage.addEventListener('pointerleave', () => { hovering = false; });
 
@@ -125,11 +141,11 @@
   let lastAngle = 0, rect;
   const pointerAngle = (e) =>
     // normalizar pelos raios "desachata" a elipse: arrastar no lado plano gira igual ao lado alto
-    Math.atan2((e.clientY - rect.top - H / 2) / (ry || 1), (e.clientX - rect.left - W * cfg.cx) / (rx || 1));
+    Math.atan2((e.clientY - rect.top - CY) / (ry || 1), (e.clientX - rect.left - W * cfg.cx) / (rx || 1));
 
   stage.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
-    cancelAnimationFrame(raf);
+    cancelAnimationFrame(tRaf); tweening = false;
     rect = stage.getBoundingClientRect();
     lastAngle = pointerAngle(e);
     dragging = true;
@@ -147,16 +163,15 @@
   });
   const endDrag = (e) => {
     if (!dragging) return;
-    dragging = false;
+    dragging = false;               // o loop retoma o giro suavemente a partir daqui
     stage.classList.remove('is-dragging');
     if (stage.hasPointerCapture(e.pointerId)) stage.releasePointerCapture(e.pointerId);
-    tweenTo(snapValue(rotation), 500, schedule);   // nunca para entre dois cards
   };
   stage.addEventListener('pointerup', endDrag);
   stage.addEventListener('pointercancel', endDrag);
 
-  /* ---------- teclado e botões ---------- */
-  const spin = (dir) => tweenTo(snapValue(rotation) - dir * step, STEP, schedule);
+  /* ---------- teclado e botões: avançam uma foto e o giro continua ---------- */
+  const spin = (dir) => tweenTo(snapValue(rotation) - dir * step, STEP);
   stage.addEventListener('keydown', (e) => {
     const dir = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
     if (!dir) return;
@@ -171,5 +186,5 @@
   cfg = mobile.matches ? configs.mobile : configs.desktop;
   rotation = cfg.front;
   layout();
-  schedule();
+  requestAnimationFrame(loop);
 })();
