@@ -223,6 +223,8 @@
   .classes__intro { max-width: 24.7em; color: var(--c-muted); }
   .classes__cta { margin-top: 2.571em; }
   .classes__deck { position: relative; aspect-ratio: 1176 / 1293; margin-top: calc(100 * var(--dpx)); }
+  .classes__track { display: contents; }   /* no desktop a faixa do carrossel não existe para o layout */
+  .classes__deck:not(.is-marquee) .classes__card[data-clone] { display: none; }
   .classes__card {
     position: absolute; left: calc(var(--step) * 25.51%); top: calc(var(--step) * 33.952%);
     width: 48.98%; aspect-ratio: 576 / 415; overflow: hidden;
@@ -478,6 +480,10 @@
   @media (max-width: 900px) {
     .classes__deck { aspect-ratio: auto; margin-top: 2.5rem; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * var(--pad-x)); padding-inline: var(--pad-x); scroll-padding-inline: var(--pad-x); }
     .classes__deck::-webkit-scrollbar { display: none; }
+    /* carrossel automático infinito (ligado pelo js/deck.js) */
+    .classes__deck.is-marquee { display: block; overflow: hidden; scroll-snap-type: none; padding-inline: 0; touch-action: pan-y; }
+    .classes__deck.is-marquee .classes__track { display: flex; gap: 20px; width: max-content; padding-left: var(--pad-x); will-change: transform; }
+    .classes__deck.is-marquee .classes__card { width: min(78vw, 340px); scroll-snap-align: none; }
     .classes__card { position: relative; inset: auto; z-index: auto; flex: 0 0 auto; width: calc((100% - 20px) / 2); aspect-ratio: auto; display: flex; flex-direction: column; scroll-snap-align: start; }
     .classes__foot { position: relative; inset: auto; margin: max(50%, 10rem) .5rem .5rem; flex: 1 1 auto; display: flex; flex-direction: column; padding: 1rem 1rem 1.1rem; }
     .classes__body { margin-bottom: auto; }
@@ -1072,6 +1078,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
 <script src="js/reel.js?v=8"></script>
-<script src="js/animacoes.js?v=8"></script>
+<script src="js/deck.js?v=1"></script>
+<script src="js/animacoes.js?v=9"></script>
 </body>
 </html>
