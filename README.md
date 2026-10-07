@@ -7,17 +7,23 @@ Este repositório reúne páginas independentes de apresentação e prospecção
 ```text
 .
 ├── index.html              # índice de campanhas
-├── vercel.json             # rotas curtas /granpara e /dranayane
+├── vercel.json             # rotas curtas de cada campanha
 ├── granpara/
 │   ├── index.html
 │   ├── styles.css
 │   ├── script.js
 │   └── assets/              # imagens e logo da Gran Pará
-└── dranayane/               # Dra. Nayane de Paula — ortodontista
-    ├── index.html           # HTML + CSS
-    ├── js/animacoes.js      # GSAP + ScrollTrigger + SplitText + Lenis
-    └── img/
+├── dranayane/               # Dra. Nayane de Paula — versão premium (animações GSAP + Lenis)
+│   ├── index.html           # HTML + CSS
+│   ├── js/                  # animacoes.js, reel.js (carrossel do espaço), deck.js (cards no mobile)
+│   └── img/                 # imagens usadas pelas 3 versões
+├── dranayane-intermediario/ # mesma copy e layout, sem nenhum movimento (imagens de /dranayane/img)
+│   └── index.html
+└── dranayane-basico/        # mesma copy em layout simples com Tailwind (imagens de /dranayane/img)
+    └── index.html
 ```
+
+As três páginas da Dra. Nayane servem para comparação: as versões intermediária e básica usam `noindex` para não competir com a premium no Google.
 
 ## Publicar na Vercel
 

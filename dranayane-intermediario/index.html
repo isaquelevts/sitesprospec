@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<base href="/dranayane-intermediario/" />
+<meta name="robots" content="noindex" />
+<title>Dra. Nayane de Paula | Ortodontista em Parauapebas</title>
+<meta name="description" content="Dra. Nayane de Paula — cirurgiã-dentista especialista em ortodontia em Parauapebas/PA. Aparelhos ortodônticos, facetas e lentes, restaurações, limpeza e raspagem, tratamento de canal e extrações." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet" />
+<style>
+  /* =========================================================
+     TOKENS — troque --c-accent para mudar a cor de destaque
+     ========================================================= */
+  :root {
+    --dpx: min(.078125vw, 1.25px);
+    --e-out: cubic-bezier(.22, 1, .36, 1);
+    --e-soft: cubic-bezier(.5, 1, .89, 1);
+    --t-hover: .5s;
+    --t-fold: .45s;
+
+    --c-ink: #161412;
+    --c-accent: #e6d3ba;       /* nude / champanhe da clínica */
+    --c-paper: #f6f3ef;
+    --c-white: #ffffff;
+    --c-muted: #6b655e;
+    --c-muted-ui: #5f5953;
+
+    --font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-figure: "Lora", Georgia, serif;
+    --font-wordmark: "Libre Caslon Text", Georgia, serif;
+
+    --fs-hero: max(2.25rem, calc(80 * var(--dpx)));
+    --fs-shout: max(2.125rem, calc(72 * var(--dpx)));
+    --fs-display: max(2rem, calc(64 * var(--dpx)));
+    --fs-title: max(1.75rem, calc(52 * var(--dpx)));
+    --fs-section: max(1.75rem, calc(48 * var(--dpx)));
+    --fs-figure: max(1.75rem, calc(48 * var(--dpx)));
+    --fs-card-title: max(1.25rem, calc(24 * var(--dpx)));
+    --fs-body: 1rem;
+    --fs-ui: max(.875rem, 14px);
+
+    --lh-hero: 1.1;
+    --lh-shout: 1.111;
+    --lh-display: 1.125;
+    --lh-title: 1.0769;
+    --lh-quote: 1.05;
+    --lh-name: 1.2308;
+    --lh-section: 1.0833;
+    --lh-card-title: 1.3333;
+    --lh-body: 1.5;
+    --lh-ui: 1.4286;
+
+    --tracking-hero: -.07em;
+    --tracking-display: -.05em;
+    --tracking-title: -.03em;
+    --tracking-figure: -.02em;
+    --tracking-ui: -.03em;
+
+    --pad-x: max(1.25rem, calc(52 * var(--dpx)));
+    --pad-edge: max(.75rem, calc(12 * var(--dpx)));
+    --pad-y: max(2.5rem, calc(80 * var(--dpx)));
+    --r-lg: clamp(1.25rem, calc(28 * var(--dpx)), 28px);
+    --r-md: clamp(.75rem, calc(16 * var(--dpx)), 16px);
+    --r-sm: clamp(.375rem, calc(8 * var(--dpx)), 8px);
+
+    --size-font: clamp(14px, calc(10px + .46875vw), 18px);
+  }
+
+  /* ============ BASE ============ */
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  html { font-size: var(--size-font); -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    background: var(--c-white); color: var(--c-ink);
+    font-family: var(--font-body); font-size: var(--fs-body); line-height: var(--lh-body);
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: clip;
+  }
+  p { text-wrap: pretty; }
+  h1, h2, h3, h4 { font-size: inherit; font-weight: 400; }
+  img, svg, video { display: block; max-width: 100%; }
+  button { font: inherit; letter-spacing: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+  ul, ol { padding: 0; list-style: none; }
+  :focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; }
+  [id] { scroll-margin-top: 5.5rem; }
+  .skip {
+    position: absolute; top: 0; left: 0; z-index: 100; padding: .75rem 1.25rem;
+    font-size: var(--fs-ui); font-weight: 600; background: var(--c-accent);
+    border-bottom-right-radius: var(--r-sm); translate: 0 -110%;
+  }
+  .skip:focus-visible { translate: 0 0; }
+  .section { position: relative; padding: var(--pad-y) var(--pad-x); background: var(--c-white); isolation: isolate; }
+  .muted { color: var(--c-muted); }
+
+  /* ============ BUTTON (label roll + seta + sweep) ============ */
+  .button {
+    position: relative; display: inline-flex; align-items: center; gap: .714em;
+    padding: .571em .571em .571em 1.143em; overflow: hidden;
+    font-size: var(--fs-ui); line-height: var(--lh-ui); letter-spacing: var(--tracking-ui);
+    color: var(--btn-ink); background: var(--btn-bg); border-radius: var(--r-md); white-space: nowrap;
+    --ease: cubic-bezier(.625, .05, 0, 1); --beat: .525s;
+  }
+  .button--sm { gap: 0; padding: .571em 1.143em; border-radius: var(--r-sm); }
+  .button--accent { --btn-bg: var(--c-accent); --btn-ink: var(--c-ink); --btn-chip: var(--c-white); }
+  .button--light  { --btn-bg: var(--c-white);  --btn-ink: var(--c-ink); --btn-chip: var(--c-accent); }
+  .button--ink    { --btn-bg: var(--c-ink); --btn-ink: var(--c-white); --btn-chip: var(--c-accent); --btn-bg-next: var(--c-accent); --btn-ink-next: var(--c-ink); --btn-chip-next: var(--c-white); }
+  .button--paper  { --btn-bg-next: var(--c-ink); --btn-ink-next: var(--c-white); --btn-chip-next: var(--c-accent); }
+  .button--photo.button--accent { --btn-bg-next: var(--c-white); --btn-ink-next: var(--c-ink); --btn-chip-next: var(--c-accent); }
+  .button--photo.button--light  { --btn-bg-next: var(--c-accent); --btn-ink-next: var(--c-ink); --btn-chip-next: var(--c-white); }
+  .button__mask { position: relative; z-index: 1; display: block; overflow: hidden; }
+  .button__label { display: block; transition: translate var(--beat) var(--ease); }
+  .button__label--next { position: absolute; top: 100%; left: 0; color: var(--btn-ink-next); }
+  .button__icon { position: relative; z-index: 1; display: grid; place-items: center; width: 2.286em; height: 2.286em; }
+  .button__chip { position: absolute; inset: 0; background: var(--btn-chip); border-radius: var(--r-sm); transition: background-color var(--beat) var(--ease); }
+  .button__track { position: relative; display: flex; justify-content: flex-end; width: 1.143em; height: 1.143em; overflow: hidden; }
+  .button__arrows { display: flex; flex: none; }
+  .button__arrows svg { flex: none; width: 1.143em; height: 1.143em; color: var(--c-ink); transition: translate var(--beat) var(--ease); }
+  .button__sweep {
+    position: absolute; bottom: 0; left: -10%; z-index: 0; width: 120%; height: 100%;
+    background: var(--btn-bg-next); translate: 0 175%; rotate: 15deg;
+    transition: translate var(--beat) var(--ease), rotate var(--beat) var(--ease);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .button:hover .button__label, .button:focus-visible .button__label { translate: 0 -100%; }
+    .button:hover .button__arrows svg, .button:focus-visible .button__arrows svg { translate: 200% 0; }
+    .button:hover .button__chip, .button:focus-visible .button__chip { background: var(--btn-chip-next); }
+    .button:hover .button__sweep, .button:focus-visible .button__sweep { translate: 0 0; rotate: 0deg; }
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: fixed; top: calc(var(--pad-edge) + 12 * var(--dpx)); left: 0; right: 0; z-index: 90;
+    display: flex; align-items: center; gap: 3.143em; width: fit-content;
+    max-width: calc(100% - 2 * (var(--pad-edge) + 12 * var(--dpx))); margin-inline: auto;
+    font-size: var(--fs-ui); padding: .571em .571em .571em 1.143em;
+    background: var(--c-white); border-radius: var(--r-md); transition: box-shadow .3s ease;
+  }
+  .nav[data-past] { box-shadow: 0 1px 2px #1614120f, 0 8px 24px #1614121a; }
+  .nav__mark { display: flex; align-items: center; gap: .571em; color: var(--c-ink); }
+  .nav__mark svg { width: 1.6em; height: auto; }
+  .nav__word { font-family: var(--font-wordmark); font-style: italic; font-size: 1.5em; line-height: 1.25; letter-spacing: var(--tracking-figure); white-space: nowrap; }
+  .nav__links { display: flex; gap: 2.2em; }
+  .nav__links a { line-height: var(--lh-ui); letter-spacing: var(--tracking-ui); color: var(--c-muted-ui); transition: color .2s ease; white-space: nowrap; }
+  .nav__links a:hover { color: var(--c-ink); }
+  @media (max-width: 1024px) { .nav__links { display: none; } }
+  @media (max-width: 420px) { .nav { width: auto; justify-content: space-between; gap: 1rem; } }
+
+  /* ============ HERO ============ */
+  .hero { display: grid; min-height: 100vh; min-height: 100svh; padding: var(--pad-edge); background: var(--c-white); }
+  .hero__panel {
+    position: relative; display: grid; grid-template-rows: 1fr; padding: calc(12 * var(--dpx));
+    overflow: hidden; border-radius: var(--r-lg); isolation: isolate;
+  }
+  .hero__photo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+  @media (min-width: 901px) { .hero__photo { object-position: 70% 30%; } }
+  .hero__panel > picture { position: absolute; inset: 0; z-index: -2; } /* camada de fundo, fora do grid */
+  .hero__panel::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(to top, #0000007a, #00000059 40%, #0000001f 72%, #0000 88%), #00000038;
+  }
+  .hero__content { align-self: center; width: calc(680 * var(--dpx)); margin-left: calc(28 * var(--dpx)); color: var(--c-white); }
+  .hero__heading { max-width: 8.4em; font-size: var(--fs-hero); line-height: var(--lh-hero); }
+  .hero__heading, .hero__heading * { letter-spacing: var(--tracking-hero); }
+  .badge {
+    position: relative; display: inline-block; overflow: hidden; width: .86em; height: .86em; margin: 0 .18em;
+    vertical-align: -.1725em; letter-spacing: normal; background: var(--c-accent); border-radius: 50%;
+  }
+  .badge svg { position: absolute; top: 50%; left: 50%; translate: -50% -50%; width: .46em; height: auto; color: var(--c-ink); }
+  .hero__body { max-width: 26em; margin-top: .8125em; font-size: var(--fs-body); line-height: var(--lh-body); }
+  .hero__cta { margin-top: 2.571em; }
+  /* Mobile/tablet: texto no topo sobre o marrom da parede; foto numa linha própria embaixo.
+     A foto tem proporção 4:5 ancorada na base, então a cabeça fica sempre ~12% abaixo
+     do topo da foto e nunca atrás do texto/botão, qualquer que seja a altura da tela. */
+  @media (max-width: 900px) {
+    .hero__panel { grid-template-rows: auto 1fr; padding: 0; background: linear-gradient(to bottom, #5a4535, #6e5745); }
+    .hero__panel::before { display: none; }
+    .hero__panel > picture {
+      position: relative; inset: auto; z-index: 0; grid-row: 2; align-self: end;
+      display: block; width: 100%; aspect-ratio: 4 / 5;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 9%); mask-image: linear-gradient(to bottom, transparent, #000 9%);
+    }
+    .hero__photo { object-position: 50% 100%; }
+    .hero__content { grid-row: 1; align-self: start; width: 100%; margin: 0; padding: max(5rem, 10svh) 1rem 0; text-align: center; }
+    .hero__heading { margin-inline: auto; font-size: clamp(2.25rem, 10vw, 3.5rem); }
+    .hero__body { max-width: 24em; margin-inline: auto; }
+    .hero__cta { margin-top: 1.75em; }
+  }
+  @media (max-width: 700px) {
+    .hero__content { padding-inline: .5rem; }
+    .hero__body { max-width: none; }
+  }
+
+  /* ============ INTRO ============ */
+  .intro { overflow-x: clip; }
+  .intro__grid { display: grid; grid-template-columns: calc(276 * var(--dpx)) 1fr; column-gap: calc(224 * var(--dpx)); }
+  .intro__aside { position: relative; color: var(--c-muted); }
+  .intro__frame {
+    position: absolute; top: calc(226 * var(--dpx)); left: calc(176 * var(--dpx));
+    width: calc(176 * var(--dpx)); height: calc(178 * var(--dpx)); overflow: clip; border-radius: var(--r-md);
+  }
+  .intro__thumb { width: 100%; height: 100%; object-fit: cover; }
+  .intro__heading { font-size: var(--fs-title); line-height: var(--lh-title); }
+  .intro__heading, .intro__heading * { letter-spacing: var(--tracking-title); }
+  .intro__heading .muted { color: #b3aca4; }
+  .intro__stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: calc(100 * var(--dpx)); }
+  .intro__figure { font-family: var(--font-figure); font-style: italic; font-size: var(--fs-figure); line-height: var(--lh-section); letter-spacing: var(--tracking-figure); }
+  .intro__label { margin-top: .571em; font-size: var(--fs-ui); line-height: var(--lh-ui); letter-spacing: var(--tracking-ui); color: var(--c-muted-ui); }
+
+  /* ============ TRATAMENTOS (deck escalonado) ============ */
+  .classes { overflow-x: clip; }
+  .classes__head { display: flex; align-items: center; justify-content: space-between; gap: max(2rem, calc(48 * var(--dpx))); }
+  .classes__heading { flex: 0 1 calc(620 * var(--dpx)); font-size: var(--fs-display); line-height: var(--lh-display); }
+  .classes__heading, .classes__heading * { letter-spacing: var(--tracking-display); }
+  .classes__intro { max-width: 24.7em; color: var(--c-muted); }
+  .classes__cta { margin-top: 2.571em; }
+  .classes__deck { position: relative; aspect-ratio: 1176 / 1293; margin-top: calc(100 * var(--dpx)); }
+  .classes__track { display: contents; }   /* no desktop a faixa do carrossel não existe para o layout */
+  .classes__deck:not(.is-marquee) .classes__card[data-clone] { display: none; }
+  .classes__card {
+    position: absolute; left: calc(var(--step) * 25.51%); top: calc(var(--step) * 33.952%);
+    width: 48.98%; aspect-ratio: 576 / 415; overflow: hidden;
+    border: 2px solid var(--c-white); border-radius: var(--r-lg); z-index: calc(var(--step) + 1);
+  }
+  .classes__card > img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    scale: var(--card-zoom, 1); transition: scale var(--t-hover) var(--e-out);
+  }
+  .go {
+    --go: calc(56 * var(--dpx));
+    display: grid; place-items: center; width: var(--go); height: var(--go); flex: none;
+    color: var(--c-ink); background: var(--c-accent); border-radius: var(--r-md);
+    transition: scale var(--t-hover) var(--e-out);
+  }
+  .go__mask { display: grid; place-items: center; aspect-ratio: 1; overflow: clip; }
+  .go svg { grid-area: 1 / 1; width: calc(32 * var(--dpx)); min-width: 20px; height: auto; transition: translate var(--t-hover) var(--e-out); }
+  .go svg:last-child { translate: -100% 100%; }
+  .classes__go { position: absolute; top: calc(12 * var(--dpx)); right: calc(12 * var(--dpx)); pointer-events: none; }
+  .classes__foot {
+    position: absolute; inset: auto calc(12 * var(--dpx)) calc(12 * var(--dpx));
+    padding: 1rem 1.5rem 1.5rem; background: var(--c-white); border-radius: var(--r-md);
+  }
+  .classes__title { font-size: var(--fs-card-title); line-height: var(--lh-card-title); letter-spacing: var(--tracking-ui); }
+  .classes__body { margin-top: .5em; color: var(--c-muted); }
+  .classes__more { position: relative; display: inline-block; margin-top: .75em; font-weight: 700; letter-spacing: var(--tracking-display); }
+  .classes__more::after {
+    content: ""; position: absolute; inset-inline: 0; bottom: .0625em; height: max(1px, .0625em);
+    background: currentColor; transform-origin: left; transition: scale var(--t-hover) var(--e-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .classes__card:hover { z-index: 4; }
+    .classes__card:hover > img { --card-zoom: 1.05; }
+    .classes__more::after { scale: 0 1; }
+    .classes__card:hover .classes__more::after { scale: 1 1; }
+    .classes__card:hover .go, .go:is(a):hover { scale: .96; }
+    .classes__card:hover .go svg:first-child, .go:is(a):hover svg:first-child { translate: 100% -100%; }
+    .classes__card:hover .go svg:last-child, .go:is(a):hover svg:last-child { translate: 0 0; }
+  }
+
+  /* ============ O ESPAÇO (carrossel em elipse) ============ */
+  .space { padding: var(--pad-y) var(--pad-x); text-align: center; overflow-x: clip; }
+  .space__copy { max-width: 44em; margin: 0 auto; }
+  .space__heading { max-width: 12em; margin: 0 auto; font-size: var(--fs-display); line-height: var(--lh-display); letter-spacing: var(--tracking-display); text-wrap: balance; }
+  .space__text { max-width: 36em; margin: 1.25em auto 0; color: var(--c-muted); }
+  .reel {
+    position: relative; height: max(560px, calc(640 * var(--dpx))); margin: calc(24 * var(--dpx)) calc(-1 * var(--pad-x)) 0;
+    overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; outline: none;
+  }
+  .reel.is-dragging { cursor: grabbing; }
+  .reel:focus-visible { box-shadow: inset 0 0 0 2px var(--c-ink); }
+  .reel__card {
+    position: absolute; top: 50%; margin: 0; overflow: hidden; border-radius: var(--r-md);
+    background: var(--c-paper); box-shadow: 0 18px 40px -12px rgb(22 20 18 / .35); will-change: transform;
+  }
+  .reel__card::after { content: ""; position: absolute; inset: 0; background: rgb(246 243 239 / calc((1 - var(--depth, 1)) * .6)); pointer-events: none; }
+  .reel__card img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+  .space__controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1rem; }
+  .space__controls button {
+    display: grid; place-items: center; width: 40px; height: 40px; color: var(--c-ink); background: var(--c-paper);
+    border-radius: var(--r-sm); transition: background-color .25s ease;
+  }
+  .space__controls button:hover { background: var(--c-accent); }
+  .space__controls svg { width: 18px; height: auto; }
+  .space__hint { font-size: var(--fs-ui); letter-spacing: var(--tracking-ui); color: var(--c-muted-ui); }
+
+  /* ============ COMO FUNCIONA ============ */
+  .steps { overflow-x: clip; }
+  .steps__head { display: flex; align-items: center; justify-content: space-between; gap: max(2rem, calc(48 * var(--dpx))); }
+  .steps__heading { flex: 0 1 calc(620 * var(--dpx)); font-size: var(--fs-display); line-height: var(--lh-display); letter-spacing: var(--tracking-display); }
+  .steps__intro { max-width: 24.7em; color: var(--c-muted); }
+  .steps__cta { margin-top: 2.571em; }
+  .steps__track {
+    --dot: max(44px, calc(56 * var(--dpx)));
+    position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(24 * var(--dpx));
+    margin-top: calc(90 * var(--dpx));
+  }
+  .steps__rail { position: absolute; left: 0; right: 0; top: calc(var(--dot) / 2); height: 1px; background: rgb(22 20 18 / .12); }
+  .steps__fill { position: absolute; inset: 0; background: var(--c-ink); transform-origin: left; transform: scaleX(var(--p, 1)); }
+  .step { position: relative; padding-right: 1rem; }
+  .step__dot {
+    position: relative; z-index: 1; display: grid; place-items: center; width: var(--dot); height: var(--dot);
+    font-family: var(--font-figure); font-style: italic; font-size: var(--fs-card-title); letter-spacing: var(--tracking-figure);
+    color: var(--c-ink); background: var(--c-accent); border-radius: var(--r-md);
+  }
+  .step__title { margin-top: calc(32 * var(--dpx)); font-size: var(--fs-card-title); line-height: var(--lh-card-title); letter-spacing: var(--tracking-display); }
+  .step__body { margin-top: .5em; max-width: 19em; color: var(--c-muted); }
+  .step__tag { display: inline-block; margin-top: 1.25em; padding: .35em .8em; font-size: var(--fs-ui); letter-spacing: var(--tracking-ui); background: var(--c-paper); border-radius: var(--r-sm); }
+
+  /* ============ LOCALIZAÇÃO ============ */
+  .visit { display: grid; grid-template-columns: calc(470 * var(--dpx)) 1fr; gap: calc(48 * var(--dpx)); align-items: stretch; }
+  .visit__info { display: flex; flex-direction: column; }
+  .visit__heading { font-size: var(--fs-display); line-height: var(--lh-display); letter-spacing: var(--tracking-display); }
+  .visit__intro { margin-top: 1.25em; max-width: 24.7em; color: var(--c-muted); }
+  .visit__label { font-size: var(--fs-ui); letter-spacing: var(--tracking-ui); color: var(--c-muted-ui); }
+  .visit__address { margin-top: calc(48 * var(--dpx)); }
+  .visit__address p:last-child { margin-top: .4em; font-size: var(--fs-card-title); line-height: var(--lh-card-title); letter-spacing: var(--tracking-display); }
+  .visit__hours { margin-top: calc(40 * var(--dpx)); }
+  .visit__row { position: relative; display: flex; justify-content: space-between; gap: 1rem; padding: .9em 0; }
+  .visit__row::after { content: ""; position: absolute; inset: auto 0 0; height: 1px; background: rgb(22 20 18 / .12); transform-origin: left; transform: scaleX(var(--rule, 1)); }
+  .visit__row dd { color: var(--c-muted); text-align: right; }
+  .visit__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: auto; padding-top: calc(48 * var(--dpx)); }
+  .visit__map { position: relative; min-height: calc(600 * var(--dpx)); overflow: hidden; border-radius: var(--r-lg); background: var(--c-paper); isolation: isolate; }
+  .visit__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(.85) sepia(.12) contrast(1.02); }
+  .visit__card {
+    position: absolute; left: calc(12 * var(--dpx)); bottom: calc(12 * var(--dpx)); z-index: 1;
+    display: flex; align-items: center; gap: 1rem; max-width: calc(100% - 24 * var(--dpx));
+    padding: .75rem 1.25rem .75rem .75rem; background: var(--c-white); border-radius: var(--r-md);
+    box-shadow: 0 1px 2px #1614120f, 0 8px 24px #1614121a;
+  }
+  .visit__card img { width: 64px; height: 64px; flex: none; object-fit: cover; border-radius: var(--r-sm); }
+  .visit__card strong { display: block; font-weight: 500; letter-spacing: var(--tracking-ui); }
+  .visit__card span { font-size: var(--fs-ui); color: var(--c-muted); }
+
+  /* ============ A DOUTORA ============ */
+  .teachers { padding-inline: var(--pad-edge); padding-bottom: calc(12 * var(--dpx)); overflow-x: clip; }
+  .teachers__head { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: calc(36 * var(--dpx)); padding-inline: calc(40 * var(--dpx)); }
+  .teachers__heading { max-width: calc(520 * var(--dpx)); font-size: var(--fs-hero); line-height: var(--lh-hero); }
+  .teachers__heading, .teachers__heading * { letter-spacing: var(--tracking-display); }
+  .teachers__intro { max-width: 24.7em; color: var(--c-muted); }
+  .teachers__cta { margin-top: 2.571em; }
+  .teachers__panel { display: grid; grid-template-columns: 1fr 1fr; gap: calc(36 * var(--dpx)); margin-top: calc(52 * var(--dpx)); padding: calc(12 * var(--dpx)); }
+  .teachers__side { display: flex; flex-direction: column; padding: calc(24 * var(--dpx)) calc(24 * var(--dpx)) 0; }
+  .teachers__namebar {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+    padding-bottom: calc(24 * var(--dpx)); border-bottom: 1px solid rgb(22 20 18 / .12);
+  }
+  .teachers__who { display: grid; }
+  .teachers__name { width: min-content; font-size: var(--fs-title); line-height: var(--lh-name); letter-spacing: var(--tracking-display); white-space: nowrap; }
+  .teachers__cro { margin-top: .5rem; font-size: var(--fs-ui); letter-spacing: var(--tracking-ui); color: var(--c-muted-ui); }
+  .teachers__bios { display: grid; margin-top: .75rem; }
+  .teachers__bio { grid-area: 1 / 1; max-width: 26em; color: var(--c-muted); transition: opacity .4s ease, translate .4s ease; }
+  .teachers__bio[aria-hidden="true"] { opacity: 0; translate: 0 .5rem; pointer-events: none; }
+  .teachers__list { margin: auto 0 calc(24 * var(--dpx)); padding-top: 2rem; }
+  .teachers__list button {
+    display: flex; align-items: baseline; gap: calc(16 * var(--dpx)); padding: calc(8 * var(--dpx)) 0;
+    text-align: left; color: var(--c-muted); transition: color .3s ease;
+  }
+  .teachers__list button[aria-pressed="true"], .teachers__list button:hover { color: var(--c-ink); }
+  .teachers__index { width: 2.4em; flex: none; font-family: var(--font-figure); font-style: italic; font-size: var(--fs-card-title); line-height: var(--lh-card-title); letter-spacing: var(--tracking-figure); }
+  .teachers__label { font-size: var(--fs-card-title); line-height: var(--lh-card-title); letter-spacing: var(--tracking-display); }
+  .teachers__stage { position: relative; width: 100%; aspect-ratio: 1; max-height: calc(100svh - 6.75rem - 24 * var(--dpx)); overflow: hidden; border-radius: var(--r-md); background: var(--c-paper); }
+  .teachers__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .6s ease; }
+  .teachers__stage img[aria-hidden="true"] { opacity: 0; }
+
+  /* ============ DEPOIMENTOS ============ */
+  .quotes {
+    background: var(--c-paper); padding-block: calc(64 * var(--dpx));
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto 1fr;
+    grid-template-areas: "stack frame" "controls frame"; column-gap: calc(48 * var(--dpx));
+  }
+  .quotes__stack { grid-area: stack; display: grid; }
+  .quotes__item { grid-area: 1 / 1; max-width: calc(820 * var(--dpx)); transition: opacity .45s ease, translate .45s ease; }
+  .quotes__item[aria-hidden="true"] { opacity: 0; translate: 0 .5rem; pointer-events: none; }
+  .quotes__source { display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1.25rem; font-size: var(--fs-ui); letter-spacing: var(--tracking-ui); color: var(--c-muted-ui); }
+  .quotes__source svg { width: 16px; height: 16px; }
+  .quotes__text { font-size: var(--fs-title); line-height: var(--lh-quote); letter-spacing: var(--tracking-display); }
+  .quotes__by { display: grid; gap: .5rem; margin-top: calc(28 * var(--dpx)); }
+  .quotes__name { font-size: var(--fs-card-title); line-height: var(--lh-card-title); letter-spacing: var(--tracking-display); }
+  .quotes__detail { color: var(--c-muted); }
+  .quotes__controls { grid-area: controls; align-self: end; display: flex; align-items: center; gap: calc(16 * var(--dpx)); margin-top: max(1.5rem, calc(40 * var(--dpx))); }
+  .quotes__controls button {
+    display: grid; place-items: center; width: max(32px, calc(32 * var(--dpx))); height: max(32px, calc(32 * var(--dpx)));
+    color: var(--c-ink); background: var(--c-accent); border-radius: calc(8 * var(--dpx));
+    transition: background-color .25s ease, color .25s ease;
+  }
+  .quotes__controls button:disabled { color: color-mix(in srgb, var(--c-ink) 30%, var(--c-paper)); background: color-mix(in srgb, var(--c-accent) 40%, var(--c-paper)); cursor: default; }
+  @media (hover: hover) and (pointer: fine) { .quotes__controls button:hover:not(:disabled) { background: var(--c-white); } }
+  .quotes__controls svg { width: max(16px, calc(16 * var(--dpx))); height: auto; }
+  .quotes__back { scale: -1 1; }
+  .quotes__count { margin-left: .5rem; font-family: var(--font-figure); font-style: italic; color: var(--c-muted); }
+  .quotes__frame { grid-area: frame; align-self: end; width: max(11rem, calc(330 * var(--dpx))); aspect-ratio: 4 / 5; overflow: clip; border-radius: var(--r-md); }
+  .quotes__thumb { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+
+  /* ============ FAQ ============ */
+  .faq { display: grid; grid-template-columns: calc(309 * var(--dpx)) 1fr; column-gap: calc(27 * var(--dpx)); }
+  .faq__heading { position: sticky; top: calc(var(--pad-y) + 3rem); align-self: start; font-size: var(--fs-section); line-height: var(--lh-section); letter-spacing: var(--tracking-display); }
+  .faq__list { display: grid; gap: calc(24 * var(--dpx)); }
+  .faq__item { background: var(--c-paper); border-radius: var(--r-lg); }
+  .faq__item button { display: flex; align-items: center; justify-content: space-between; gap: calc(24 * var(--dpx)); width: 100%; padding: calc(24 * var(--dpx)); text-align: left; }
+  .faq__question { font-size: var(--fs-card-title); line-height: var(--lh-card-title); letter-spacing: var(--tracking-display); }
+  .faq__mark {
+    position: relative; display: grid; flex: none; place-items: center; width: calc(48 * var(--dpx)); height: calc(48 * var(--dpx));
+    color: var(--c-ink); background: var(--c-accent); border-radius: var(--r-md);
+    transition: color var(--t-fold) var(--e-soft), background-color var(--t-fold) var(--e-soft);
+  }
+  .faq__item button:hover .faq__mark { color: var(--c-accent); background: var(--c-ink); }
+  .faq__mark svg { grid-area: 1 / 1; width: calc(24 * var(--dpx)); min-width: 16px; height: auto; transition: opacity var(--t-fold) var(--e-soft), rotate var(--t-fold) var(--e-soft); }
+  .faq__item[data-open] .faq__plus { opacity: 0; rotate: 90deg; }
+  .faq__minus { opacity: 0; }
+  .faq__item[data-open] .faq__minus { opacity: 1; }
+  .faq__answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--t-fold) var(--e-soft); }
+  .faq__item[data-open] .faq__answer { grid-template-rows: 1fr; }
+  .faq__answer > div { min-height: 0; overflow: hidden; }
+  .faq__answer p { padding: 0 calc(24 * var(--dpx)) calc(24 * var(--dpx)); max-width: 46em; color: var(--c-muted); }
+
+  /* ============ CTA ============ */
+  .cta { padding: var(--pad-edge); background: var(--c-white); }
+  .cta__panel {
+    position: relative; display: grid; align-items: end; aspect-ratio: 1256 / 643; min-height: calc(420 * var(--dpx));
+    overflow: hidden; border-radius: var(--r-lg); isolation: isolate;
+  }
+  .cta__photo { position: absolute; top: -10%; right: 0; left: 0; z-index: -1; width: 100%; height: 120%; object-fit: cover; object-position: 50% 0%; }
+  .cta__panel::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(to top, #0009, #0006 30%, #0000 65%), linear-gradient(to right, #0000004d, #0000 55%); }
+  .cta__content { padding: 0 calc(40 * var(--dpx)) calc(110 * var(--dpx)); color: var(--c-white); }
+  .cta__heading { max-width: 9.6em; font-size: var(--fs-shout); line-height: var(--lh-shout); letter-spacing: var(--tracking-display); }
+  .cta__heading .badge { width: .955em; height: .955em; margin: 0 .2em; vertical-align: -.192em; }
+  .cta__body { max-width: 26em; margin-top: .8125em; }
+  .cta__button { margin-top: 2.571em; }
+
+  /* ============ FOOTER ============ */
+  .foot {
+    --fdpx: .078125vw;
+    position: relative; height: calc(560 * var(--fdpx)); min-height: 28rem;
+    padding: calc(60 * var(--dpx)) var(--pad-x) 0; overflow: hidden;
+    color: var(--c-ink); background: var(--c-accent); isolation: isolate;
+  }
+  .foot__top { position: relative; z-index: 2; display: grid; grid-template-columns: calc(395 * var(--dpx)) 1fr; column-gap: calc(154 * var(--dpx)); }
+  .foot__mark { display: inline-flex; align-items: center; gap: .5rem; }
+  .foot__mark svg { width: 1.5rem; height: auto; }
+  .foot__word { font-family: var(--font-wordmark); font-style: italic; font-size: 1.5rem; line-height: 1.25; letter-spacing: var(--tracking-figure); }
+  .foot__blurb { max-width: 24.7em; margin-top: 2em; color: #1614129e; }
+  .foot__copy { margin-top: 1.25em; font-size: var(--fs-ui); color: #16141280; }
+  .foot__links { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(24 * var(--dpx)); }
+  .foot__title { font-weight: 600; }
+  .foot__links ul { display: grid; gap: 1em; margin-top: 1.25em; }
+  .foot__links a, .foot__lines { color: #1614129e; transition: color .2s ease; }
+  .foot__links a:hover { color: var(--c-ink); }
+  .foot__lines { display: grid; gap: .25em; margin-top: 1.25em; }
+  .foot__wordmark {
+    position: absolute; bottom: calc(-48 * var(--fdpx)); left: calc(24 * var(--fdpx)); z-index: 0;
+    font-family: var(--font-wordmark); font-style: italic; font-size: calc(270 * var(--fdpx)); line-height: 1;
+    letter-spacing: var(--tracking-figure); white-space: nowrap; pointer-events: none;
+  }
+  .foot__fan { position: absolute; bottom: calc(-131 * var(--fdpx)); left: calc(900 * var(--fdpx)); z-index: 1; width: calc(397 * var(--fdpx)); height: calc(391 * var(--fdpx)); pointer-events: none; }
+  .foot__card { position: absolute; top: 50%; left: 50%; display: block; width: calc(199 * var(--fdpx)); height: calc(242 * var(--fdpx)); translate: -50% -50%; }
+  .foot__card img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--r-md); }
+  .foot__card--0 { translate: calc(-50% - 70.4 * var(--fdpx)) calc(-50% + 52.84 * var(--fdpx)); rotate: -15.43deg; opacity: .45; }
+  .foot__card--1 { translate: calc(-50% + 9.59 * var(--fdpx)) calc(-50% - 27.17 * var(--fdpx)); rotate: -6.92deg; opacity: .8; }
+  .foot__card--2 { translate: calc(-50% + 89.59 * var(--fdpx)) calc(-50% - 67.16 * var(--fdpx)); rotate: 4.44deg; }
+
+  /* ============ WHATSAPP ============ */
+  .wa {
+    position: fixed; right: var(--pad-x); bottom: 1.25rem; z-index: 80;
+    display: grid; place-items: center; width: 52px; height: 52px;
+    color: var(--c-ink); background: var(--c-accent); border-radius: var(--r-md);
+    box-shadow: 0 1px 2px #1614120f, 0 8px 24px #1614122a; transition: scale .3s var(--e-out);
+  }
+  .wa:hover { scale: .96; }
+  .wa svg { width: 24px; height: 24px; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .classes__deck { aspect-ratio: auto; margin-top: 2.5rem; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * var(--pad-x)); padding-inline: var(--pad-x); scroll-padding-inline: var(--pad-x); }
+    .classes__deck::-webkit-scrollbar { display: none; }
+    /* carrossel automático infinito (ligado pelo js/deck.js) */
+    .classes__deck.is-marquee { display: block; overflow: hidden; scroll-snap-type: none; padding-inline: 0; touch-action: pan-y; }
+    .classes__deck.is-marquee .classes__track { display: flex; gap: 20px; width: max-content; padding-left: var(--pad-x); will-change: transform; }
+    .classes__deck.is-marquee .classes__card { width: min(78vw, 340px); scroll-snap-align: none; }
+    .classes__card { position: relative; inset: auto; z-index: auto; flex: 0 0 auto; width: calc((100% - 20px) / 2); aspect-ratio: auto; display: flex; flex-direction: column; scroll-snap-align: start; }
+    .classes__foot { position: relative; inset: auto; margin: max(50%, 10rem) .5rem .5rem; flex: 1 1 auto; display: flex; flex-direction: column; padding: 1rem 1rem 1.1rem; }
+    .classes__body { margin-bottom: auto; }
+    .classes__more { align-self: start; }
+    .go { --go: 3rem; }
+    .go svg { width: 1.5rem; }
+    .classes__go { top: .75rem; right: .75rem; }
+    .teachers__panel { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2.5rem; padding: 0; }
+    .teachers__side { display: contents; }
+    .teachers__namebar { order: 1; padding-bottom: 1.25rem; }
+    .teachers__stage { order: 2; aspect-ratio: 4 / 5; max-height: none; }
+    .teachers__stage img { object-position: 50% 20%; }
+    .teachers__list { order: 3; margin: 0; padding-top: 0; }
+    .foot { container-type: inline-size; height: auto; min-height: 0; --foot-pad: 1.25rem; padding: 3.5rem var(--foot-pad) max(calc(9rem + 4vw), calc(.3 * (100cqw + var(--foot-pad) * 2))); }
+    .foot__fan { display: none; }
+    .foot__wordmark { bottom: -.22em; left: -.04em; font-size: calc((100cqw + var(--foot-pad) * 2) / 4); }
+  }
+  @media (max-width: 820px) {
+    .space { padding: 3.5rem 1.25rem; }
+    .reel { height: 480px; margin-inline: -1.25rem; margin-top: .5rem; }
+    .steps__head { flex-direction: column; align-items: stretch; gap: 1.25rem; }
+    .steps__heading { flex-basis: auto; }
+    .steps__cta { margin-top: 1.25rem; }
+    .steps__track { grid-template-columns: 1fr; gap: 2.25rem; margin-top: 2.5rem; }
+    .steps__rail { top: 0; bottom: 0; left: calc(var(--dot) / 2); right: auto; width: 1px; height: auto; }
+    .steps__fill { transform-origin: top; transform: scaleY(var(--p, 1)); }
+    .step { display: grid; grid-template-columns: var(--dot) 1fr; column-gap: 1.25rem; padding-right: 0; }
+    .step__dot { grid-row: 1 / span 3; }
+    .step__title { margin-top: .55rem; }
+    .step__tag { justify-self: start; }
+    .visit { grid-template-columns: 1fr; gap: 2rem; }
+    .visit__actions { margin-top: 0; padding-top: 2rem; }
+    .visit__map { min-height: 0; aspect-ratio: 4 / 5; }
+    .section { padding: 3.5rem 1.25rem; }
+    .intro__grid { grid-template-columns: 1fr; row-gap: 2rem; }
+    .intro__frame { position: static; width: 11rem; height: 11.125rem; margin-top: 1.5rem; }
+    .intro__stats { grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 1.75rem 1rem; margin-top: 2.5rem; }
+    .classes__head { flex-direction: column; align-items: stretch; gap: 1.25rem; }
+    .classes__heading { flex-basis: auto; }
+    .classes__cta, .teachers__cta { margin-top: 1.25rem; }
+    .teachers { padding-inline: 1.25rem; }
+    .teachers__head { grid-template-columns: 1fr; align-items: stretch; gap: 1.25rem; padding-inline: 0; }
+    .teachers__heading { max-width: none; }
+    .teachers__list button { min-height: 44px; }
+    .faq { grid-template-columns: 1fr; row-gap: 2rem; }
+    .faq__heading { position: static; }
+    .faq__list { gap: 1rem; }
+    .faq__item button { gap: 1rem; padding: 1.25rem; }
+    .faq__mark { width: 2.75rem; height: 2.75rem; }
+    .faq__answer p { padding: 0 1.25rem 1.25rem; }
+    .cta { padding: .75rem; }
+    .cta__panel { aspect-ratio: 3 / 4; min-height: 0; align-items: end; }
+    .cta__panel::after { background: linear-gradient(to top, #000a, #00000073 50%, #0000 85%); }
+    .cta__photo { object-position: 74% 0%; }
+    .cta__content { padding: 2.5rem 1.25rem; }
+    .cta__body, .cta__button { margin-top: 1.25rem; }
+    .foot__top { grid-template-columns: 1fr; row-gap: 2.5rem; }
+    .foot__links { grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 2rem 1rem; }
+    .foot__links ul { gap: .6rem; margin-top: .75rem; }
+    .foot__lines { margin-top: .75rem; }
+  }
+  @media (max-width: 700px) { .classes__card { width: 78%; } }
+  @media (max-width: 560px) {
+    .intro__frame { width: 100%; height: auto; aspect-ratio: 352 / 356; }
+    .intro__stats { grid-template-columns: 1fr 1fr; text-align: center; }
+    .quotes { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: none; row-gap: 1.5rem; }
+    .quotes__frame { grid-area: auto; order: 1; width: 100%; aspect-ratio: 275 / 225; }
+    .quotes__stack { grid-area: auto; order: 2; }
+    .quotes__item { max-width: none; }
+    .quotes__controls { grid-area: auto; order: 3; justify-content: center; margin-top: 0; }
+    .quotes__controls button { width: 44px; height: 44px; border-radius: var(--r-md); }
+    .foot__links { grid-template-columns: 1fr 1fr; }
+  }
+  /* ============ MOTION (GSAP / Lenis) ============ */
+  html.motion-pending .hero__panel, html.motion-pending .nav, html.motion-pending .wa { visibility: hidden; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: clip; }
+  .line-mask { overflow-clip-margin: .22em; }
+  .has-gsap .hero__photo, .has-gsap .cta__photo, .has-gsap .classes__card, .has-gsap .quotes__thumb { will-change: transform; }
+  .teachers__namebar { position: relative; border-bottom: 0; }
+  .teachers__namebar::after {
+    content: ""; position: absolute; inset: auto 0 0; height: 1px; background: rgb(22 20 18 / .12);
+    transform-origin: left; transform: scaleX(var(--rule, 1));
+  }
+  .has-gsap .quotes__item { translate: none; transition: opacity .18s ease; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: .01ms !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ============ VERSÃO INTERMEDIÁRIA: sem movimento ============ */
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .button__sweep { display: none; }
+  .button__label--next { display: none; }
+  .button:hover .button__label, .button:focus-visible .button__label { translate: none; }
+  .button:hover .button__arrows svg, .button:focus-visible .button__arrows svg { translate: none; }
+  .button:hover { filter: brightness(.95); }
+  .classes__card:hover > img { --card-zoom: 1; }
+  .go:hover, .classes__card:hover .go, .wa:hover { scale: 1 !important; }
+  .go svg:last-child { display: none; }
+  .go:hover svg:first-child, .classes__card:hover .go svg:first-child { translate: none !important; }
+  .classes__more::after { display: none; }
+  .classes__card:hover .classes__more { text-decoration: underline; }
+
+  /* carrossel do espaço: fileira horizontal comum */
+  .strip {
+    display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin: calc(48 * var(--dpx)) calc(-1 * var(--pad-x)) 0; padding: 4px var(--pad-x) 40px; scroll-padding-inline: var(--pad-x);
+  }
+  .strip::-webkit-scrollbar { display: none; }
+  .strip__card {
+    flex: 0 0 auto; width: clamp(240px, 24vw, 340px); aspect-ratio: 3 / 4; margin: 0; overflow: hidden;
+    border-radius: var(--r-md); background: var(--c-paper); box-shadow: 0 18px 40px -16px rgb(22 20 18 / .35); scroll-snap-align: start;
+  }
+  .strip__card img { width: 100%; height: 100%; object-fit: cover; }
+  .space__controls { margin-top: 0; }
+  @media (max-width: 820px) {
+    .strip { margin-inline: -1.25rem; padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; }
+    .strip__card { width: 72vw; }
+  }
+</style>
+</head>
+<body>
+<!--
+  WhatsApp: procure por "5594992382244" e troque em todo o arquivo, se necessário.
+  Animações: js/animacoes.js (GSAP + ScrollTrigger + SplitText + Lenis).
+-->
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav" aria-label="Principal">
+  <a class="nav__mark" href="#top" aria-label="Dra. Nayane de Paula — início">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 8 .4 2.5 1 5.5 2.5 5.5S9.5 17 12 17s3 4 4.5 4 2.1-3 2.5-5.5c.5-3.5 2-5 2-8C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></svg>
+    <span class="nav__word">Dra. Nayane</span>
+  </a>
+  <ul class="nav__links">
+    <li><a href="#tratamentos">Tratamentos</a></li>
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#doutora">A Doutora</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#faq">Dúvidas</a></li>
+    <li><a href="#localizacao">Localização</a></li>
+  </ul>
+  <a class="button button--accent button--sm button--paper" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+    <span class="button__mask"><span class="button__label">Agendar</span><span class="button__label button__label--next" aria-hidden="true">Agendar</span></span>
+    <span class="button__sweep"></span>
+  </a>
+</nav>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero__panel anim">
+    <picture>
+      <source media="(min-width: 901px)" srcset="/dranayane/img/hero-dra-nayane.webp" width="1672" height="941" />
+      <img class="hero__photo" src="/dranayane/img/hero-dra-nayane-mobile.webp" alt="Dra. Nayane de Paula em seu consultório na Clínica Perfacce" width="927" height="2000" fetchpriority="high" />
+    </picture>
+    <div class="hero__content">
+      <h1 class="hero__heading anim">Alinhe seu sorriso com cuidado e&nbsp;confiança</h1>
+      <p class="hero__body anim">Ortodontia moderna e atendimento sem pressa, com uma especialista que acompanha você do primeiro exame ao sorriso final.</p>
+      <a class="button button--accent button--photo hero__cta anim" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+        <span class="button__mask"><span class="button__label">Agendar avaliação</span><span class="button__label button__label--next" aria-hidden="true">Agendar avaliação</span></span>
+        <span class="button__icon"><span class="button__chip"></span><span class="button__track"><span class="button__arrows">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span></span></span>
+        <span class="button__sweep"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="intro section" id="sobre">
+  <div class="intro__grid">
+    <div class="intro__aside">
+      <p class="anim">Um consultório pensado para você se sentir em casa: ambiente acolhedor, explicações claras e um plano feito sob medida.</p>
+      <div class="intro__frame">
+        <img class="intro__thumb anim" src="/dranayane/img/detalhes.jpg" alt="Detalhe do atendimento: café servido na Clínica Perfacce" width="1100" height="1467" loading="lazy" />
+      </div>
+    </div>
+    <div class="intro__main">
+      <h2 class="intro__heading anim">Ortodontia que encontra você onde você está — <span class="muted">seja o seu primeiro aparelho ou o ajuste que faltava no seu&nbsp;sorriso.</span></h2>
+      <dl class="intro__stats">
+        <div class="intro__stat">
+          <dt class="intro__figure" data-count="13" data-suffix="+">13+</dt>
+          <dd class="intro__label anim">Anos de&nbsp;experiência</dd>
+        </div>
+        <div class="intro__stat">
+          <dt class="intro__figure" data-count="2000">2k+</dt>
+          <dd class="intro__label anim">Sorrisos&nbsp;transformados</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRATAMENTOS ================= -->
+<section class="classes section" id="tratamentos">
+  <header class="classes__head">
+    <h2 class="classes__heading anim">Tratamentos pensados<br />para o seu sorriso</h2>
+    <div class="classes__intro">
+      <p class="anim">Da ortodontia à estética, opções modernas e confortáveis para cada fase da vida — com indicação honesta do que funciona no seu caso.</p>
+      <a class="button button--accent button--paper classes__cta anim" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Gostaria%20de%20saber%20qual%20tratamento%20%C3%A9%20ideal%20para%20mim." target="_blank" rel="noopener">
+        <span class="button__mask"><span class="button__label">Qual é o ideal para mim?</span><span class="button__label button__label--next" aria-hidden="true">Qual é o ideal para mim?</span></span>
+        <span class="button__icon"><span class="button__chip"></span><span class="button__track"><span class="button__arrows">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span></span></span>
+        <span class="button__sweep"></span>
+      </a>
+    </div>
+  </header>
+
+  <div class="classes__deck">
+    <a class="classes__card anim" style="--step: 0;" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Quero%20saber%20mais%20sobre%20aparelhos%20ortod%C3%B4nticos." target="_blank" rel="noopener">
+      <img src="/dranayane/img/trat-aparelho-rosa.webp" alt="Sorriso com aparelho ortodôntico metálico e borrachinhas rosa" width="1448" height="1086" loading="lazy" style="object-position: 50% 30%;" />
+      <span class="go classes__go"><span class="go__mask">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </span></span>
+      <div class="classes__foot">
+        <h3 class="classes__title">Aparelhos ortodônticos</h3>
+        <p class="classes__body">Metálico ou estético de porcelana, com planejamento para o seu&nbsp;caso.</p>
+        <span class="classes__more">Saiba mais</span>
+      </div>
+    </a>
+    <a class="classes__card anim" style="--step: 1;" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Quero%20saber%20mais%20sobre%20facetas%20e%20lentes%20de%20contato%20dental." target="_blank" rel="noopener">
+      <img src="/dranayane/img/trat-facetas.webp" alt="Sorriso com dentes claros, alinhados e harmônicos" width="1448" height="1086" loading="lazy" style="object-position: 50% 32%;" />
+      <span class="go classes__go"><span class="go__mask">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </span></span>
+      <div class="classes__foot">
+        <h3 class="classes__title">Facetas e lentes</h3>
+        <p class="classes__body">Cor, forma e tamanho em harmonia, com polimento para manter o&nbsp;brilho.</p>
+        <span class="classes__more">Saiba mais</span>
+      </div>
+    </a>
+    <a class="classes__card anim" style="--step: 2;" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Quero%20saber%20mais%20sobre%20os%20tratamentos%20de%20cl%C3%ADnica%20geral." target="_blank" rel="noopener">
+      <img src="/dranayane/img/trat-clinica-geral.webp" alt="Modelo odontológico com espelho clínico e escova de profilaxia sobre bancada de mármore" width="1448" height="1086" loading="lazy" style="object-position: 50% 20%;" />
+      <span class="go classes__go"><span class="go__mask">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </span></span>
+      <div class="classes__foot">
+        <h3 class="classes__title">Clínica geral</h3>
+        <p class="classes__body">Limpeza e raspagem, restaurações, canal e extrações, incluindo&nbsp;sisos.</p>
+        <span class="classes__more">Saiba mais</span>
+      </div>
+    </a>
+  </div>
+
+</section>
+
+<!-- ================= O ESPAÇO (carrossel) ================= -->
+<section class="space" id="espaco">
+  <div class="space__copy">
+    <h2 class="space__heading">Um espaço feito para você se sentir em casa</h2>
+    <p class="space__text">Na Clínica Perfacce, cada detalhe foi pensado para o seu conforto: uma sala de espera aconchegante, luz suave, tons claros com toques de dourado e aquele mimo servido com carinho. Um ambiente tranquilo, para você chegar sem pressa e se sentir bem-vindo desde a recepção.</p>
+  </div>
+  <div class="strip" id="stripEspaco" tabindex="0" role="region" aria-label="Fotos do espaço da clínica">
+    <figure class="strip__card"><img src="/dranayane/img/espaco-06.webp" alt="Consultório da Clínica Perfacce com cadeira odontológica e luminária circular" width="900" height="1200" loading="lazy" /></figure>
+    <figure class="strip__card"><img src="/dranayane/img/espaco-01.webp" alt="Chocolate quente e biscoito com a marca da Dra. Nayane servidos em bandeja de madeira" width="900" height="900" loading="lazy" /></figure>
+    <figure class="strip__card"><img src="/dranayane/img/espaco-03.webp" alt="Sala de espera com poltronas cinza, almofadas florais e arandelas douradas" width="900" height="1200" loading="lazy" /></figure>
+    <figure class="strip__card"><img src="/dranayane/img/espaco-02.webp" alt="Parede com nichos orgânicos iluminados e lustre de anéis dourados" width="900" height="1200" loading="lazy" /></figure>
+    <figure class="strip__card"><img src="/dranayane/img/espaco-04.webp" alt="Detalhe das arandelas e das folhas douradas na parede da recepção" width="900" height="1200" loading="lazy" /></figure>
+    <figure class="strip__card"><img src="/dranayane/img/espaco-05.webp" alt="Recepção da clínica com poltronas e espelho de moldura orgânica" width="900" height="1600" loading="lazy" /></figure>
+  </div>
+  <div class="space__controls">
+    <button type="button" data-strip="-1" aria-label="Fotos anteriores"><svg class="quotes__back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <span class="space__hint">Arraste para ver mais</span>
+    <button type="button" data-strip="1" aria-label="Próximas fotos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ================= COMO FUNCIONA ================= -->
+<section class="steps section" id="como-funciona">
+  <header class="steps__head">
+    <h2 class="steps__heading">Do primeiro contato<br />ao sorriso final</h2>
+    <div class="steps__intro">
+      <p>Um processo claro e transparente, para você saber exatamente o que esperar em cada etapa — mesmo que seja sua primeira vez no dentista em anos.</p>
+      <a class="button button--accent button--paper steps__cta" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+        <span class="button__mask"><span class="button__label">Começar pela etapa 1</span><span class="button__label button__label--next" aria-hidden="true">Começar pela etapa 1</span></span>
+        <span class="button__icon"><span class="button__chip"></span><span class="button__track"><span class="button__arrows">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span></span></span>
+        <span class="button__sweep"></span>
+      </a>
+    </div>
+  </header>
+  <ol class="steps__track">
+    <li class="steps__rail" aria-hidden="true"><span class="steps__fill"></span></li>
+    <li class="step">
+      <span class="step__dot">01</span>
+      <h3 class="step__title">Agendamento</h3>
+      <p class="step__body">Fale com a equipe pelo WhatsApp e escolha o melhor horário para você.</p>
+      <span class="step__tag">Pelo WhatsApp</span>
+    </li>
+    <li class="step">
+      <span class="step__dot">02</span>
+      <h3 class="step__title">Avaliação</h3>
+      <p class="step__body">Exame clínico detalhado, fotos e uma conversa sem pressa sobre o que você deseja.</p>
+      <span class="step__tag">Exame + fotos</span>
+    </li>
+    <li class="step">
+      <span class="step__dot">03</span>
+      <h3 class="step__title">Planejamento</h3>
+      <p class="step__body">Um plano personalizado, com opções, prazos e valores explicados com clareza.</p>
+      <span class="step__tag">Prazos e valores</span>
+    </li>
+    <li class="step">
+      <span class="step__dot">04</span>
+      <h3 class="step__title">Tratamento</h3>
+      <p class="step__body">Acompanhamento próximo em cada consulta — até o resultado e depois dele.</p>
+      <span class="step__tag">Até o sorriso final</span>
+    </li>
+  </ol>
+</section>
+
+<!-- ================= A DOUTORA ================= -->
+<section class="teachers section" id="doutora">
+  <header class="teachers__head">
+    <h2 class="teachers__heading anim">Prazer, sou a Dra.&nbsp;Nayane</h2>
+    <div class="teachers__intro">
+      <p class="anim">Cirurgiã-dentista especialista em Ortodontia. Acredito que um sorriso bonito começa com um diagnóstico cuidadoso — sem pressa e sem fórmulas prontas.</p>
+      <a class="button button--accent button--paper teachers__cta anim" href="https://www.instagram.com/dranayanedepaula/" target="_blank" rel="noopener">
+        <span class="button__mask"><span class="button__label">Acompanhe no Instagram</span><span class="button__label button__label--next" aria-hidden="true">Acompanhe no Instagram</span></span>
+        <span class="button__icon"><span class="button__chip"></span><span class="button__track"><span class="button__arrows">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span></span></span>
+        <span class="button__sweep"></span>
+      </a>
+    </div>
+  </header>
+
+  <div class="teachers__panel">
+    <div class="teachers__side">
+      <div class="teachers__namebar">
+        <div class="teachers__who anim">
+          <h3 class="teachers__name">Nayane<br />de Paula</h3>
+          <p class="teachers__cro">Cirurgiã-dentista · CRO-PA 6544</p>
+          <div class="teachers__bios">
+            <p class="teachers__bio" data-bio="0" aria-hidden="false">Aparelho metálico ou estético de porcelana e mini-implantes ortodônticos, planejados para o seu&nbsp;caso.</p>
+            <p class="teachers__bio" data-bio="1" aria-hidden="true">Lentes e facetas para corrigir cor, forma e tamanho dos dentes — e polimento para manter o&nbsp;brilho.</p>
+            <p class="teachers__bio" data-bio="2" aria-hidden="true">Restaurações na cor do dente e pino de fibra para reconstruir dentes que fizeram&nbsp;canal.</p>
+            <p class="teachers__bio" data-bio="3" aria-hidden="true">Remoção de placa e tártaro, raspagem e polimento para manter gengiva e dentes&nbsp;saudáveis.</p>
+            <p class="teachers__bio" data-bio="4" aria-hidden="true">Endodontia para tratar a dor e preservar o dente natural sempre que&nbsp;possível.</p>
+            <p class="teachers__bio" data-bio="5" aria-hidden="true">Extração de sisos e de dentes comprometidos, com planejamento e cuidado em cada&nbsp;etapa.</p>
+          </div>
+        </div>
+        <a class="go anim" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Agendar com a Dra. Nayane">
+          <span class="go__mask">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </span>
+        </a>
+      </div>
+      <ol class="teachers__list">
+        <li class="anim"><button type="button" data-pick="0" aria-pressed="true"><span class="teachers__index">01 -</span><span class="teachers__label">Aparelhos ortodônticos</span></button></li>
+        <li class="anim"><button type="button" data-pick="1" aria-pressed="false"><span class="teachers__index">02 -</span><span class="teachers__label">Facetas e lentes</span></button></li>
+        <li class="anim"><button type="button" data-pick="2" aria-pressed="false"><span class="teachers__index">03 -</span><span class="teachers__label">Restaurações e pinos</span></button></li>
+        <li class="anim"><button type="button" data-pick="3" aria-pressed="false"><span class="teachers__index">04 -</span><span class="teachers__label">Limpeza e raspagem</span></button></li>
+        <li class="anim"><button type="button" data-pick="4" aria-pressed="false"><span class="teachers__index">05 -</span><span class="teachers__label">Tratamento de canal</span></button></li>
+        <li class="anim"><button type="button" data-pick="5" aria-pressed="false"><span class="teachers__index">06 -</span><span class="teachers__label">Extrações e sisos</span></button></li>
+      </ol>
+    </div>
+    <div class="teachers__stage anim">
+      <img data-shot="0" src="/dranayane/img/dra-nayane-retrato.webp" alt="Retrato da Dra. Nayane de Paula de terninho branco" width="1125" height="2000" loading="lazy" aria-hidden="false" style="object-position: 50% 28%;" />
+      <img data-shot="1" src="/dranayane/img/trat-estetica.webp" alt="Escala de cores dentais usada no planejamento de facetas e lentes" width="1448" height="1086" loading="lazy" aria-hidden="true" style="object-position: 40% 30%;" />
+      <img data-shot="2" src="/dranayane/img/atendimento.jpg" alt="Dra. Nayane em atendimento clínico" width="1100" height="1467" loading="lazy" aria-hidden="true" style="object-position: 50% 40%;" />
+      <img data-shot="3" src="/dranayane/img/dra-nayane-2.jpg" alt="Dra. Nayane de Paula na Clínica Perfacce" width="900" height="1600" loading="lazy" aria-hidden="true" style="object-position: 50% 25%;" />
+      <img data-shot="4" src="/dranayane/img/espaco-06.webp" alt="Consultório da Clínica Perfacce com cadeira odontológica" width="900" height="1200" loading="lazy" aria-hidden="true" style="object-position: 50% 45%;" />
+      <img data-shot="5" src="/dranayane/img/dra-nayane.jpg" alt="Dra. Nayane de Paula sorrindo no consultório" width="900" height="1600" loading="lazy" aria-hidden="true" style="object-position: 50% 30%;" />
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEPOIMENTOS (avaliações públicas do Google) ================= -->
+<section class="quotes section" id="depoimentos">
+  <div class="quotes__stack">
+    <figure class="quotes__item" data-quote="0" aria-hidden="false">
+      <span class="quotes__source"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h6c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2-1.9 3.2-4.7 3.2-8.1z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.4-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.8 1.1-2.9 0-5.4-2-6.3-4.6H2v2.9C3.8 20.5 7.6 23 12 23z"/><path fill="#FBBC05" d="M5.7 14c-.2-.7-.4-1.4-.4-2.1s.1-1.4.4-2.1V7H2c-.8 1.5-1.2 3.2-1.2 5s.4 3.5 1.2 5l3.7-3z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.2-3.2C17.5 2.1 15 1 12 1 7.6 1 3.8 3.5 2 7l3.7 2.9C6.6 7.3 9.1 5.4 12 5.4z"/></svg>Avaliação no Google</span>
+      <blockquote class="quotes__text">“Explica todo o procedimento e deixa a gente bem tranquilo durante a consulta. Super&nbsp;recomendo!”</blockquote>
+      <figcaption class="quotes__by"><span class="quotes__name">Rute Leles Muniz</span><span class="quotes__detail">Paciente</span></figcaption>
+    </figure>
+    <figure class="quotes__item" data-quote="1" aria-hidden="true">
+      <span class="quotes__source"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h6c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2-1.9 3.2-4.7 3.2-8.1z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.4-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.8 1.1-2.9 0-5.4-2-6.3-4.6H2v2.9C3.8 20.5 7.6 23 12 23z"/><path fill="#FBBC05" d="M5.7 14c-.2-.7-.4-1.4-.4-2.1s.1-1.4.4-2.1V7H2c-.8 1.5-1.2 3.2-1.2 5s.4 3.5 1.2 5l3.7-3z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.2-3.2C17.5 2.1 15 1 12 1 7.6 1 3.8 3.5 2 7l3.7 2.9C6.6 7.3 9.1 5.4 12 5.4z"/></svg>Avaliação no Google</span>
+      <blockquote class="quotes__text">“Muito atenciosa, explica tudo pra gente, mostra o antes e depois. Com certeza vou&nbsp;retornar.”</blockquote>
+      <figcaption class="quotes__by"><span class="quotes__name">Mônica Lemos</span><span class="quotes__detail">Paciente</span></figcaption>
+    </figure>
+    <figure class="quotes__item" data-quote="2" aria-hidden="true">
+      <span class="quotes__source"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h6c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2-1.9 3.2-4.7 3.2-8.1z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.4-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.8 1.1-2.9 0-5.4-2-6.3-4.6H2v2.9C3.8 20.5 7.6 23 12 23z"/><path fill="#FBBC05" d="M5.7 14c-.2-.7-.4-1.4-.4-2.1s.1-1.4.4-2.1V7H2c-.8 1.5-1.2 3.2-1.2 5s.4 3.5 1.2 5l3.7-3z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.2-3.2C17.5 2.1 15 1 12 1 7.6 1 3.8 3.5 2 7l3.7 2.9C6.6 7.3 9.1 5.4 12 5.4z"/></svg>Avaliação no Google</span>
+      <blockquote class="quotes__text">“Excelente profissional, com caráter e responsabilidade com seus pacientes. Ela realmente resolve o&nbsp;problema.”</blockquote>
+      <figcaption class="quotes__by"><span class="quotes__name">Patricia Silva</span><span class="quotes__detail">Paciente</span></figcaption>
+    </figure>
+    <figure class="quotes__item" data-quote="3" aria-hidden="true">
+      <span class="quotes__source"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h6c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2-1.9 3.2-4.7 3.2-8.1z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.4-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.8 1.1-2.9 0-5.4-2-6.3-4.6H2v2.9C3.8 20.5 7.6 23 12 23z"/><path fill="#FBBC05" d="M5.7 14c-.2-.7-.4-1.4-.4-2.1s.1-1.4.4-2.1V7H2c-.8 1.5-1.2 3.2-1.2 5s.4 3.5 1.2 5l3.7-3z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.2-3.2C17.5 2.1 15 1 12 1 7.6 1 3.8 3.5 2 7l3.7 2.9C6.6 7.3 9.1 5.4 12 5.4z"/></svg>Avaliação no Google</span>
+      <blockquote class="quotes__text">“Um ambiente acolhedor, organizado e cheio de cuidado em cada&nbsp;detalhe.”</blockquote>
+      <figcaption class="quotes__by"><span class="quotes__name">Mikaely Cruz</span><span class="quotes__detail">Paciente</span></figcaption>
+    </figure>
+    <figure class="quotes__item" data-quote="4" aria-hidden="true">
+      <span class="quotes__source"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h6c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2-1.9 3.2-4.7 3.2-8.1z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.4-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.8 1.1-2.9 0-5.4-2-6.3-4.6H2v2.9C3.8 20.5 7.6 23 12 23z"/><path fill="#FBBC05" d="M5.7 14c-.2-.7-.4-1.4-.4-2.1s.1-1.4.4-2.1V7H2c-.8 1.5-1.2 3.2-1.2 5s.4 3.5 1.2 5l3.7-3z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.2-3.2C17.5 2.1 15 1 12 1 7.6 1 3.8 3.5 2 7l3.7 2.9C6.6 7.3 9.1 5.4 12 5.4z"/></svg>Avaliação no Google</span>
+      <blockquote class="quotes__text">“Excelente profissional, muito acolhedora e atenciosa. Amo ser sua&nbsp;paciente.”</blockquote>
+      <figcaption class="quotes__by"><span class="quotes__name">Maryah Mafra</span><span class="quotes__detail">Paciente</span></figcaption>
+    </figure>
+  </div>
+  <div class="quotes__controls">
+    <button type="button" data-step="-1" aria-label="Depoimento anterior" disabled>
+      <svg class="quotes__back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <button type="button" data-step="1" aria-label="Próximo depoimento">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <span class="quotes__count" aria-live="polite"><span id="quoteNow">1</span> / 5</span>
+  </div>
+  <div class="quotes__frame">
+    <img class="quotes__thumb anim" src="/dranayane/img/recepcao.jpg" alt="Recepção da Clínica Perfacce" width="900" height="1600" loading="lazy" />
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq section" id="faq">
+  <h2 class="faq__heading anim">Perguntas frequentes</h2>
+  <div class="faq__list">
+    <div class="faq__item anim" data-open>
+      <h3><button type="button" aria-expanded="true" aria-controls="faq-0">
+        <span class="faq__question">Quanto tempo dura o tratamento com&nbsp;aparelho?</span>
+        <span class="faq__mark"><svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><svg class="faq__minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg></span>
+      </button></h3>
+      <div class="faq__answer" id="faq-0"><div><p>Depende da complexidade de cada caso. Em média, os tratamentos ortodônticos levam de 12 a 30 meses. Na avaliação você recebe uma estimativa personalizada.</p></div></div>
+    </div>
+    <div class="faq__item anim">
+      <h3><button type="button" aria-expanded="false" aria-controls="faq-1">
+        <span class="faq__question">Adulto ainda pode usar&nbsp;aparelho?</span>
+        <span class="faq__mark"><svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><svg class="faq__minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg></span>
+      </button></h3>
+      <div class="faq__answer" id="faq-1"><div><p>Sim! Não existe idade limite para a ortodontia, desde que dentes e gengiva estejam saudáveis. Para adultos, o aparelho estético, com braquetes na cor do dente, é uma opção bem discreta.</p></div></div>
+    </div>
+    <div class="faq__item anim">
+      <h3><button type="button" aria-expanded="false" aria-controls="faq-2">
+        <span class="faq__question">Lentes de contato dental estragam os&nbsp;dentes?</span>
+        <span class="faq__mark"><svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><svg class="faq__minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg></span>
+      </button></h3>
+      <div class="faq__answer" id="faq-2"><div><p>Não, quando bem indicadas e planejadas. Na avaliação a Dra. Nayane verifica se lentes ou facetas são a melhor opção para o seu caso e explica cada etapa, inclusive se será preciso algum preparo nos dentes.</p></div></div>
+    </div>
+    <div class="faq__item anim">
+      <h3><button type="button" aria-expanded="false" aria-controls="faq-3">
+        <span class="faq__question">O aparelho&nbsp;dói?</span>
+        <span class="faq__mark"><svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><svg class="faq__minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg></span>
+      </button></h3>
+      <div class="faq__answer" id="faq-3"><div><p>Pode haver um leve desconforto nos primeiros dias e após as manutenções, que passa rapidamente. Os aparelhos modernos são bem mais confortáveis do que os antigos.</p></div></div>
+    </div>
+    <div class="faq__item anim">
+      <h3><button type="button" aria-expanded="false" aria-controls="faq-4">
+        <span class="faq__question">De quanto em quanto tempo devo fazer&nbsp;limpeza?</span>
+        <span class="faq__mark"><svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><svg class="faq__minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg></span>
+      </button></h3>
+      <div class="faq__answer" id="faq-4"><div><p>Em geral, a cada seis meses. Quem usa aparelho ou tem mais tendência a acumular tártaro pode precisar de intervalos menores — a Dra. indica o ideal para você na consulta.</p></div></div>
+    </div>
+    <div class="faq__item anim">
+      <h3><button type="button" aria-expanded="false" aria-controls="faq-5">
+        <span class="faq__question">Quais são as formas de&nbsp;pagamento?</span>
+        <span class="faq__mark"><svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><svg class="faq__minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg></span>
+      </button></h3>
+      <div class="faq__answer" id="faq-5"><div><p>Trabalhamos com condições facilitadas e parcelamento. Os detalhes são apresentados junto com o seu plano de tratamento, após a avaliação.</p></div></div>
+    </div>
+    <div class="faq__item anim">
+      <h3><button type="button" aria-expanded="false" aria-controls="faq-6">
+        <span class="faq__question">Preciso agendar&nbsp;horário?</span>
+        <span class="faq__mark"><svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><svg class="faq__minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg></span>
+      </button></h3>
+      <div class="faq__answer" id="faq-6"><div><p>Sim. Todos os atendimentos são com horário marcado, de segunda a sábado, das 8h30 às 19h. É só chamar no WhatsApp para escolher o melhor horário para você.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOCALIZAÇÃO ================= -->
+<section class="visit section" id="localizacao">
+  <div class="visit__info">
+    <h2 class="visit__heading">Venha conhecer<br />a Clínica Perfacce</h2>
+    <p class="visit__intro">Um espaço acolhedor no Rio Verde, em Parauapebas, pensado para você se sentir à vontade desde a recepção.</p>
+    <div class="visit__address">
+      <p class="visit__label">Endereço</p>
+      <p>Avenida JK, 106 · Sala&nbsp;2<br />Rio Verde · Parauapebas/PA · 68515-000</p>
+    </div>
+    <dl class="visit__hours">
+      <div class="visit__row"><dt>Segunda a sábado</dt><dd>8h30 às 19h</dd></div>
+      <div class="visit__row"><dt>Atendimento</dt><dd>Somente com agendamento</dd></div>
+      <div class="visit__row"><dt>Agendamentos</dt><dd><a href="https://wa.me/5594992382244" target="_blank" rel="noopener">(94) 99238-2244</a></dd></div>
+    </dl>
+    <div class="visit__actions">
+      <a class="button button--accent button--paper" href="https://maps.app.goo.gl/XVFR5oxwwRDLjUPW9" target="_blank" rel="noopener">
+        <span class="button__mask"><span class="button__label">Como chegar</span><span class="button__label button__label--next" aria-hidden="true">Como chegar</span></span>
+        <span class="button__icon"><span class="button__chip"></span><span class="button__track"><span class="button__arrows">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span></span></span>
+        <span class="button__sweep"></span>
+      </a>
+      <a class="button button--ink" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+        <span class="button__mask"><span class="button__label">Chamar no WhatsApp</span><span class="button__label button__label--next" aria-hidden="true">Chamar no WhatsApp</span></span>
+        <span class="button__icon"><span class="button__chip"></span><span class="button__track"><span class="button__arrows">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span></span></span>
+        <span class="button__sweep"></span>
+      </a>
+    </div>
+  </div>
+  <div class="visit__map">
+    <iframe title="Mapa: Clínica Perfacce, Avenida JK, 106, Parauapebas" src="https://www.google.com/maps?q=Cl%C3%ADnica%20Perfacce%2C%20Av.%20Juscelino%20Kubitschek%20106%2C%20Sala%202%2C%20Rio%20Verde%2C%20Parauapebas%20-%20PA%2C%2068515-000&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <a class="visit__card" href="https://maps.app.goo.gl/XVFR5oxwwRDLjUPW9" target="_blank" rel="noopener">
+      <img src="/dranayane/img/recepcao.jpg" alt="Recepção da Clínica Perfacce" width="900" height="1600" loading="lazy" />
+      <span><strong>Clínica Perfacce</strong><span>Rio Verde · Parauapebas/PA</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta" id="agendar">
+  <div class="cta__panel">
+    <img class="cta__photo" src="/dranayane/img/cta-dra-nayane.webp" alt="Dra. Nayane de Paula sentada em seu consultório" width="1672" height="941" loading="lazy" />
+    <div class="cta__content">
+      <h2 class="cta__heading anim">Seu novo sorriso começa com <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 8 .4 2.5 1 5.5 2.5 5.5S9.5 17 12 17s3 4 4.5 4 2.1-3 2.5-5.5c.5-3.5 2-5 2-8C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></svg></span> uma conversa</h2>
+      <p class="cta__body anim">Agende sua avaliação e descubra o tratamento ideal para você, com explicações claras e um plano feito sob medida.</p>
+      <a class="button button--light button--photo cta__button anim" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+        <span class="button__mask"><span class="button__label">Agendar pelo WhatsApp</span><span class="button__label button__label--next" aria-hidden="true">Agendar pelo WhatsApp</span></span>
+        <span class="button__icon"><span class="button__chip"></span><span class="button__track"><span class="button__arrows">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span></span></span>
+        <span class="button__sweep"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="foot" id="contato">
+  <div class="foot__top">
+    <div class="foot__brand">
+      <a class="foot__mark anim" href="#top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 8 .4 2.5 1 5.5 2.5 5.5S9.5 17 12 17s3 4 4.5 4 2.1-3 2.5-5.5c.5-3.5 2-5 2-8C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></svg>
+        <span class="foot__word">Dra. Nayane de Paula</span>
+      </a>
+      <p class="foot__blurb anim">Ortodontia, estética e clínica geral em Parauapebas. Atendimento acolhedor, planejamento cuidadoso e um sorriso feito para durar.</p>
+      <p class="foot__copy">© <span id="year"></span> Dra. Nayane de Paula</p>
+    </div>
+    <nav class="foot__links" aria-label="Rodapé">
+      <div class="anim">
+        <h2 class="foot__title">Navegue</h2>
+        <ul>
+          <li><a href="#tratamentos">Tratamentos</a></li>
+          <li><a href="#espaco">O espaço</a></li>
+          <li><a href="#doutora">A Doutora</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#faq">Dúvidas</a></li>
+          <li><a href="#localizacao">Localização</a></li>
+        </ul>
+      </div>
+      <div class="anim">
+        <h2 class="foot__title">Contato</h2>
+        <ul>
+          <li><a href="https://wa.me/5594992382244" target="_blank" rel="noopener">(94) 99238-2244</a></li>
+          <li><a href="https://www.instagram.com/dranayanedepaula/" target="_blank" rel="noopener">@dranayanedepaula</a></li>
+          <li><a href="https://maps.app.goo.gl/XVFR5oxwwRDLjUPW9" target="_blank" rel="noopener">Avaliações no Google</a></li>
+        </ul>
+      </div>
+      <div class="anim">
+        <h2 class="foot__title">Clínica Perfacce</h2>
+        <p class="foot__lines">
+          <a href="https://maps.app.goo.gl/XVFR5oxwwRDLjUPW9" target="_blank" rel="noopener">Avenida JK, 106 · Sala 2<br />Rio Verde · Parauapebas/PA</a>
+          <span style="margin-top:.75em">Seg. a Sáb. · 8h30 às 19h<br />Somente com agendamento</span>
+        </p>
+      </div>
+    </nav>
+  </div>
+  <span class="foot__wordmark" aria-hidden="true">Nayane</span>
+  <div class="foot__fan" aria-hidden="true">
+    <span class="foot__card foot__card--0"><img src="/dranayane/img/recepcao.jpg" alt="" loading="lazy" /></span>
+    <span class="foot__card foot__card--1"><img src="/dranayane/img/detalhes.jpg" alt="" loading="lazy" /></span>
+    <span class="foot__card foot__card--2"><img src="/dranayane/img/dra-nayane.jpg" alt="" loading="lazy" style="object-position:50% 30%" /></span>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5594992382244?text=Ol%C3%A1%2C%20Dra.%20Nayane!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2 0-5.4 4.4-9.9 9.9-9.9 2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7 0 5.4-4.5 9.8-10 9.8zm8.4-18.3C18.2 1.3 15.2 0 12 0 5.5 0 .2 5.3.2 11.9c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7c1.7.9 3.7 1.4 5.7 1.4 6.5 0 11.9-5.3 11.9-11.9-.1-3.1-1.3-6.1-3.6-8.3z"/></svg>
+</a>
+
+<script>
+  // Nav: sombra ao rolar
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.toggleAttribute('data-past', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // FAQ (um aberto por vez)
+  document.querySelectorAll('.faq__item button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq__item');
+      const wasOpen = item.hasAttribute('data-open');
+      document.querySelectorAll('.faq__item[data-open]').forEach(i => {
+        i.removeAttribute('data-open');
+        i.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) { item.setAttribute('data-open', ''); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  // A Doutora: especialidades trocam foto e texto
+  const picks = document.querySelectorAll('[data-pick]');
+  picks.forEach(btn => btn.addEventListener('click', () => {
+    const i = btn.dataset.pick;
+    picks.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    document.querySelectorAll('[data-shot]').forEach(img => img.setAttribute('aria-hidden', String(img.dataset.shot !== i)));
+    document.querySelectorAll('[data-bio]').forEach(p => p.setAttribute('aria-hidden', String(p.dataset.bio !== i)));
+  }));
+
+  // Depoimentos
+  const quotes = [...document.querySelectorAll('.quotes__item')];
+  const [prev, next] = document.querySelectorAll('.quotes__controls button');
+  let q = 0;
+  const showQuote = n => {
+    q = Math.max(0, Math.min(quotes.length - 1, n));
+    quotes.forEach((el, i) => el.setAttribute('aria-hidden', String(i !== q)));
+    prev.disabled = q === 0;
+    next.disabled = q === quotes.length - 1;
+    document.getElementById('quoteNow').textContent = q + 1;
+  };
+  prev.addEventListener('click', () => showQuote(q - 1));
+  next.addEventListener('click', () => showQuote(q + 1));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Fileira de fotos do espaço: as setas avançam um card
+  const strip = document.getElementById('stripEspaco');
+  document.querySelectorAll('[data-strip]').forEach(b => b.addEventListener('click', () => {
+    const card = strip.querySelector('.strip__card');
+    strip.scrollBy({ left: Number(b.dataset.strip) * (card.offsetWidth + 20), behavior: 'auto' });
+  }));
+</script>
+</body>
+</html>

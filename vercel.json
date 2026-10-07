@@ -15,6 +15,22 @@
     {
       "source": "/dranayane/",
       "destination": "/dranayane/index.html"
+    },
+    {
+      "source": "/dranayane-intermediario",
+      "destination": "/dranayane-intermediario/index.html"
+    },
+    {
+      "source": "/dranayane-intermediario/",
+      "destination": "/dranayane-intermediario/index.html"
+    },
+    {
+      "source": "/dranayane-basico",
+      "destination": "/dranayane-basico/index.html"
+    },
+    {
+      "source": "/dranayane-basico/",
+      "destination": "/dranayane-basico/index.html"
     }
   ]
 }
