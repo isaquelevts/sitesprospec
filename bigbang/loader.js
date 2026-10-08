@@ -153,6 +153,7 @@
   function prepHeroText() {
     const title = document.querySelector(".hero__title"), quote = document.querySelector(".hero__quote");
     const extras = [...document.querySelectorAll(".hero__cta .btn, .hero__price")];
+    const logo = document.querySelector(".hero__logo");
     if (!window.SplitText || !title || !quote) {
       gsap.set(heroBits, { y: 24, autoAlpha: 0 });
       return () => gsap.to(heroBits, { y: 0, autoAlpha: 1, duration: 0.9, ease: "power3.out", stagger: 0.09, delay: 0.75, clearProps: "transform,opacity,visibility" });
@@ -163,10 +164,12 @@
     gsap.set(tSplit.words, { autoAlpha: 0, y: "0.6em", scale: 0.94, filter: "blur(14px)", transformOrigin: "0% 100%" });
     gsap.set(qSplit.lines, { autoAlpha: 0, y: 16, filter: "blur(8px)" });
     gsap.set(extras, { autoAlpha: 0, y: 22, scale: 0.95, filter: "blur(6px)" });
+    if (logo) gsap.set(logo, { autoAlpha: 0, y: 18, scale: 0.92, filter: "blur(8px)", transformOrigin: "0% 100%" });
     return () => gsap.timeline({
       delay: 0.55,
-      onComplete: () => { tSplit.revert(); qSplit.revert(); title.querySelector(".hero__title-accent")?.classList.remove("grad--split"); gsap.set(extras, { clearProps: "all" }); },
+      onComplete: () => { if (logo) gsap.set(logo, { clearProps: "all" }); tSplit.revert(); qSplit.revert(); title.querySelector(".hero__title-accent")?.classList.remove("grad--split"); gsap.set(extras, { clearProps: "all" }); },
     })
+      .to(logo || {}, { autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1, ease: "expo.out" }, 0)
       .to(tSplit.words, { autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1.15, ease: "expo.out", stagger: 0.1 }, 0)
       .to(qSplit.lines, { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 1, ease: "power3.out", stagger: 0.1 }, 0.5)
       .to(extras, { autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1, ease: "expo.out", stagger: 0.12 }, 0.8);

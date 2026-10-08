@@ -1316,3 +1316,6 @@ a { color: inherit; }
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* logo acima do título da hero */
+.hero__logo { display: block; width: auto; height: clamp(5.5rem, 8vw, 7.25rem); margin-bottom: var(--space-2); }
