@@ -1,0 +1,89 @@
+/* Big Bang v2 · tokens — extraídos do Figma (HERO, node 7:67) */
+@font-face {
+  font-family: "Articulat CF";
+  src: local("Articulat CF Regular"), local("ArticulatCF-Regular"),
+       url("assets/fonts/ArticulatCF-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Articulat CF";
+  src: local("Articulat CF DemiBold"), local("ArticulatCF-DemiBold"),
+       url("assets/fonts/ArticulatCF-DemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* cor */
+  --color-bg:          #0b0b0b;
+  --color-ink:         #f1f1f8;
+  --color-text:        #bcbccb;
+  --color-muted:       #9090a3;
+  --color-blue:        #1856ff;
+  --color-blue-hover:  #2d68ff;
+  --color-blue-press:  #1149e0;
+  --color-blue-line:   #89bdf1;
+  --color-chip:        #00102b;
+  --color-sky:         #5fb4fe;
+  --color-deep:        #1c51ff;
+  --color-highlight:   rgba(241, 241, 248, 0.55);
+  --color-focus:       #89bdf1;
+
+  /* seção 2 (Figma 11:93) */
+  --color-night:       #020b14;
+  --color-card:        #031321;
+  --color-card-deep:   #030a16;   /* fundo do card estilo Reflect */
+  --color-glow-white:  #eaf4ff;
+  --color-glow-sky:    #8ec8ff;
+  --color-glow-blue:   #2f6bff;
+  --color-grad-a:      #89bdf1;
+  --color-grad-b:      #1856ff;
+
+  /* seção STEM — fundo branco (levemente azulado, nunca #fff chapado) */
+  --color-paper-light: #f6f9ff;
+  --color-ink-dark:    #06122c;
+  --color-text-dark:   #3d4b69;
+  --color-line-light:  #d9e4f8;
+  --color-tint-light:  #eaf1ff;
+  --color-blue-ink:    #1243e0;
+
+  /* seção "para quem" (escuro de novo) */
+  --color-line-dark:   rgba(137, 189, 241, 0.15);
+  --color-muted-dark:  #9db4d3;
+  --color-eclipse-rim: #d7e9ff;
+
+  /* botão com brilho */
+  --color-btn-a:       #0e96fe;
+  --color-btn-b:       #0055ff;
+  --color-btn-halo-a:  rgba(0, 85, 255, 0.5);
+  --color-btn-halo-b:  rgba(82, 139, 255, 0.5);
+  --color-btn-glow:    rgba(0, 85, 255, 0.4);   /* #0055FF66 */
+  --color-btn-ring:    rgba(255, 255, 255, 0.19); /* #ffffff30 */
+
+  /* tipo */
+  --font-display: "Articulat CF", "Geist", "General Sans", system-ui, sans-serif;   /* Geist é a reserva livre (carregada no <head>) */
+  --font-body:    "Geist", system-ui, sans-serif;
+
+  --text-hero:  clamp(2.75rem, 3.6763vw + 1rem, 4.304rem);  /* 68.86px @1440 */
+  --text-quote: clamp(1rem, 0.3vw + 0.9rem, 1.1326rem);  /* 18.12px */
+  --text-btn:   0.9627rem;                               /* 15.40px */
+  --text-price: 1.3591rem;                               /* 21.75px */
+  --text-small: 0.7362rem;                               /* 11.78px */
+
+  /* espaço */
+  --space-1: 0.25rem;
+  --space-2: 0.453rem;   /* 7.25px  */
+  --space-3: 0.9626rem;  /* 15.40px */
+  --space-4: 1.359rem;   /* 21.75px */
+  --space-5: 1.812rem;   /* 28.99px */
+  --space-6: 3rem;
+
+  --container: 67.625rem; /* 1082px = 1440 − 2×179 */
+  --radius-pill: 999px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-short: 160ms;
+}

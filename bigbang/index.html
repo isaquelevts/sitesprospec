@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Big Bang · Curso de Astronomia com Sérgio Sacani | Academy Space</title>
+  <meta name="description" content="Curso Big Bang: 40 horas de astronomia com Sérgio Sacani, criador do Space Today.">
+  <meta name="theme-color" content="#0b0b0b">
+  <!-- sempre abre do topo: o loader e as transições dependem de começar em 0 (o navegador restauraria a rolagem no meio da página) -->
+  <script>try{history.scrollRestoration="manual"}catch(e){}scrollTo(0,0);addEventListener("pageshow",function(){scrollTo(0,0)});addEventListener("beforeunload",function(){scrollTo(0,0)});</script>
+  <!-- loader: só liga com JS e sem "reduzir movimento"; trava de segurança de 4s -->
+  <script>(function(d){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;d.classList.add("is-loading");window.__bhFailsafe=setTimeout(function(){d.classList.remove("is-loading")},4000);})(document.documentElement);</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&display=swap">
+  <link rel="preload" as="image" href="assets/hero-bg.png" fetchpriority="high">
+  <link rel="stylesheet" href="tokens.css?v=42">
+  <link rel="stylesheet" href="styles.css?v=47">
+  <link rel="stylesheet" href="finale.css?v=2">
+</head>
+<body>
+  <!-- LOADER · foguete: a chama do motor (SVG) é a máscara que revela a página -->
+  <div class="loader" aria-hidden="true">
+    <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- branco = cortina visível · preto = furo (formato da chama) -->
+        <mask id="flame-mask" maskUnits="userSpaceOnUse">
+          <rect class="loader__fill" fill="#fff"/>
+          <path class="flame" fill="#000"/>
+        </mask>
+        <linearGradient id="flame-core" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f1f1f8"/>
+          <stop offset="0.3" stop-color="#5fb4fe"/>
+          <stop offset="0.75" stop-color="#1856ff" stop-opacity="0.6"/>
+          <stop offset="1" stop-color="#1856ff" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="flame-glow" filterUnits="userSpaceOnUse" x="-2000" y="-2000" width="20000" height="20000"><feGaussianBlur stdDeviation="9"/></filter>
+      </defs>
+      <g class="loader__curtain" mask="url(#flame-mask)">
+        <rect class="loader__fill" fill="#0b0b0b"/>
+        <g class="loader__stars"></g>
+      </g>
+      <g class="loader__rim">
+        <path class="flame flame--glow" filter="url(#flame-glow)"/>
+        <path class="flame flame--edge"/>
+      </g>
+      <path class="flame flame--core" fill="url(#flame-core)"/>
+    </svg>
+    <div class="loader__rocket">
+      <svg class="loader__ship" viewBox="0 0 194.2 345.3" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M93.8 0.0 L84.3 7.8 L72.7 19.6 L63.5 31.6 L58.2 40.6 L52.3 54.5 L44.9 78.2 L38.9 104.5 L34.0 132.9 L0.8 183.0 L0.0 185.1 L2.5 209.6 L5.0 227.9 L12.8 271.0 L17.9 293.6 L23.7 315.4 L32.8 344.7 L33.6 345.3 L38.7 336.8 L56.2 304.5 L57.7 304.5 L66.5 322.3 L74.8 326.0 L84.0 329.0 L91.5 330.0 L99.4 329.4 L105.8 328.2 L114.0 326.0 L126.9 321.6 L128.2 319.5 L129.9 312.1 L131.9 306.6 L134.2 302.7 L135.7 301.5 L137.0 301.2 L140.8 303.3 L144.6 309.0 L151.9 324.0 L159.0 340.4 L159.2 341.7 L159.9 343.0 L160.5 343.1 L175.9 282.4 L181.0 259.9 L181.0 258.4 L182.9 251.8 L190.2 215.6 L193.3 195.7 L194.2 184.1 L193.9 181.3 L170.5 148.2 L169.5 147.6 L169.0 148.5 L168.0 161.5 L166.1 177.4 L162.2 198.2 L155.9 220.4 L152.6 229.6 L151.3 231.8 L150.7 232.0 L150.5 230.4 L151.6 223.9 L155.1 188.4 L156.6 160.7 L156.8 142.4 L156.4 128.3 L154.7 110.0 L151.8 93.0 L149.2 81.4 L145.5 67.9 L140.5 54.1 L133.8 40.2 L127.9 30.0 L118.8 18.1 L110.3 9.5 L103.9 4.5 L98.5 1.3 L95.5 0.1 Z M87.8 31.4 L88.4 32.1 L87.8 37.5 L85.0 54.4 L83.0 60.7 L74.8 94.3 L74.2 95.5 L72.7 103.5 L72.8 105.4 L71.5 112.1 L69.4 129.3 L69.4 132.8 L66.4 162.0 L65.5 174.0 L65.2 195.0 L68.0 259.3 L68.0 273.8 L67.5 274.6 L66.8 274.8 L62.8 264.4 L58.8 249.7 L54.2 228.6 L50.8 209.0 L48.5 191.5 L47.1 174.9 L46.7 157.6 L47.0 146.4 L48.4 136.0 L51.6 120.2 L55.6 103.2 L59.2 90.6 L74.6 53.3 Z"/></svg>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- STACK · a hero fica parada e a seção 2 abre como uma tela no meio dela -->
+    <div class="stack">
+
+    <!-- HERO · Figma node 7:67 -->
+    <header class="hero">
+      <figure class="hero__media">
+        <img src="assets/hero-bg.png" width="1440" height="729" alt="Sérgio Sacani sorrindo diante de uma nebulosa colorida" fetchpriority="high">
+      </figure>
+
+      <div class="container">
+        <div class="hero__content">
+          <h1 class="hero__title">Vamos juntos aprender <span class="hero__title-accent">Astronomia?</span></h1>
+          <p class="hero__quote">“Salve Salve amigos da Astronomia em todo Mundo! Meu nome é Sérgio Sacani, criador do Space Today, e vamos juntos compreender o Universo no curso Big Bang!”</p>
+          <div class="hero__cta">
+            <a class="btn" href="https://sun.eduzz.com/247513" target="_blank" rel="noopener">
+              <span class="btn__inner">
+                <span class="btn__ring" aria-hidden="true"></span>
+                <span class="btn__shine" aria-hidden="true"></span>
+                <span class="btn__fill" aria-hidden="true"></span>
+                <span class="btn__label">Quero ser aluno do Serjão</span>
+                <span class="btn__chip" aria-hidden="true">
+                  <span class="btn__arrow btn__arrow--now"><img src="assets/icon-arrow.svg" width="14.4966" height="14.4966" alt=""></span>
+                  <span class="btn__arrow btn__arrow--next"><img src="assets/icon-arrow.svg" width="14.4966" height="14.4966" alt=""></span>
+                </span>
+              </span>
+            </a>
+            <p class="hero__price"><b>R$ 49/mês</b><span>no plano anual</span></p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SEÇÃO 2 · Figma node 11:93 — fundo: horizonte de planeta + feixes de luz (azul) -->
+    <section class="s2" aria-labelledby="s2-title">
+      <div class="s2__bg" aria-hidden="true">
+        <div class="s2__glow"></div>
+        <div class="s2__grid"></div>
+        <div class="s2__stars"></div>
+        <div class="s2__beams"></div>
+        <div class="s2__arc"><i></i></div>
+      </div>
+
+      <div class="s2__inner container">
+        <!-- bloco de abertura: ocupa a tela e fica centralizado — é o que aparece dentro da "tela" da transição -->
+        <div class="s2__intro">
+          <h2 class="s2__title" id="s2-title" data-reveal-text="words">Astronomia é uma <span class="grad">ciência completa</span></h2>
+          <p class="s2__text" data-reveal-text="block">A Astronomia contempla disciplinas desde a cosmologia, que estuda o nascimento, a evolução e o destino do Universo, a astrofísica, as propriedades físicas dos objetos celestes, até a discussão sobre a existência de vida em outros cantos do Universo.</p>
+        </div>
+
+        <div class="s2__card">
+          <div class="card-fx" aria-hidden="true">
+            <div class="card-fx__sweep"></div>
+            <div class="card-fx__glow"></div>
+            <div class="card-fx__sides"></div>
+          </div>
+          <p class="s2__question" data-card-text="block">Quem nunca se perguntou de onde viemos ou para onde vamos?</p>
+          <p class="s2__answer" data-card-text="words"><span class="grad">A resposta está na astronomia.</span></p>
+        </div>
+
+        <!-- ASSIM NASCEU O BIG BANG · Figma 14:14 (texto) + 16:34 (astronauta) -->
+        <div class="born">
+          <figure class="born__figure">
+            <div class="born__float">
+              <img src="assets/astronaut.webp" width="800" height="875" alt="Astronauta flutuando, com a mão estendida" loading="lazy">
+            </div>
+          </figure>
+          <div class="born__text">
+            <h2 class="born__title" id="born-title" data-born-text="words">Assim nasceu o Big Bang…</h2>
+            <p class="born__lede" data-born-text="block">Pensando em como levar o estudo da astronomia para os brasileiros, desenvolvemos uma metodologia de ensino fácil de entender, mesmo sendo um conteúdo complexo e aprofundado sobre astronomia.</p>
+            <div class="born__cta" data-born-text="block">
+              <a class="btn" href="https://sun.eduzz.com/247513" target="_blank" rel="noopener">
+                <span class="btn__inner">
+                  <span class="btn__ring" aria-hidden="true"></span>
+                  <span class="btn__shine" aria-hidden="true"></span>
+                  <span class="btn__fill" aria-hidden="true"></span>
+                  <span class="btn__label">Quero ser aluno do Serjão</span>
+                  <span class="btn__chip" aria-hidden="true">
+                    <span class="btn__arrow btn__arrow--now"><img src="assets/icon-arrow.svg" width="14.4966" height="14.4966" alt=""></span>
+                    <span class="btn__arrow btn__arrow--next"><img src="assets/icon-arrow.svg" width="14.4966" height="14.4966" alt=""></span>
+                  </span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </div><!-- /.stack -->
+
+    <!-- MÉTODO STEM · fundo branco (folha que sobe por cima da seção escura) -->
+    <section class="stem" id="metodo" aria-labelledby="stem-title">
+      <div class="stem__bg" aria-hidden="true"></div>
+      <div class="stem__inner container">
+
+        <header class="stem__head">
+          <h2 class="stem__title" id="stem-title" data-stem-text="words">Big Bang prepara você para o método <span class="grad">STEM.</span></h2>
+          <p class="stem__lede" data-stem-text="block"><strong>STEM</strong> é a sigla inglesa para <em>Science, Technology, Engineering and Mathematics</em> (Ciência, Tecnologia, Engenharia e Matemática).</p>
+        </header>
+
+        <ul class="stem__letters">
+          <li class="stem__card" data-stem-card>
+            <span class="stem__letter" aria-hidden="true">S</span>
+            <p class="stem__en">Science</p>
+            <p class="stem__pt">Ciência</p>
+          </li>
+          <li class="stem__card" data-stem-card>
+            <span class="stem__letter" aria-hidden="true">T</span>
+            <p class="stem__en">Technology</p>
+            <p class="stem__pt">Tecnologia</p>
+          </li>
+          <li class="stem__card" data-stem-card>
+            <span class="stem__letter" aria-hidden="true">E</span>
+            <p class="stem__en">Engineering</p>
+            <p class="stem__pt">Engenharia</p>
+          </li>
+          <li class="stem__card" data-stem-card>
+            <span class="stem__letter" aria-hidden="true">M</span>
+            <p class="stem__en">Mathematics</p>
+            <p class="stem__pt">Matemática</p>
+          </li>
+        </ul>
+
+        <div class="stem__facts">
+          <div class="stem__fact" data-stem-text="block">
+            <p>Esse é o método de educação do futuro, onde os temas são abordados de forma <strong>integrada e multidisciplinar</strong>.</p>
+          </div>
+          <div class="stem__fact" data-stem-text="block">
+            <p>Os países mais desenvolvidos do mundo já possuem o seu currículo escolar baseado no STEM, e em muitas escolas do Brasil essa abordagem está começando a ser feita.</p>
+          </div>
+        </div>
+
+        <div class="stem__cta" data-stem-text="block">
+          <a class="btn btn--light" href="https://sun.eduzz.com/247513" target="_blank" rel="noopener">
+            <span class="btn__inner">
+              <span class="btn__ring" aria-hidden="true"></span>
+              <span class="btn__shine" aria-hidden="true"></span>
+              <span class="btn__fill" aria-hidden="true"></span>
+              <span class="btn__label">Quero ser aluno do Serjão</span>
+              <span class="btn__chip" aria-hidden="true">
+                <span class="btn__arrow btn__arrow--now"><img src="assets/icon-arrow.svg" width="14.4966" height="14.4966" alt=""></span>
+                <span class="btn__arrow btn__arrow--next"><img src="assets/icon-arrow.svg" width="14.4966" height="14.4966" alt=""></span>
+              </span>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- QUEM É SÉRGIO SACANI · fundo branco, continua a seção STEM -->
+    <section class="who" id="professor" aria-labelledby="who-title">
+      <div class="who__inner container">
+
+        <figure class="who__figure" data-who-photo>
+          <div class="who__frame">
+            <img src="assets/sergio.webp" width="1100" height="1362" alt="Sérgio Sacani sorrindo, olhando para cima, com a camiseta do patch SPACE" loading="lazy">
+          </div>
+          <figcaption class="who__halley" data-who-halley>
+            <b>1986</b>
+            <span>A passagem do cometa Halley despertou a paixão pelo universo.</span>
+          </figcaption>
+        </figure>
+
+        <div class="who__text">
+          <h2 class="who__title" id="who-title" data-who-text="words">Quem é Sérgio Sacani?</h2>
+          <p class="who__lede" data-who-text="block">Eu sou <strong>Sérgio Sacani Sancevero</strong>, formado em geofísica pelo IAG da USP, com mestrado em engenharia do petróleo pela UNICAMP e doutorado em geociências pela UNICAMP. Estou à frente do canal <strong>Space Today</strong>, o maior canal sobre astronomia do Brasil.</p>
+          <p class="who__question" data-who-text="words">Mas o que um geofísico e engenheiro de petróleo tem a ver com o espaço?</p>
+          <div class="who__body" data-who-text="block">
+            <p>Bem, assim como você, um dia eu também não sabia absolutamente nada sobre astronomia. Essa vontade de aprender mais sobre o universo nasceu em 1986, na passagem do cometa Halley. Desde então passei a estudar astronomia e me dedico muito à divulgação científica. Já fui professor universitário na UNICAMP e, por isso, acredito ter aqui a didática certa para passar tudo que você precisa saber sobre astronomia de forma fácil e rápida.</p>
+            <p>Nos últimos anos, ajudei muitas pessoas a aprender mais sobre a astronomia e a construir uma carreira nessa área — e estou aqui para <strong>ajudar você a fazer o mesmo</strong>.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="who__eclipse" aria-hidden="true"></div>
+    </section>
+
+    <!-- PARA QUEM É · escuro: título fixo à esquerda, lista editorial à direita, frase de fechamento -->
+    <section class="fit" id="para-quem" aria-labelledby="fit-title">
+      <div class="fit__bg" aria-hidden="true">
+        <div class="fit__glow"></div>
+        <div class="s2__grid fit__grid-bg"></div>
+        <div class="s2__stars"></div>
+        <div class="s2__beams fit__beams"></div>
+      </div>
+      <div class="fit__inner container">
+
+        <div class="fit__cols">
+        <header class="fit__head">
+          <h2 class="fit__title" id="fit-title" data-fit-text="words">Será que o <span class="grad">Big Bang</span> é pra você?</h2>
+          <p class="fit__lede" data-fit-text="block">O Big Bang foi criado para…</p>
+        </header>
+
+        <ol class="fit__list">
+          <li class="fit__rail" aria-hidden="true"><i></i><b></b></li>
+          <li class="fit__row" data-fit-row>
+            <span class="fit__n">01</span>
+            <h3 class="fit__name">Entusiastas</h3>
+            <p class="fit__desc">da Astronomia e da Exploração Espacial</p>
+          </li>
+          <li class="fit__row" data-fit-row>
+            <span class="fit__n">02</span>
+            <h3 class="fit__name">Estudantes</h3>
+            <p class="fit__desc">de qualquer idade</p>
+          </li>
+          <li class="fit__row" data-fit-row>
+            <span class="fit__n">03</span>
+            <h3 class="fit__name">Professores</h3>
+            <p class="fit__desc">do Ensino Infantil, Fundamental, Médio e Superior</p>
+          </li>
+          <li class="fit__row" data-fit-row>
+            <span class="fit__n">04</span>
+            <h3 class="fit__name">Jornalistas</h3>
+            <p class="fit__desc">e profissionais de comunicação que querem se especializar</p>
+          </li>
+          <li class="fit__row" data-fit-row>
+            <span class="fit__n">05</span>
+            <h3 class="fit__name">Astrônomos</h3>
+            <p class="fit__desc">amadores</p>
+          </li>
+          <li class="fit__row" data-fit-row>
+            <span class="fit__n">06</span>
+            <h3 class="fit__name">Profissionais</h3>
+            <p class="fit__desc">de planetários</p>
+          </li>
+          <li class="fit__row" data-fit-row>
+            <span class="fit__n">07</span>
+            <h3 class="fit__name">Educadores</h3>
+            <p class="fit__desc">de museus</p>
+          </li>
+          <li class="fit__row" data-fit-row>
+            <span class="fit__n">08</span>
+            <h3 class="fit__name">Professores</h3>
+            <p class="fit__desc">de disciplinas enquadradas no STEM</p>
+          </li>
+          <li class="fit__row" data-fit-row>
+            <span class="fit__n">09</span>
+            <h3 class="fit__name">Instrutores</h3>
+            <p class="fit__desc">de Astronomia</p>
+          </li>
+        </ol>
+        </div>
+
+        <p class="fit__all" data-fit-all>…e <span class="grad">literalmente qualquer pessoa</span> que queira ter uma visão mais científica e crítica do mundo.</p>
+
+        <div class="fit__pre" data-fit-pre>
+          <span class="fit__pre-k">Quais são os pré-requisitos?</span>
+          <p><b>Nenhum, além do seu interesse em astronomia.</b> Você não precisa ter nenhum conhecimento prévio e poderá aprender no seu próprio ritmo.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTEÚDO PROGRAMÁTICO · escuro: texto sobe na direita, a imagem cresce de um módulo para o outro -->
+    <section class="prog" id="conteudo" aria-labelledby="prog-title">
+      <div class="prog__pin">
+        <div class="prog__bgs" aria-hidden="true">
+        <img class="prog__bg" data-bg src="assets/mod-01-bg.webp" alt="" decoding="async">
+        <img class="prog__bg" data-bg src="assets/mod-02-bg.webp" alt="" decoding="async">
+        <img class="prog__bg" data-bg src="assets/mod-03-bg.webp" alt="" decoding="async">
+        <img class="prog__bg" data-bg src="assets/mod-04-bg.webp" alt="" decoding="async">
+        <img class="prog__bg" data-bg src="assets/mod-05-bg.webp" alt="" decoding="async">
+        <img class="prog__bg" data-bg src="assets/mod-06-bg.webp" alt="" decoding="async">
+        <img class="prog__bg" data-bg src="assets/mod-07-bg.webp" alt="" decoding="async">
+        <img class="prog__bg" data-bg src="assets/mod-08-bg.webp" alt="" decoding="async">
+        <img class="prog__bg" data-bg src="assets/mod-09-bg.webp" alt="" decoding="async">
+        </div>
+
+        <header class="prog__head container">
+          <h2 class="prog__title" id="prog-title" data-prog-text="words">Conteúdo <span class="grad">programático</span></h2>
+          <p class="prog__lede" data-prog-text="block">Veja o que você vai aprender no curso Big Bang.</p>
+        </header>
+
+        <div class="prog__stage container">
+          <div class="prog__frame" aria-hidden="true">
+            <figure class="pf" data-pf>
+              <div class="pf__crop"><img src="assets/mod-01.webp" width="1000" height="1000" alt="Esfera armilar diante de um observatório moderno" loading="lazy"></div>
+            </figure>
+            <figure class="pf" data-pf>
+              <div class="pf__crop"><img src="assets/mod-02.webp" width="1000" height="1000" alt="Esfera celeste com constelações e o caminho do Sol e da Lua" loading="lazy"></div>
+            </figure>
+            <figure class="pf" data-pf>
+              <div class="pf__crop"><img src="assets/mod-03.webp" width="1000" height="1000" alt="Telescópio refletor decompondo a luz em espectro" loading="lazy"></div>
+            </figure>
+            <figure class="pf" data-pf>
+              <div class="pf__crop"><img src="assets/mod-04.webp" width="1000" height="1000" alt="Os planetas do Sistema Solar em órbita" loading="lazy"></div>
+            </figure>
+            <figure class="pf" data-pf>
+              <div class="pf__crop"><img src="assets/mod-05.webp" width="1000" height="1000" alt="Estrela azul gigante com um buraco negro ao fundo" loading="lazy"></div>
+            </figure>
+            <figure class="pf" data-pf>
+              <div class="pf__crop"><img src="assets/mod-06.webp" width="1000" height="1000" alt="Galáxia espiral" loading="lazy"></div>
+            </figure>
+            <figure class="pf" data-pf>
+              <div class="pf__crop"><img src="assets/mod-07.webp" width="1000" height="1000" alt="Teia cósmica de galáxias" loading="lazy"></div>
+            </figure>
+            <figure class="pf" data-pf>
+              <div class="pf__crop"><img src="assets/mod-08.webp" width="1000" height="1000" alt="Exoplaneta passando diante de sua estrela" loading="lazy"></div>
+            </figure>
+            <figure class="pf" data-pf>
+              <div class="pf__crop"><img src="assets/mod-09.webp" width="1000" height="1000" alt="A Terra e uma cápsula a caminho da Lua" loading="lazy"></div>
+            </figure>
+          </div>
+          <div class="prog__texts">
+            <div class="prog__track">
+            <article class="pt" data-pt aria-labelledby="mod-1">
+              <p class="pt__count"><b>01</b> / 09</p>
+              <h3 class="pt__title" id="mod-1">História da Astronomia</h3>
+              <ul class="pt__list"><li>Astronomia Pré-histórica</li><li>Astronomia Antiga</li><li>Astronomia Clássica</li><li>Astronomia Moderna</li><li>Divulgadores da Astronomia</li></ul>
+            </article>
+            <article class="pt" data-pt aria-labelledby="mod-2">
+              <p class="pt__count"><b>02</b> / 09</p>
+              <h3 class="pt__title" id="mod-2">Conhecendo o Céu</h3>
+              <ul class="pt__list"><li>As Constelações</li><li>A Esfera Celeste</li><li>O Movimento do Sol e da Lua</li><li>Os Eclipses do Sol e da Lua</li><li>Estações do Ano</li></ul>
+            </article>
+            <article class="pt" data-pt aria-labelledby="mod-3">
+              <p class="pt__count"><b>03</b> / 09</p>
+              <h3 class="pt__title" id="mod-3">Noções Básicas de Óptica e Luz</h3>
+              <ul class="pt__list"><li>O espectro eletromagnético</li><li>O problema da escala na astronomia</li><li>Os instrumentos astronômicos</li><li>Telescópios refratores</li><li>Telescópios refletores</li><li>Compostos</li><li>Os maiores telescópios do mundo</li></ul>
+            </article>
+            <article class="pt" data-pt aria-labelledby="mod-4">
+              <p class="pt__count"><b>04</b> / 09</p>
+              <h3 class="pt__title" id="mod-4">O Sistema Solar</h3>
+              <ul class="pt__list"><li>A visão moderna do Sistema Solar</li><li>A formação do Sistema Solar</li><li>Os planetas internos</li><li>O cinturão de asteroides</li><li>Os planetas externos</li><li>Planetas anões e cometas</li><li>O Sol</li></ul>
+            </article>
+            <article class="pt" data-pt aria-labelledby="mod-5">
+              <p class="pt__count"><b>05</b> / 09</p>
+              <h3 class="pt__title" id="mod-5">As Estrelas</h3>
+              <ul class="pt__list"><li>Medindo as estrelas</li><li>O meio interestelar</li><li>Evolução estelar</li><li>Estrelas de nêutrons e buracos negros</li></ul>
+            </article>
+            <article class="pt" data-pt aria-labelledby="mod-6">
+              <p class="pt__count"><b>06</b> / 09</p>
+              <h3 class="pt__title" id="mod-6">Galáxias</h3>
+              <ul class="pt__list"><li>Panorama histórico das galáxias</li><li>A Via Láctea</li><li>Galáxias normais e ativas</li><li>Galáxias e matéria escura</li><li>O universo em grande escala</li></ul>
+            </article>
+            <article class="pt" data-pt aria-labelledby="mod-7">
+              <p class="pt__count"><b>07</b> / 09</p>
+              <h3 class="pt__title" id="mod-7">Noções de Cosmologia</h3>
+              <ul class="pt__list"><li>O universo em expansão</li><li>O destino do universo</li></ul>
+            </article>
+            <article class="pt" data-pt aria-labelledby="mod-8">
+              <p class="pt__count"><b>08</b> / 09</p>
+              <h3 class="pt__title" id="mod-8">Exoplanetas</h3>
+              <ul class="pt__list"><li>A pluralidade dos mundos</li></ul>
+            </article>
+            <article class="pt" data-pt aria-labelledby="mod-9">
+              <p class="pt__count"><b>09</b> / 09</p>
+              <h3 class="pt__title" id="mod-9">Terra e Lua: a História da Exploração Espacial</h3>
+              <ul class="pt__list"><li>Introdução</li><li>O início da exploração espacial</li><li>Principais sondas e foguetes</li><li>Linha do tempo por década: como evoluiu a exploração espacial</li><li>O presente e o futuro da exploração espacial</li></ul>
+            </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="prog__foot container" aria-hidden="true">
+          <div class="prog__bar"><span></span></div>
+          <span class="prog__hint">Role para explorar</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSÕES · cada frase "acende" palavra por palavra conforme você rola -->
+    <section class="mis" id="missoes" aria-labelledby="mis-title">
+      <div class="mis__bg" aria-hidden="true"><div class="mis__glow"></div><div class="s2__stars"></div></div>
+      <div class="mis__inner container">
+        <header class="mis__head">
+          <h2 class="mis__title" id="mis-title" data-tx="words">As mais recentes <span class="grad">missões espaciais</span> agora farão mais sentido pra você</h2>
+          <p class="mis__lede" data-tx="block">Você entenderá:</p>
+        </header>
+        <ol class="mis__list">
+        <li class="mis__item" data-mis>
+          <span class="mis__tag"><b>01</b>Saturno</span>
+          <p class="mis__text" data-mis-text>Por que sondas espaciais foram enviadas para estudar planetas como Saturno.</p>
+        </li>
+        <li class="mis__item" data-mis>
+          <span class="mis__tag"><b>02</b>Marte</span>
+          <p class="mis__text" data-mis-text>Por que temos um verdadeiro fascínio pelo planeta Marte.</p>
+        </li>
+        <li class="mis__item" data-mis>
+          <span class="mis__tag"><b>03</b>Cometas</span>
+          <p class="mis__text" data-mis-text>Por que os cientistas procuram amostras de poeira na cauda de um cometa.</p>
+        </li>
+        <li class="mis__item" data-mis>
+          <span class="mis__tag"><b>04</b>Jornal e TV</span>
+          <p class="mis__text" data-mis-text>O que os astrônomos querem dizer quando aparecem no jornal ou na televisão para relatar suas últimas descobertas.</p>
+        </li>
+        <li class="mis__item" data-mis>
+          <span class="mis__tag"><b>05</b>Observatórios</span>
+          <p class="mis__text" data-mis-text>O papel dos grandes telescópios no Arizona, Havaí, Chile e Califórnia, e dos radiotelescópios no Novo México, Porto Rico, Austrália e outros observatórios ao redor do mundo.</p>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- OFERTA · um card só, em formato de bilhete -->
+    <section class="offer" id="oferta" aria-labelledby="offer-title">
+      <div class="offer__bg" aria-hidden="true"><div class="offer__glow"></div><div class="s2__stars"></div></div>
+      <div class="offer__inner container">
+        <article class="offer__card" data-offer>
+          <div class="offer__main">
+            <p class="offer__kicker" data-o>Vamos juntos!</p>
+            <h2 class="offer__title" id="offer-title" data-o>Curso <span class="grad">BIG BANG</span> + Grupo de Alunos + Lives Exclusivas com Sérgio Sacani</h2>
+            <ul class="offer__list">
+              <li data-o><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Curso Big Bang · 40 horas-aula</span></li>
+              <li data-o><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Grupo de alunos no Discord</span></li>
+              <li data-o><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Lives exclusivas com Sérgio Sacani</span></li>
+              <li data-o><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Certificado de conclusão de 40 horas</span></li>
+              <li data-o><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>1 ano de acesso, com quiz em cada aula</span></li>
+            </ul>
+          </div>
+          <div class="offer__ticket">
+            <p class="offer__by" data-o>Por apenas</p>
+            <p class="offer__price" data-o><span>12x de</span><b>R$ <em data-count="49">49</em></b></p>
+            <p class="offer__cash" data-o>ou <b>R$ 490</b> à vista</p>
+            <div class="offer__cta" data-o>
+              <a class="btn" href="https://sun.eduzz.com/247513" target="_blank" rel="noopener">
+              <span class="btn__inner">
+                <span class="btn__ring" aria-hidden="true"></span>
+                <span class="btn__shine" aria-hidden="true"></span>
+                <span class="btn__fill" aria-hidden="true"></span>
+                <span class="btn__label">Quero começar agora!</span>
+                <span class="btn__chip" aria-hidden="true">
+                  <span class="btn__arrow btn__arrow--now"><img src="assets/icon-arrow.svg" width="14.4966" height="14.4966" alt=""></span>
+                  <span class="btn__arrow btn__arrow--next"><img src="assets/icon-arrow.svg" width="14.4966" height="14.4966" alt=""></span>
+                </span>
+              </span>
+            </a>
+            </div>
+            <p class="offer__note" data-o>Parcelamento somente no cartão, em até 12x.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS · carrossel infinito de vídeos do YouTube -->
+    <section class="voices" id="depoimentos" aria-labelledby="voices-title">
+      <div class="voices__bg" aria-hidden="true"><div class="voices__glow"></div></div>
+      <header class="voices__head container">
+        <h2 class="voices__title" id="voices-title" data-tx="words">Depoimentos de quem <span class="grad">já fez o Big Bang</span></h2>
+        <p class="voices__lede" data-tx="block">Veja a opinião espontânea de quem já fez o Big Bang e agora faz parte da nossa Comunidade Astronômica!</p>
+      </header>
+      <!-- Vídeos: o ID do YouTube fica em data-yt; a capa vem do próprio YouTube e o vídeo só carrega no clique -->
+      <div class="voices__rail" data-voices>
+        <ul class="voices__track">
+          <li><button class="voice" type="button" data-yt="k6Qyroc_JV8" style="--poster:url(https://i.ytimg.com/vi/k6Qyroc_JV8/hqdefault.jpg)" aria-label="Assistir depoimento 1">
+            <span class="voice__poster" aria-hidden="true"></span>
+            <span class="voice__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="voice__meta"><b>Aluno do Big Bang</b><i>Depoimento 01</i></span>
+          </button></li>
+          <li><button class="voice" type="button" data-yt="TnPBpWw-b_4" style="--poster:url(https://i.ytimg.com/vi/TnPBpWw-b_4/hqdefault.jpg)" aria-label="Assistir depoimento 2">
+            <span class="voice__poster" aria-hidden="true"></span>
+            <span class="voice__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="voice__meta"><b>Aluno do Big Bang</b><i>Depoimento 02</i></span>
+          </button></li>
+          <li><button class="voice" type="button" data-yt="oa_pdiOvxtE" style="--poster:url(https://i.ytimg.com/vi/oa_pdiOvxtE/hqdefault.jpg)" aria-label="Assistir depoimento 3">
+            <span class="voice__poster" aria-hidden="true"></span>
+            <span class="voice__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="voice__meta"><b>Aluno do Big Bang</b><i>Depoimento 03</i></span>
+          </button></li>
+          <li><button class="voice" type="button" data-yt="XGGPXISJnVk" style="--poster:url(https://i.ytimg.com/vi/XGGPXISJnVk/hqdefault.jpg)" aria-label="Assistir depoimento 4">
+            <span class="voice__poster" aria-hidden="true"></span>
+            <span class="voice__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="voice__meta"><b>Aluno do Big Bang</b><i>Depoimento 04</i></span>
+          </button></li>
+          <li><button class="voice" type="button" data-yt="4BhzOuNQsLk" style="--poster:url(https://i.ytimg.com/vi/4BhzOuNQsLk/hqdefault.jpg)" aria-label="Assistir depoimento 5">
+            <span class="voice__poster" aria-hidden="true"></span>
+            <span class="voice__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="voice__meta"><b>Aluno do Big Bang</b><i>Depoimento 05</i></span>
+          </button></li>
+          <li><button class="voice" type="button" data-yt="n_hqv9ages0" style="--poster:url(https://i.ytimg.com/vi/n_hqv9ages0/hqdefault.jpg)" aria-label="Assistir depoimento 6">
+            <span class="voice__poster" aria-hidden="true"></span>
+            <span class="voice__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="voice__meta"><b>Aluno do Big Bang</b><i>Depoimento 06</i></span>
+          </button></li>
+          <li><button class="voice" type="button" data-yt="8FA74-gsEws" style="--poster:url(https://i.ytimg.com/vi/8FA74-gsEws/hqdefault.jpg)" aria-label="Assistir depoimento 7">
+            <span class="voice__poster" aria-hidden="true"></span>
+            <span class="voice__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="voice__meta"><b>Aluno do Big Bang</b><i>Depoimento 07</i></span>
+          </button></li>
+          <li><button class="voice" type="button" data-yt="XLgunbBu8Qc" style="--poster:url(https://i.ytimg.com/vi/XLgunbBu8Qc/hqdefault.jpg)" aria-label="Assistir depoimento 8">
+            <span class="voice__poster" aria-hidden="true"></span>
+            <span class="voice__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="voice__meta"><b>Aluno do Big Bang</b><i>Depoimento 08</i></span>
+          </button></li>
+          <li><button class="voice" type="button" data-yt="seq1HyIuS-c" style="--poster:url(https://i.ytimg.com/vi/seq1HyIuS-c/hqdefault.jpg)" aria-label="Assistir depoimento 9">
+            <span class="voice__poster" aria-hidden="true"></span>
+            <span class="voice__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="voice__meta"><b>Aluno do Big Bang</b><i>Depoimento 09</i></span>
+          </button></li>
+          <li><button class="voice" type="button" data-yt="KIkJpvRS_pw" style="--poster:url(https://i.ytimg.com/vi/KIkJpvRS_pw/hqdefault.jpg)" aria-label="Assistir depoimento 10">
+            <span class="voice__poster" aria-hidden="true"></span>
+            <span class="voice__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="voice__meta"><b>Aluno do Big Bang</b><i>Depoimento 10</i></span>
+          </button></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="faq__bg" aria-hidden="true"><div class="faq__glow"></div></div>
+      <div class="faq__inner container">
+        <header class="faq__head">
+          <h2 class="faq__title" id="faq-title" data-tx="words">Perguntas <span class="grad">frequentes</span></h2>
+          <p class="faq__lede" data-tx="block">Tudo o que você precisa saber antes de começar.</p>
+        </header>
+        <div class="faq__list">
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a0" id="faq-q0"><span>Tem grupo de alunos?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a0" role="region" aria-labelledby="faq-q0"><p>Sim, no Discord — uma plataforma de comunicação que é febre no momento graças à sua capacidade de organizar conteúdo e, ao mesmo tempo, manter o fluxo de informações. É muito semelhante aos aplicativos de comunicação de grandes empresas, como o Slack. Nossa comunidade astronômica está lá, e você vai fazer parte dela.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a1" id="faq-q1"><span>Quantas horas-aula tem o curso Big Bang?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1"><p>40 horas.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2"><span>Eu sou leigo no assunto. Serve pra mim?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2"><p>Claro! O curso foi feito justamente para os leigos e apressados.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3"><span>Tem módulo sobre telescópio?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3"><p>Sim, temos um módulo sobre telescópio.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4"><span>Quando começam as aulas?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4"><p>Imediatamente após a inscrição, você receberá os dados de acesso, e a cada semana entrará no ar um novo módulo.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5"><span>O curso tem algum tipo de avaliação?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5"><p>Sim, em cada aula você será desafiado pelo nosso Quiz!</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a6" id="faq-q6"><span>Quanto tempo terei de acesso?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a6" role="region" aria-labelledby="faq-q6"><p>1 ano de acesso a partir da compra — tempo mais do que suficiente para assistir ao curso. Após esse período, você poderá fazer a renovação, e costumamos criar ofertas de renovação bem acessíveis.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a7" id="faq-q7"><span>Tem certificado?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a7" role="region" aria-labelledby="faq-q7"><p>Sim, de 40 horas.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a8" id="faq-q8"><span>O certificado será entregue após finalizar todas as aulas ou após 1 ano?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a8" role="region" aria-labelledby="faq-q8"><p>O certificado de conclusão é gerado quando você indica ter finalizado cada aula. Em cada aula há um botão para avisar que você a finalizou. Concluindo todas as aulas, o certificado é gerado automaticamente.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a9" id="faq-q9"><span>O Curso Big Bang é validado pelo MEC?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a9" role="region" aria-labelledby="faq-q9"><p>Sim, o conteúdo do Big Bang pode ser usado para emissão de certificado de extensão em uma faculdade parceira. Existe um pequeno custo adicional nesse processo com a faculdade, mas o Sérgio Sacani vai falar mais sobre isso dentro do curso para quem se interessar pela extensão.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a10" id="faq-q10"><span>Tenho que pagar pelo certificado?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a10" role="region" aria-labelledby="faq-q10"><p>Para ter o certificado de conclusão, não. Mas, caso deseje também o certificado de extensão, você poderá aproveitar o conteúdo do Big Bang para obter seu certificado de extensão em Astronomia com ênfase em Planetologia por uma faculdade parceira. Existe um pequeno custo adicional nesse processo com a faculdade, e o Sérgio Sacani explica mais sobre isso dentro do curso.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a11" id="faq-q11"><span>Posso parcelar no boleto?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a11" role="region" aria-labelledby="faq-q11"><p>Não. O parcelamento é somente no cartão, em até 12x.</p></div>
+          </div>
+          <div class="faq__item" data-faq>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a12" id="faq-q12"><span>Não moro no Brasil. Como comprar?</span><span class="faq__plus" aria-hidden="true"></span></button></h3>
+            <div class="faq__a" id="faq-a12" role="region" aria-labelledby="faq-q12"><p>Ao clicar no link, na tela de checkout, observe no canto superior direito a opção “Selecionar País”. Basta selecionar o seu país ou, caso não esteja na lista, selecionar “others”.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFERTA FINAL -->
+    <section class="final" id="comecar" aria-labelledby="final-title">
+      <div class="final__bg" aria-hidden="true">
+        <div class="final__glow"></div>
+        <div class="s2__stars"></div>
+        <div class="s2__beams"></div>
+        <div class="s2__arc"><i></i></div>
+      </div>
+      <div class="final__inner container">
+        <h2 class="final__title" id="final-title" data-tx="words">Vamos <span class="grad">juntos!</span></h2>
+        <p class="final__lede" data-tx="block">Curso BIG BANG + Grupo de Alunos + Lives Exclusivas com Sérgio Sacani</p>
+        <p class="final__price" data-tx="block"><span>Por apenas</span> <b>12x de R$ 49</b> <span>ou</span> <b>R$ 490</b> <span>à vista</span></p>
+        <div class="final__cta" data-tx="block">
+          <a class="btn" href="https://sun.eduzz.com/247513" target="_blank" rel="noopener">
+              <span class="btn__inner">
+                <span class="btn__ring" aria-hidden="true"></span>
+                <span class="btn__shine" aria-hidden="true"></span>
+                <span class="btn__fill" aria-hidden="true"></span>
+                <span class="btn__label">Quero começar agora!</span>
+                <span class="btn__chip" aria-hidden="true">
+                  <span class="btn__arrow btn__arrow--now"><img src="assets/icon-arrow.svg" width="14.4966" height="14.4966" alt=""></span>
+                  <span class="btn__arrow btn__arrow--next"><img src="assets/icon-arrow.svg" width="14.4966" height="14.4966" alt=""></span>
+                </span>
+              </span>
+            </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="foot__inner container">
+      <div class="foot__grid">
+        <div class="foot__brand">
+          <b>Academy Space</b>
+          <p>Astronomia com Sérgio Sacani, criador do Space Today — o maior canal sobre astronomia do Brasil.</p>
+          <a class="foot__student" href="#">Acesso alunos</a>
+        </div>
+        <nav class="foot__col" aria-label="Cursos livres">
+          <h4>Cursos livres</h4>
+          <a href="#">Big Bang – Curso de Astronomia</a>
+          <a href="#">Curso de Telescópio: do Zero ao Cosmos</a>
+          <a href="#">Como Montar um Telescópio</a>
+          <a href="#">Curso de Marte</a>
+        </nav>
+        <nav class="foot__col" aria-label="Pós-graduação">
+          <h4>Pós-graduação</h4>
+          <a href="#">Astronomia com Ênfase em Planetologia</a>
+          <a href="#">Data Science e Machine Learning</a>
+          <a href="#">Marketing com Ênfase em Projetos Científicos</a>
+        </nav>
+        <nav class="foot__col" aria-label="Institucional">
+          <h4>Academy Space</h4>
+          <a href="#">Home</a>
+          <a href="#">Contato</a>
+        </nav>
+      </div>
+      <div class="foot__bottom">
+        <span>© 2026 Academy Space · SpaceToday. Todos os direitos reservados.</span>
+        <a href="#top" data-top>Voltar ao topo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script src="loader.js?v=12"></script>
+  <script src="main.js?v=25"></script>
+  <script src="programa.js?v=18"></script>
+  <script src="finale.js?v=2"></script>
+</body>
+</html>

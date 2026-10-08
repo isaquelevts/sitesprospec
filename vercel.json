@@ -31,6 +31,14 @@
     {
       "source": "/dranayane-basico/",
       "destination": "/dranayane-basico/index.html"
+    },
+    {
+      "source": "/bigbang",
+      "destination": "/bigbang/index.html"
+    },
+    {
+      "source": "/bigbang/",
+      "destination": "/bigbang/index.html"
     }
   ]
 }
