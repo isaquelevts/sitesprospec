@@ -21,11 +21,14 @@ Este repositório reúne páginas independentes de apresentação e prospecção
 │   └── index.html
 ├── dranayane-basico/        # mesma copy em layout simples com Tailwind (imagens de /dranayane/img)
 │   └── index.html
-└── bigbang/                 # Curso Big Bang · Sérgio Sacani (GSAP + Lenis, loader de foguete, transições de rolagem)
+├── bigbang/                 # Curso Big Bang · Sérgio Sacani (GSAP + Lenis, loader de foguete, transições de rolagem)
     ├── index.html
     ├── styles.css · finale.css · tokens.css
     ├── loader.js · main.js · programa.js · finale.js
     └── assets/              # imagens (a fonte licenciada Articulat CF não está no repositório — veja bigbang/README.md)
+└── potencialize/            # Potencialize · Clínica de Psicologia no Leblon (HTML único, efeitos de entrada sem bibliotecas)
+    ├── index.html           # HTML + CSS + JS
+    └── assets/              # logo, símbolo e fotos (.webp)
 ```
 
 As três páginas da Dra. Nayane servem para comparação: as versões intermediária e básica usam `noindex` para não competir com a premium no Google.

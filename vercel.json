@@ -39,6 +39,17 @@
     {
       "source": "/bigbang/",
       "destination": "/bigbang/index.html"
+    },
+    {
+      "source": "/potencialize/",
+      "destination": "/potencialize/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/potencialize",
+      "destination": "/potencialize/",
+      "permanent": true
     }
   ]
 }
