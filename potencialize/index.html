@@ -4,304 +4,262 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Potencialize — Clínica de Psicologia no Leblon</title>
-<meta name="description" content="Clínica de psicologia no Leblon, Rio de Janeiro. Atendimento psicológico humanizado para adultos, casais, crianças e adolescentes — presencial e online.">
+<meta name="description" content="Clínica de psicologia no Leblon, Rio de Janeiro. Atendimento para adultos, casais, crianças e adolescentes — presencial e online.">
 <link rel="icon" href="assets/simbolo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/fotos/equipe.webp" fetchpriority="high">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Playfair+Display:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Playfair+Display:wght@400;500&display=swap"></noscript>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
 <style>
   /* ============ CONFIGURAÇÃO RÁPIDA ============
-     Fotos: coloque os arquivos em assets/fotos/ com os nomes usados abaixo
-     (equipe.webp, casal.webp, adultos.webp, infantil.webp, emergencial.webp,
-     capacitacao-1.webp ... capacitacao-3.webp). Enquanto não existirem,
-     a página mostra um degradê na paleta da marca. */
+     Fotos em assets/fotos/: equipe.webp (topo), casal.jpg, adultos.jpg, infantil.jpg,
+     emergencial.jpg, espaco-1..4.jpg, capacitacao-1..3.jpg.
+     Enquanto uma foto não existir, aparece um fundo na cor da marca. */
   :root{
-    --brown-900:#2f1000;
+    --bg:#f3ece3;          /* bege claro — fundo principal (sem branco) */
+    --bg-2:#ebe1d5;        /* bege médio — seções alternadas */
+    --bg-3:#e1d3c2;        /* bege escuro — placeholders e detalhes */
+    --brown-900:#2f1000;   /* marrom da marca */
     --brown-800:#3d1a08;
     --brown-600:#6a4330;
-    --brown-500:#866452;
-    --terra:#a8705a;
-    --terra-light:#c9937a;
-    --peach:#f4b796;
-    --cream:#f9f6f3;
-    --sand:#f1e9e2;
-    --white:#fff;
-    --text:#2f1000;
-    --muted:#6a584e;
-    --line:rgba(47,16,0,.12);
-    --sans:"Plus Jakarta Sans", system-ui, sans-serif;
-    --radius:20px;
+    --accent:#a8705a;      /* terracota — destaques sobre fundo claro */
+    --accent-soft:#e3b79d; /* pêssego suave — destaques sobre fundo escuro */
+    --ink:#2f1000;
+    --muted:#7a6455;
+    --line:rgba(47,16,0,.16);
+    --line-dark:rgba(243,236,227,.16);
+    --font:"Josefin Sans", "Futura", "Century Gothic", system-ui, sans-serif;
+    --serif:"Playfair Display", Georgia, "Times New Roman", serif; /* títulos */
     --max:1200px;
+    --ease-out:cubic-bezier(.16,1,.3,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:var(--sans);color:var(--text);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  /* scroll suave (Lenis) */
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto!important}
+  .lenis.lenis-stopped{overflow:clip}
+  body{font-family:var(--font);font-weight:300;font-size:1.06rem;color:var(--ink);background:var(--bg);line-height:1.7;letter-spacing:.01em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
-  .container{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
-  em,.serif{font-style:normal} /* destaques só por cor, mesma fonte */
+  .container{width:100%;max-width:var(--max);margin:0 auto;padding:0 32px}
+  em{font-style:normal;color:var(--accent)} /* destaques só por cor */
 
-  h1,h2,h3{font-weight:400;letter-spacing:-.035em;line-height:1.08}
-  h3{font-weight:500;letter-spacing:-.025em;line-height:1.2}
-  h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
-  h2 em{color:var(--brown-500)}
-  .lead{font-size:1.08rem;color:var(--muted);max-width:560px}
+  /* hierarquia: títulos finos e grandes, o resto discreto */
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.015em}
+  h2{font-size:clamp(2.2rem,4.4vw,3.6rem)}
+  h3{font-size:1.45rem;line-height:1.25}
+  .lead{font-size:1.06rem;color:var(--muted);max-width:520px}
   .center{text-align:center}
-  .center .lead{margin:0 auto}
+  .center .lead{margin-left:auto;margin-right:auto}
 
-  /* tag pill */
-  .tag{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--white);padding:7px 14px;border-radius:99px;margin-bottom:22px;box-shadow:0 1px 0 var(--line)}
-  .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--terra)}
-  .tag.on-dark{background:rgba(255,255,255,.12);color:var(--cream);backdrop-filter:blur(8px)}
-  .tag.on-dark::before{background:var(--peach)}
+  /* rótulo de seção: caixa-alta espaçada com fio */
+  .tag{display:inline-flex;align-items:center;gap:14px;font-size:.72rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:26px}
+  .tag::before{content:"";width:32px;height:1px;background:currentColor}
+  .on-dark .tag,.tag.on-dark{color:var(--accent-soft)}
 
-  /* buttons */
-  .btn{display:inline-flex;align-items:center;gap:12px;padding:7px 7px 7px 22px;border-radius:99px;font-size:.92rem;font-weight:500;background:var(--brown-500);color:var(--white);transition:.35s cubic-bezier(.2,.7,.2,1);border:0;cursor:pointer;font-family:inherit}
-  .btn .arrow{width:34px;height:34px;border-radius:50%;background:var(--white);color:var(--brown-500);display:grid;place-items:center;transition:transform .35s}
-  .btn .arrow svg{width:14px;height:14px}
-  .btn:hover{background:var(--brown-900)}
-  .btn:hover .arrow{transform:rotate(45deg)}
-  .btn.light{background:var(--white);color:var(--brown-900)}
-  .btn.light .arrow{background:var(--brown-500);color:var(--white)}
-  .btn.light:hover{background:var(--peach)}
-  .btn.ghost{background:transparent;color:var(--brown-900);border:1px solid var(--line)}
-  .btn.ghost .arrow{background:var(--brown-900);color:var(--white)}
-  .btn.ghost:hover{background:var(--white)}
+  /* botões retos */
+  .btn{display:inline-flex;align-items:center;gap:14px;padding:17px 28px 15px;font-family:inherit;font-size:.76rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;background:var(--brown-900);color:var(--bg);border:1px solid var(--brown-900);cursor:pointer;transition:background .35s,color .35s,border-color .35s}
+  .btn svg{width:16px;height:10px;transition:transform .35s var(--ease-out)}
+  .btn:hover{background:transparent;color:var(--brown-900)}
+  .btn:hover svg{transform:translateX(4px)}
+  .btn.light{background:var(--bg);color:var(--brown-900);border-color:var(--bg)}
+  .btn.light:hover{background:transparent;color:var(--bg)}
+  .btn.line{background:transparent;color:var(--brown-900);border-color:var(--line)}
+  .btn.line:hover{border-color:var(--brown-900)}
+  .link{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--brown-900);padding-bottom:6px;border-bottom:1px solid var(--line);transition:border-color .3s,gap .3s}
+  .link svg{width:16px;height:10px}
+  .link:hover{border-color:var(--brown-900);gap:14px}
 
-  /* photo placeholders (fallback em degradê) */
-  .photo{position:relative;overflow:hidden;background-color:var(--terra-light);background-image:var(--img),radial-gradient(120% 90% at 20% 15%,#e9c3ad 0%,transparent 55%),radial-gradient(90% 80% at 85% 90%,#7a4a35 0%,transparent 60%),linear-gradient(140deg,#d7a68d,#9a634c);background-size:cover;background-position:center}
-  .photo::after{content:"";position:absolute;inset:0;background:url("assets/simbolo-claro.png") center/34% no-repeat;opacity:.18;pointer-events:none}
-  .photo.has-img::after{display:none}
+  /* fotos (fundo na cor da marca até a imagem chegar) */
+  .photo{position:relative;overflow:hidden;background-color:var(--bg-3);background-size:cover;background-position:center}
+  .photo.has-img{background-image:var(--img)} /* a foto entra só depois de baixada */
 
   /* ============ NAV ============ */
-  .nav{position:fixed;inset:16px 0 auto;z-index:50;transition:.4s}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:var(--max);margin:0 auto;padding:10px 12px 10px 22px;border-radius:99px;transition:.4s}
-  .nav.scrolled .nav-inner{background:rgba(249,246,243,.85);backdrop-filter:blur(14px);box-shadow:0 10px 30px -18px rgba(47,16,0,.35)}
-  .brand{display:flex;align-items:center;gap:10px;font-size:1.25rem;letter-spacing:-.03em;color:var(--white);transition:color .4s}
-  .brand img{width:34px;height:auto}
+  .nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:var(--max);margin:0 auto;padding:22px 32px;transition:padding .4s}
+  .nav.scrolled{background:rgba(243,236,227,.92);backdrop-filter:blur(12px);border-color:var(--line)}
+  .nav.scrolled .nav-inner{padding:14px 32px}
+  .brand{display:flex;align-items:center;gap:12px;font-size:1.15rem;font-weight:300;letter-spacing:.16em;text-transform:uppercase;color:var(--bg);transition:color .4s}
+  .brand img{width:30px;height:auto}
   .brand .logo-dark{display:none}
   .nav.scrolled .brand{color:var(--brown-900)}
   .nav.scrolled .brand .logo-dark{display:block}
   .nav.scrolled .brand .logo-light{display:none}
-  .nav-links{display:flex;gap:30px;font-size:.9rem;color:rgba(255,255,255,.88)}
+  .nav-links{display:flex;gap:36px;font-size:.74rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,236,227,.85)}
   .nav.scrolled .nav-links{color:var(--brown-600)}
-  .nav-links a{position:relative}
-  .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;background:currentColor;transition:width .3s}
+  .nav-links a{position:relative;padding:4px 0}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:currentColor;transition:width .3s}
   .nav-links a:hover::after{width:100%}
-  .nav .btn{padding-left:18px}
-  .menu-toggle{display:none;background:none;border:0;color:var(--white);cursor:pointer;padding:8px}
+  .nav .btn{padding:13px 20px 11px}
+  .nav:not(.scrolled) .btn{background:transparent;color:var(--bg);border-color:rgba(243,236,227,.5)}
+  .nav:not(.scrolled) .btn:hover{background:var(--bg);color:var(--brown-900)}
+  .menu-toggle{display:none;background:none;border:0;color:var(--bg);cursor:pointer;padding:8px}
   .nav.scrolled .menu-toggle{color:var(--brown-900)}
 
   /* ============ HERO ============ */
-  .hero{position:relative;min-height:100vh;min-height:100svh;color:var(--white);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;--img:url("assets/fotos/equipe.webp")}
-  .hero .photo{position:absolute;inset:0;background-position:70% center} /* equipe à direita, texto à esquerda */
-  .hero .photo::after{background-size:min(46vw,560px);background-position:82% 40%;opacity:.16}
-  .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,16,0,.82) 0%,rgba(47,16,0,.55) 30%,rgba(47,16,0,.12) 50%,transparent 62%),linear-gradient(0deg,rgba(47,16,0,.55) 0%,transparent 35%)}
-  .hero-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);max-width:var(--max);margin:0 auto;padding:0 24px;pointer-events:none}
-  .hero-grid span{border-left:1px solid rgba(255,255,255,.1)}
-  .hero-grid span:last-child{border-right:1px solid rgba(255,255,255,.1)}
-  .hero-content{position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-top:120px;padding-bottom:60px}
-  .hero h1{font-size:clamp(2.1rem,3.3vw,3.2rem);max-width:460px}
-  .hero h1 em{color:var(--peach);font-family:inherit;font-style:normal;letter-spacing:inherit} /* destaque só por cor */
-  .hero p{max-width:420px;margin:22px 0 10px;color:rgba(255,255,255,.86);font-size:.98rem}
-  .hero .meta{display:flex;flex-wrap:wrap;gap:10px;max-width:440px;margin:20px 0 30px}
-  .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.3);font-size:.82rem;backdrop-filter:blur(6px);background:rgba(255,255,255,.06)}
-  .chip svg{width:14px;height:14px}
-  .marquee{position:relative;border-top:1px solid rgba(255,255,255,.14);padding:22px 0;overflow:hidden;white-space:nowrap}
-  .marquee-track{display:inline-flex;gap:48px;animation:marquee 38s linear infinite;font-size:1.35rem;font-weight:300;letter-spacing:-.02em;color:rgba(255,255,255,.85)}
-  .marquee-track span{display:inline-flex;align-items:center;gap:48px}
-  .marquee-track span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--peach)}
-  @keyframes marquee{to{transform:translateX(-50%)}}
+  .hero{position:relative;min-height:100vh;min-height:100svh;color:var(--bg);display:flex;flex-direction:column;overflow:hidden;background:var(--brown-900);--img:url("assets/fotos/equipe.webp")}
+  .hero .photo{position:absolute;inset:0;background-color:var(--brown-800);background-position:70% center}
+  .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,16,0,.86) 0%,rgba(47,16,0,.6) 30%,rgba(47,16,0,.12) 52%,transparent 64%),linear-gradient(0deg,rgba(47,16,0,.5) 0%,transparent 30%)}
+  .hero-content{position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-top:110px;padding-bottom:80px}
+  .hero h1{font-size:clamp(2.6rem,4.2vw,4rem);max-width:460px;line-height:1.08}
+  .hero h1 em{color:var(--accent-soft)}
+  .hero-sub{margin:26px 0 40px;font-size:.76rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:rgba(243,236,227,.78);max-width:440px;line-height:2}
 
-  /* ============ SECTIONS ============ */
-  section{padding:120px 0;position:relative}
-  .section-head{margin-bottom:60px}
+  /* ============ SEÇÕES ============ */
+  section{padding:130px 0;position:relative}
+  .section-head{margin-bottom:64px}
   .section-head.split{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
-  .section-head p{margin-top:20px}
 
   /* atendimentos */
-  .services{background:var(--white)}
-  .badges{display:flex;flex-wrap:wrap;gap:10px;max-width:360px;justify-content:flex-end}
-  .badge{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border:1px solid var(--line);border-radius:99px;color:var(--brown-600)}
-  .badge img{width:16px}
-  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-  .card{display:flex;flex-direction:column}
-  .card .photo{aspect-ratio:16/10;border-radius:var(--radius)}
-  .card .photo img{width:100%;height:100%;object-fit:cover}
-  .card-pills{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;gap:8px;z-index:2}
-  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);border-radius:8px;padding:6px 12px;font-size:.78rem;color:var(--brown-900)}
-  .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--terra)}
-  .pill.plain::before{display:none}
-  .card h3{font-size:1.55rem;font-weight:500;line-height:1.2;margin:24px 0 8px;letter-spacing:-.03em}
-  .card .sub{font-size:1.05rem;font-weight:400;color:var(--terra);margin-bottom:14px;line-height:1.45}
-  .card p.desc{color:var(--muted);font-size:.96rem;line-height:1.65;max-width:520px}
-  .card .btn{margin-top:22px;align-self:flex-start}
-  .card.dark{background:var(--brown-900);color:var(--cream);border-radius:var(--radius);padding:14px 14px 28px}
-  .card.dark h3,.card.dark .sub,.card.dark p.desc{padding:0 12px}
-  .card.dark .btn{margin-left:12px}
-  .card.dark .sub{color:var(--peach)}
-  .card.dark p.desc{color:rgba(249,246,243,.75)}
-  .card.dark{display:grid;grid-template-columns:1.15fr 1fr;column-gap:36px;align-items:center;padding:14px}
-  .card.dark .photo{aspect-ratio:16/10}
-  .card.dark h3{margin-top:0}
-  .card.dark .btn{margin-bottom:8px}
-  .card.featured{grid-column:span 2;display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;padding-bottom:36px;border-bottom:1px dashed var(--line);margin-bottom:12px}
-  .card.featured .photo{aspect-ratio:4/3}
-  .card.featured h3{font-size:clamp(1.55rem,2.6vw,2.1rem);margin-top:0}
-  .card.featured .sub{font-size:1.1rem}
+  .services{background:var(--bg)}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:72px 48px}
+  .card .photo{aspect-ratio:4/3}
+  .card .meta{display:flex;justify-content:space-between;gap:16px;margin:26px 0 12px;font-size:.7rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:var(--accent)}
+  .card .meta span:last-child{color:var(--muted)}
+  .card h3{margin-bottom:12px}
+  .card p{color:var(--muted);font-size:1rem;max-width:460px}
+  .card .link{margin-top:24px}
+  .card:nth-child(even){margin-top:96px} /* grade desencontrada, mais leve */
 
   /* sobre */
-  .about{background:var(--cream);overflow:hidden}
-  .about .deco{position:absolute;width:360px;opacity:.9;pointer-events:none}
-  .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;text-align:left}
-  .about-text{margin-top:28px;color:var(--muted);font-size:1.05rem}
-  .about-text p+p{margin-top:14px}
-  .about-address{display:inline-flex;align-items:center;gap:14px;margin-top:28px;padding:12px 20px 12px 12px;border:1px solid var(--line);border-radius:16px;background:var(--white);color:var(--brown-900);font-size:.95rem;line-height:1.35;transition:.3s}
-  .about-address svg{width:40px;height:40px;padding:10px;border-radius:12px;background:var(--sand);color:var(--terra);flex-shrink:0}
-  .about-address small{display:block;font-size:.78rem;color:var(--terra);margin-top:2px}
-  .about-address:hover{border-color:var(--terra-light);transform:translateY(-2px)}
-  .about-map{position:relative;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;background:var(--sand);box-shadow:0 30px 60px -30px rgba(47,16,0,.45)}
-  .about-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:sepia(.18) saturate(.9)}
-  .diffs{display:grid;grid-template-columns:repeat(5,1fr);margin-top:72px;border-top:1px solid var(--line)}
-  .diff{padding:34px 22px;text-align:center;border-right:1px solid var(--line)}
-  .diff:last-child{border-right:0}
-  .diff .num{font-size:.95rem;font-weight:600;color:var(--terra)}
-  .diff h4{font-weight:500;font-size:1.06rem;letter-spacing:-.02em;margin-top:10px;line-height:1.35}
-  .about .actions{text-align:center;margin-top:48px}
+  .about{background:var(--bg-2)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+  .about-text{margin-top:30px;color:var(--muted);max-width:460px}
+  .about-address{display:flex;align-items:center;gap:14px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line);font-size:.95rem;color:var(--ink);max-width:460px}
+  .about-address svg{width:18px;height:18px;color:var(--accent);flex-shrink:0}
+  .about-address small{display:block;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-top:4px}
+  .about-map{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--bg-3)}
+  .about-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.35) sepia(.25) saturate(.8)}
+  .diffs{display:grid;grid-template-columns:repeat(4,1fr);margin-top:100px;border-top:1px solid var(--line)}
+  .diff{padding:30px 24px 0;border-left:1px solid var(--line)}
+  .diff:first-child{border-left:0;padding-left:0}
+  .diff .num{font-size:.7rem;font-weight:400;letter-spacing:.26em;color:var(--accent)}
+  .diff h4{font-weight:300;font-size:1.12rem;margin-top:12px;line-height:1.4}
 
   /* nosso espaço */
-  .space{background:var(--white)}
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px;align-items:start}
-  .gallery .photo{aspect-ratio:3/4;border-radius:var(--radius)}
-  .gallery .photo:nth-child(even){margin-top:56px}
+  .space{background:var(--bg)}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:64px;align-items:start}
+  .gallery .photo{aspect-ratio:3/4}
+  .gallery .photo:nth-child(even){margin-top:64px}
   .gallery .g3{background-position:center 75%}
 
-  /* capacitações */
-  .training{background:var(--brown-900);color:var(--cream);overflow:clip}
-  .training h2 em{color:var(--peach)}
-  .training .lead{color:rgba(249,246,243,.72)}
-  .training-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}
-  .solutions{margin-top:44px;border-top:1px solid rgba(255,255,255,.14)}
-  .solution{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:26px 0;border-bottom:1px solid rgba(255,255,255,.14)}
-  .solution .n{font-size:1.15rem;font-weight:600;color:var(--peach);line-height:1}
-  .solution h3{font-size:1.25rem;letter-spacing:-.02em;margin-bottom:6px}
-  .solution p{color:rgba(249,246,243,.7);font-size:.96rem}
-  .training .btn{margin-top:40px}
-  .mosaic{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:12px;position:relative}
+  /* para empresas */
+  .training{background:var(--brown-900);color:var(--bg);overflow:clip}
+  .training h2 em{color:var(--accent-soft)}
+  .training .lead{color:rgba(243,236,227,.66);margin-top:26px}
+  .training-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start}
+  .solutions{margin-top:48px;border-top:1px solid var(--line-dark)}
+  .solution{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--line-dark);align-items:baseline}
+  .solution .n{font-size:.7rem;font-weight:400;letter-spacing:.26em;color:var(--accent-soft)}
+  .solution h3{font-size:1.25rem}
+  .training .btn{margin-top:48px}
+  .mosaic{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:14px;position:relative}
   @media (min-width:1001px){.mosaic{position:sticky;top:110px}} /* fotos acompanham o texto no scroll */
-  .mosaic .photo{border-radius:16px}
-  .mosaic .m1{grid-column:span 2;grid-row:span 2;--img:url("assets/fotos/capacitacao-1.webp")}
-  .mosaic .m2{grid-row:span 2;--img:url("assets/fotos/capacitacao-2.webp")}
-  .mosaic .m3{grid-row:span 2;--img:url("assets/fotos/capacitacao-3.webp")}
-  .mosaic-note{grid-column:span 2;font-size:.8rem;color:rgba(249,246,243,.5);display:flex;align-items:center;gap:8px;height:auto}
+  .mosaic .photo{background-color:var(--brown-800)}
+  .mosaic .m1{grid-column:span 2;grid-row:span 2;--img:url("assets/fotos/capacitacao-1.jpg")}
+  .mosaic .m2{grid-row:span 2;--img:url("assets/fotos/capacitacao-2.jpg")}
+  .mosaic .m3{grid-row:span 2;--img:url("assets/fotos/capacitacao-3.jpg")}
 
-  /* informações */
-  .info{background:var(--cream);overflow:hidden}
-  .info .deco{position:absolute;pointer-events:none}
-  .info-card{position:relative;max-width:460px;margin:56px auto 0;background:var(--brown-900);color:var(--cream);border-radius:22px;padding:34px 32px;box-shadow:0 40px 80px -40px rgba(47,16,0,.6)}
-  .info-card .eyebrow{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(249,246,243,.6)}
-  .info-card h3{font-size:1.75rem;margin:10px 0 6px}
-  .info-card h3 em{color:var(--peach)}
-  .info-card .big{font-size:1.05rem;color:rgba(249,246,243,.8);padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.14)}
-  .checks{list-style:none;margin:22px 0 28px;display:grid;gap:14px}
-  .checks li{display:grid;grid-template-columns:22px 1fr;gap:12px;font-size:.98rem;align-items:start}
-  .checks li svg{width:20px;height:20px;margin-top:2px;color:var(--peach)}
-  .info-card .btn{width:100%;justify-content:space-between}
-  .info .note{text-align:center;margin-top:26px;font-size:.9rem;color:var(--muted)}
+  /* como funciona */
+  .info{background:var(--bg-2)}
+  .info-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:start}
+  .facts{list-style:none;border-top:1px solid var(--line)}
+  .facts li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .facts .n{font-size:.7rem;font-weight:400;letter-spacing:.26em;color:var(--accent)}
+  .facts strong{display:block;font-weight:400;font-size:1.12rem}
+  .facts span.d{display:block;color:var(--muted);font-size:.95rem;margin-top:2px}
+  .info .btn{margin-top:40px}
+
+  /* depoimentos (carrossel) */
+  .testimonials{background:var(--bg);overflow:hidden}
+  .t-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:56px}
+  .t-nav{display:flex;align-items:center;gap:14px}
+  .t-count{min-width:76px;text-align:center;font-size:.72rem;font-weight:400;letter-spacing:.26em;color:var(--muted)}
+  .t-btn{width:52px;height:52px;border:1px solid var(--line);background:transparent;color:var(--brown-900);display:grid;place-items:center;cursor:pointer;transition:background .3s,color .3s,opacity .3s,border-color .3s}
+  .t-btn:hover{background:var(--brown-900);border-color:var(--brown-900);color:var(--bg)}
+  .t-btn[disabled]{opacity:.3;pointer-events:none}
+  .t-btn svg{width:18px;height:11px}
+  .t-btn.prev svg{transform:rotate(180deg)}
+  .t-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 96px) / 3);gap:48px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab}
+  .t-track::-webkit-scrollbar{display:none}
+  .t-card{scroll-snap-align:start;display:flex;flex-direction:column;border-top:1px solid var(--line);padding-top:30px}
+  .t-card .q{font-family:var(--serif);font-size:3.2rem;line-height:1;height:28px;color:var(--accent)}
+  .t-card blockquote{flex:1;font-family:var(--serif);font-size:1.2rem;line-height:1.6;margin:22px 0 30px;color:var(--ink)}
+  .t-card cite{font-style:normal;font-size:.72rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+  .t-card cite span{display:block;margin-top:6px;color:var(--muted);letter-spacing:.18em}
+  .t-foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:56px}
+  .t-progress{flex:1;min-width:160px;height:1px;background:var(--line);position:relative}
+  .t-progress i{position:absolute;left:0;top:0;height:1px;width:var(--p,33%);background:var(--brown-900);transition:width .5s var(--ease-out)}
 
   /* chamada final */
-  .final{padding:40px 0 120px;background:var(--cream)}
-  .final-box{position:relative;border-radius:28px;overflow:hidden;color:var(--white);text-align:center;padding:110px 24px}
-  .final-box .photo{position:absolute;inset:0}
-  .final-box .photo::after{opacity:.1;background-size:300px}
-  .final-box::before{content:"";position:absolute;inset:0;background:rgba(47,16,0,.55);z-index:1}
-  .final-box>*:not(.photo){position:relative;z-index:2}
-  .final-box h2{max-width:760px;margin:0 auto}
-  .final-box h2 em{color:var(--peach)}
-  .final-box p{max-width:580px;margin:22px auto 0;color:rgba(255,255,255,.86)}
-  .final-box .strong{font-weight:500;color:var(--white);margin-top:14px}
-  .final-box .btn{margin-top:34px}
-  .final-contacts{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}
-  .final-contacts .chip{color:var(--white)}
+  .final{background:var(--brown-900);color:var(--bg);text-align:center;padding:150px 0}
+  .final h2{max-width:720px;margin:0 auto}
+  .final h2 em{color:var(--accent-soft)}
+  .final p{max-width:460px;margin:26px auto 44px;color:rgba(243,236,227,.66)}
+  .final-contacts{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 40px;margin-top:56px;font-size:.72rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,236,227,.6)}
+  .final-contacts a{display:inline-flex;align-items:center;gap:10px;transition:color .3s}
+  .final-contacts a:hover{color:var(--bg)}
+  .final-contacts svg{width:15px;height:15px}
 
-  /* footer */
-  footer{background:var(--brown-900);color:var(--cream);padding:90px 0 0;overflow:hidden}
-  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px}
-  .foot-brand{display:flex;align-items:center;gap:12px;font-size:1.5rem;letter-spacing:-.03em}
-  .foot-brand img{width:42px}
-  .foot-grid p{color:rgba(249,246,243,.72);margin-top:20px;max-width:340px;font-size:.98rem}
-  .foot-grid h5{font-size:1rem;font-weight:500;margin-bottom:18px}
-  .foot-grid ul{list-style:none;display:grid;gap:10px;color:rgba(249,246,243,.72);font-size:.95rem}
-  .foot-grid ul a:hover{color:var(--peach)}
-  .socials{display:flex;gap:10px;margin-top:24px}
-  .socials a{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.08);display:grid;place-items:center;transition:.3s}
-  .socials a:hover{background:var(--peach);color:var(--brown-900)}
-  .socials svg{width:18px;height:18px}
-  .wordmark{font-size:clamp(4rem,17vw,15rem);letter-spacing:-.06em;line-height:.8;color:rgba(249,246,243,.06);text-align:center;margin-top:70px;white-space:nowrap;user-select:none}
-  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,.1);padding:22px 0 26px;font-size:.82rem;color:rgba(249,246,243,.5)}
+  /* rodapé */
+  footer{background:var(--brown-900);color:var(--bg);padding:0 0 0;overflow:hidden;border-top:1px solid var(--line-dark)}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px;padding-top:80px}
+  .foot-brand{display:flex;align-items:center;gap:12px;font-size:1.1rem;font-weight:300;letter-spacing:.16em;text-transform:uppercase}
+  .foot-brand img{width:34px}
+  .foot-grid p{color:rgba(243,236,227,.6);margin-top:20px;max-width:320px;font-size:.95rem}
+  .foot-grid h5{font-size:.7rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:20px}
+  .foot-grid ul{list-style:none;display:grid;gap:10px;color:rgba(243,236,227,.7);font-size:.95rem}
+  .foot-grid ul a:hover{color:var(--bg)}
+  .socials{display:flex;gap:10px;margin-top:26px}
+  .socials a{width:40px;height:40px;border:1px solid var(--line-dark);display:grid;place-items:center;transition:.3s}
+  .socials a:hover{background:var(--bg);color:var(--brown-900)}
+  .socials svg{width:16px;height:16px}
+  .wordmark{font-size:clamp(3.4rem,14vw,13rem);font-weight:200;letter-spacing:.04em;text-transform:uppercase;line-height:.8;color:rgba(243,236,227,.06);text-align:center;margin-top:80px;white-space:nowrap;user-select:none}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line-dark);padding:24px 0 28px;font-size:.78rem;color:rgba(243,236,227,.45)}
 
   /* whatsapp flutuante */
-  .wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--brown-500);color:var(--white);display:grid;place-items:center;box-shadow:0 18px 30px -12px rgba(47,16,0,.55);transition:.3s}
-  .wa-float:hover{transform:translateY(-3px);background:var(--brown-900)}
-  .wa-float svg{width:26px;height:26px}
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:54px;height:54px;background:var(--brown-900);color:var(--bg);display:grid;place-items:center;border:1px solid rgba(243,236,227,.2);transition:.3s}
+  .wa-float:hover{background:var(--accent)}
+  .wa-float svg{width:24px;height:24px}
 
   /* ============ EFEITOS DE ENTRADA ============ */
-  :root{--ease-out:cubic-bezier(.16,1,.3,1)}
   @keyframes fadeIn{from{opacity:0}}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}}
-  @keyframes heroZoom{from{transform:scale(1.12)}}
-  @keyframes lineGrow{from{transform:scaleY(0)}}
-  @keyframes navDrop{from{opacity:0;transform:translateY(-30px)}}
-  @keyframes popIn{from{opacity:0;transform:scale(.3) translateY(20px)}}
-
-  /* abertura do topo (ao carregar a página) */
+  @keyframes heroZoom{from{transform:scale(1.08)}}
+  @keyframes navDrop{from{opacity:0;transform:translateY(-20px)}}
+  @keyframes popIn{from{opacity:0;transform:translateY(16px)}}
   .nav{animation:navDrop 1.1s var(--ease-out) .15s backwards}
   .hero .photo{animation:heroZoom 2.6s var(--ease-out) backwards}
   .hero-shade{animation:fadeIn 1.4s ease backwards}
-  .hero-grid span{transform-origin:bottom;animation:lineGrow 1.8s var(--ease-out) backwards}
-  .hero-grid span:nth-child(2){animation-delay:.12s}
-  .hero-grid span:nth-child(3){animation-delay:.24s}
-  .hero-grid span:nth-child(4){animation-delay:.36s}
-  .marquee{animation:fadeUp 1.2s var(--ease-out) 1.4s backwards}
   .wa-float{animation:popIn .9s var(--ease-out) 2s backwards}
 
-  /* bloco que sobe (variações via data-anim) */
-  .reveal{opacity:0;transform:translateY(36px);transition:opacity 1.1s var(--ease-out),transform 1.1s var(--ease-out),filter 1.1s var(--ease-out);transition-delay:calc(var(--d,0) * 1ms)}
-  .reveal[data-anim="left"]{transform:translateX(-48px)}
-  .reveal[data-anim="scale"]{transform:scale(.93) translateY(24px)}
-  .reveal[data-anim="blur"]{transform:translateY(16px);filter:blur(10px)}
-  .reveal.in{opacity:1;transform:none;filter:none}
+  .reveal{opacity:0;transform:translateY(32px);transition:opacity 1.1s var(--ease-out),transform 1.1s var(--ease-out);transition-delay:calc(var(--d,0) * 1ms)}
+  .reveal[data-anim="scale"]{transform:scale(.96) translateY(20px)}
+  .reveal.in{opacity:1;transform:none}
   .reveal.stagger{opacity:1;transform:none}
 
   /* títulos: palavras sobem por trás de uma máscara */
-  .split .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .08em .14em 0;margin:0 -.08em -.14em 0}
-  .split .w>span{display:inline-block;transform:translateY(110%);transition:transform 1.2s var(--ease-out);transition-delay:calc(var(--i) * 55ms + var(--d,0) * 1ms)}
+  .split .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.04em .08em .16em 0;margin:-.04em -.08em -.16em 0}
+  .split .w>span{display:inline-block;transform:translateY(115%);transition:transform 1.2s var(--ease-out);transition-delay:calc(var(--i) * 55ms + var(--d,0) * 1ms)}
   .split.in .w>span{transform:none}
 
   /* itens em cascata */
-  .stagger>*{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out);transition-delay:calc(var(--i,0) * 90ms + var(--d,0) * 1ms)}
+  .stagger>*{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out);transition-delay:calc(var(--i,0) * 90ms + var(--d,0) * 1ms)}
   .stagger.in>*{opacity:1;transform:none}
 
   /* fotos: cortina de baixo para cima + leve zoom */
-  .reveal-img{clip-path:inset(100% 0 0 0);transform:scale(1.06);transition:clip-path 1.4s var(--ease-out),transform 1.8s var(--ease-out);transition-delay:calc(var(--i,0) * 130ms + var(--d,0) * 1ms)}
+  .reveal-img{clip-path:inset(100% 0 0 0);transform:scale(1.05);transition:clip-path 1.4s var(--ease-out),transform 1.8s var(--ease-out);transition-delay:calc(var(--i,0) * 130ms + var(--d,0) * 1ms)}
   .reveal-img.in{clip-path:inset(0 0 0 0);transform:none}
-  .reveal-img .card-pills{opacity:0;transform:translateY(12px);transition:opacity .8s var(--ease-out) .8s,transform .8s var(--ease-out) .8s}
-  .reveal-img.in .card-pills{opacity:1;transform:none}
-  .final-box .photo{transform:scale(1.15);transition:transform 2.6s var(--ease-out)}
-  .final-box.in .photo{transform:none}
-
-  /* ornamentos desenhados a traço */
-  .deco path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.6s ease-in-out;transition-delay:calc(var(--i,0) * 220ms)}
-  .deco.in path{stroke-dashoffset:0}
 
   /* letreiro do rodapé, letra por letra */
   .letters .ch{display:inline-block;opacity:0;transform:translateY(45%);transition:opacity 1s var(--ease-out),transform 1.2s var(--ease-out);transition-delay:calc(var(--i) * 45ms)}
   .letters.in .ch{opacity:1;transform:none}
 
   @media (prefers-reduced-motion:reduce){
-    .reveal,.stagger>*,.split .w>span,.reveal-img,.reveal-img .card-pills,.letters .ch,.final-box .photo{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important;transition:none!important}
-    .nav,.hero .photo,.hero-shade,.hero-grid span,.marquee,.wa-float,.marquee-track{animation:none!important}
-    .deco path{stroke-dashoffset:0;transition:none}
+    .reveal,.stagger>*,.split .w>span,.reveal-img,.letters .ch{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}
+    .nav,.hero .photo,.hero-shade,.wa-float{animation:none!important}
     html{scroll-behavior:auto}
   }
 
@@ -310,49 +268,46 @@
     .nav-links{display:none}
     .nav .btn.nav-cta{display:none}
     .menu-toggle{display:block}
-    .nav.open .nav-inner{background:var(--cream);border-radius:24px;flex-wrap:wrap}
+    .nav.open{background:var(--bg);border-color:var(--line)}
+    .nav.open .nav-inner{flex-wrap:wrap}
     .nav.open .brand{color:var(--brown-900)}
     .nav.open .brand .logo-dark{display:block}
     .nav.open .brand .logo-light{display:none}
     .nav.open .menu-toggle{color:var(--brown-900)}
-    .nav.open .nav-links{display:flex;flex-direction:column;width:100%;gap:16px;padding:14px 0 18px;color:var(--brown-900);font-size:1.05rem}
-    .cards{grid-template-columns:1fr}
-    .card.featured{grid-column:auto;grid-template-columns:1fr;gap:0}
-    .card.dark{grid-template-columns:1fr;padding-bottom:28px}
-    .card.dark h3{margin-top:24px}
-    .training-grid{grid-template-columns:1fr;gap:50px}
-    .diffs{grid-template-columns:repeat(2,1fr)}
-    .diff{border-bottom:1px solid var(--line)}
-    .diff:nth-child(2n){border-right:0}
-    .diff:last-child{grid-column:span 2}
+    .nav.open .nav-links{display:flex;flex-direction:column;width:100%;gap:18px;padding:18px 0 10px;color:var(--brown-900)}
+    .cards{grid-template-columns:1fr;gap:64px}
+    .card:nth-child(even){margin-top:0}
+    .training-grid,.about-grid,.info-grid{grid-template-columns:1fr;gap:56px}
+    .diffs{grid-template-columns:repeat(2,1fr);margin-top:72px}
+    .diff{padding:26px 20px 26px 0;border-left:0;border-bottom:1px solid var(--line)}
+    .diff:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}
     .foot-grid{grid-template-columns:1fr 1fr}
-    .badges{justify-content:flex-start}
     .hero .photo{background-position:78% center}
-    .hero-shade{background:linear-gradient(0deg,rgba(47,16,0,.9) 0%,rgba(47,16,0,.55) 50%,rgba(47,16,0,.1) 80%)}
+    .hero-shade{background:linear-gradient(0deg,rgba(47,16,0,.92) 0%,rgba(47,16,0,.55) 50%,rgba(47,16,0,.1) 80%)}
     .gallery{grid-template-columns:repeat(2,1fr);gap:12px}
-    .gallery .photo:nth-child(even){margin-top:36px}
-    .about-grid{grid-template-columns:1fr;gap:40px;text-align:center}
+    .t-track{grid-auto-columns:calc((100% - 32px) / 2);gap:32px}
+    .gallery .photo:nth-child(even){margin-top:40px}
   }
   @media (max-width:600px){
-    .hero{background:var(--brown-900);justify-content:flex-start}
+    body{font-size:1rem}
+    .container{padding:0 22px}
+    .nav-inner,.nav.scrolled .nav-inner{padding:14px 22px}
+    section{padding:96px 0}
+    .hero{justify-content:flex-start;min-height:auto}
     .hero .photo{background:var(--img) 100% 36px/185% auto no-repeat var(--brown-900)}
     .hero-shade{background:linear-gradient(180deg,var(--brown-900) 0,var(--brown-900) 36px,rgba(47,16,0,.15) 96px,rgba(47,16,0,.15) 58vw,var(--brown-900) 96vw)}
-    .hero .hero-content{padding-top:84vw;padding-bottom:40px;justify-content:flex-start;align-items:center;text-align:center}
-    .hero .meta{justify-content:center}
-    .container{padding:0 16px}
-    section{padding:84px 0}
-    .nav{inset:10px 0 auto}
-    .nav-inner{margin:0 10px}
-    .hero-grid{grid-template-columns:repeat(2,1fr)}
-    .marquee-track{font-size:1.15rem}
+    .hero .hero-content{padding-top:88vw;padding-bottom:56px;justify-content:flex-start;align-items:center;text-align:center}
+    .hero h1{font-size:2.6rem}
+    .hero-sub{margin:20px auto 32px}
     .mosaic{grid-auto-rows:110px}
+    .t-track{grid-auto-columns:86%;gap:24px}
+    .t-card blockquote{font-size:1.1rem}
     .diffs{grid-template-columns:1fr}
-    .diff{border-right:0}
-    .diff:last-child{grid-column:auto}
+    .diff,.diff:nth-child(even){padding:22px 0;border-left:0}
     .foot-grid{grid-template-columns:1fr}
-    .final-box{padding:80px 20px}
-    .info-card{padding:28px 22px}
-    .about .deco,.info .deco{opacity:.45}
+    .final{padding:110px 0}
+    .final-contacts{flex-direction:column;align-items:center}
+    .btn{padding:16px 22px 14px;letter-spacing:.2em}
   }
 </style>
 </head>
@@ -360,12 +315,9 @@
 
 <!-- ícones reutilizáveis -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-check" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M6 10.2l2.7 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
-  <symbol id="i-screen" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
-  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
-  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 14"><path d="M0 7h22M16 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></symbol>
 </svg>
 
@@ -380,124 +332,87 @@
     <nav class="nav-links" id="navLinks">
       <a href="#atendimentos">Atendimentos</a>
       <a href="#sobre">Sobre</a>
-      <a href="#empresas">Para empresas</a>
+      <a href="#empresas">Empresas</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a class="btn light nav-cta" data-wa="Olá! Gostaria de agendar um atendimento na Potencialize." href="#">Agendar <span class="arrow"><svg><use href="#i-arrow"/></svg></span></a>
+    <a class="btn nav-cta" data-wa="Olá! Gostaria de agendar um atendimento na Potencialize." href="#">Agendar</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <svg width="26" height="26" viewBox="0 0 24 24"><path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.2"/></svg>
     </button>
   </div>
 </header>
 
 <main id="topo">
 
-<!-- SEÇÃO 1 — HERO -->
+<!-- TOPO — foto da equipe: assets/fotos/equipe.webp -->
 <section class="hero" style="padding:0">
   <div class="photo" aria-hidden="true"></div>
   <div class="hero-shade"></div>
-  <div class="hero-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-
   <div class="container hero-content">
-    <h1 class="reveal">Um espaço para cuidar de você, <em>das suas relações e da sua saúde emocional.</em></h1>
-    <p class="reveal">Na Potencialize, acreditamos que a psicoterapia é um caminho de autoconhecimento, cuidado e desenvolvimento. Oferecemos atendimento psicológico humanizado, com profissionais preparadas para acolher você em diferentes momentos da vida.</p>
-    <div class="meta reveal">
-      <span class="chip"><svg><use href="#i-pin"/></svg>Presencial no Leblon</span>
-      <span class="chip"><svg><use href="#i-screen"/></svg>Online</span>
-      <span class="chip"><svg><use href="#i-globe"/></svg>Português &amp; English</span>
-    </div>
-    <div class="hero-cta reveal"><a class="btn light" data-wa="Olá! Gostaria de agendar meu atendimento na Potencialize." href="#">Agendar meu atendimento <span class="arrow"><svg><use href="#i-arrow"/></svg></span></a></div>
-  </div>
-
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Autoconhecimento</span><span>Acolhimento</span><span>Relações</span><span>Autoestima</span><span>Escuta</span><span>Desenvolvimento humano</span><span>Saúde emocional</span>
-      <span>Autoconhecimento</span><span>Acolhimento</span><span>Relações</span><span>Autoestima</span><span>Escuta</span><span>Desenvolvimento humano</span><span>Saúde emocional</span>
-    </div>
+    <h1>Um espaço para cuidar de <em>você.</em></h1>
+    <p class="hero-sub reveal">Psicologia clínica no Leblon e online</p>
+    <div class="hero-cta reveal"><a class="btn light" data-wa="Olá! Gostaria de agendar meu atendimento na Potencialize." href="#">Agendar atendimento <svg><use href="#i-arrow"/></svg></a></div>
   </div>
 </section>
 
-<!-- SEÇÃO 2 — ATENDIMENTOS -->
+<!-- ATENDIMENTOS -->
 <section class="services" id="atendimentos">
   <div class="container">
-    <div class="section-head split">
-      <div class="reveal">
-        <span class="tag">Nossos atendimentos</span>
-        <h2>Cuidado psicológico <br><em>para cada fase da vida</em></h2>
-        <p class="lead">Conheça nossas modalidades de atendimento e encontre o acompanhamento mais adequado às suas necessidades.</p>
-      </div>
-      <div class="badges reveal">
-        <span class="badge"><img src="assets/simbolo.png" alt="">Humanizado</span>
-        <span class="badge"><img src="assets/simbolo.png" alt="">Presencial</span>
-        <span class="badge"><img src="assets/simbolo.png" alt="">Online</span>
-        <span class="badge"><img src="assets/simbolo.png" alt="">Bilíngue</span>
-      </div>
+    <div class="section-head reveal">
+      <span class="tag">Atendimentos</span>
+      <h2>Cuidado para cada <em>fase da vida.</em></h2>
     </div>
 
     <div class="cards">
-      <article class="card featured reveal">
-        <div class="photo" style="--img:url('assets/fotos/casal.webp')">
-          <div class="card-pills"><span class="pill">Casais</span><span class="pill plain">Presencial e online</span></div>
-        </div>
-        <div>
-          <h3>Terapia de Casal</h3>
-          <div class="sub">Cuidar da relação também é uma forma de cuidar de si.</div>
-          <p class="desc">Um espaço de escuta e diálogo para casais que desejam compreender seus conflitos, melhorar a comunicação e construir relações mais saudáveis.</p>
-          <a class="btn" data-wa="Olá! Quero saber mais sobre a terapia de casal na Potencialize." href="#">Quero saber mais sobre terapia de casal <span class="arrow"><svg><use href="#i-arrow"/></svg></span></a>
-        </div>
+      <article class="card reveal">
+        <div class="photo" role="img" aria-label="Duas pessoas de mãos dadas" style="--img:url('assets/fotos/casal.jpg')"></div>
+        <div class="meta"><span>01 · Casais</span><span>Presencial e online</span></div>
+        <h3>Terapia de casal</h3>
+        <p>Escuta e diálogo para compreender conflitos e fortalecer a relação.</p>
+        <a class="link" data-wa="Olá! Quero saber mais sobre a terapia de casal na Potencialize." href="#">Saber mais <svg><use href="#i-arrow"/></svg></a>
       </article>
 
       <article class="card reveal">
-        <div class="photo" style="--img:url('assets/fotos/adultos.webp')">
-          <div class="card-pills"><span class="pill">Adultos</span><span class="pill plain">Individual</span></div>
-        </div>
-        <h3>Psicoterapia para Adultos</h3>
-        <div class="sub">Um espaço para olhar para si com mais atenção.</div>
-        <p class="desc">Acompanhamento psicológico para quem deseja compreender suas emoções, lidar com desafios, fortalecer a autoestima e desenvolver o autoconhecimento.</p>
+        <div class="photo" role="img" aria-label="Mulher com uma xícara olhando pela janela" style="--img:url('assets/fotos/adultos.jpg')"></div>
+        <div class="meta"><span>02 · Adultos</span><span>Individual</span></div>
+        <h3>Psicoterapia para adultos</h3>
+        <p>Um espaço para compreender emoções, atravessar desafios e se conhecer melhor.</p>
+        <a class="link" data-wa="Olá! Quero saber mais sobre a psicoterapia para adultos na Potencialize." href="#">Saber mais <svg><use href="#i-arrow"/></svg></a>
       </article>
 
       <article class="card reveal">
-        <div class="photo" style="--img:url('assets/fotos/infantil.webp')">
-          <div class="card-pills"><span class="pill">Crianças e adolescentes</span><span class="pill plain">Individual</span></div>
-        </div>
-        <h3>Terapia Infantil e para Adolescentes</h3>
-        <div class="sub">Acolhimento e cuidado em cada etapa do desenvolvimento.</div>
-        <p class="desc">Atendimento psicológico voltado às necessidades emocionais de crianças e adolescentes, respeitando suas particularidades e fases da vida.</p>
+        <div class="photo" role="img" aria-label="Criança desenhando com canetinhas" style="--img:url('assets/fotos/infantil.jpg')"></div>
+        <div class="meta"><span>03 · Crianças e adolescentes</span><span>Individual</span></div>
+        <h3>Terapia infantil e adolescente</h3>
+        <p>Cuidado emocional que respeita o tempo de cada fase do desenvolvimento.</p>
+        <a class="link" data-wa="Olá! Quero saber mais sobre a terapia infantil e para adolescentes na Potencialize." href="#">Saber mais <svg><use href="#i-arrow"/></svg></a>
       </article>
 
-      <article class="card dark reveal" style="grid-column:1/-1">
-        <div class="photo" style="--img:url('assets/fotos/emergencial.webp')">
-          <div class="card-pills"><span class="pill">Emergencial</span><span class="pill plain">Mediante disponibilidade</span></div>
-        </div>
-        <div>
-        <h3>Atendimento Emergencial</h3>
-        <div class="sub">Acolhimento psicológico quando você mais precisa.</div>
-        <p class="desc">Oferecemos a possibilidade de atendimento em situações que exigem atenção psicológica mais imediata, inclusive fora do horário convencional, mediante disponibilidade da equipe.</p>
-        <a class="btn light" data-wa="Olá! Gostaria de consultar a disponibilidade para um atendimento emergencial." href="#">Consultar disponibilidade <span class="arrow"><svg><use href="#i-arrow"/></svg></span></a>
-        </div>
+      <article class="card reveal">
+        <div class="photo" role="img" aria-label="Mãos segurando uma xícara durante uma conversa" style="--img:url('assets/fotos/emergencial.jpg')"></div>
+        <div class="meta"><span>04 · Emergencial</span><span>Mediante disponibilidade</span></div>
+        <h3>Atendimento emergencial</h3>
+        <p>Acolhimento em momentos que pedem atenção imediata, inclusive fora do horário.</p>
+        <a class="link" data-wa="Olá! Gostaria de consultar a disponibilidade para um atendimento emergencial." href="#">Consultar disponibilidade <svg><use href="#i-arrow"/></svg></a>
       </article>
     </div>
   </div>
 </section>
 
-<!-- SEÇÃO 3 — SOBRE -->
+<!-- SOBRE -->
 <section class="about" id="sobre">
-  <svg class="deco" style="top:20px;left:-210px" viewBox="0 0 200 200" fill="none" stroke="#f4b796" stroke-width="1.2" aria-hidden="true"><path d="M100 100C60 40 20 50 10 100c10 50 50 60 90 0z"/><path d="M100 100c40-60 80-50 90 0-10 50-50 60-90 0z"/><path d="M100 100C40 60 50 20 100 10c50 10 60 50 0 90z"/><path d="M100 100c-60 40-50 80 0 90 50-10 60-50 0-90z"/></svg>
-  <svg class="deco" style="bottom:60px;right:-140px" viewBox="0 0 200 200" fill="none" stroke="#f4b796" stroke-width="1.2" aria-hidden="true"><path d="M100 190C100 120 60 70 20 50c10 60 40 110 80 140z"/><path d="M100 190c0-70 40-120 80-140-10 60-40 110-80 140z"/><path d="M100 190V20c-25 30-30 90 0 170z"/><path d="M100 190V20c25 30 30 90 0 170z"/></svg>
-
-  <div class="container center">
+  <div class="container">
     <div class="about-grid">
       <div>
-      <div class="reveal">
-        <span class="tag">Sobre a Potencialize</span>
-        <h2>Psicologia com acolhimento, ética e <em>atenção aos detalhes.</em></h2>
-      </div>
-      <div class="about-text reveal">
-        <p>A Potencialize é uma clínica de psicologia localizada no Leblon, no Rio de Janeiro. Contamos com uma equipe de psicólogas comprometidas em oferecer um acompanhamento individualizado, respeitando a história, as necessidades e o tempo de cada pessoa.</p>
-        <p>Nosso propósito é construir um ambiente de confiança, onde você se sinta confortável para falar, refletir e cuidar de si.</p>
-        <a class="about-address" href="https://maps.google.com/?q=Avenida+Ataulfo+de+Paiva,+Leblon,+Rio+de+Janeiro" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><span>Avenida Ataulfo de Paiva — Leblon, Rio de Janeiro<small>Ver no Google Maps</small></span></a>
-      </div>
+        <div class="reveal">
+          <span class="tag">Sobre</span>
+          <h2>Psicologia com ética e <em>atenção aos detalhes.</em></h2>
+        </div>
+        <div class="reveal">
+          <p class="about-text">Uma clínica no Leblon com uma equipe de psicólogas dedicada a um acompanhamento individualizado — no tempo e na história de cada pessoa.</p>
+          <a class="about-address" href="https://maps.google.com/?q=Avenida+Ataulfo+de+Paiva,+Leblon,+Rio+de+Janeiro" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><span>Avenida Ataulfo de Paiva, Leblon — Rio de Janeiro<small>Ver no mapa</small></span></a>
+        </div>
       </div>
       <div class="about-map reveal">
         <iframe title="Localização da Potencialize no Leblon" src="https://www.google.com/maps?q=Avenida+Ataulfo+de+Paiva,+Leblon,+Rio+de+Janeiro&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
@@ -505,25 +420,20 @@
     </div>
 
     <div class="diffs reveal" aria-label="Nossos diferenciais">
-      <div class="diff"><span class="num">01</span><h4>Atendimento humanizado e individualizado</h4></div>
-      <div class="diff"><span class="num">02</span><h4>Equipe de psicólogas qualificadas</h4></div>
-      <div class="diff"><span class="num">03</span><h4>Atendimento presencial e online</h4></div>
-      <div class="diff"><span class="num">04</span><h4>Atendimento em português e inglês</h4></div>
-      <div class="diff"><span class="num">05</span><h4>Ambiente acolhedor e confortável</h4></div>
-    </div>
-    <div class="actions reveal">
-      <a class="btn" href="#atendimentos">Conhecer nossos atendimentos <span class="arrow"><svg><use href="#i-arrow"/></svg></span></a>
+      <div class="diff"><span class="num">01</span><h4>Atendimento individualizado</h4></div>
+      <div class="diff"><span class="num">02</span><h4>Equipe de psicólogas</h4></div>
+      <div class="diff"><span class="num">03</span><h4>Presencial e online</h4></div>
+      <div class="diff"><span class="num">04</span><h4>Português e inglês</h4></div>
     </div>
   </div>
 </section>
 
 <!-- NOSSO ESPAÇO — fotos reais da clínica: assets/fotos/espaco-1.jpg ... espaco-4.jpg -->
 <section class="space" id="espaco">
-  <div class="container center">
+  <div class="container">
     <div class="reveal">
-      <span class="tag">Nosso espaço</span>
-      <h2>Um ambiente pensado para <em>você se sentir à vontade.</em></h2>
-      <p class="lead" style="margin-top:20px">Nosso consultório no Leblon foi preparado com cuidado para oferecer conforto, tranquilidade e privacidade em cada atendimento.</p>
+      <span class="tag">O espaço</span>
+      <h2>Um ambiente para você <em>se sentir à vontade.</em></h2>
     </div>
     <div class="gallery" aria-label="Fotos do espaço da Potencialize">
       <div class="photo g1" role="img" aria-label="Sala de atendimento com sofá e poltrona claros" style="--img:url('assets/fotos/espaco-1.jpg')"></div>
@@ -534,24 +444,22 @@
   </div>
 </section>
 
-<!-- SEÇÃO 4 — CAPACITAÇÕES E TREINAMENTOS -->
-<section class="training" id="empresas">
+<!-- PARA EMPRESAS — fotos: assets/fotos/capacitacao-1.jpg ... capacitacao-3.jpg -->
+<section class="training on-dark" id="empresas">
   <div class="container training-grid">
     <div class="reveal">
-      <span class="tag on-dark">Capacitações e treinamentos</span>
+      <span class="tag">Para empresas</span>
       <h2>Desenvolvimento humano também <em>transforma empresas.</em></h2>
-      <p class="lead" style="margin-top:20px">Além dos atendimentos psicológicos, a Potencialize desenvolve atividades voltadas ao crescimento profissional, ao desenvolvimento de equipes e à saúde emocional no ambiente corporativo.</p>
-
+      <p class="lead">Capacitações, treinamentos e cursos sobre comunicação, relações e saúde emocional no trabalho.</p>
       <div class="solutions">
-        <div class="solution"><span class="n">01</span><div><h3>Capacitações profissionais</h3><p>Atividades voltadas ao desenvolvimento de conhecimentos e habilidades.</p></div></div>
-        <div class="solution"><span class="n">02</span><div><h3>Treinamentos para empresas</h3><p>Ações para fortalecer a comunicação, as relações interpessoais e o desenvolvimento das equipes.</p></div></div>
-        <div class="solution"><span class="n">03</span><div><h3>Cursos e desenvolvimento</h3><p>Experiências de aprendizagem e reflexão voltadas ao crescimento pessoal e profissional.</p></div></div>
+        <div class="solution"><span class="n">01</span><h3>Capacitações profissionais</h3></div>
+        <div class="solution"><span class="n">02</span><h3>Treinamentos para equipes</h3></div>
+        <div class="solution"><span class="n">03</span><h3>Cursos e palestras</h3></div>
       </div>
-      <a class="btn light" data-wa="Olá! Gostaria de solicitar informações sobre capacitações e treinamentos para minha empresa." href="#">Solicitar informações para minha empresa <span class="arrow"><svg><use href="#i-arrow"/></svg></span></a>
+      <a class="btn light" data-wa="Olá! Gostaria de solicitar informações sobre capacitações e treinamentos para minha empresa." href="#">Solicitar informações <svg><use href="#i-arrow"/></svg></a>
     </div>
 
-    <!-- Fotos reais das capacitações: assets/fotos/capacitacao-1.webp ... capacitacao-3.webp -->
-    <div class="mosaic reveal" aria-label="Fotos das capacitações, cursos e treinamentos">
+    <div class="mosaic" aria-label="Fotos de palestras e capacitações">
       <div class="photo m1"></div>
       <div class="photo m2"></div>
       <div class="photo m3"></div>
@@ -559,49 +467,101 @@
   </div>
 </section>
 
-<!-- SEÇÃO 5 — INFORMAÇÕES IMPORTANTES -->
+<!-- COMO FUNCIONA -->
 <section class="info" id="como-funciona">
-  <svg class="deco" style="top:30px;left:-40px;width:300px" viewBox="0 0 200 200" fill="none" stroke="#f4b796" stroke-width="1.3" aria-hidden="true"><path d="M20 120C20 70 50 30 100 30s80 30 90 60"/><path d="M20 120c25-15 55-15 70 5"/><path d="M60 30c10 30 0 60-40 90"/><path d="M110 110c20 0 40 15 40 45"/><path d="M20 120v70"/></svg>
-  <svg class="deco" style="bottom:0;right:-60px;width:380px" viewBox="0 0 200 200" fill="none" stroke="#f4b796" stroke-width="1.2" aria-hidden="true"><path d="M100 200C100 130 70 90 20 70c5 70 35 110 80 130z"/><path d="M100 200c0-70 30-110 80-130-5 70-35 110-80 130z"/><path d="M100 200V40c-30 40-30 110 0 160z"/><path d="M100 200V40c30 40 30 110 0 160z"/></svg>
-
-  <div class="container center">
+  <div class="container info-grid">
     <div class="reveal">
-      <span class="tag">Informações importantes</span>
-      <h2>Como funcionam <br><em>nossos atendimentos?</em></h2>
-      <p class="lead" style="margin-top:20px">A Potencialize oferece atendimentos psicológicos particulares, com acompanhamento direcionado às necessidades de cada paciente.</p>
+      <span class="tag">Como funciona</span>
+      <h2>Atendimento <em>particular.</em></h2>
+      <a class="btn" data-wa="Olá! Gostaria de conversar com a equipe da Potencialize sobre os atendimentos." href="#">Falar com a equipe <svg><use href="#i-arrow"/></svg></a>
     </div>
-
-    <div class="info-card reveal" style="text-align:left">
-      <div class="eyebrow">Atendimento particular</div>
-      <h3>Cuidado <em>individualizado</em></h3>
-      <div class="big">Acompanhamento direcionado às necessidades de cada paciente.</div>
-      <ul class="checks">
-        <li><svg><use href="#i-check"/></svg>Atendemos exclusivamente de forma particular</li>
-        <li><svg><use href="#i-check"/></svg>Não trabalhamos com planos de saúde ou convênios</li>
-        <li><svg><use href="#i-check"/></svg>Presencial no Leblon ou online</li>
-        <li><svg><use href="#i-check"/></svg>Atendimento em português e inglês</li>
-        <li><svg><use href="#i-check"/></svg>Orientação sobre modalidades, horários e agendamentos</li>
-      </ul>
-      <a class="btn light" data-wa="Olá! Gostaria de conversar com a equipe da Potencialize sobre os atendimentos." href="#">Conversar com nossa equipe <span class="arrow"><svg><use href="#i-arrow"/></svg></span></a>
-    </div>
-    <p class="note reveal">Nossa equipe está disponível para orientar você sobre as modalidades de atendimento, horários e agendamentos.</p>
+    <ul class="facts reveal">
+      <li><span class="n">01</span><div><strong>Particular</strong><span class="d">Não trabalhamos com planos de saúde ou convênios.</span></div></li>
+      <li><span class="n">02</span><div><strong>Presencial ou online</strong><span class="d">No consultório do Leblon ou de onde você estiver.</span></div></li>
+      <li><span class="n">03</span><div><strong>Português e inglês</strong><span class="d">Atendimento bilíngue.</span></div></li>
+      <li><span class="n">04</span><div><strong>Agendamento simples</strong><span class="d">Orientamos sobre modalidades e horários pelo WhatsApp.</span></div></li>
+    </ul>
   </div>
 </section>
 
-<!-- SEÇÃO 6 — CHAMADA FINAL -->
-<section class="final" id="contato">
+<!-- DEPOIMENTOS — avaliações do Google -->
+<section class="testimonials" id="depoimentos">
   <div class="container">
-    <div class="final-box reveal">
-      <div class="photo" aria-hidden="true"></div>
-      <span class="tag on-dark">Primeiro passo</span>
-      <h2>Seu cuidado emocional merece <em>espaço na sua vida.</em></h2>
-      <p>Seja para compreender melhor a si mesmo, cuidar dos seus relacionamentos ou atravessar novos momentos da vida, a Potencialize oferece um espaço de escuta, respeito e acolhimento.</p>
-      <p class="strong">Dê o primeiro passo para iniciar seu acompanhamento psicológico.</p>
-      <a class="btn light" data-wa="Olá! Gostaria de agendar um atendimento na Potencialize." href="#"><svg width="18" height="18" style="margin-right:-4px"><use href="#i-wa"/></svg> Agendar atendimento pelo WhatsApp <span class="arrow"><svg><use href="#i-arrow"/></svg></span></a>
-      <div class="final-contacts">
-        <a class="chip" href="https://maps.google.com/?q=Avenida+Ataulfo+de+Paiva,+Leblon,+Rio+de+Janeiro" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Avenida Ataulfo de Paiva — Leblon, Rio de Janeiro</a>
-        <a class="chip" href="https://www.instagram.com/potencializeclinicadepsico/" target="_blank" rel="noopener"><svg><use href="#i-insta"/></svg>@potencializeclinicadepsico</a>
+    <div class="t-head">
+      <div class="reveal">
+        <span class="tag">Depoimentos</span>
+        <h2>Quem passou por aqui <em>conta.</em></h2>
       </div>
+      <div class="t-nav reveal">
+        <button class="t-btn prev" type="button" aria-label="Depoimento anterior"><svg><use href="#i-arrow"/></svg></button>
+        <span class="t-count" aria-live="polite">03 / 09</span>
+        <button class="t-btn next" type="button" aria-label="Próximo depoimento"><svg><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+    <div class="t-track reveal" tabindex="0" aria-label="Depoimentos de pacientes">
+      <figure class="t-card">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>A Letícia é uma profissional incrível, muito prestativa e humana. Me senti acolhida e compreendida desde a primeira consulta. Recomendo de olhos fechados.</blockquote>
+        <cite>Caroline A.<span>Paciente</span></cite>
+      </figure>
+      <figure class="t-card">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Muito calma, educada, atenta e precisa, ela consegue acessar camadas que geram reflexões importantes nas sessões. Sou muito grato pelos avanços e pela troca.</blockquote>
+        <cite>Emmanuel T.<span>Paciente</span></cite>
+      </figure>
+      <figure class="t-card">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Venho deixar meu agradecimento pelo trabalho que ela tem feito com meu filho. Tem sido muito importante não só para ele, mas para toda a família.</blockquote>
+        <cite>André L.<span>Pai de paciente</span></cite>
+      </figure>
+      <figure class="t-card">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Uma profissional incrível, com um atendimento sensível e sem julgamentos. Recomendo fortemente.</blockquote>
+        <cite>Débora L.<span>Paciente</span></cite>
+      </figure>
+      <figure class="t-card">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Simpática e amigável, com uma fala que cria um ambiente seguro e acolhedor. Demonstra empatia genuína e compreensão, o que facilita poder falar abertamente.</blockquote>
+        <cite>Fabio D.<span>Paciente</span></cite>
+      </figure>
+      <figure class="t-card">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Transmite uma paz desde o sorriso até a fala. Sua voz é calmaria. O seu trabalho é fundamental para nossa sociedade.</blockquote>
+        <cite>Ana Laura C.<span>Paciente</span></cite>
+      </figure>
+      <figure class="t-card">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Muito querida, atenciosa e atenta a todos os detalhes, contribuindo sempre com um diálogo aberto e reflexivo.</blockquote>
+        <cite>Dani K.<span>Paciente</span></cite>
+      </figure>
+      <figure class="t-card">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Profissional atenciosa, sempre com uma escuta ativa e afetiva. Preocupada com a evolução do paciente e disposta a dar o melhor.</blockquote>
+        <cite>Camila O.<span>Paciente</span></cite>
+      </figure>
+      <figure class="t-card">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Profissional muito dedicada, humana e acolhedora, que oferece um atendimento diferenciado aos seus pacientes.</blockquote>
+        <cite>Rita B.<span>Paciente</span></cite>
+      </figure>
+    </div>
+    <div class="t-foot reveal">
+      <div class="t-progress" aria-hidden="true"><i></i></div>
+      <a class="link" href="https://www.google.com/search?q=Psic%C3%B3loga+Rio+de+Janeiro-+Leblon+%7C+Let%C3%ADcia+Fernandes+%7C+Cl%C3%ADnica+de+Psicologia+%7CAdulto,+adolescente+e+casal&kgmid=/g/11t0pjqr_k#lrd=0x9bd505fa47ed4b:0xa143b8436214c7e5,1,,,," target="_blank" rel="noopener">Ver avaliações no Google <svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- CHAMADA FINAL -->
+<section class="final" id="contato">
+  <div class="container reveal">
+    <span class="tag on-dark">Primeiro passo</span>
+    <h2>Seu cuidado emocional merece <em>espaço na sua vida.</em></h2>
+    <p>Estamos aqui para acolher você no seu tempo.</p>
+    <a class="btn light" data-wa="Olá! Gostaria de agendar um atendimento na Potencialize." href="#">Agendar pelo WhatsApp <svg><use href="#i-arrow"/></svg></a>
+    <div class="final-contacts">
+      <a href="https://maps.google.com/?q=Avenida+Ataulfo+de+Paiva,+Leblon,+Rio+de+Janeiro" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Leblon · Rio de Janeiro</a>
+      <a href="https://www.instagram.com/potencializeclinicadepsico/" target="_blank" rel="noopener"><svg><use href="#i-insta"/></svg>@potencializeclinicadepsico</a>
     </div>
   </div>
 </section>
@@ -613,7 +573,7 @@
     <div class="foot-grid">
       <div>
         <div class="foot-brand"><img src="assets/simbolo-claro.png" alt="">Potencialize</div>
-        <p>Potencialize — Psicologia, cuidado e desenvolvimento humano.</p>
+        <p>Psicologia, cuidado e desenvolvimento humano.</p>
         <div class="socials">
           <a href="https://www.instagram.com/potencializeclinicadepsico/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-insta"/></svg></a>
           <a data-wa="Olá! Vim pelo site da Potencialize." href="#" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
@@ -626,14 +586,15 @@
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#empresas">Para empresas</a></li>
           <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
         </ul>
       </div>
       <div>
         <h5>Atendimentos</h5>
         <ul>
-          <li><a href="#atendimentos">Terapia de casal</a></li>
+          <li><a href="#atendimentos">Casais</a></li>
           <li><a href="#atendimentos">Adultos</a></li>
-          <li><a href="#atendimentos">Infantil e adolescentes</a></li>
+          <li><a href="#atendimentos">Crianças e adolescentes</a></li>
           <li><a href="#atendimentos">Emergencial</a></li>
         </ul>
       </div>
@@ -665,13 +626,29 @@
     a.target = "_blank"; a.rel = "noopener";
   });
 
-  // Fotos: só remove o degradê/símbolo quando a imagem realmente existe
-  document.querySelectorAll(".photo").forEach(el => {
+  // Fotos sob demanda: cada foto só é baixada quando chega perto da tela
+  // (até lá aparece o fundo da marca). A do topo carrega na hora.
+  const loadPhoto = el => {
     const m = getComputedStyle(el).getPropertyValue("--img").match(/url\(["']?([^"')]+)/);
     if (!m) return;
     const img = new Image();
+    img.decoding = "async";
     img.onload = () => el.classList.add("has-img");
     img.src = m[1];
+  };
+  const ioPhoto = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll(":scope > .photo").forEach(loadPhoto); ioPhoto.unobserve(e.target);
+  }), { rootMargin: "900px 0px" });
+  document.querySelectorAll(".photo").forEach(el =>
+    el.closest(".hero") ? loadPhoto(el) : ioPhoto.observe(el.parentElement));
+
+  // Scroll suave (Lenis), desligado para quem prefere menos movimento
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!window.Lenis || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const lenis = new Lenis({ duration: 1.15, anchors: true });
+    const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
   });
 
   const nav = document.getElementById("nav");
@@ -710,28 +687,16 @@
   };
   $$(".hero h1, section h2").forEach(splitWords);
 
-  // fotos com efeito cortina (as de fundo do topo e da chamada final têm zoom próprio)
-  $$(".photo").filter(p => !p.closest(".hero, .final-box")).forEach(p => {
-    p.classList.remove("reveal"); p.classList.add("reveal-img");
-  });
+  // fotos com efeito cortina (a do topo tem zoom próprio)
+  $$(".photo").filter(p => !p.closest(".hero")).forEach(p => p.classList.add("reveal-img"));
   $$(".mosaic, .gallery").forEach(g => $$(".photo", g).forEach((p, i) => p.style.setProperty("--i", i)));
-  document.querySelector(".mosaic").classList.remove("reveal");
 
   // listas em cascata
-  $$(".hero .meta, .badges, .diffs, .solutions, .checks, .final-contacts, .foot-grid").forEach(el => {
+  $$(".diffs, .solutions, .facts, .final-contacts, .foot-grid").forEach(el => {
     el.classList.add("stagger");
     [...el.children].forEach((c, i) => c.style.setProperty("--i", i));
   });
-
-  // variações
-  $$(".card.dark, .info-card, .final-box, .about-map").forEach(el => el.dataset.anim = "scale");
-  $$(".training-grid > .reveal:first-child").forEach(el => el.dataset.anim = "left");
-  $$(".about-text, .note").forEach(el => el.dataset.anim = "blur");
-
-  // ornamentos: traço desenhado
-  $$(".deco").forEach(svg => $$("path", svg).forEach((p, i) => {
-    p.setAttribute("pathLength", 1); p.style.setProperty("--i", i);
-  }));
+  $$(".about-map").forEach(el => el.dataset.anim = "scale");
 
   // letreiro do rodapé
   const wm = document.querySelector(".wordmark");
@@ -739,7 +704,7 @@
   wm.classList.add("letters");
 
   // sequência de abertura do topo
-  [[".hero h1", 300], [".hero-content > p", 750], [".hero .meta", 950], [".hero-cta", 1250]]
+  [[".hero h1", 300], [".hero-sub", 900], [".hero-cta", 1150]]
     .forEach(([sel, d]) => document.querySelector(sel).style.setProperty("--d", d));
 
   const io = new IntersectionObserver(entries => {
@@ -751,7 +716,7 @@
     });
   }, { threshold: .15, rootMargin: "0px 0px -60px 0px" });
   // o topo entra sempre ao carregar; o resto conforme a rolagem
-  $$(".reveal, .split, .stagger, .deco, .letters").forEach(el =>
+  $$(".reveal, .split, .stagger, .letters").forEach(el =>
     el.closest(".hero") ? setTimeout(() => el.classList.add("in"), 60) : io.observe(el));
 
   // fotos recortadas têm área visível zero, então observa um elemento vizinho
@@ -760,9 +725,60 @@
     e.target._photos.forEach(p => p.classList.add("in")); ioImg.unobserve(e.target);
   }), { rootMargin: "0px 0px -15% 0px" });
   $$(".reveal-img").forEach(p => {
-    const proxy = p.closest(".card, .mosaic, .gallery") || p.previousElementSibling || p.parentElement;
+    const proxy = p.closest(".card, .mosaic, .gallery") || p.parentElement;
     (proxy._photos ||= []).push(p); ioImg.observe(proxy);
   });
+
+  // Depoimentos: carrossel com setas, arraste/deslize e contador
+  (() => {
+    const track = document.querySelector(".t-track");
+    if (!track) return;
+    const cards = [...track.children], total = cards.length;
+    const prev = document.querySelector(".t-btn.prev"), next = document.querySelector(".t-btn.next");
+    const count = document.querySelector(".t-count"), bar = document.querySelector(".t-progress i");
+    const pad = n => String(n).padStart(2, "0");
+    const step = () => cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0);
+    const update = () => {
+      const s = step(), per = Math.max(1, Math.round(track.clientWidth / s));
+      const i = Math.min(total - per, Math.round(track.scrollLeft / s));
+      const last = Math.min(total, i + per);
+      count.textContent = `${pad(last)} / ${pad(total)}`;
+      bar.style.setProperty("--p", (last / total * 100) + "%");
+      prev.disabled = track.scrollLeft < 4;
+      next.disabled = track.scrollLeft > track.scrollWidth - track.clientWidth - 4;
+    };
+    // cada clique vai para um depoimento exato (cliques seguidos se acumulam)
+    let target = 0;
+    const go = dir => {
+      const s = step(), max = track.scrollWidth - track.clientWidth;
+      const from = Math.abs(track.scrollLeft - target * s) < s / 2 ? target : Math.round(track.scrollLeft / s);
+      target = Math.max(0, Math.min(Math.ceil(max / s), from + dir));
+      track.style.scrollSnapType = "none"; // o encaixe volta quando a animação termina
+      track.scrollTo({ left: Math.min(max, target * s), behavior: "smooth" });
+      clearTimeout(go.t); go.t = setTimeout(() => { track.style.scrollSnapType = ""; }, 900);
+    };
+    prev.addEventListener("click", () => go(-1));
+    next.addEventListener("click", () => go(1));
+    track.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight") { e.preventDefault(); next.click(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); prev.click(); }
+    });
+    // arrastar com o mouse no desktop (no celular o deslize é nativo)
+    let down = false, x0 = 0, s0 = 0;
+    track.addEventListener("pointerdown", e => {
+      if (e.pointerType !== "mouse") return;
+      down = true; x0 = e.clientX; s0 = track.scrollLeft; track.style.scrollSnapType = "none";
+    });
+    addEventListener("pointermove", e => { if (down) track.scrollLeft = s0 - (e.clientX - x0); });
+    addEventListener("pointerup", () => {
+      if (!down) return;
+      down = false; track.style.scrollSnapType = "";
+      track.scrollTo({ left: Math.round(track.scrollLeft / step()) * step(), behavior: "smooth" });
+    });
+    track.addEventListener("scroll", update, { passive: true });
+    addEventListener("resize", update);
+    update();
+  })();
 
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
