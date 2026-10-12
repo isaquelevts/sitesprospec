@@ -9,7 +9,7 @@ Página estática (`index.html`), sem build. Basta abrir no navegador ou publica
    - `equipe-mobile.webp` — topo no celular (foto vertical)
    - `casal.jpg`, `adultos.jpg`, `infantil.jpg`, `emergencial.jpg` — cards de atendimento (banco gratuito Unsplash, provisórias)
    - `espaco-1.jpg` … `espaco-4.jpg` — fotos reais do espaço da clínica
-   - `capacitacao-1.jpg` … `capacitacao-3.jpg` — palestras (Unsplash, provisórias até chegarem as fotos reais)
+   - `capacitacao-1.jpg` … `capacitacao-4.jpg` — fotos reais de palestras e eventos (seção Para empresas)
 
 ## Visual
 - Fontes: Playfair Display nos títulos, Josefin Sans no restante.

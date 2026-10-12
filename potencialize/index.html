@@ -161,8 +161,9 @@
   @media (min-width:1001px){.mosaic{position:sticky;top:110px}} /* fotos acompanham o texto no scroll */
   .mosaic .photo{background-color:var(--brown-800)}
   .mosaic .m1{grid-column:span 2;grid-row:span 2;--img:url("assets/fotos/capacitacao-1.jpg")}
-  .mosaic .m2{grid-row:span 2;--img:url("assets/fotos/capacitacao-2.jpg")}
-  .mosaic .m3{grid-row:span 2;--img:url("assets/fotos/capacitacao-3.jpg")}
+  .mosaic .m2{grid-row:span 2;--img:url("assets/fotos/capacitacao-2.jpg");background-position:center 38%}
+  .mosaic .m3{--img:url("assets/fotos/capacitacao-3.jpg")}
+  .mosaic .m4{--img:url("assets/fotos/capacitacao-4.jpg");background-position:center 42%}
 
   /* como funciona */
   .info{background:var(--bg-2)}
@@ -288,6 +289,10 @@
     .gallery{grid-template-columns:repeat(2,1fr);gap:12px}
     .t-track{grid-auto-columns:calc((100% - 32px) / 2);gap:32px}
     .gallery .photo:nth-child(even){margin-top:40px}
+  }
+  /* foto do topo ocupa a tela toda, presa no alto: a cabeça fica sempre abaixo do menu */
+  @media (min-width:601px){
+    .hero .photo{background-position-y:top}
   }
   @media (max-width:600px){
     body{font-size:1rem}
@@ -446,7 +451,7 @@
   </div>
 </section>
 
-<!-- PARA EMPRESAS — fotos: assets/fotos/capacitacao-1.jpg ... capacitacao-3.jpg -->
+<!-- PARA EMPRESAS — fotos reais de palestras e eventos: assets/fotos/capacitacao-1.jpg ... capacitacao-4.jpg -->
 <section class="training on-dark" id="empresas">
   <div class="container training-grid">
     <div class="reveal">
@@ -465,6 +470,7 @@
       <div class="photo m1"></div>
       <div class="photo m2"></div>
       <div class="photo m3"></div>
+      <div class="photo m4"></div>
     </div>
   </div>
 </section>
