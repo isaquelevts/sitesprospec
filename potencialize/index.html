@@ -8,7 +8,8 @@
 <link rel="icon" href="assets/simbolo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/fotos/equipe.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/fotos/equipe.webp" media="(min-width:601px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/fotos/equipe-mobile.webp" media="(max-width:600px)" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Playfair+Display:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Playfair+Display:wght@400;500&display=swap"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
@@ -101,7 +102,7 @@
 
   /* ============ HERO ============ */
   .hero{position:relative;min-height:100vh;min-height:100svh;color:var(--bg);display:flex;flex-direction:column;overflow:hidden;background:var(--brown-900);--img:url("assets/fotos/equipe.webp")}
-  .hero .photo{position:absolute;inset:0;background-color:var(--brown-800);background-position:70% center}
+  .hero .photo{position:absolute;inset:0;background-color:var(--brown-800);background-position:60% center}
   .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,16,0,.86) 0%,rgba(47,16,0,.6) 30%,rgba(47,16,0,.12) 52%,transparent 64%),linear-gradient(0deg,rgba(47,16,0,.5) 0%,transparent 30%)}
   .hero-content{position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-top:110px;padding-bottom:80px}
   .hero h1{font-size:clamp(2.6rem,4.2vw,4rem);max-width:460px;line-height:1.08}
@@ -294,9 +295,10 @@
     .nav-inner,.nav.scrolled .nav-inner{padding:14px 22px}
     section{padding:96px 0}
     .hero{justify-content:flex-start;min-height:auto}
-    .hero .photo{background:var(--img) 100% 36px/185% auto no-repeat var(--brown-900)}
-    .hero-shade{background:linear-gradient(180deg,var(--brown-900) 0,var(--brown-900) 36px,rgba(47,16,0,.15) 96px,rgba(47,16,0,.15) 58vw,var(--brown-900) 96vw)}
-    .hero .hero-content{padding-top:88vw;padding-bottom:56px;justify-content:flex-start;align-items:center;text-align:center}
+    .hero{--img:url("assets/fotos/equipe-mobile.webp")} /* versão vertical para celular */
+    .hero .photo{background:var(--img) center 44px/100% auto no-repeat var(--brown-900)}
+    .hero-shade{background:linear-gradient(180deg,var(--brown-900) 0,var(--brown-900) 44px,transparent 110px)}
+    .hero .hero-content{padding-top:calc(80vw + 44px);padding-bottom:56px;justify-content:flex-start;align-items:center;text-align:center}
     .hero h1{font-size:2.6rem}
     .hero-sub{margin:20px auto 32px}
     .mosaic{grid-auto-rows:110px}
