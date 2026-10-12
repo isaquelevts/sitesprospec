@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="assets/fotos/equipe.webp" media="(min-width:601px)" fetchpriority="high">
 <link rel="preload" as="image" href="assets/fotos/equipe-mobile.webp" media="(max-width:600px)" fetchpriority="high">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Playfair+Display:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Playfair+Display:wght@400;500&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,600;1,300&family=Playfair+Display:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,600;1,300&family=Playfair+Display:wght@400;500&display=swap"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
 <style>
   /* ============ CONFIGURAÇÃO RÁPIDA ============
@@ -77,6 +77,10 @@
   /* fotos (fundo na cor da marca até a imagem chegar) */
   .photo{position:relative;overflow:hidden;background-color:var(--bg-3);background-size:cover;background-position:center}
   .photo.has-img{background-image:var(--img)} /* a foto entra só depois de baixada */
+
+  /* aviso discreto: apenas atendimento particular */
+  .private{display:block;font-style:italic;font-weight:300;font-size:.8rem;letter-spacing:.04em;line-height:1.4;color:var(--muted)}
+  .private.on-dark{color:rgba(243,236,227,.62)}
 
   /* ============ NAV ============ */
   .nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
@@ -360,6 +364,7 @@
     <h1>Um espaço para cuidar de <em>você.</em></h1>
     <p class="hero-sub reveal">Psicologia clínica no Leblon e online</p>
     <div class="hero-cta reveal"><a class="btn light" data-wa="Olá! Gostaria de agendar meu atendimento na Potencialize." href="#">Agendar atendimento <svg><use href="#i-arrow"/></svg></a></div>
+    <span class="private on-dark reveal" style="margin-top:20px">Apenas atendimento particular</span>
   </div>
 </section>
 
@@ -369,6 +374,7 @@
     <div class="section-head reveal">
       <span class="tag">Atendimentos</span>
       <h2>Cuidado para cada <em>fase da vida.</em></h2>
+      <span class="private" style="margin-top:20px">Apenas atendimento particular</span>
     </div>
 
     <div class="cards">
@@ -482,6 +488,7 @@
       <span class="tag">Como funciona</span>
       <h2>Atendimento <em>particular.</em></h2>
       <a class="btn" data-wa="Olá! Gostaria de conversar com a equipe da Potencialize sobre os atendimentos." href="#">Falar com a equipe <svg><use href="#i-arrow"/></svg></a>
+      <span class="private" style="margin-top:18px">Apenas atendimento particular</span>
     </div>
     <ul class="facts reveal">
       <li><span class="n">01</span><div><strong>Particular</strong><span class="d">Não trabalhamos com planos de saúde ou convênios.</span></div></li>
@@ -567,6 +574,7 @@
     <h2>Seu cuidado emocional merece <em>espaço na sua vida.</em></h2>
     <p>Estamos aqui para acolher você no seu tempo.</p>
     <a class="btn light" data-wa="Olá! Gostaria de agendar um atendimento na Potencialize." href="#">Agendar pelo WhatsApp <svg><use href="#i-arrow"/></svg></a>
+    <span class="private on-dark" style="margin-top:20px">Apenas atendimento particular</span>
     <div class="final-contacts">
       <a href="https://maps.google.com/?q=Avenida+Ataulfo+de+Paiva,+Leblon,+Rio+de+Janeiro" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Leblon · Rio de Janeiro</a>
       <a href="https://www.instagram.com/potencializeclinicadepsico/" target="_blank" rel="noopener"><svg><use href="#i-insta"/></svg>@potencializeclinicadepsico</a>
@@ -582,6 +590,7 @@
       <div>
         <div class="foot-brand"><img src="assets/simbolo-claro.png" alt="">Potencialize</div>
         <p>Psicologia, cuidado e desenvolvimento humano.</p>
+        <span class="private on-dark" style="margin-top:14px">Apenas atendimento particular</span>
         <div class="socials">
           <a href="https://www.instagram.com/potencializeclinicadepsico/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-insta"/></svg></a>
           <a data-wa="Olá! Vim pelo site da Potencialize." href="#" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
@@ -712,7 +721,7 @@
   wm.classList.add("letters");
 
   // sequência de abertura do topo
-  [[".hero h1", 300], [".hero-sub", 900], [".hero-cta", 1150]]
+  [[".hero h1", 300], [".hero-sub", 900], [".hero-cta", 1150], [".hero .private", 1400]]
     .forEach(([sel, d]) => document.querySelector(sel).style.setProperty("--d", d));
 
   const io = new IntersectionObserver(entries => {
