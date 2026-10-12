@@ -3,7 +3,7 @@
 Página estática (`index.html`), sem build. Basta abrir no navegador ou publicar a pasta `potencialize/` em qualquer hospedagem.
 
 ## Antes de publicar
-1. **WhatsApp:** já configurado como `5521977105031` (fim do `index.html`) (DDI + DDD + número, só dígitos).
+1. **WhatsApp:** já configurado como `5521974502172` (fim do `index.html`) (DDI + DDD + número, só dígitos).
 2. **Fotos:** em `assets/fotos/` (enquanto não existirem, aparece um fundo na cor da marca):
    - `equipe.webp` — topo no desktop (equipe à direita, espaço livre à esquerda para o texto)
    - `equipe-mobile.webp` — topo no celular (foto vertical)
