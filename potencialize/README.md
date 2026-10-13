@@ -14,3 +14,7 @@ Página estática (`index.html`), sem build. Basta abrir no navegador ou publica
 ## Visual
 - Fontes: Playfair Display nos títulos, Josefin Sans no restante.
 - Cores: tons de bege (sem fundo branco) e o marrom da marca; cantos retos.
+## Pendências
+- **Equipe (Giovana, Izabele, Kauana):** a seção "Nossa equipe" está na página com nome, texto *lorem ipsum* e um cartão vazio no lugar da foto. Falta trocar o texto pela apresentação de cada uma, incluir o CRP e colocar a foto: salve em `assets/fotos/` e, no `index.html`, troque o cartão vazio por `style="--img:url('assets/fotos/NOME.jpg')"` (tirando a classe `empty`).
+- **Foto da Letícia (`assets/fotos/leticia.jpg`):** provisória, recortada da foto do topo. Trocar por um retrato próprio (3:4).
+- **Vídeo de depoimento:** YouTube Shorts `mFfelZfuhdw`, na seção Depoimentos (o player só carrega ao clicar).
