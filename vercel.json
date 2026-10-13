@@ -50,6 +50,11 @@
       "source": "/potencialize",
       "destination": "/potencialize/",
       "permanent": true
+    },
+    {
+      "source": "/potencialize/sobre",
+      "destination": "/potencialize/sobre/",
+      "permanent": true
     }
   ]
 }

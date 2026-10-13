@@ -1,6 +1,6 @@
 # Landing page — Potencialize
 
-Página estática (`index.html`), sem build. Basta abrir no navegador ou publicar a pasta `potencialize/` em qualquer hospedagem.
+Página estática (`index.html`) mais a página interna `sobre/index.html` (história da clínica, fundadora e equipe), sem build. Basta abrir no navegador ou publicar a pasta `potencialize/` em qualquer hospedagem.
 
 ## Antes de publicar
 1. **WhatsApp:** já configurado como `5521974502172` (fim do `index.html`) (DDI + DDD + número, só dígitos).
@@ -15,6 +15,6 @@ Página estática (`index.html`), sem build. Basta abrir no navegador ou publica
 - Fontes: Playfair Display nos títulos, Josefin Sans no restante.
 - Cores: tons de bege (sem fundo branco) e o marrom da marca; cantos retos.
 ## Pendências
-- **Equipe (Giovana, Izabele, Kauana):** a seção "Nossa equipe" está na página com nome, texto *lorem ipsum* e um cartão vazio no lugar da foto. Falta trocar o texto pela apresentação de cada uma, incluir o CRP e colocar a foto: salve em `assets/fotos/` e, no `index.html`, troque o cartão vazio por `style="--img:url('assets/fotos/NOME.jpg')"` (tirando a classe `empty`).
+- **Equipe (Giovana, Izabele, Kauana):** a seção "Nossa equipe" fica na página `sobre/index.html` e está com nome, texto *lorem ipsum* e um cartão vazio no lugar da foto. Falta trocar o texto pela apresentação de cada uma, incluir o CRP e colocar a foto: salve em `assets/fotos/` e, no `index.html`, troque o cartão vazio por `style="--img:url('assets/fotos/NOME.jpg')"` (tirando a classe `empty`).
 - **Foto da Letícia (`assets/fotos/leticia.jpg`):** provisória, recortada da foto do topo. Trocar por um retrato próprio (3:4).
 - **Vídeo de depoimento:** YouTube Shorts `mFfelZfuhdw`, na seção Depoimentos (o player só carrega ao clicar).

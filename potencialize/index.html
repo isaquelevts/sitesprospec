@@ -393,7 +393,7 @@
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#atendimentos">Atendimentos</a>
-      <a href="#sobre">Sobre</a>
+      <a href="sobre/">Sobre</a>
       <a href="#empresas">Empresas</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#contato">Contato</a>
@@ -472,51 +472,13 @@
         <h2>Nossa <em>história.</em></h2>
         <div class="founder-text">
           <p>Há quase dez anos, dedico minha prática clínica à escuta e ao cuidado de cada pessoa em sua singularidade.</p>
-          <p>A Potencialize nasceu do desejo de levar esse cuidado a mais pessoas, sem abrir mão do que considero essencial: ética, responsabilidade, acolhimento, supervisão e estudo constante, acompanhando os avanços da psicologia.</p>
-          <p>Acredito que o cuidado vai além da técnica. Antes de sermos profissionais, somos humanas, e é dessa compreensão que nasce a importância de acolher cada história com respeito, sensibilidade e responsabilidade.</p>
-          <p>Foi a partir desses valores que reuni psicólogas em quem confio e que compartilham do mesmo compromisso. Juntas, construímos a Potencialize, somando diferentes conhecimentos e olhares para oferecer uma psicologia ética, atualizada e comprometida com cada pessoa.</p>
+          <p>A Potencialize nasceu do desejo de levar esse cuidado a mais pessoas, sem abrir mão do que considero essencial: ética, responsabilidade, acolhimento, supervisão e estudo constante.</p>
         </div>
+        <a class="link" href="sobre/" style="margin-top:30px">Conhecer a clínica e a equipe <svg><use href="#i-arrow"/></svg></a>
         <p class="founder-sign"><span class="name">Letícia Fernandes</span><span class="m-crp">Fundadora · Psicóloga · CRP 05/69793</span></p>
       </div>
     </div>
 
-    <ul class="values reveal" aria-label="Nossos valores">
-      <li>Ética</li><li>Responsabilidade</li><li>Acolhimento</li><li>Supervisão</li><li>Estudo constante</li>
-    </ul>
-  </div>
-</section>
-
-<!-- NOSSA EQUIPE — fotos: coloque em assets/fotos/ e troque o cartão vazio por style="--img:url('assets/fotos/NOME.jpg')" (tire a classe "empty") -->
-<section class="team" id="equipe">
-  <div class="container">
-    <div class="reveal">
-      <span class="tag">Nossa equipe</span>
-      <h2>Quem cuida de <em>você.</em></h2>
-      <p class="lead">Psicólogas que compartilham os valores da Potencialize e contribuem, com seus conhecimentos e experiências, para um cuidado ético, humano e individualizado.</p>
-    </div>
-    <div class="members">
-      <article class="member reveal">
-        <div class="photo empty" role="img" aria-label="Foto de Giovana Ferracioli (em breve)"><img src="assets/simbolo.png" alt=""></div>
-        <div>
-          <h3>Giovana Ferracioli</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </article>
-      <article class="member reveal">
-        <div class="photo empty" role="img" aria-label="Foto de Izabele Costa (em breve)"><img src="assets/simbolo.png" alt=""></div>
-        <div>
-          <h3>Izabele Costa</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </article>
-      <article class="member reveal">
-        <div class="photo empty" role="img" aria-label="Foto de Kauana Abrão (em breve)"><img src="assets/simbolo.png" alt=""></div>
-        <div>
-          <h3>Kauana Abrão</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </article>
-    </div>
   </div>
 </section>
 
@@ -701,8 +663,8 @@
         <h5>Navegação</h5>
         <ul>
           <li><a href="#atendimentos">Atendimentos</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#equipe">Equipe</a></li>
+          <li><a href="sobre/">Sobre</a></li>
+          <li><a href="sobre/#equipe">Equipe</a></li>
           <li><a href="#empresas">Para empresas</a></li>
           <li><a href="#como-funciona">Como funciona</a></li>
           <li><a href="#depoimentos">Depoimentos</a></li>
@@ -769,6 +731,11 @@
     const lenis = window.lenis = new Lenis({ duration: 1.15, anchors: true });
     const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
+    // endereço com #seção (vindo de outra página): rola até ela ao carregar
+    if (location.hash) {
+      const alvo = document.querySelector(location.hash);
+      if (alvo) addEventListener("load", () => setTimeout(() => lenis.scrollTo(alvo, { immediate: true }), 120));
+    }
   });
 
   const nav = document.getElementById("nav");
