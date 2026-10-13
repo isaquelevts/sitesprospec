@@ -15,6 +15,5 @@ Página estática (`index.html`) mais a página interna `sobre/index.html` (hist
 - Fontes: Playfair Display nos títulos, Josefin Sans no restante.
 - Cores: tons de bege (sem fundo branco) e o marrom da marca; cantos retos.
 ## Pendências
-- **Equipe (Giovana, Izabele, Kauana):** a seção "Nossa equipe" fica na página `sobre/index.html` e está com nome, texto *lorem ipsum* e um cartão vazio no lugar da foto. Falta trocar o texto pela apresentação de cada uma, incluir o CRP e colocar a foto: salve em `assets/fotos/` e, no `index.html`, troque o cartão vazio por `style="--img:url('assets/fotos/NOME.jpg')"` (tirando a classe `empty`).
-- **Foto da Letícia (`assets/fotos/leticia.jpg`):** provisória, recortada da foto do topo. Trocar por um retrato próprio (3:4).
-- **Vídeo de depoimento:** YouTube Shorts `mFfelZfuhdw`, na seção Depoimentos (o player só carrega ao clicar).
+- **Fotos da equipe:** as quatro fotos (`equipe-kauana.jpg`, `equipe-giovana.jpg`, `equipe-izabele.jpg`, `equipe-akyna.jpg`, recorte 4:5) estão em `assets/fotos/`. A da Akyna mostra o nome de uma faculdade ao fundo; se houver outra foto, trocar.
+- **Vídeo de depoimento:** YouTube Shorts `mFfelZfuhdw`, na seção Depoimentos. O vídeo precisa ter "Permitir incorporação" ativado no YouTube Studio para tocar no site.

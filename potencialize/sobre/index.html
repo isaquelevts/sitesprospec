@@ -164,6 +164,10 @@
   .m-crp{display:block;font-size:.7rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
   .member h3{font-size:clamp(1.6rem,2.4vw,2.1rem);margin-bottom:16px}
   .member p{color:var(--muted);max-width:560px}
+  .member .m-cred{color:var(--ink);font-size:1rem;margin-bottom:10px}
+  .member .m-mode{font-size:.7rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;line-height:1.7}
+  .member .m-quote{margin-top:22px;padding-left:20px;border-left:1px solid var(--accent);font-family:var(--serif);font-size:1.12rem;line-height:1.6;color:var(--ink);max-width:560px}
+  .founder-sign .m-cred{display:block;margin-top:16px;font-size:.98rem;color:var(--muted)}
 
   /* localização */
   .location{background:var(--bg)}
@@ -420,7 +424,7 @@
           <p>Acredito que o cuidado vai além da técnica. Antes de sermos profissionais, somos humanas, e é dessa compreensão que nasce a importância de acolher cada história com respeito, sensibilidade e responsabilidade.</p>
           <p>Foi a partir desses valores que reuni psicólogas em quem confio e que compartilham do mesmo compromisso. Juntas, construímos a Potencialize, somando diferentes conhecimentos e olhares para oferecer uma psicologia ética, atualizada e comprometida com cada pessoa.</p>
         </div>
-        <p class="founder-sign"><span class="name">Letícia Fernandes</span><span class="m-crp">Fundadora · Psicóloga · CRP 05/69793</span></p>
+        <p class="founder-sign"><span class="name">Letícia Fernandes</span><span class="m-crp">Fundadora · Psicóloga · CRP 05/69793</span><span class="m-cred">Esp. em Saúde Mental e Clínica Psicanalítica, com estudos voltados aos relacionamentos e ao feminino.</span></p>
       </div>
     </div>
 
@@ -430,7 +434,7 @@
   </div>
 </section>
 
-<!-- NOSSA EQUIPE — fotos: coloque em ../assets/fotos/ e troque o cartão vazio por style="--img:url('../assets/fotos/NOME.jpg')" (tire a classe "empty") -->
+<!-- NOSSA EQUIPE — fotos em assets/fotos/equipe-NOME.jpg (recorte 4:5) -->
 <section class="team" id="equipe">
   <div class="container">
     <div class="reveal">
@@ -440,24 +444,43 @@
     </div>
     <div class="members">
       <article class="member reveal">
-        <div class="photo empty" role="img" aria-label="Foto de Giovana Ferracioli (em breve)"><img src="../assets/simbolo.png" alt=""></div>
+        <div class="photo" role="img" aria-label="Kauana Abrão" style="--img:url('../assets/fotos/equipe-kauana.jpg');background-position:center 20%"></div>
         <div>
-          <h3>Giovana Ferracioli</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </article>
-      <article class="member reveal">
-        <div class="photo empty" role="img" aria-label="Foto de Izabele Costa (em breve)"><img src="../assets/simbolo.png" alt=""></div>
-        <div>
-          <h3>Izabele Costa</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </article>
-      <article class="member reveal">
-        <div class="photo empty" role="img" aria-label="Foto de Kauana Abrão (em breve)"><img src="../assets/simbolo.png" alt=""></div>
-        <div>
+          <span class="m-crp">Psicóloga · CRP 08/31996</span>
           <h3>Kauana Abrão</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p class="m-cred">Graduada em Psicologia pela UFPR. Pós-graduada em Transtornos Alimentares, Psicanálise e Cultura pelo Instituto ESPE.</p>
+          <p class="m-mode">Atendimento psicológico online para adolescentes e adultos</p>
+          <p>Atuo com ansiedade, relacionamentos, imagem corporal, autoestima e outras questões emocionais. Ofereço uma escuta ética e acolhedora, respeitando o tempo e a singularidade de cada pessoa.</p>
+        </div>
+      </article>
+      <article class="member reveal">
+        <div class="photo" role="img" aria-label="Giovana Ferraciolli" style="--img:url('../assets/fotos/equipe-giovana.jpg');background-position:center 18%"></div>
+        <div>
+          <span class="m-crp">Psicóloga · CRP 04/61411</span>
+          <h3>Giovana Ferraciolli</h3>
+          <p class="m-cred">Esp. em Terapia Cognitivo-Comportamental (TCC). Pós-graduanda em Neuropsicologia e Avaliação Psicológica.</p>
+          <p class="m-mode">Atendimento psicológico online para crianças, adolescentes e adultos</p>
+          <p>Trabalho com ansiedade, autoestima, relacionamentos, autoconhecimento e dificuldades emocionais. Acredito que compreender pensamentos, sentimentos e padrões de comportamento é essencial para construir relações mais saudáveis consigo e com os outros. Valorizo a escuta sem julgamentos e o respeito à singularidade de cada pessoa.</p>
+        </div>
+      </article>
+      <article class="member reveal">
+        <div class="photo" role="img" aria-label="Izabele Costa" style="--img:url('../assets/fotos/equipe-izabele.jpg');background-position:center 30%"></div>
+        <div>
+          <span class="m-crp">Psicóloga · CRP 05/67253</span>
+          <h3>Izabele Costa</h3>
+          <p class="m-cred">Graduada em Psicologia pela UFF/PUCG. Esp. em Psicologia Clínica pela PUC-Rio.</p>
+          <p class="m-mode">Atendimento psicológico presencial e online para adolescentes, adultos, casais e famílias</p>
+          <p>Ofereço um espaço de escuta acolhedor e livre de julgamentos, onde cada pessoa possa elaborar suas questões e dar lugar ao que muitas vezes não encontra palavras. Pela escuta psicanalítica, construímos novos sentidos e possibilidades de existir.</p>
+        </div>
+      </article>
+      <article class="member reveal">
+        <div class="photo" role="img" aria-label="Akyna Kaneda" style="--img:url('../assets/fotos/equipe-akyna.jpg');background-position:center 15%"></div>
+        <div>
+          <span class="m-crp">Graduanda em Psicologia · Estagiária</span>
+          <h3>Akyna Kaneda</h3>
+          <p class="m-cred">Suporte Estratégico e Comunicação</p>
+          <p>Atuação em comunicação, projetos institucionais e formação em Psicologia. Responsável pelos canais da Clínica Potencialize, conteúdos sobre saúde mental, materiais informativos e organização do podcast, grupos de estudos, supervisões clínicas e atividades de formação continuada das psicólogas, contribuindo para uma prática ética e responsável.</p>
+          <blockquote class="m-quote">“Acredito que o cuidado começa antes mesmo da primeira sessão. Por isso, busco promover uma comunicação acolhedora, respeitosa e alinhada aos princípios da Psicologia.”</blockquote>
         </div>
       </article>
     </div>
@@ -501,6 +524,7 @@
           <li><a href="../#empresas">Para empresas</a></li>
           <li><a href="../#como-funciona">Como funciona</a></li>
           <li><a href="../#depoimentos">Depoimentos</a></li>
+          <li><a href="../#podcast">Podcast</a></li>
         </ul>
       </div>
       <div>

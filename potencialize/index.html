@@ -102,12 +102,12 @@
 
   /* ============ HERO ============ */
   .hero{position:relative;min-height:100vh;min-height:100svh;color:var(--bg);display:flex;flex-direction:column;overflow:hidden;background:var(--brown-900);--img:url("assets/fotos/equipe.webp")}
-  .hero .photo{position:absolute;inset:0;background-color:var(--brown-800);background-position:60% center}
-  .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,16,0,.86) 0%,rgba(47,16,0,.6) 30%,rgba(47,16,0,.12) 52%,transparent 64%),linear-gradient(0deg,rgba(47,16,0,.5) 0%,transparent 30%)}
-  .hero-content{position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-top:110px;padding-bottom:80px}
-  .hero h1{font-size:clamp(2.6rem,4.2vw,4rem);max-width:460px;line-height:1.08}
+  .hero .photo{position:absolute;inset:0;background-color:var(--brown-800);background-position:center top}
+  .hero-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(47,16,0,.9) 0%,rgba(47,16,0,.62) 26%,rgba(47,16,0,.12) 52%,transparent 66%),linear-gradient(180deg,rgba(47,16,0,.4) 0%,transparent 16%)}
+  .hero-content{position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding-top:110px;padding-bottom:84px}
+  .hero h1{font-size:clamp(2.4rem,3.8vw,3.8rem);max-width:900px;line-height:1.08}
   .hero h1 em{color:var(--accent-soft)}
-  .hero-sub{margin:26px 0 40px;font-size:.76rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:rgba(243,236,227,.78);max-width:440px;line-height:2}
+  .hero-sub{margin:22px auto 34px;font-size:.76rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:rgba(243,236,227,.82);max-width:600px;line-height:2}
 
   /* ============ SEÇÕES ============ */
   section{padding:130px 0;position:relative}
@@ -237,6 +237,14 @@
   .t-progress{flex:1;min-width:160px;height:1px;background:var(--line);position:relative}
   .t-progress i{position:absolute;left:0;top:0;height:1px;width:var(--p,33%);background:var(--brown-900);transition:width .5s var(--ease-out)}
 
+  /* podcast */
+  .podcast{background:var(--bg-2);padding:100px 0}
+  .podcast-grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:80px;align-items:center}
+  .pod-cover{aspect-ratio:1/1;width:100%;max-width:300px}
+  .pod-text{margin-top:24px;color:var(--muted);max-width:560px}
+  .pod-hook{margin-top:16px;color:var(--ink)}
+  .podcast .btn{margin-top:32px}
+
   /* chamada final */
   .final{background:var(--brown-900);color:var(--bg);text-align:center;padding:150px 0}
   .final h2{max-width:720px;margin:0 auto}
@@ -325,11 +333,13 @@
     .diff{padding:26px 20px 26px 0;border-left:0;border-bottom:1px solid var(--line)}
     .diff:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}
     .foot-grid{grid-template-columns:1fr 1fr}
-    .hero .photo{background-position:78% center}
     .hero-shade{background:linear-gradient(0deg,rgba(47,16,0,.92) 0%,rgba(47,16,0,.55) 50%,rgba(47,16,0,.1) 80%)}
     .gallery{grid-template-columns:repeat(2,1fr);gap:12px}
     .t-track{grid-auto-columns:calc((100% - 32px) / 2);gap:32px}
     .t-body{grid-template-columns:minmax(0,1fr);gap:48px}
+    .podcast-grid{grid-template-columns:minmax(0,1fr);gap:40px;text-align:center}
+    .pod-cover{max-width:260px;margin:0 auto}
+    .pod-text,.pod-hook{margin-left:auto;margin-right:auto}
     .t-video{width:min(300px,100%);margin:0 auto}
     .t-video figcaption{text-align:center}
     .member{grid-template-columns:220px 1fr;gap:44px}
@@ -631,6 +641,20 @@
   </div>
 </section>
 
+<!-- PODCAST — capa: assets/fotos/podcast.jpg -->
+<section class="podcast" id="podcast">
+  <div class="container podcast-grid">
+    <div class="photo pod-cover" role="img" aria-label="Capa do podcast Entre um Café e um Trauma" style="--img:url('assets/fotos/podcast.jpg')"></div>
+    <div class="reveal">
+      <span class="tag">Podcast da clínica</span>
+      <h2>Entre um Café e um <em>Trauma.</em></h2>
+      <p class="pod-text">Entre um Café e um Trauma é um podcast da Potencialize que transforma conversas cotidianas em reflexões sobre saúde emocional, relações, afetos e as contradições da vida. Com uma abordagem crítica, leve e sem fórmulas prontas, questionamos aquilo que parece natural, mas merece ser repensado.</p>
+      <p class="pod-hook">Pegue seu cafezinho e venha escutar com a gente!</p>
+      <a class="btn" href="https://open.spotify.com/show/033mWYCcfUibLA7GU45GZI" target="_blank" rel="noopener">Ouvir no Spotify <svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <!-- CHAMADA FINAL -->
 <section class="final" id="contato">
   <div class="container reveal">
@@ -668,6 +692,7 @@
           <li><a href="#empresas">Para empresas</a></li>
           <li><a href="#como-funciona">Como funciona</a></li>
           <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#podcast">Podcast</a></li>
         </ul>
       </div>
       <div>
