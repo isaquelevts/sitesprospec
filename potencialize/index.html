@@ -145,12 +145,13 @@
   .diff h4{font-weight:300;font-size:1.12rem;margin-top:12px;line-height:1.4}
 
   /* sobre: fundadora */
-  .founder{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:64px}
-  .founder .photo{width:min(280px,70vw);aspect-ratio:3/4}
-  .founder h3{margin-top:28px;font-size:1.7rem}
-  .founder .m-crp{margin:10px 0 0;letter-spacing:.2em}
-  .founder-text{max-width:660px;margin-top:36px;color:var(--muted)}
+  .founder-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:96px;align-items:center}
+  .founder-grid .photo{aspect-ratio:3/4;width:100%;max-width:520px;background-position:center 30%}
+  .founder-text{margin-top:34px;color:var(--muted);max-width:560px}
   .founder-text p+p{margin-top:18px}
+  .founder-sign{margin-top:40px;padding-top:26px;border-top:1px solid var(--line);max-width:560px}
+  .founder-sign .name{display:block;font-family:var(--serif);font-size:1.6rem;line-height:1.2;color:var(--ink)}
+  .founder-sign .m-crp{margin:10px 0 0}
   .values{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;list-style:none;margin:72px auto 0;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:.72rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:var(--accent)}
 
   /* nossa equipe */
@@ -333,6 +334,10 @@
     .t-video figcaption{text-align:center}
     .member{grid-template-columns:220px 1fr;gap:44px}
     .about-grid{grid-template-columns:1fr;gap:56px}
+    .founder-grid{grid-template-columns:minmax(0,1fr);gap:48px}
+    .founder-grid{text-align:center}
+    .founder-grid .photo{max-width:340px;margin:0 auto}
+    .founder-text,.founder-sign{margin-left:auto;margin-right:auto}
     .gallery .photo:nth-child(even){margin-top:40px}
   }
   /* foto do topo ocupa a tela toda, presa no alto: a cabeça fica sempre abaixo do menu */
@@ -460,20 +465,18 @@
 <!-- SOBRE -->
 <section class="about" id="sobre">
   <div class="container">
-    <header class="center reveal">
-      <span class="tag">Sobre a Potencialize</span>
-      <h2>Nossa <em>história.</em></h2>
-    </header>
-
-    <div class="founder">
+    <div class="founder-grid">
       <div class="photo" role="img" aria-label="Letícia Fernandes, fundadora da Potencialize" style="--img:url('assets/fotos/leticia.jpg')"></div>
-      <h3>Letícia Fernandes</h3>
-      <span class="m-crp">Fundadora · Psicóloga · CRP 05/69793</span>
-      <div class="founder-text reveal">
-        <p>Há quase dez anos, dedico minha prática clínica à escuta e ao cuidado de cada pessoa em sua singularidade.</p>
-        <p>A Potencialize nasceu do desejo de levar esse cuidado a mais pessoas, sem abrir mão do que considero essencial: ética, responsabilidade, acolhimento, supervisão e estudo constante, acompanhando os avanços da psicologia.</p>
-        <p>Acredito que o cuidado vai além da técnica. Antes de sermos profissionais, somos humanas, e é dessa compreensão que nasce a importância de acolher cada história com respeito, sensibilidade e responsabilidade.</p>
-        <p>Foi a partir desses valores que reuni psicólogas em quem confio e que compartilham do mesmo compromisso. Juntas, construímos a Potencialize, somando diferentes conhecimentos e olhares para oferecer uma psicologia ética, atualizada e comprometida com cada pessoa.</p>
+      <div class="reveal">
+        <span class="tag">Sobre a Potencialize</span>
+        <h2>Nossa <em>história.</em></h2>
+        <div class="founder-text">
+          <p>Há quase dez anos, dedico minha prática clínica à escuta e ao cuidado de cada pessoa em sua singularidade.</p>
+          <p>A Potencialize nasceu do desejo de levar esse cuidado a mais pessoas, sem abrir mão do que considero essencial: ética, responsabilidade, acolhimento, supervisão e estudo constante, acompanhando os avanços da psicologia.</p>
+          <p>Acredito que o cuidado vai além da técnica. Antes de sermos profissionais, somos humanas, e é dessa compreensão que nasce a importância de acolher cada história com respeito, sensibilidade e responsabilidade.</p>
+          <p>Foi a partir desses valores que reuni psicólogas em quem confio e que compartilham do mesmo compromisso. Juntas, construímos a Potencialize, somando diferentes conhecimentos e olhares para oferecer uma psicologia ética, atualizada e comprometida com cada pessoa.</p>
+        </div>
+        <p class="founder-sign"><span class="name">Letícia Fernandes</span><span class="m-crp">Fundadora · Psicóloga · CRP 05/69793</span></p>
       </div>
     </div>
 
