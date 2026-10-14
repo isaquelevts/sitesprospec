@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="assets/fotos/equipe.webp" media="(min-width:601px)" fetchpriority="high">
 <link rel="preload" as="image" href="assets/fotos/equipe-mobile.webp" media="(max-width:600px)" fetchpriority="high">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Playfair+Display:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Playfair+Display:wght@400;500&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,600;1,300&family=Playfair+Display:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,600;1,300&family=Playfair+Display:wght@400;500&display=swap"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
 <style>
   /* ============ CONFIGURAÇÃO RÁPIDA ============
@@ -78,6 +78,14 @@
   .photo{position:relative;overflow:hidden;background-color:var(--bg-3);background-size:cover;background-position:center}
   .photo.has-img{background-image:var(--img)} /* a foto entra só depois de baixada */
 
+  /* nome + "Clínica de Psicologia" (discreto, em itálico) */
+  .brand-txt{display:flex;flex-direction:column;line-height:1.1}
+  .brand-txt small{font-style:italic;font-weight:300;font-size:.58rem;letter-spacing:.16em;text-transform:none;opacity:.78;margin-top:5px}
+
+  /* aviso discreto */
+  .private{display:block;font-style:italic;font-weight:300;font-size:.82rem;letter-spacing:.04em;line-height:1.4;color:var(--muted)}
+  .private.on-dark{color:rgba(243,236,227,.7)}
+
   /* ============ NAV ============ */
   .nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:var(--max);margin:0 auto;padding:22px 32px;transition:padding .4s}
@@ -125,6 +133,13 @@
   .card .link{margin-top:24px}
   .card:nth-child(even){margin-top:96px} /* grade desencontrada, mais leve */
 
+  /* emergencial: destaque para a disponibilidade */
+  .card .meta .alert{color:var(--brown-900);font-weight:600}
+  .card .meta .alert::before{content:"";display:inline-block;width:7px;height:7px;background:var(--accent);margin-right:9px;vertical-align:1px}
+  .card .notice{margin-top:18px;padding:14px 18px;border-left:2px solid var(--accent);background:var(--bg-2);color:var(--ink);font-size:.95rem;max-width:460px}
+  .card .notice strong{font-weight:600}
+  .card .btn{margin-top:24px}
+
   /* sobre */
   .about{background:var(--bg-2)}
   .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
@@ -145,8 +160,8 @@
   .diff h4{font-weight:300;font-size:1.12rem;margin-top:12px;line-height:1.4}
 
   /* sobre: fundadora */
-  .founder-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:96px;align-items:center}
-  .founder-grid .photo{aspect-ratio:3/4;width:100%;max-width:520px;background-position:center 30%}
+  .founder-grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:100px;align-items:center}
+  .founder-grid .photo{aspect-ratio:3/4;width:100%;max-width:380px;background-position:center 30%}
   .founder-text{margin-top:34px;color:var(--muted);max-width:560px}
   .founder-text p+p{margin-top:18px}
   .founder-sign{margin-top:40px;padding-top:26px;border-top:1px solid var(--line);max-width:560px}
@@ -237,8 +252,26 @@
   .t-progress{flex:1;min-width:160px;height:1px;background:var(--line);position:relative}
   .t-progress i{position:absolute;left:0;top:0;height:1px;width:var(--p,33%);background:var(--brown-900);transition:width .5s var(--ease-out)}
 
+  /* vídeos */
+  .videos{background:var(--bg)}
+  .v-grid{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:56px;justify-content:center;margin-top:56px}
+  .v-grid .t-video{width:auto;margin:0}
+  .t-video figcaption a{border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .3s}
+  .t-video figcaption a:hover{border-color:var(--accent)}
+
+  /* dúvidas frequentes */
+  .faq{background:var(--bg-2)}
+  .faq-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:88px;align-items:start}
+  .faq-list{border-top:1px solid var(--line)}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-family:var(--serif);font-size:1.2rem;line-height:1.35;color:var(--ink)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";flex-shrink:0;font-family:var(--font);font-size:1.5rem;font-weight:200;color:var(--accent)}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{padding:0 48px 26px 0;color:var(--muted);max-width:620px}
+
   /* podcast */
-  .podcast{background:var(--bg-2);padding:100px 0}
+  .podcast{background:var(--bg);padding:100px 0}
   .podcast-grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:80px;align-items:center}
   .pod-cover{aspect-ratio:1/1;width:100%;max-width:300px}
   .pod-text{margin-top:24px;color:var(--muted);max-width:560px}
@@ -337,6 +370,7 @@
     .gallery{grid-template-columns:repeat(2,1fr);gap:12px}
     .t-track{grid-auto-columns:calc((100% - 32px) / 2);gap:32px}
     .t-body{grid-template-columns:minmax(0,1fr);gap:48px}
+    .faq-grid{grid-template-columns:minmax(0,1fr);gap:48px}
     .podcast-grid{grid-template-columns:minmax(0,1fr);gap:40px;text-align:center}
     .pod-cover{max-width:260px;margin:0 auto}
     .pod-text,.pod-hook{margin-left:auto;margin-right:auto}
@@ -368,6 +402,11 @@
     .hero-sub{margin:20px auto 32px}
     .mosaic{grid-auto-rows:110px}
     .t-track{grid-auto-columns:86%;gap:24px}
+    .v-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:74%;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;justify-content:start;margin-left:-22px;margin-right:-22px;padding:0 22px}
+    .v-grid::-webkit-scrollbar{display:none}
+    .v-grid .t-video{scroll-snap-align:center}
+    .faq summary{font-size:1.1rem}
+    .faq details p{padding-right:0}
     .member{grid-template-columns:1fr;gap:26px;padding:40px 0}
     .member .photo{width:min(260px,100%)}
     .values{gap:10px 22px}
@@ -380,6 +419,7 @@
     .btn{padding:16px 22px 14px;letter-spacing:.2em}
   }
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Como funciona a primeira sessão?", "acceptedAnswer": {"@type": "Answer", "text": "É um espaço para começar a compreender seu momento com mais clareza. Você não precisa chegar com tudo organizado. Esse início também faz parte do processo e acontece no seu tempo. A psicóloga está ali para ajudar você nesse caminho."}}, {"@type": "Question", "name": "A terapia online funciona de verdade?", "acceptedAnswer": {"@type": "Answer", "text": "Sim! Além de manter o acompanhamento psicológico, a terapia online oferece flexibilidade para você fazer suas sessões de onde estiver, em qualquer lugar do mundo."}}, {"@type": "Question", "name": "O que eu falar na terapia fica em sigilo?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. O sigilo profissional é um princípio fundamental da Psicologia, com exceções previstas nas normas éticas e na legislação."}}, {"@type": "Question", "name": "Preciso saber o que falar na sessão?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Você pode começar pelo que estiver sentindo ou pelo que conseguir colocar em palavras. O processo acontece no seu tempo."}}, {"@type": "Question", "name": "Como saber se preciso de terapia?", "acceptedAnswer": {"@type": "Answer", "text": "Se algo tem causado sofrimento, dúvidas ou dificuldades na sua vida, a terapia pode ajudar você a compreender melhor o que está acontecendo."}}, {"@type": "Question", "name": "Quero fazer terapia de casal, mas minha parceira só fala inglês. É possível?", "acceptedAnswer": {"@type": "Answer", "text": "Sim! Temos profissionais bilíngues que atendem em português e inglês, para que ambas possam se expressar e participar do processo terapêutico."}}]}</script>
 </head>
 <body>
 
@@ -389,6 +429,8 @@
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5l13 7.5-13 7.5z" fill="currentColor"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 9.3c3.4-1 7.4-.7 10.6 1.1M7.6 12.4c2.9-.8 6.1-.5 8.7 1M8.2 15.3c2.3-.6 4.7-.4 6.8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 9.2v5.6l5-2.8z" fill="currentColor"/></symbol>
   <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></symbol>
 </svg>
@@ -399,7 +441,7 @@
     <a href="#topo" class="brand" aria-label="Potencialize — início">
       <img class="logo-light" src="assets/simbolo-claro.png" alt="">
       <img class="logo-dark" src="assets/simbolo.png" alt="">
-      Potencialize
+      <span class="brand-txt">Potencialize<small>Clínica de Psicologia</small></span>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#atendimentos">Atendimentos</a>
@@ -425,6 +467,7 @@
     <h1>Um espaço para cuidar de <em>você.</em></h1>
     <p class="hero-sub reveal">Psicologia clínica no Leblon e online</p>
     <div class="hero-cta reveal"><a class="btn light" data-wa="Olá! Gostaria de agendar meu atendimento na Potencialize." href="#">Agendar atendimento <svg><use href="#i-arrow"/></svg></a></div>
+    <span class="private on-dark reveal" style="margin-top:20px">Atendimento somente particular</span>
   </div>
 </section>
 
@@ -434,6 +477,7 @@
     <div class="section-head reveal">
       <span class="tag">Atendimentos</span>
       <h2>Cuidado para cada <em>fase da vida.</em></h2>
+      <span class="private" style="margin-top:20px">Atendimento somente particular</span>
     </div>
 
     <div class="cards">
@@ -463,10 +507,11 @@
 
       <article class="card reveal">
         <div class="photo" role="img" aria-label="Mãos segurando uma xícara durante uma conversa" style="--img:url('assets/fotos/emergencial.jpg')"></div>
-        <div class="meta"><span>04 · Emergencial</span><span>Mediante disponibilidade</span></div>
+        <div class="meta"><span>04 · Emergencial</span><span class="alert">Conforme a disponibilidade</span></div>
         <h3>Atendimento emergencial</h3>
-        <p>Acolhimento em momentos que pedem atenção imediata, inclusive fora do horário.</p>
-        <a class="link" data-wa="Olá! Gostaria de consultar a disponibilidade para um atendimento emergencial." href="#">Consultar disponibilidade <svg><use href="#i-arrow"/></svg></a>
+        <p>Acolhimento em momentos que pedem uma atenção mais imediata.</p>
+        <p class="notice"><strong>Atenção:</strong> temos horários flexíveis, mas nem sempre há equipe disponível para emergências. O atendimento é feito <strong>conforme a disponibilidade da equipe</strong> — consulte antes pelo WhatsApp.</p>
+        <a class="btn" data-wa="Olá! Gostaria de consultar a disponibilidade para um atendimento emergencial." href="#">Consultar disponibilidade no WhatsApp <svg><use href="#i-arrow"/></svg></a>
       </article>
     </div>
   </div>
@@ -481,10 +526,10 @@
         <span class="tag">Sobre a Potencialize</span>
         <h2>Nossa <em>história.</em></h2>
         <div class="founder-text">
-          <p>Há quase dez anos, dedico minha prática clínica à escuta e ao cuidado de cada pessoa em sua singularidade.</p>
-          <p>A Potencialize nasceu do desejo de levar esse cuidado a mais pessoas, sem abrir mão do que considero essencial: ética, responsabilidade, acolhimento, supervisão e estudo constante.</p>
+          <p>Há quase dez anos, dedico minha prática clínica à escuta e ao cuidado de cada pessoa em sua singularidade. A Potencialize nasceu do desejo de levar esse cuidado a mais pessoas.</p>
+          <p>Cada psicóloga da nossa equipe tem um olhar e uma escuta próprios. Conheça quem faz a Potencialize e descubra com quem você se sente mais à vontade.</p>
         </div>
-        <a class="link" href="sobre/" style="margin-top:30px">Conhecer a clínica e a equipe <svg><use href="#i-arrow"/></svg></a>
+        <a class="link" href="sobre/" style="margin-top:30px">Conhecer a história e a equipe <svg><use href="#i-arrow"/></svg></a>
         <p class="founder-sign"><span class="name">Letícia Fernandes</span><span class="m-crp">Fundadora · Psicóloga · CRP 05/69793</span></p>
       </div>
     </div>
@@ -559,87 +604,54 @@
       <li><span class="n">02</span><div><strong>Presencial ou online</strong><span class="d">No consultório do Leblon ou de onde você estiver.</span></div></li>
       <li><span class="n">03</span><div><strong>Português e inglês</strong><span class="d">Atendimento bilíngue.</span></div></li>
       <li><span class="n">04</span><div><strong>Agendamento simples</strong><span class="d">Orientamos sobre modalidades e horários pelo WhatsApp.</span></div></li>
+      <li><span class="n">05</span><div><strong>Espaço ético e sigiloso</strong><span class="d">O sigilo profissional é um princípio fundamental da Psicologia.</span></div></li>
     </ul>
   </div>
 </section>
 
-<!-- DEPOIMENTOS — avaliações do Google -->
-<section class="testimonials" id="depoimentos">
+<!-- VÍDEOS -->
+<section class="videos" id="videos">
   <div class="container">
-    <div class="t-head">
-      <div class="reveal">
-        <span class="tag">Depoimentos reais</span>
-        <h2>Quem passou por aqui <em>conta.</em></h2>
-      </div>
-      <div class="t-nav reveal">
-        <button class="t-btn prev" type="button" aria-label="Depoimento anterior"><svg><use href="#i-arrow"/></svg></button>
-        <span class="t-count" aria-live="polite">03 / 09</span>
-        <button class="t-btn next" type="button" aria-label="Próximo depoimento"><svg><use href="#i-arrow"/></svg></button>
-      </div>
+    <div class="center reveal">
+      <span class="tag">Assista</span>
+      <h2>Um pouco do nosso <em>cuidado.</em></h2>
     </div>
-    <div class="t-body">
-    <figure class="t-video reveal">
-      <div class="photo t-frame" style="--img:url('assets/fotos/video-depoimento.jpg')">
-        <button class="t-play" type="button" data-yt="mFfelZfuhdw" aria-label="Assistir ao vídeo"><span class="ico"><svg><use href="#i-play"/></svg></span></button>
-      </div>
-      <figcaption>Assista · Letícia Fernandes</figcaption>
-    </figure>
-    <div class="t-main">
-    <div class="t-track reveal" tabindex="0" aria-label="Depoimentos de pacientes">
-      <figure class="t-card">
-        <span class="q" aria-hidden="true">“</span>
-        <blockquote>A Letícia é uma profissional incrível, muito prestativa e humana. Me senti acolhida e compreendida desde a primeira consulta. Recomendo de olhos fechados.</blockquote>
-        <cite>Caroline A.<span>Paciente</span></cite>
+    <div class="v-grid">
+      <figure class="t-video reveal">
+        <div class="photo t-frame" style="--img:url('assets/fotos/video-tiktok.jpg')">
+          <button class="t-play" type="button" data-provider="tiktok" data-id="7511292191285742854" aria-label="Assistir ao vídeo"><span class="ico"><svg><use href="#i-play"/></svg></span></button>
+        </div>
+        <figcaption>Letícia Fernandes · <a href="https://www.tiktok.com/@leticiafernandespsi/video/7511292191285742854" target="_blank" rel="noopener">abrir no TikTok</a></figcaption>
       </figure>
-      <figure class="t-card">
-        <span class="q" aria-hidden="true">“</span>
-        <blockquote>Muito calma, educada, atenta e precisa, ela consegue acessar camadas que geram reflexões importantes nas sessões. Sou muito grato pelos avanços e pela troca.</blockquote>
-        <cite>Emmanuel T.<span>Paciente</span></cite>
+      <figure class="t-video reveal">
+        <div class="photo t-frame" style="--img:url('assets/fotos/video-youtube.jpg')">
+          <button class="t-play" type="button" data-provider="youtube" data-id="x3Sj95q1njM" aria-label="Assistir ao vídeo"><span class="ico"><svg><use href="#i-play"/></svg></span></button>
+        </div>
+        <figcaption>Encontros Potencialize · <a href="https://www.youtube.com/shorts/x3Sj95q1njM" target="_blank" rel="noopener">abrir no YouTube</a></figcaption>
       </figure>
-      <figure class="t-card">
-        <span class="q" aria-hidden="true">“</span>
-        <blockquote>Venho deixar meu agradecimento pelo trabalho que ela tem feito com meu filho. Tem sido muito importante não só para ele, mas para toda a família.</blockquote>
-        <cite>André L.<span>Pai de paciente</span></cite>
-      </figure>
-      <figure class="t-card">
-        <span class="q" aria-hidden="true">“</span>
-        <blockquote>Uma profissional incrível, com um atendimento sensível e sem julgamentos. Recomendo fortemente.</blockquote>
-        <cite>Débora L.<span>Paciente</span></cite>
-      </figure>
-      <figure class="t-card">
-        <span class="q" aria-hidden="true">“</span>
-        <blockquote>Simpática e amigável, com uma fala que cria um ambiente seguro e acolhedor. Demonstra empatia genuína e compreensão, o que facilita poder falar abertamente.</blockquote>
-        <cite>Fabio D.<span>Paciente</span></cite>
-      </figure>
-      <figure class="t-card">
-        <span class="q" aria-hidden="true">“</span>
-        <blockquote>Transmite uma paz desde o sorriso até a fala. Sua voz é calmaria. O seu trabalho é fundamental para nossa sociedade.</blockquote>
-        <cite>Ana Laura C.<span>Paciente</span></cite>
-      </figure>
-      <figure class="t-card">
-        <span class="q" aria-hidden="true">“</span>
-        <blockquote>Muito querida, atenciosa e atenta a todos os detalhes, contribuindo sempre com um diálogo aberto e reflexivo.</blockquote>
-        <cite>Dani K.<span>Paciente</span></cite>
-      </figure>
-      <figure class="t-card">
-        <span class="q" aria-hidden="true">“</span>
-        <blockquote>Profissional atenciosa, sempre com uma escuta ativa e afetiva. Preocupada com a evolução do paciente e disposta a dar o melhor.</blockquote>
-        <cite>Camila O.<span>Paciente</span></cite>
-      </figure>
-      <figure class="t-card">
-        <span class="q" aria-hidden="true">“</span>
-        <blockquote>Profissional muito dedicada, humana e acolhedora, que oferece um atendimento diferenciado aos seus pacientes.</blockquote>
-        <cite>Rita B.<span>Paciente</span></cite>
-      </figure>
-    </div>
-    <div class="t-foot reveal">
-      <div class="t-progress" aria-hidden="true"><i></i></div>
-      <a class="link" href="https://www.google.com/maps?cid=11620334063093860325&hl=pt-BR" target="_blank" rel="noopener">Ver avaliações no Google <svg><use href="#i-arrow"/></svg></a>
-    </div>
-    </div>
     </div>
   </div>
 </section>
+
+<!-- DÚVIDAS FREQUENTES -->
+<section class="faq" id="duvidas">
+  <div class="container faq-grid">
+    <div class="reveal">
+      <span class="tag">Dúvidas frequentes</span>
+      <h2>Perguntas que costumam <em>surgir.</em></h2>
+      <p class="lead" style="margin-top:22px">Um espaço ético e sigiloso, no seu tempo.</p>
+    </div>
+    <div class="faq-list reveal">
+      <details><summary>Como funciona a primeira sessão?</summary><p>É um espaço para começar a compreender seu momento com mais clareza. Você não precisa chegar com tudo organizado. Esse início também faz parte do processo e acontece no seu tempo. A psicóloga está ali para ajudar você nesse caminho.</p></details>
+      <details><summary>A terapia online funciona de verdade?</summary><p>Sim! Além de manter o acompanhamento psicológico, a terapia online oferece flexibilidade para você fazer suas sessões de onde estiver, em qualquer lugar do mundo.</p></details>
+      <details><summary>O que eu falar na terapia fica em sigilo?</summary><p>Sim. O sigilo profissional é um princípio fundamental da Psicologia, com exceções previstas nas normas éticas e na legislação.</p></details>
+      <details><summary>Preciso saber o que falar na sessão?</summary><p>Não. Você pode começar pelo que estiver sentindo ou pelo que conseguir colocar em palavras. O processo acontece no seu tempo.</p></details>
+      <details><summary>Como saber se preciso de terapia?</summary><p>Se algo tem causado sofrimento, dúvidas ou dificuldades na sua vida, a terapia pode ajudar você a compreender melhor o que está acontecendo.</p></details>
+      <details><summary>Quero fazer terapia de casal, mas minha parceira só fala inglês. É possível?</summary><p>Sim! Temos profissionais bilíngues que atendem em português e inglês, para que ambas possam se expressar e participar do processo terapêutico.</p></details>
+    </div>
+  </div>
+</section>
+
 
 <!-- PODCAST — capa: assets/fotos/podcast.jpg -->
 <section class="podcast" id="podcast">
@@ -676,11 +688,13 @@
   <div class="container">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand"><img src="assets/simbolo-claro.png" alt="">Potencialize</div>
+        <div class="foot-brand"><img src="assets/simbolo-claro.png" alt=""><span class="brand-txt">Potencialize<small>Clínica de Psicologia</small></span></div>
         <p>Psicologia, cuidado e desenvolvimento humano.</p>
         <div class="socials">
           <a href="https://www.instagram.com/potencializeclinicadepsico/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-insta"/></svg></a>
           <a data-wa="Olá! Vim pelo site da Potencialize." href="#" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+          <a href="https://open.spotify.com/show/033mWYCcfUibLA7GU45GZI" target="_blank" rel="noopener" aria-label="Spotify"><svg><use href="#i-spotify"/></svg></a>
+          <a href="https://www.youtube.com/@Leticiafernandespsi" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-youtube"/></svg></a>
         </div>
       </div>
       <div>
@@ -691,7 +705,8 @@
           <li><a href="sobre/#equipe">Equipe</a></li>
           <li><a href="#empresas">Para empresas</a></li>
           <li><a href="#como-funciona">Como funciona</a></li>
-          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#videos">Vídeos</a></li>
+          <li><a href="#duvidas">Dúvidas</a></li>
           <li><a href="#podcast">Podcast</a></li>
         </ul>
       </div>
@@ -716,7 +731,7 @@
     </div>
     <div class="wordmark" aria-hidden="true">Potencialize</div>
     <div class="foot-bottom">
-      <span>© <span id="year"></span> Potencialize — Clínica de Psicologia e Desenvolvimento Humano</span>
+      <span>© <span id="year"></span> Potencialize — Clínica de Psicologia e Desenvolvimento Humano · CNPJ 47.599.440/0001-70</span>
       <span>Leblon · Rio de Janeiro</span>
     </div>
   </div>
@@ -816,7 +831,7 @@
   wm.classList.add("letters");
 
   // sequência de abertura do topo
-  [[".hero h1", 300], [".hero-sub", 900], [".hero-cta", 1150]]
+  [[".hero h1", 300], [".hero-sub", 900], [".hero-cta", 1150], [".hero .private", 1400]]
     .forEach(([sel, d]) => document.querySelector(sel).style.setProperty("--d", d));
 
   const io = new IntersectionObserver(entries => {
@@ -841,63 +856,15 @@
     (proxy._photos ||= []).push(p); ioImg.observe(proxy);
   });
 
-  // Depoimentos: carrossel com setas, arraste/deslize e contador
-  (() => {
-    const track = document.querySelector(".t-track");
-    if (!track) return;
-    const cards = [...track.children], total = cards.length;
-    const prev = document.querySelector(".t-btn.prev"), next = document.querySelector(".t-btn.next");
-    const count = document.querySelector(".t-count"), bar = document.querySelector(".t-progress i");
-    const pad = n => String(n).padStart(2, "0");
-    const step = () => cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0);
-    const update = () => {
-      const s = step(), per = Math.max(1, Math.round(track.clientWidth / s));
-      const i = Math.min(total - per, Math.round(track.scrollLeft / s));
-      const last = Math.min(total, i + per);
-      count.textContent = `${pad(last)} / ${pad(total)}`;
-      bar.style.setProperty("--p", (last / total * 100) + "%");
-      prev.disabled = track.scrollLeft < 4;
-      next.disabled = track.scrollLeft > track.scrollWidth - track.clientWidth - 4;
-    };
-    // cada clique vai para um depoimento exato (cliques seguidos se acumulam)
-    let target = 0;
-    const go = dir => {
-      const s = step(), max = track.scrollWidth - track.clientWidth;
-      const from = Math.abs(track.scrollLeft - target * s) < s / 2 ? target : Math.round(track.scrollLeft / s);
-      target = Math.max(0, Math.min(Math.ceil(max / s), from + dir));
-      track.style.scrollSnapType = "none"; // o encaixe volta quando a animação termina
-      track.scrollTo({ left: Math.min(max, target * s), behavior: "smooth" });
-      clearTimeout(go.t); go.t = setTimeout(() => { track.style.scrollSnapType = ""; }, 900);
-    };
-    prev.addEventListener("click", () => go(-1));
-    next.addEventListener("click", () => go(1));
-    track.addEventListener("keydown", e => {
-      if (e.key === "ArrowRight") { e.preventDefault(); next.click(); }
-      if (e.key === "ArrowLeft") { e.preventDefault(); prev.click(); }
-    });
-    // arrastar com o mouse no desktop (no celular o deslize é nativo)
-    let down = false, x0 = 0, s0 = 0;
-    track.addEventListener("pointerdown", e => {
-      if (e.pointerType !== "mouse") return;
-      down = true; x0 = e.clientX; s0 = track.scrollLeft; track.style.scrollSnapType = "none";
-    });
-    addEventListener("pointermove", e => { if (down) track.scrollLeft = s0 - (e.clientX - x0); });
-    addEventListener("pointerup", () => {
-      if (!down) return;
-      down = false; track.style.scrollSnapType = "";
-      track.scrollTo({ left: Math.round(track.scrollLeft / step()) * step(), behavior: "smooth" });
-    });
-    track.addEventListener("scroll", update, { passive: true });
-    addEventListener("resize", update);
-    update();
-  })();
 
-  // Vídeo de depoimento: o player do YouTube só carrega quando a pessoa clica
+  // Vídeos: o player (YouTube ou TikTok) só carrega quando a pessoa clica
   document.querySelectorAll(".t-play").forEach(btn => btn.addEventListener("click", () => {
-    const frame = btn.closest(".t-frame");
+    const frame = btn.closest(".t-frame"), id = btn.dataset.id;
     const f = document.createElement("iframe");
-    f.src = "https://www.youtube-nocookie.com/embed/" + btn.dataset.yt + "?autoplay=1&rel=0&playsinline=1&modestbranding=1";
-    f.title = "Vídeo de depoimento — Letícia Fernandes";
+    f.src = btn.dataset.provider === "tiktok"
+      ? "https://www.tiktok.com/player/v1/" + id + "?autoplay=1&music_info=0&description=0&rel=0&native_context_menu=0"
+      : "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&playsinline=1&modestbranding=1";
+    f.title = "Vídeo — Potencialize";
     f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
     f.allowFullscreen = true;
     frame.replaceChildren(f);
