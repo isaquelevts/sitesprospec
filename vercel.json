@@ -43,6 +43,10 @@
     {
       "source": "/potencialize/",
       "destination": "/potencialize/index.html"
+    },
+    {
+      "source": "/caiomartins/",
+      "destination": "/caiomartins/index.html"
     }
   ],
   "redirects": [
@@ -54,6 +58,11 @@
     {
       "source": "/potencialize/sobre",
       "destination": "/potencialize/sobre/",
+      "permanent": true
+    },
+    {
+      "source": "/caiomartins",
+      "destination": "/caiomartins/",
       "permanent": true
     }
   ]
