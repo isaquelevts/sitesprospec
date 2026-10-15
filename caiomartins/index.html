@@ -293,8 +293,16 @@
 
   /* ---------- CTA FINAL ---------- */
   .final { min-height: max(44.271vw, 760px); display: flex; align-items: center; overflow: hidden; background: #000; }
-  .final__media { position: absolute; inset: 0; }
-  .final__media img { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+  /* A capa cobre a seção (igual a object-fit: cover), mas é deslocada para o Caio — que começa em ~44% da imagem —
+     ficar logo depois de onde o texto termina (--text-end), em vez de longe dele em notebooks. */
+  .final { --text-end: 920px; }
+  .final__media { position: absolute; inset: 0; container-type: size; }
+  .final__media img {
+    position: absolute; max-width: none;
+    top: calc((100cqh - max(100cqh, 44.271cqw)) * .5);
+    width: max(100cqw, 225.882cqh); height: max(100cqh, 44.271cqw);
+    left: clamp(100cqw - max(100cqw, 225.882cqh), var(--text-end) + 24px - max(100cqw, 225.882cqh) * .44, 0px);
+  }
   /* mesma borda em degradê da 2ª seção: some nas pontas, forte no meio */
   .final::before {
     content: ""; position: absolute; z-index: 3; left: 0; right: 0; top: 0; height: 1px; pointer-events: none;
@@ -324,8 +332,6 @@
 
   /* =================== RESPONSIVO =================== */
   @media (max-width: 1500px) {
-    .hero__inner, .final__inner { padding-left: max(24px, calc((100vw - var(--container)) / 2 + 24px)); }
-    .final__content { width: 560px; }
   }
   @media (max-width: 1260px) {
     .notfor__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 56px; padding: 0 24px; }
@@ -341,8 +347,26 @@
     .tl-card { padding: 12px 32px; }
     .step h3 { font-size: 32px; line-height: 1.2; }
     .step p { font-size: 18px; }
-    .final h2 { font-size: 44px; line-height: 1.15; }
   }
+  /* ===== NOTEBOOK / DESKTOP MENOR: hero e CTA final escalam com a largura da tela =====
+     (as medidas do Figma são para 1920px; aqui tudo encolhe junto, sem o texto invadir a foto) */
+  @media (min-width: 901px) and (max-width: 1799px) {
+    .btn { width: clamp(290px, 20.2vw, 387px); height: clamp(54px, 3.4vw, 65px); font-size: clamp(15px, 1.04vw, 20px); padding: 8px 18px; }
+
+    .hero { --pad-l: clamp(40px, 8vw, 351px); }
+    .hero__inner { padding: clamp(36px, 4.2vw, 80px) 24px clamp(36px, 4.2vw, 80px) var(--pad-l); }
+    .hero__content { width: min(527px, calc(42vw - var(--pad-l))); gap: clamp(20px, 2.2vw, 45px); }
+    .hero__logo { width: clamp(190px, 14.2vw, 273px); }
+    .hero h1 { font-size: clamp(27px, 2.5vw, 40px); line-height: 1.26; }
+    .hero__sub { font-size: clamp(15px, 1.25vw, 22px); line-height: 1.38; }
+
+    .final { --pad-l: clamp(24px, 12.5vw, 240px); --txt-w: min(680px, 35vw); --text-end: calc(var(--pad-l) + var(--txt-w)); }
+    .final__inner { padding: clamp(48px, 4.5vw, 80px) 24px clamp(48px, 4.5vw, 80px) var(--pad-l); }
+    .final__content { width: var(--txt-w); gap: clamp(20px, 1.7vw, 32px); }
+    .final h2 { font-size: clamp(32px, 2.8vw, 54px); line-height: 1.15; }
+    .final p { font-size: clamp(15px, 1.04vw, 20px); }
+  }
+
   @media (max-width: 900px) {
     .hero { min-height: auto; align-items: flex-end; }
     .hero__media { bottom: auto; height: auto; container-type: normal; }
@@ -367,8 +391,8 @@
 
     .final { min-height: auto; align-items: flex-end; }
     .final { background: #03060c; }
-    .final__media { bottom: auto; height: auto; }
-    .final__media img { height: auto; }
+    .final__media { bottom: auto; height: auto; container-type: normal; }
+    .final__media img { position: static; width: 100%; height: auto; }
     .final__inner { padding: max(260px, 70vw) 20px 72px; }
     .final__content { margin: 0 auto; align-items: center; text-align: center; }
 
