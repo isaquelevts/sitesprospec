@@ -1,7 +1,8 @@
 (() => {
   const root = document.documentElement;
 
-  /* ---------- Link dos botões: troque aqui e todos os CTAs mudam ---------- */
+  /* ---------- Botões "APLICAR PARA CONSULTORIA" ----------
+     Eles abrem o popup de aplicação (assets/js/quiz.js). O CTA_URL só é usado se o quiz não carregar. */
   const CTA_URL = "#aplicar";
   document.querySelectorAll(".js-cta").forEach(a => {
     a.href = CTA_URL;
@@ -13,8 +14,13 @@
   const vals = ["37,90", "67,41", "37,90", "94,58", "37,90", "67,41"];
   const notif = v =>
     `<div class="notif"><img class="notif__icon" src="assets/opt/notif-icon.webp" width="58" height="58" alt="" decoding="async"><div class="notif__body"><div class="notif__top"><span class="notif__title">Venda aprovada</span><span class="notif__time">agora</span></div><div class="notif__text">Sua comissão: R$ ${v}</div></div></div>`;
+  // cada faixa = duas metades iguais (loop sem emenda). Metade só um pouco maior que a tela:
+  // faixas muito largas passam do limite de camada do Safari no iPhone e simplesmente não aparecem.
+  const half = Math.max(3, Math.ceil((window.innerWidth / (window.innerWidth <= 640 ? 0.6 : 1)) / 480) + 1);
   document.querySelectorAll("[data-notifs]").forEach(el => {
-    el.innerHTML = Array.from({ length: +el.dataset.notifs }, (_, i) => notif(vals[i % vals.length])).join("");
+    const row = Array.from({ length: half }, (_, i) => notif(vals[i % vals.length])).join("");
+    el.innerHTML = row + row;
+    el.style.animationDuration = half * (el.closest(".notifs__row--back") ? 9 : 6.5) + "s"; // mesma velocidade em qualquer tela; a de trás mais lenta
   });
 
   /* ---------- Notificações sobre a capa do hero (desktop) ---------- */
@@ -35,6 +41,13 @@
   }
 
   gsap.registerPlugin(ScrollTrigger);
+
+  // posição salva antes do F5: começamos do topo e voltamos pra ela depois que as animações existem
+  let restoreY = 0;
+  try { restoreY = sessionStorage.getItem("lp-scroll-y"); sessionStorage.removeItem("lp-scroll-y"); } catch {}
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (restoreY > 0) window.scrollTo(0, 0);
+  window.addEventListener("pagehide", () => { try { sessionStorage.setItem("lp-scroll-y", String(Math.round(window.scrollY))); } catch {} });
   gsap.defaults({ ease: "power3.out", duration: 0.9 });
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => gsap.utils.toArray(s, c);
@@ -48,11 +61,13 @@
   /* ===== 0. Scroll suave (Lenis) sincronizado com o ScrollTrigger ===== */
   if (window.Lenis) {
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 1 });
+    window.__lenis = lenis; // o popup de aplicação pausa o scroll enquanto está aberto
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(t => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
     // links internos (#aplicar etc.) também rolam suave
     document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+      if (a.classList.contains("js-cta") && window.openQuiz) return; // com o popup de aplicação, ele cuida do clique
       const id = a.getAttribute("href");
       const target = id.length > 1 && document.querySelector(id);
       if (target) { e.preventDefault(); lenis.scrollTo(target, { duration: 1.4 }); }
@@ -261,4 +276,27 @@
   // Recalcula posições depois que fontes e imagens carregam
   window.addEventListener("load", () => ScrollTrigger.refresh());
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+
+  /* ===== Recarregar no meio da página (F5) =====
+     O navegador devolvia a posição antes das animações existirem, e os elementos ficavam invisíveis.
+     Agora a posição é restaurada por nós, depois que tudo está pronto, e uma rede de segurança
+     revela qualquer elemento que tenha ficado escondido acima ou dentro da tela. */
+  const revealStuck = () => {
+    const vh = window.innerHeight;
+    $$('[data-a], .step__text > *, .hero__content > *').forEach(el => {
+      if (+getComputedStyle(el).opacity > 0.5) return;
+      if (el.getBoundingClientRect().top < vh * 0.95) gsap.to(el, { opacity: 1, x: 0, y: 0, scale: 1, clipPath: "none", duration: 0.6, ease: "power2.out", overwrite: "auto" });
+    });
+  };
+  afterLoader(() => {
+    const saved = +(restoreY || 0);
+    ScrollTrigger.refresh();
+    if (saved > 0) {
+      if (window.__lenis) window.__lenis.scrollTo(saved, { immediate: true, force: true });
+      else window.scrollTo(0, saved);
+      ScrollTrigger.update();
+    }
+    setTimeout(revealStuck, 450);
+  });
+  ScrollTrigger.addEventListener("scrollEnd", revealStuck);
 })();

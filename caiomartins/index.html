@@ -74,6 +74,147 @@
     .loader__logo path, .loader__bar span, .loader::before { animation: none; fill-opacity: 1; stroke-opacity: 0; transform: none; opacity: 1; }
   }
 
+  /* ---------- Barra de rolagem personalizada (página e formulário) ---------- */
+  html { scrollbar-width: thin; scrollbar-color: #1a8f93 #020608; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #020608; }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 99px; border: 3px solid #020608;
+    background: linear-gradient(180deg, #8effff, #00b8b8);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #c3ffff, #18ffff); }
+  ::-webkit-scrollbar-corner { background: #020608; }
+  /* dentro do formulário: trilho invisível e barra fina que some nas bordas */
+  .quiz__body { scrollbar-width: thin; scrollbar-color: rgba(24,255,255,.45) transparent; }
+  .quiz__body::-webkit-scrollbar { width: 6px; }
+  .quiz__body::-webkit-scrollbar-track { background: transparent; margin: 14px 0; }
+  .quiz__body::-webkit-scrollbar-thumb { border: 0; border-radius: 99px; background: linear-gradient(180deg, rgba(142,255,255,.7), rgba(0,184,184,.5)); }
+  .quiz__body::-webkit-scrollbar-button { display: none; height: 0; }
+  ::-webkit-scrollbar-button { display: none; height: 0; }
+
+  /* ---------- Popup de aplicação (quiz sequencial) ---------- */
+  html.quiz-open, html.quiz-open body { overflow: hidden; }
+  .quiz { position: fixed; inset: 0; z-index: 9000; display: grid; place-items: center; padding: 24px; }
+  .quiz[hidden] { display: none; }
+  .quiz__backdrop { position: absolute; inset: 0; background: rgba(0, 6, 9, .78); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  .quiz__dialog {
+    position: relative; width: min(680px, 100%); max-height: min(860px, calc(100svh - 48px));
+    display: flex; flex-direction: column; overflow: hidden; outline: none;
+    border-radius: 24px; border: 1px solid rgba(97, 212, 235, .3);
+    background:
+      radial-gradient(ellipse 70% 45% at 50% 0%, rgba(24, 255, 255, .11), transparent 70%),
+      linear-gradient(180deg, #061212 0%, #030909 100%);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .6), 0 0 60px rgba(24, 255, 255, .06), inset 0 1px 0 rgba(255, 255, 255, .05);
+  }
+  .quiz__top { display: flex; align-items: center; gap: 16px; padding: 22px 26px 16px; }
+  .quiz__logo { width: 150px; height: auto; }
+  .quiz__count { margin-left: auto; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(138, 251, 251, .8); font-variant-numeric: tabular-nums; }
+  .quiz__close { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; color: #c1ebeb; background: rgba(255, 255, 255, .04); border: 1px solid rgba(97, 212, 235, .18); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .quiz__close:hover { background: rgba(24, 255, 255, .1); color: #fff; border-color: rgba(24, 255, 255, .45); }
+  .quiz__progress { height: 3px; margin: 0 26px; border-radius: 3px; background: rgba(97, 212, 235, .12); overflow: hidden; }
+  .quiz__progress span { display: block; height: 100%; width: 3%; border-radius: inherit; background: linear-gradient(90deg, #00b8b8, #8effff); box-shadow: 0 0 12px rgba(24, 255, 255, .6); transition: width .5s cubic-bezier(.2, .8, .2, 1); }
+  .quiz__body { display: flex; flex-direction: column; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 30px 40px 28px; }
+  .quiz__step { display: flex; flex-direction: column; gap: 14px; }
+  .quiz__eyebrow { font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(138, 251, 251, .75); }
+  .quiz__intro { font-size: 15px; line-height: 1.55; color: rgba(193, 235, 235, .7); font-weight: 300; }
+  .quiz__title {
+    font-size: clamp(22px, 2.4vw, 30px); line-height: 1.25; font-weight: 600; letter-spacing: -.02em;
+    background: var(--head-grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .quiz__title em { font-style: normal; font-weight: 700; color: #18ffff; -webkit-text-fill-color: #5ffcfc; }
+  .quiz__note { font-size: 14.5px; line-height: 1.6; color: rgba(193, 235, 235, .65); font-weight: 300; }
+  .quiz__fieldwrap { margin-top: 12px; display: flex; flex-direction: column; gap: 14px; }
+
+  .quiz__field { display: flex; flex-direction: column; gap: 8px; }
+  .quiz__label { font-size: 13px; color: #8fa9a9; letter-spacing: .02em; }
+  .quiz__input {
+    display: flex; align-items: center; gap: 4px; padding: 0 18px; min-height: 58px;
+    border-radius: 14px; border: 1px solid rgba(97, 212, 235, .22); background: rgba(0, 12, 12, .7);
+    transition: border-color .2s, box-shadow .2s, background .2s;
+  }
+  .quiz__input:focus-within { border-color: rgba(24, 255, 255, .7); background: rgba(0, 20, 20, .85); box-shadow: 0 0 0 4px rgba(24, 255, 255, .1), 0 0 24px rgba(24, 255, 255, .12); }
+  .quiz__input.is-invalid { border-color: rgba(255, 90, 100, .7); box-shadow: 0 0 0 4px rgba(255, 75, 75, .1); }
+  .quiz__prefix { font-size: 19px; color: #5ffcfc; font-weight: 500; }
+  .quiz__input input, .quiz__input textarea {
+    flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: #f3ffff;
+    font: 400 18px/1.4 "Inter", system-ui, sans-serif; padding: 16px 0;
+  }
+  .quiz__input textarea { resize: none; min-height: 132px; }
+  .quiz__input input::placeholder, .quiz__input textarea::placeholder { color: rgba(193, 235, 235, .32); }
+  .quiz__input--area { align-items: stretch; }
+
+  .quiz__options { display: flex; flex-direction: column; gap: 10px; }
+  .quiz__opt {
+    display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; cursor: pointer;
+    padding: 14px 16px; min-height: 58px; border-radius: 14px; color: #e6efef;
+    font: 400 16.5px/1.4 "Inter", system-ui, sans-serif;
+    border: 1px solid rgba(97, 212, 235, .2); background: linear-gradient(110deg, rgba(0, 12, 12, .75), rgba(12, 24, 24, .75));
+    transition: border-color .2s, background .2s, transform .2s, box-shadow .2s;
+  }
+  .quiz__opt:hover { border-color: rgba(24, 255, 255, .5); transform: translateX(3px); }
+  .quiz__opt:focus-visible { outline: 2px solid #18ffff; outline-offset: 2px; }
+  .quiz__key {
+    flex: 0 0 auto; width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center;
+    font-size: 13px; font-weight: 600; color: #8afbfb; border: 1px solid rgba(97, 212, 235, .35); background: rgba(24, 255, 255, .05);
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .quiz__opt-text { flex: 1; }
+  .quiz__check { flex: 0 0 auto; color: #002443; opacity: 0; transform: scale(.5); transition: opacity .2s, transform .25s cubic-bezier(.3, 1.6, .5, 1); }
+  .quiz__opt.is-selected {
+    border-color: rgba(24, 255, 255, .85); color: #fff;
+    background: linear-gradient(110deg, rgba(0, 184, 184, .2), rgba(24, 255, 255, .08));
+    box-shadow: 0 0 0 1px rgba(24, 255, 255, .25), 0 0 26px rgba(24, 255, 255, .15);
+  }
+  .quiz__opt.is-selected .quiz__key { background: radial-gradient(circle at 50% 80%, #8effff, #00b8b8); color: #002443; border-color: transparent; }
+  .quiz__opt.is-selected .quiz__check { opacity: 1; transform: scale(1); color: #5ffcfc; }
+
+  .quiz__error { min-height: 20px; font-size: 14px; color: #ff7a85; }
+  .quiz__nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
+  .quiz__nav--center { justify-content: center; margin-top: 24px; }
+  .quiz__back {
+    display: inline-flex; align-items: center; gap: 6px; padding: 12px 14px 12px 8px; border-radius: 12px; cursor: pointer;
+    background: transparent; border: 0; color: #8fa9a9; font: 500 15px "Inter", sans-serif; transition: color .2s;
+  }
+  .quiz__back:hover:not(:disabled) { color: #fff; }
+  .quiz__back:disabled { opacity: 0; pointer-events: none; }
+  .quiz__next {
+    position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 210px; height: 54px; padding: 0 28px;
+    border: 0; border-radius: 999px; cursor: pointer; font: 600 17px "Inter", sans-serif; letter-spacing: -.5px;
+    background: radial-gradient(55% 120% at 48% 89%, #8effff 0%, #86ffff 50%, #65eded 63%, #43dcdc 75%, #22caca 88%, #11c1c1 94%, #00b8b8 100%);
+    box-shadow: inset 0 -2px 0 #00bebe, inset 0 1px 0 #98ffff, 0 0 18px rgba(43, 255, 255, .18);
+    transition: box-shadow .25s, transform .2s, opacity .2s;
+  }
+  .quiz__next span { background: linear-gradient(90deg, #002443, #003a6c); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .quiz__next:hover { box-shadow: inset 0 -2px 0 #00bebe, inset 0 1px 0 #98ffff, 0 0 32px rgba(43, 255, 255, .45); transform: translateY(-1px); }
+  .quiz__next:disabled { opacity: .6; cursor: wait; }
+  .quiz__hint { margin-top: 14px; font-size: 12.5px; color: rgba(143, 169, 169, .7); text-align: right; }
+  .quiz__hint b { font-weight: 600; color: rgba(193, 235, 235, .8); }
+
+  .quiz__final { align-items: center; text-align: center; padding: 26px 0 6px; }
+  .quiz__badge {
+    width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 8px;
+    font-size: 34px; font-weight: 700; color: #002443;
+    background: radial-gradient(circle at 50% 80%, #8effff, #00b8b8);
+    box-shadow: 0 0 0 10px rgba(24, 255, 255, .08), 0 0 50px rgba(24, 255, 255, .4);
+  }
+  .quiz__badge.is-muted { background: rgba(24, 255, 255, .1); color: #8afbfb; box-shadow: 0 0 0 10px rgba(24, 255, 255, .04); }
+  .quiz__final .quiz__note { max-width: 440px; font-size: 16px; }
+
+  @media (max-width: 640px) {
+    .quiz { padding: 0; place-items: stretch; }
+    .quiz__dialog { width: 100%; max-height: none; height: 100svh; border-radius: 0; border: 0; }
+    .quiz__top { padding: 16px 18px 12px; }
+    .quiz__logo { width: 128px; }
+    .quiz__progress { margin: 0 18px; }
+    .quiz__body { flex: 1; padding: 24px 18px calc(18px + env(safe-area-inset-bottom)); }
+    .quiz__nav { margin-top: auto; padding-top: 16px; position: sticky; bottom: 0; }
+    .quiz__next { flex: 1; min-width: 0; }
+    .quiz__hint { display: none; }
+    .quiz__opt { font-size: 15.5px; padding: 13px 14px; }
+    .quiz__opt:hover { transform: none; }
+    .quiz__input input, .quiz__input textarea { font-size: 16px; }
+  }
+
   /* scroll suave (Lenis) */
   html.lenis, html.lenis body { height: auto; }
   .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -184,9 +325,9 @@
   /* corta só nas laterais — em cima/embaixo o desfoque fica livre, sem "linha cortada" */
   .notifs { position: relative; z-index: 3; height: 300px; margin-top: -40px; overflow-x: clip; overflow-y: visible; pointer-events: none; }
   .notifs__row { position: absolute; left: 50%; display: flex; width: max-content; }
-  .notifs__row--back { top: 40px; transform: translateX(-50%) rotate(3.6deg); filter: blur(9.75px); opacity: .47; will-change: transform; }
+  .notifs__row--back { top: 40px; transform: translateX(-50%) rotate(3.6deg); filter: blur(9.75px); opacity: .47; }
   .notifs__row--front { top: 110px; transform: translateX(-50%) rotate(-2.45deg); }
-  .notifs__track { display: flex; gap: 14.7px; animation: marquee 40s linear infinite; will-change: transform; }
+  .notifs__track { display: flex; gap: 14.7px; animation: marquee 40s linear infinite; }
   /* fileira de trás anda para o lado oposto */
   .notifs__row--back .notifs__track { animation-duration: 55s; animation-direction: reverse; }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -399,6 +540,7 @@
     .final__media img { position: static; width: 100%; height: auto; }
     .final__inner { padding: max(260px, 70vw) 20px 72px; }
     .final__content { margin: 0 auto; align-items: center; text-align: center; }
+    .final h2 { font-size: clamp(30px, 6.5vw, 44px); line-height: 1.18; }
 
     .footer__inner { flex-direction: column; text-align: center; }
     .footer__links { align-items: center; }
@@ -559,8 +701,8 @@
 
 <!-- ================= NOTIFICAÇÕES ================= -->
 <div class="notifs" aria-hidden="true">
-  <div class="notifs__row notifs__row--back"><div class="notifs__track" data-notifs="12"></div></div>
-  <div class="notifs__row notifs__row--front"><div class="notifs__track" data-notifs="12"></div></div>
+  <div class="notifs__row notifs__row--back"><div class="notifs__track" data-notifs></div></div>
+  <div class="notifs__row notifs__row--front"><div class="notifs__track" data-notifs></div></div>
 </div>
 
 <!-- ================= RESULTADOS ================= -->
