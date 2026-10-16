@@ -82,7 +82,7 @@
   /* botão */
   .btn {
     position: relative; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;
-    width: 420px; max-width: 100%; height: 68px; padding: 10px 24px; margin-top: 8px; border-radius: 999px;
+    width: 420px; max-width: 100%; height: 68px; padding: 10px 24px; margin-top: 8px; margin-bottom: 4px; flex: 0 0 auto; border-radius: 999px;
     background: radial-gradient(55% 120% at 48% 89%, #8effff 0%, #86ffff 50%, #65eded 63%, #43dcdc 75%, #22caca 88%, #11c1c1 94%, #00b8b8 100%);
     box-shadow: inset 0 -2px 0 #00bebe, inset 0 1px 0 #98ffff, 0 0 26px rgba(43,255,255,.25);
     font-size: 19px; font-weight: 700; letter-spacing: -.5px; white-space: nowrap; transition: box-shadow .25s, transform .2s;
@@ -91,7 +91,7 @@
   .btn::after { content: ""; position: absolute; top: 0; bottom: 0; left: -40%; width: 30%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg) translateX(-120%); animation: shine 3.5s ease-in-out infinite; }
   @keyframes shine { 0%, 55% { transform: skewX(-20deg) translateX(-120%); } 85%, 100% { transform: skewX(-20deg) translateX(560%); } }
   .btn:hover { transform: translateY(-2px); box-shadow: inset 0 -2px 0 #00bebe, inset 0 1px 0 #98ffff, 0 0 44px rgba(43,255,255,.5); }
-  .step__small { font-size: 14px; color: rgba(193,235,235,.6); }
+  .step__small { display: block; margin-top: 14px; font-size: 14px; color: rgba(193,235,235,.6); }
 
   /* mockup do celular com Instagram */
   .social { margin-top: 64px; display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center; text-align: left; }
@@ -102,14 +102,13 @@
   .ig-link:hover { background: rgba(24,255,255,.14); border-color: #18ffff; }
 
   .phone {
-    display: block; position: relative; width: 300px; height: 610px; padding: 12px; border-radius: 48px;
+    display: block; position: relative; width: 300px; aspect-ratio: 560 / 1160; padding: 11px; border-radius: 48px;
     background: linear-gradient(145deg, #2a3438, #0b1113 40%, #1d2629);
     box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 40px 90px rgba(0,0,0,.7), 0 0 80px rgba(24,255,255,.12);
-    transform: rotate(-3deg);
-  }
-  .phone::before { content: ""; position: absolute; top: 22px; left: 50%; width: 92px; height: 26px; margin-left: -46px; border-radius: 20px; background: #000; z-index: 3; }
-  .screen { position: relative; height: 100%; border-radius: 38px; overflow: hidden; background: #000; padding-top: 34px; }
-  .screen__img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    }
+  .screen { position: relative; height: 100%; border-radius: 38px; overflow: hidden; background: #0a0d10; padding-top: 30px; }
+  .screen::before { content: ""; position: absolute; z-index: 2; top: 9px; left: 50%; width: 82px; height: 22px; margin-left: -41px; border-radius: 99px; background: #000; }
+  .screen__img { display: block; width: 100%; height: auto; }
   .phone__glare { position: absolute; inset: 12px; border-radius: 38px; pointer-events: none;
     background: linear-gradient(115deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 32%); mix-blend-mode: screen; }
 
@@ -125,8 +124,7 @@
   @media (max-width: 820px) {
     .social { grid-template-columns: 1fr; justify-items: center; gap: 36px; text-align: center; }
     .social .step { align-items: center; text-align: center; }
-    .phone { transform: none; }
-  }
+      }
   @media (max-width: 520px) {
     .alert { font-size: 12.5px; }
     .wrap { padding-top: 36px; }
@@ -135,7 +133,7 @@
     .video { border-radius: 14px; }
     .video__play { width: 72px; height: 72px; }
     .btn { width: 100%; height: 62px; font-size: 16.5px; }
-    .phone { width: 270px; height: 550px; }
+    .phone { width: 270px; }
   }
 </style>
 </head>
@@ -256,13 +254,13 @@
     gsap.timeline({ scrollTrigger: { trigger: ".step.d3", start: "top 85%" } })
       .from(".step.d3 .step__tag", { scale: 0.6, opacity: 0, duration: 0.6, ease: "back.out(2)" })
       .from(".step.d3 h2", { y: 20, opacity: 0, duration: 0.6 }, 0.1)
-      .from(".step.d3 .btn", { y: 30, scale: 0.9, opacity: 0, duration: 0.8, ease: "back.out(1.6)" }, 0.2)
-      .from(".step.d3 .step__small", { opacity: 0, duration: 0.5 }, 0.5);
+      .from(".step.d3 .btn", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out", clearProps: "transform" }, 0.2)
+      .from(".step.d3 .step__small", { opacity: 0, y: 10, duration: 0.5, clearProps: "transform" }, 0.5);
 
     // 3º passo: texto entra da esquerda, celular sobe girando e fica flutuando
     gsap.timeline({ scrollTrigger: { trigger: ".social", start: "top 80%" } })
       .from(".social .step > *", { x: -40, opacity: 0, duration: 0.7, stagger: 0.1 })
-      .from(".phone", { y: 120, rotate: 10, opacity: 0, duration: 1.2, ease: "expo.out" }, 0.15)
+      .from(".phone", { y: 100, opacity: 0, duration: 1.1, ease: "expo.out", clearProps: "transform" }, 0.15)
       .from(".phone__glare", { opacity: 0, x: -60, duration: 1.2 }, 0.6);
   })();
 </script>

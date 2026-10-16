@@ -111,7 +111,7 @@
   root.hidden = true;
   root.innerHTML = `
     <div class="quiz__backdrop" data-close></div>
-    <div class="quiz__dialog" role="dialog" aria-modal="true" aria-labelledby="quiz-title" tabindex="-1">
+    <div class="quiz__dialog" data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="quiz-title" tabindex="-1">
       <div class="quiz__top">
         <img class="quiz__logo" src="assets/opt/logo.svg" alt="Mentoria Caio Martins" width="150" height="29">
         <span class="quiz__count" aria-live="polite"></span>
@@ -120,7 +120,7 @@
         </button>
       </div>
       <div class="quiz__progress"><span></span></div>
-      <form class="quiz__body" novalidate></form>
+      <form class="quiz__body" data-lenis-prevent novalidate></form>
     </div>`;
   document.body.appendChild(root);
   const dialog = root.querySelector(".quiz__dialog");
@@ -294,12 +294,28 @@
     answers = {}; step = 0;
   }
 
+  /* ================= Teclado no celular =================
+     No iOS o teclado cobre a parte de baixo sem redimensionar a página, então o botão "Continuar"
+     ficava escondido. Aqui o popup passa a ter exatamente a altura da área visível. */
+  const vv = window.visualViewport;
+  function syncViewport() {
+    if (!vv) return;
+    root.style.setProperty("--qh", Math.round(vv.height) + "px");
+    root.style.setProperty("--qt", Math.round(vv.offsetTop) + "px");
+  }
+  if (vv) { vv.addEventListener("resize", syncViewport); vv.addEventListener("scroll", syncViewport); }
+  root.addEventListener("focusin", e => {
+    if (!/INPUT|TEXTAREA/.test(e.target.tagName)) return;
+    setTimeout(() => { syncViewport(); e.target.scrollIntoView({ block: "center", behavior: "smooth" }); }, 320);
+  });
+
   /* ================= Abrir / fechar ================= */
   function open() {
     if (isOpen) return;
     isOpen = true; lastFocus = document.activeElement;
     root.hidden = false;
     document.documentElement.classList.add("quiz-open");
+    syncViewport();
     window.__lenis && window.__lenis.stop();
     renderStep();
     if (window.gsap && !reduce) {
