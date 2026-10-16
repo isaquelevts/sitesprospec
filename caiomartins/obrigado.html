@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aplicação recebida · Mentoria Caio Martins</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --head-grad: linear-gradient(262deg, #c4dddd 1.85%, #f3ffff 51.95%, #bbffff 98.84%);
+    --accent-grad: linear-gradient(180deg, #18ffff 0%, #8afbfb 74.5%, #47fdfd 100%);
+    --border: rgba(97, 212, 235, .3);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scrollbar-width: thin; scrollbar-color: #1a8f93 #020608; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #020608; }
+  ::-webkit-scrollbar-thumb { border-radius: 99px; border: 3px solid #020608; background: linear-gradient(180deg, #8effff, #00b8b8); }
+  ::-webkit-scrollbar-button { display: none; height: 0; }
+  body {
+    min-height: 100vh; color: #fff; font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    background:
+      radial-gradient(ellipse 900px 600px at 50% -120px, rgba(24, 255, 255, .13), transparent 70%),
+      linear-gradient(180deg, #050b0e 0%, #000 60%);
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  .grad { background: var(--head-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .accent { background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 700; }
+
+  /* faixa de alerta */
+  .alert {
+    position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 12px 16px; text-align: center; font-size: 14px; font-weight: 600; letter-spacing: .02em; color: #fff;
+    background: linear-gradient(90deg, #5c1016, #b3232f 50%, #5c1016); box-shadow: 0 6px 30px rgba(179, 35, 47, .35);
+  }
+  .alert__dot { width: 8px; height: 8px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 0 rgba(255,255,255,.7); animation: pulse 1.6s infinite; flex: 0 0 auto; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
+
+  .wrap { width: 100%; max-width: 980px; margin: 0 auto; padding: 48px 20px 96px; }
+  .logo { width: 210px; height: auto; margin: 0 auto 44px; }
+
+  .head { text-align: center; max-width: 820px; margin: 0 auto; }
+  .head h1 { font-size: clamp(28px, 4.2vw, 48px); line-height: 1.15; font-weight: 700; letter-spacing: -.025em; }
+  .head h1 .warn { background: linear-gradient(180deg, #ff6b6b, #c8323c); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .step { margin-top: 64px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; }
+  .step__tag {
+    display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px 8px 8px; border-radius: 99px;
+    border: 1px solid var(--border); background: rgba(24, 255, 255, .05);
+    font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #8afbfb;
+  }
+  .step__num { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; letter-spacing: 0; color: #002443; background: radial-gradient(circle at 50% 80%, #8effff, #00b8b8); }
+  .step h2 { font-size: clamp(20px, 2.4vw, 28px); line-height: 1.3; font-weight: 600; letter-spacing: -.015em; max-width: 680px; }
+
+  /* vídeo */
+  .video {
+    position: relative; width: 100%; max-width: 860px; aspect-ratio: 16 / 9; margin-top: 10px; overflow: hidden;
+    border-radius: 20px; border: 1px solid var(--border); background: #031010;
+    box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(24,255,255,.08);
+  }
+  .video iframe, .video video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video__ph { position: absolute; inset: 0; display: grid; place-items: center; cursor: pointer; border: 0; padding: 0; background: #000; color: #fff; font: inherit; }
+  .video__ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .7; }
+  .video__ph::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(0,0,0,.65)); }
+  .video__play {
+    position: relative; z-index: 1; width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; color: #002443;
+    background: radial-gradient(circle at 50% 80%, #8effff, #00b8b8); box-shadow: 0 0 0 12px rgba(24,255,255,.12), 0 0 60px rgba(24,255,255,.45);
+    transition: transform .25s;
+  }
+  .video__ph:hover .video__play { transform: scale(1.07); }
+  .video__time { position: absolute; z-index: 1; right: 16px; bottom: 14px; padding: 6px 10px; border-radius: 8px; font-size: 13px; font-weight: 600; background: rgba(0,0,0,.6); }
+
+  /* botão */
+  .btn {
+    position: relative; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;
+    width: 420px; max-width: 100%; height: 68px; padding: 10px 24px; margin-top: 8px; border-radius: 999px;
+    background: radial-gradient(55% 120% at 48% 89%, #8effff 0%, #86ffff 50%, #65eded 63%, #43dcdc 75%, #22caca 88%, #11c1c1 94%, #00b8b8 100%);
+    box-shadow: inset 0 -2px 0 #00bebe, inset 0 1px 0 #98ffff, 0 0 26px rgba(43,255,255,.25);
+    font-size: 19px; font-weight: 700; letter-spacing: -.5px; white-space: nowrap; transition: box-shadow .25s, transform .2s;
+  }
+  .btn span { position: relative; z-index: 1; background: linear-gradient(90deg, #002443, #003a6c); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .btn::after { content: ""; position: absolute; top: 0; bottom: 0; left: -40%; width: 30%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg) translateX(-120%); animation: shine 3.5s ease-in-out infinite; }
+  @keyframes shine { 0%, 55% { transform: skewX(-20deg) translateX(-120%); } 85%, 100% { transform: skewX(-20deg) translateX(560%); } }
+  .btn:hover { transform: translateY(-2px); box-shadow: inset 0 -2px 0 #00bebe, inset 0 1px 0 #98ffff, 0 0 44px rgba(43,255,255,.5); }
+  .step__small { font-size: 14px; color: rgba(193,235,235,.6); }
+
+  /* mockup do celular com Instagram */
+  .social { margin-top: 64px; display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center; text-align: left; }
+  .social .step { margin-top: 0; align-items: flex-start; text-align: left; }
+  .social p { font-size: 17px; line-height: 1.6; color: rgba(193,235,235,.75); font-weight: 300; max-width: 420px; }
+  .ig-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 6px; padding: 14px 22px; border-radius: 99px; font-weight: 600; font-size: 16px;
+    border: 1px solid rgba(24,255,255,.4); background: rgba(24,255,255,.06); color: #c3ffff; transition: background .2s, border-color .2s; }
+  .ig-link:hover { background: rgba(24,255,255,.14); border-color: #18ffff; }
+
+  .phone {
+    display: block; position: relative; width: 300px; height: 610px; padding: 12px; border-radius: 48px;
+    background: linear-gradient(145deg, #2a3438, #0b1113 40%, #1d2629);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 40px 90px rgba(0,0,0,.7), 0 0 80px rgba(24,255,255,.12);
+    transform: rotate(-3deg);
+  }
+  .phone::before { content: ""; position: absolute; top: 22px; left: 50%; width: 92px; height: 26px; margin-left: -46px; border-radius: 20px; background: #000; z-index: 3; }
+  .screen { position: relative; height: 100%; border-radius: 38px; overflow: hidden; background: #000; padding-top: 34px; }
+  .screen__img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .phone__glare { position: absolute; inset: 12px; border-radius: 38px; pointer-events: none;
+    background: linear-gradient(115deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 32%); mix-blend-mode: screen; }
+
+  footer { margin-top: 80px; text-align: center; font-size: 12px; color: #4f6565; }
+
+  /* entrada suave */
+  .in { opacity: 0; transform: translateY(24px); animation: up .8s cubic-bezier(.2,.8,.2,1) forwards; }
+  .gsap-on .in { animation: none; opacity: 1; transform: none; }
+  .in:nth-child(2) { animation-delay: .08s; } .d1 { animation-delay: .15s; } .d2 { animation-delay: .3s; } .d3 { animation-delay: .45s; } .d4 { animation-delay: .6s; }
+  @keyframes up { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .in { animation: none; opacity: 1; transform: none; } .btn::after, .alert__dot { animation: none; } }
+
+  @media (max-width: 820px) {
+    .social { grid-template-columns: 1fr; justify-items: center; gap: 36px; text-align: center; }
+    .social .step { align-items: center; text-align: center; }
+    .phone { transform: none; }
+  }
+  @media (max-width: 520px) {
+    .alert { font-size: 12.5px; }
+    .wrap { padding-top: 36px; }
+    .logo { width: 170px; margin-bottom: 32px; }
+    .step { margin-top: 48px; }
+    .video { border-radius: 14px; }
+    .video__play { width: 72px; height: 72px; }
+    .btn { width: 100%; height: 62px; font-size: 16.5px; }
+    .phone { width: 270px; height: 550px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="alert" role="alert"><span class="alert__dot"></span>Atenção: sua aplicação ainda não está confirmada</div>
+
+<main class="wrap">
+  <img class="logo in" src="assets/opt/logo.svg" alt="Mentoria Caio Martins" width="210" height="40">
+
+  <header class="head in d1">
+    <h1 class="grad">Sua call pode ser <span class="warn">CANCELADA</span> automaticamente se você não assistir esse vídeo de <span class="accent">3 minutos</span>…</h1>
+  </header>
+
+  <!-- 1º passo: vídeo -->
+  <section class="step step--1 in d2">
+    <span class="step__tag"><span class="step__num">1</span>1º passo</span>
+    <h2 class="grad">Assista a esse curto vídeo abaixo e receba instruções muito importantes sobre o seu agendamento</h2>
+    <div class="video" data-video>
+      <button class="video__ph" type="button" aria-label="Assistir o vídeo">
+        <img src="assets/opt/final-cover-1280.webp" alt="" width="1280" height="567">
+        <span class="video__play"><svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5z"/></svg></span>
+        <span class="video__time">3:00</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- 2º passo: confirmar -->
+  <section class="step in d3">
+    <span class="step__tag"><span class="step__num">2</span>2º passo</span>
+    <h2 class="grad">Depois de assistir, confirme seu agendamento</h2>
+    <a class="btn" data-confirm href="#" target="_blank" rel="noopener"><span>CONFIRMAR MEU AGENDAMENTO</span></a>
+    <span class="step__small">Leva menos de 1 minuto</span>
+  </section>
+
+  <!-- 3º passo: redes sociais -->
+  <section class="social in d4">
+    <div class="step">
+      <span class="step__tag"><span class="step__num">3</span>3º passo</span>
+      <h2 class="grad">Acompanhe as nossas redes sociais</h2>
+      <p>Enquanto a sua call não chega, acompanhe o Caio no Instagram: bastidores, resultados de alunos e conteúdos sobre micro-SaaS com IA.</p>
+      <a class="ig-link" data-ig href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Seguir <span data-ig-handle></span>
+      </a>
+    </div>
+
+    <a class="phone" data-ig href="#" target="_blank" rel="noopener" aria-label="Abrir o Instagram do Caio">
+      <div class="screen">
+        <img class="screen__img" src="assets/opt/ig-print.webp" alt="Perfil do Caio Martins no Instagram: 494 mil seguidores" width="560" height="1147" loading="lazy" decoding="async">
+      </div>
+      <span class="phone__glare" aria-hidden="true"></span>
+    </a>
+  </section>
+
+  <footer>© <span data-year>2026</span> Mentoria Caio Martins. Todos os direitos reservados.</footer>
+</main>
+
+<script>
+  /* ================== CONFIGURE AQUI ================== */
+  // Vídeo de 3 minutos: link do YouTube, Vimeo ou arquivo .mp4 (deixe "" até ter o vídeo)
+  const VIDEO_URL = "";
+  // Botão "Confirmar meu agendamento" (ex.: link do WhatsApp da equipe ou do calendário)
+  const CONFIRM_URL = "";
+  // @ do Instagram do Caio, sem o @
+  const INSTAGRAM = "caiomartins";
+  /* ==================================================== */
+
+  document.querySelectorAll("[data-year]").forEach(e => (e.textContent = new Date().getFullYear()));
+  document.querySelectorAll("[data-ig]").forEach(a => (a.href = "https://instagram.com/" + INSTAGRAM));
+  document.querySelectorAll("[data-ig-handle]").forEach(e => (e.textContent = "@" + INSTAGRAM));
+  document.querySelectorAll("[data-ig-handle-plain]").forEach(e => (e.textContent = INSTAGRAM));
+
+  const confirm = document.querySelector("[data-confirm]");
+  if (CONFIRM_URL) confirm.href = CONFIRM_URL;
+  else { confirm.removeAttribute("target"); confirm.addEventListener("click", e => e.preventDefault()); }
+
+  // vídeo: só carrega o player quando a pessoa clica (página abre mais rápido)
+  const embed = url => {
+    let m;
+    if ((m = url.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/))) return `<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Vídeo"></iframe>`;
+    if ((m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return `<iframe src="https://player.vimeo.com/video/${m[1]}?autoplay=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Vídeo"></iframe>`;
+    return `<video src="${url}" controls autoplay playsinline></video>`;
+  };
+  const box = document.querySelector("[data-video]");
+  box.querySelector(".video__ph").addEventListener("click", () => {
+    if (!VIDEO_URL) { box.querySelector(".video__time").textContent = "Vídeo em breve"; return; }
+    box.innerHTML = embed(VIDEO_URL);
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  /* ===== Efeitos de entrada ===== */
+  (() => {
+    if (!window.gsap || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    gsap.registerPlugin(ScrollTrigger);
+    document.documentElement.classList.add("gsap-on");
+    const $ = s => document.querySelector(s), $$ = s => gsap.utils.toArray(s);
+    gsap.defaults({ ease: "power3.out" });
+
+    const h1 = $(".head h1");
+
+    const tl = gsap.timeline({ delay: 0.1 });
+    tl.from(".alert", { yPercent: -100, duration: 0.6 })
+      .from(".logo", { y: -20, opacity: 0, duration: 0.6 }, 0.15)
+      .fromTo(h1, { y: 40, opacity: 0, clipPath: "inset(0 0 100% 0)" }, { y: 0, opacity: 1, clipPath: "inset(0 0 -20% 0)", duration: 1.1 }, 0.3)
+      .fromTo(".warn", { filter: "brightness(1)" }, { filter: "brightness(1.6) drop-shadow(0 0 14px rgba(255,80,80,.7))", duration: 0.35, yoyo: true, repeat: 3, ease: "sine.inOut" }, 1.1)   // CANCELADA acende
+      .from(".step--1 .step__tag", { scale: 0.6, opacity: 0, duration: 0.6, ease: "back.out(2)" }, 0.9)
+      .from(".step--1 h2", { y: 20, opacity: 0, duration: 0.6 }, 1)
+      .from(".video", { y: 50, scale: 0.92, opacity: 0, duration: 0.9 }, 1.1)
+      .from(".video__play", { scale: 0, duration: 0.7, ease: "back.out(2.4)" }, 1.5);
+
+    // pulso contínuo no botão de play
+    gsap.to(".video__play", { boxShadow: "0 0 0 22px rgba(24,255,255,0), 0 0 60px rgba(24,255,255,.45)", duration: 1.6, repeat: -1, ease: "sine.out", delay: 2.2 });
+
+    // 2º passo
+    gsap.timeline({ scrollTrigger: { trigger: ".step.d3", start: "top 85%" } })
+      .from(".step.d3 .step__tag", { scale: 0.6, opacity: 0, duration: 0.6, ease: "back.out(2)" })
+      .from(".step.d3 h2", { y: 20, opacity: 0, duration: 0.6 }, 0.1)
+      .from(".step.d3 .btn", { y: 30, scale: 0.9, opacity: 0, duration: 0.8, ease: "back.out(1.6)" }, 0.2)
+      .from(".step.d3 .step__small", { opacity: 0, duration: 0.5 }, 0.5);
+
+    // 3º passo: texto entra da esquerda, celular sobe girando e fica flutuando
+    gsap.timeline({ scrollTrigger: { trigger: ".social", start: "top 80%" } })
+      .from(".social .step > *", { x: -40, opacity: 0, duration: 0.7, stagger: 0.1 })
+      .from(".phone", { y: 120, rotate: 10, opacity: 0, duration: 1.2, ease: "expo.out" }, 0.15)
+      .from(".phone__glare", { opacity: 0, x: -60, duration: 1.2 }, 0.6);
+    gsap.to(".phone", { y: -12, duration: 2.6, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1.6 });
+  })();
+</script>
+</body>
+</html>
