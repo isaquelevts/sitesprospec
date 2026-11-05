@@ -29,11 +29,13 @@ Este repositório reúne páginas independentes de apresentação e prospecção
 ├── potencialize/            # Potencialize · Clínica de Psicologia no Leblon (HTML único, efeitos de entrada sem bibliotecas)
 │   ├── index.html           # HTML + CSS + JS
 │   └── assets/              # logo, símbolo e fotos (.webp)
-└── caiomartins/            # Mentoria Caio Martins · Micro-SaaS (GSAP + ScrollTrigger + Lenis, loader com a logo, cards empilhados)
-    ├── index.html           # HTML + CSS
-    └── assets/
-        ├── js/main.js       # animações, notificações, CTA_URL (link dos botões)
-        └── opt/             # imagens otimizadas (.webp) e ícones (.svg)
+├── caiomartins/            # Mentoria Caio Martins · Micro-SaaS (GSAP + ScrollTrigger + Lenis, loader com a logo, cards empilhados)
+│   ├── index.html           # HTML + CSS
+│   └── assets/
+│       ├── js/main.js       # animações, notificações, CTA_URL (link dos botões)
+│       └── opt/             # imagens otimizadas (.webp) e ícones (.svg)
+└── doloteaobra/             # Kit Financeiro DOBRA (HTML único, animações sem bibliotecas; CHECKOUT_URL define o link dos botões)
+    └── index.html           # HTML + CSS + JS
 ```
 
 As três páginas da Dra. Nayane servem para comparação: as versões intermediária e básica usam `noindex` para não competir com a premium no Google.

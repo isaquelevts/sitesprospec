@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/doloteaobra",
+      "destination": "/doloteaobra/index.html"
+    },
+    {
+      "source": "/doloteaobra/",
+      "destination": "/doloteaobra/index.html"
+    },
+    {
       "source": "/granpara",
       "destination": "/granpara/index.html"
     },
