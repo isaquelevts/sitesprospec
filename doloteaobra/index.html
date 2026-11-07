@@ -126,7 +126,12 @@
   .hero__grid { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; align-items: center; }
   .hero__eyebrow { margin-bottom: 16px; }
   .hero__support { margin-top: 20px; font-size: 17px; }
-  .hero__copy .btn { margin-top: 32px; }
+  .hero__copy .btn { margin-top: 18px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .chips li { padding: 5px 11px; border: 1px solid var(--line-strong); border-radius: 4px; color: var(--text); font-size: 13px; line-height: 1.5; }
+  .hero__price { margin-top: 22px; line-height: 1; }
+  .hero__price .price { font-size: 44px; line-height: 1.1; }
+  .hero__price .price small { font-size: 20px; }
   .hero .micro { margin-top: 20px; }
   .hero__art { display: block; width: 100%; height: auto; font-family: Inter, sans-serif; }
 
@@ -244,9 +249,9 @@
     box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
   }
   .offer__lead { margin-top: 32px; color: var(--white); font-size: 16px; font-weight: 700; }
-  .offer__items { margin-top: 16px; }
-  .offer__items li { position: relative; padding: 9px 0 9px 36px; font-size: 15px; line-height: 1.55; }
-  .offer__items li::before {
+  .check-list { margin-top: 16px; }
+  .check-list li { position: relative; padding: 9px 0 9px 36px; font-size: 15px; line-height: 1.55; }
+  .check-list li::before {
     content: "";
     position: absolute;
     left: 0;
@@ -312,6 +317,27 @@
   .final .micro { margin-top: 20px; }
   .seal { width: 100%; height: auto; }
 
+  /* Para quem é */
+  .who__card { max-width: 860px; margin: 40px auto 0; padding: 36px 40px; border: 1px solid var(--panel-line); border-radius: 6px; background: var(--panel); }
+  .who__lead { color: var(--white); font-size: 18px; font-weight: 700; }
+  .who__list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; margin-top: 16px; }
+  .who__note { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--white); font-size: 16px; font-weight: 600; }
+
+  /* Simulador */
+  .sim { display: grid; grid-template-columns: 5fr 6fr; gap: 56px; align-items: center; }
+  .sim__intro { margin-top: 20px; font-size: 17px; }
+  .sim__card { padding: 28px; border: 1px solid #262626; border-radius: 6px; background: #121212; }
+  .sim__field + .sim__field { margin-top: 22px; }
+  .sim__label { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 14px; }
+  .sim__label output { color: var(--white); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .sim__field input { width: 100%; margin: 12px 0 0; accent-color: var(--gold-2); cursor: pointer; }
+  .sim__result { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  .sim__result strong { display: block; margin: 4px 0; color: var(--gold-1); font-size: 40px; font-weight: 800; line-height: 1.15; letter-spacing: -.5px; font-variant-numeric: tabular-nums; }
+  .sim__note { margin-top: 16px; color: var(--faint); font-size: 12.5px; line-height: 1.5; }
+
+  /* Barra fixa de compra: só no celular */
+  .buybar { display: none; }
+
   /* Efeitos de entrada: só valem com a classe colocada pelo script do <head> */
   .reveal-on .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
   .reveal-on .reveal--side { transform: translateX(36px); }
@@ -321,6 +347,30 @@
   footer { padding: 40px 24px; background: #111; color: var(--faint); font-size: 13px; text-align: center; }
 
   @media (max-width: 960px) {
+    .sim { grid-template-columns: 1fr; gap: 32px; }
+    .who__list { grid-template-columns: 1fr; }
+    .buybar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--line-strong);
+      background: rgba(18, 18, 18, .97);
+      transform: translateY(110%);
+      transition: transform .3s ease;
+    }
+    .buybar.is-on { transform: none; }
+    .buybar__info { display: flex; flex-direction: column; line-height: 1.2; }
+    .buybar__info small { color: var(--gold-1); font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+    .buybar__info b { color: var(--white); font-size: 20px; font-weight: 800; }
+    .buybar__btn.btn { display: inline-flex; flex: none; padding: 13px 18px; font-size: 14px; box-shadow: none; }
+    footer { padding-bottom: 110px; }
     .hero { padding-top: 88px; }
     .hero__grid { grid-template-columns: 1fr; gap: 40px; }
     .hero__media { width: 100%; max-width: 480px; margin: 0 auto; }
@@ -342,6 +392,9 @@
     .hero__support { font-size: 16px; }
     .btn { display: flex; padding: 19px 18px; }
     .callout { padding: 28px 24px; }
+    .who__card { padding: 26px 20px; }
+    .sim__card { padding: 22px 18px; }
+    .sim__result strong { font-size: 34px; }
     .callout strong { font-size: 22px; }
     .sheet { padding: 24px 20px; }
     .sheet h3 { font-size: 24px; }
@@ -356,6 +409,9 @@
     .final-card { padding: 36px 20px; }
   }
   @media (max-width: 380px) {
+    .buybar__info small { font-size: 9.5px; letter-spacing: .4px; }
+    .buybar__btn.btn { padding: 12px 14px; font-size: 13px; }
+    .buybar__btn.btn::after { display: none; }
     h1 { font-size: 27px; }
   }
 </style>
@@ -368,10 +424,16 @@
     <div class="hero__grid">
       <div class="hero__copy">
         <p class="eyebrow hero__eyebrow reveal">Vai construir ou financiar?</p>
-        <h1 class="reveal">Descubra quanto você pode financiar, quanto vai gastar durante a obra e <span class="hl">quando terá dinheiro para dar a entrada.</span></h1>
-        <p class="hero__support reveal">Com 3 planilhas automatizadas, você simula seu financiamento, calcula os juros de obra e planeja os gastos que muita gente só descobre depois de assinar o contrato.</p>
+        <h1 class="reveal">Planeje sua casa própria <span class="hl">antes de assumir um financiamento.</span></h1>
+        <p class="hero__support reveal">Descubra quanto você pode financiar, quanto precisa juntar para a entrada e quais custos terá durante a construção — tudo com 3 planilhas automatizadas.</p>
+        <ul class="chips reveal">
+          <li>3 planilhas automatizadas</li>
+          <li>Tutoriais inclusos</li>
+          <li>Acesso digital</li>
+        </ul>
+        <p class="hero__price reveal"><span class="price"><small>R$</small>37,00</span></p>
         <a class="btn reveal" data-checkout href="#oferta">QUERO PLANEJAR MINHA CASA</a>
-        <p class="micro reveal">3 planilhas + tutoriais | Acesso por e-mail | Garantia de 7 dias</p>
+        <p class="micro reveal">Pagamento único | Garantia de 7 dias</p>
       </div>
       <!-- Ilustração animada: a planilha preenche e a casa é construída. O script monta as linhas da planilha. -->
       <div class="hero__media reveal reveal--side">
@@ -469,12 +531,32 @@
 <!-- 2. O PROBLEMA -->
 <section class="sec problem center">
   <div class="wrap">
-    <h2 class="reveal">O financiamento foi aprovado. <span class="hl">Mas você calculou tudo o que vem depois?</span></h2>
+    <h2 class="reveal">Antes de pedir o financiamento, você já sabe <span class="hl">tudo o que a sua obra vai custar?</span></h2>
     <p class="problem__list reveal">Juros de obra, ITBI, escritura, taxas do banco, habite-se, averbação e INSS da obra.</p>
     <p class="problem__text reveal">São despesas que podem comprometer seu orçamento quando não entram no planejamento.</p>
     <div class="callout reveal">
       O problema não é apenas quanto o banco vai financiar.
       <strong>É quanto dinheiro você vai precisar ter ao longo de toda a construção.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section class="sec who">
+  <div class="wrap wrap--wide">
+    <h2 class="center reveal">Para quem é o <span class="hl">Kit DOBRA?</span></h2>
+    <div class="who__card reveal">
+      <p class="who__lead">O Kit Financeiro DOBRA é para você que:</p>
+      <ul class="check-list who__list">
+        <li>Está planejando construir sua primeira casa.</li>
+        <li>Já tem o terreno ou o projeto e está montando os valores da obra.</li>
+        <li>Quer financiar a construção pela Caixa ou por outra instituição.</li>
+        <li>Precisa organizar o dinheiro para a entrada.</li>
+        <li>Quer entender os custos envolvidos durante a obra.</li>
+        <li>Tem receio de começar a construir e faltar dinheiro.</li>
+        <li>Quer tomar decisões com mais planejamento.</li>
+      </ul>
+      <p class="who__note">Não é necessário ser especialista em Excel ou entender de financiamento imobiliário para começar.</p>
     </div>
   </div>
 </section>
@@ -608,6 +690,36 @@
   </div>
 </section>
 
+<!-- SIMULADOR -->
+<section class="sec sim-sec" id="simulador">
+  <div class="wrap wrap--wide sim">
+    <div class="reveal">
+      <h2>Simule seu <span class="hl">planejamento.</span></h2>
+      <p class="sim__intro">Faça uma conta rápida: em quanto tempo você junta o valor da entrada? Nas planilhas, essa conta considera todos os seus números.</p>
+    </div>
+    <div class="sim__card reveal">
+      <div class="sim__field">
+        <label class="sim__label" for="sim-renda">Renda mensal <output id="sim-renda-out" for="sim-renda"></output></label>
+        <input id="sim-renda" type="range" min="1000" max="30000" step="500" value="6000">
+      </div>
+      <div class="sim__field">
+        <label class="sim__label" for="sim-guarda">Quanto consegue guardar por mês <output id="sim-guarda-out" for="sim-guarda"></output></label>
+        <input id="sim-guarda" type="range" min="100" max="6000" step="100" value="1000">
+      </div>
+      <div class="sim__field">
+        <label class="sim__label" for="sim-meta">Meta para a entrada <output id="sim-meta-out" for="sim-meta"></output></label>
+        <input id="sim-meta" type="range" min="5000" max="300000" step="1000" value="30000">
+      </div>
+      <div class="sim__result" aria-live="polite">
+        <span>Tempo estimado para atingir a meta</span>
+        <strong id="sim-meses">30 meses</strong>
+        <span id="sim-detalhe" class="sim__detail"></span>
+      </div>
+      <p class="sim__note">Simulação simplificada, sem considerar rendimentos, inflação ou variações de despesas.</p>
+    </div>
+  </div>
+</section>
+
 <!-- 4. FACILIDADE DE UTILIZAÇÃO -->
 <section class="sec easy-sec">
   <div class="wrap wrap--wide center">
@@ -643,7 +755,7 @@
   <div class="offer reveal">
     <h2 class="center">Antes de investir milhares de reais na sua casa, <span class="hl">invista no planejamento.</span></h2>
     <p class="offer__lead">Com o Kit Financeiro DOBRA, você recebe:</p>
-    <ul class="offer__items">
+    <ul class="check-list">
       <li><strong>Controle Financeiro:</strong> saiba quanto guardar e quando poderá dar a entrada.</li>
       <li><strong>Planejamento Financeiro:</strong> estime quanto pode financiar e o tamanho da casa que cabe no orçamento.</li>
       <li><strong>Fluxo Financeiro:</strong> simule juros de obra e despesas extras durante a construção.</li>
@@ -736,6 +848,12 @@
 </section>
 
 </main>
+
+<!-- Barra fixa de compra no celular: aparece fora da primeira dobra, da oferta e da última chamada -->
+<div class="buybar" id="buybar">
+  <div class="buybar__info"><small>Kit Financeiro DOBRA</small><b>R$ 37,00</b></div>
+  <a class="btn buybar__btn" data-checkout href="#oferta">QUERO COMPRAR</a>
+</div>
 
 <footer>© Todos os direitos reservados — DOBRA</footer>
 
@@ -958,6 +1076,48 @@
       });
     }, { rootMargin: "0px 0px -8% 0px" });
     document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+  }
+
+  // Simulador: meta da entrada dividida pelo que a pessoa guarda por mês.
+  // O valor guardado nunca passa da renda informada.
+  const simRenda = document.getElementById("sim-renda");
+  if (simRenda) {
+    const simGuarda = document.getElementById("sim-guarda");
+    const simMeta = document.getElementById("sim-meta");
+    const money = (value) => `R$ ${Number(value).toLocaleString("pt-BR")}`;
+    const updateSim = () => {
+      simGuarda.max = Math.min(6000, Number(simRenda.value));
+      const renda = Number(simRenda.value);
+      const guarda = Number(simGuarda.value);
+      const meta = Number(simMeta.value);
+      const meses = Math.ceil(meta / guarda);
+      const anos = Math.floor(meses / 12);
+      const resto = meses % 12;
+      document.getElementById("sim-renda-out").textContent = money(renda);
+      document.getElementById("sim-guarda-out").textContent = money(guarda);
+      document.getElementById("sim-meta-out").textContent = money(meta);
+      document.getElementById("sim-meses").textContent = `${meses} ${meses === 1 ? "mês" : "meses"}`;
+      const tempo = anos === 0 ? "" :
+        `Cerca de ${anos} ${anos === 1 ? "ano" : "anos"}${resto ? ` e ${resto} ${resto === 1 ? "mês" : "meses"}` : ""}, `;
+      const percentual = `${Math.round((guarda / renda) * 100)}% da sua renda por mês.`;
+      document.getElementById("sim-detalhe").textContent =
+        tempo ? `${tempo}guardando ${percentual}` : `Guardando ${percentual}`;
+    };
+    [simRenda, simGuarda, simMeta].forEach((input) => input.addEventListener("input", updateSim));
+    updateSim();
+  }
+
+  // Barra fixa do celular: some enquanto a primeira dobra, a oferta ou a última chamada estão na tela,
+  // onde já existe um botão de compra visível.
+  const buybar = document.getElementById("buybar");
+  if (buybar && "IntersectionObserver" in window) {
+    const ctaAreas = [".hero", "#oferta", ".final"].map((selector) => document.querySelector(selector));
+    const visible = new Set();
+    const buybarObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => (entry.isIntersecting ? visible.add(entry.target) : visible.delete(entry.target)));
+      buybar.classList.toggle("is-on", visible.size === 0);
+    });
+    ctaAreas.forEach((area) => buybarObserver.observe(area));
   }
 
   // Faixa decorativa: repete os nomes o bastante para o loop não ter emenda.
