@@ -6,6 +6,9 @@
 <title>Kit Financeiro DOBRA</title>
 <meta name="description" content="Descubra quanto você pode financiar, quanto vai gastar durante a obra e quando terá dinheiro para dar a entrada.">
 <script>
+  if (/-verde\/?$/.test(location.pathname) || /[?&]tema=verde/.test(location.search)) {
+    document.documentElement.classList.add("tema-verde");
+  }
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.documentElement.classList.add("reveal-on");
   }
@@ -37,8 +40,28 @@
     --muted: #bcbcbc;
     --faint: #8f8f8f;
     --ink: #1c1a16;
+    --card: #121212;
+    --card-line: #262626;
+    --result-bg: #1b150c;
+    --result-line: #3f2f19;
+    --hero-glow: #3a2a14;
+    --offer-bg: linear-gradient(180deg, rgba(14, 14, 14, .97) 0%, rgba(30, 23, 15, .97) 55%, rgba(8, 8, 8, .98) 100%);
+    --final-bg: linear-gradient(180deg, #111 0%, #060606 100%);
+    --footer: #111;
+    --bar: rgba(18, 18, 18, .97);
+    --badge-1: #4b4b4a;
+    --badge-2: #151515;
+    --badge-line: #8a8a88;
+    --btn-bg: linear-gradient(165deg, rgba(69, 255, 102, .73) 2%, rgba(30, 213, 63, .73) 21%, rgba(53, 190, 78, .73) 34%, rgba(0, 87, 16, .73) 93%), linear-gradient(90deg, rgba(255, 219, 151, .4) 27%, rgba(233, 160, 72, .4) 73%);
+    --btn-border: #2fff00;
+    --btn-shadow: 0 0 98px rgba(68, 173, 30, .22), 0 0 87px rgba(21, 82, 0, .63);
+    --btn-text: var(--white);
+    --btn-arrow: var(--gold-1);
+    --check-bg: linear-gradient(165deg, #45e866, #137a2b);
     --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M1.5 1.5l10 10M12.5 2.5v10h-10'/%3E%3C/svg%3E");
     --check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.6'/%3E%3C/svg%3E");
+    --check-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%231c1a16' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.6'/%3E%3C/svg%3E");
+    --check-icon: var(--check);
   }
 
   * { box-sizing: border-box; }
@@ -83,13 +106,11 @@
     justify-content: center;
     gap: 12px;
     padding: 20px 40px;
-    border: 1px solid #2fff00;
+    border: 1px solid var(--btn-border);
     border-radius: 6px;
-    background-image:
-      linear-gradient(165deg, rgba(69, 255, 102, .73) 2%, rgba(30, 213, 63, .73) 21%, rgba(53, 190, 78, .73) 34%, rgba(0, 87, 16, .73) 93%),
-      linear-gradient(90deg, rgba(255, 219, 151, .4) 27%, rgba(233, 160, 72, .4) 73%);
-    box-shadow: 0 0 98px rgba(68, 173, 30, .22), 0 0 87px rgba(21, 82, 0, .63);
-    color: var(--white);
+    background-image: var(--btn-bg);
+    box-shadow: var(--btn-shadow);
+    color: var(--btn-text);
     font-size: 16px;
     font-weight: 800;
     line-height: 1.3;
@@ -103,7 +124,7 @@
     flex: none;
     width: 13px;
     height: 13px;
-    background: var(--gold-1);
+    background: var(--btn-arrow);
     -webkit-mask: var(--arrow) center / contain no-repeat;
             mask: var(--arrow) center / contain no-repeat;
   }
@@ -121,7 +142,7 @@
   @media (prefers-reduced-motion: reduce) { .strip__track { animation: none; } }
 
   /* 1. Primeira dobra */
-  .hero { position: relative; padding: 120px 24px 96px; background: radial-gradient(90% 620px at 50% 0, #3a2a14 0%, #17110a 55%, #000 100%); overflow: hidden; }
+  .hero { position: relative; padding: 120px 24px 96px; background: radial-gradient(90% 620px at 50% 0, var(--hero-glow) 0%, var(--brown-1) 55%, var(--black) 100%); overflow: hidden; }
   .hero .wrap { position: relative; z-index: 1; max-width: 1084px; }
   .hero__grid { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; align-items: center; }
   .hero__eyebrow { margin-bottom: 16px; }
@@ -156,12 +177,18 @@
   .hv-total .hv-label, .hv-total .hv-value { fill: var(--gold-1); font-weight: 700; }
   .hv-select { opacity: 0; transition: transform .22s ease, opacity .2s ease; }
   .hv-select.is-on { opacity: 1; }
+  .hv-sheet { fill: var(--card); stroke: var(--card-line); }
+  .hv-sheet-line, .hv-sep { stroke: var(--card-line); }
+  .hv-hit { cursor: pointer; }
 
   /* 2. Problema */
   .problem { background: linear-gradient(180deg, var(--brown-1) 0%, var(--brown-2) 100%); }
   .problem .wrap { max-width: 910px; }
   .problem__list { margin-top: 28px; color: var(--white); font-size: 20px; font-weight: 600; line-height: 1.5; }
   .problem__text { margin-top: 12px; }
+  .problem__checks { width: fit-content; max-width: 100%; margin: 28px auto 8px; text-align: left; }
+  .problem__checks li { color: var(--white); font-size: 18px; font-weight: 600; }
+  .problem__checks li::before { top: 11px; }
   .callout { margin-top: 40px; padding: 36px 40px; border: 1px solid var(--line-strong); border-radius: 6px; background: rgba(0, 0, 0, .28); font-size: 18px; }
   .callout strong { display: block; margin-top: 8px; font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.3px; }
 
@@ -173,33 +200,40 @@
   .eyebrow { color: var(--gold-1); font-size: 11px; font-weight: 700; line-height: 1.5; letter-spacing: 3px; text-transform: uppercase; }
   .sheet__body { display: grid; grid-template-columns: 6fr 5fr; gap: 56px; align-items: center; padding: 28px 14px 14px; }
   .sheet h3 { color: var(--white); font-size: 27px; font-weight: 800; line-height: 1.2; letter-spacing: -.5px; }
+  .sheet { --accent: var(--gold-2); --accent-text: var(--gold-1); border-top: 2px solid var(--accent); }
+  .sheet:nth-child(2) { --accent: #3fb37a; --accent-text: #8fe0b4; }
+  .sheet:nth-child(3) { --accent: #e07b4f; --accent-text: #f5b394; }
+  .sheet .eyebrow, .sheet .close-line, .sheet .calc__tag, .sheet .calc__row--total, .sheet .calc__row--total b, .sheet .calc__result strong { color: var(--accent-text); }
+  .sheet .calc__tag, .sheet .calc__result { border-color: var(--accent); }
+  .sheet__head svg { stroke: var(--accent); }
   .sheet__lede { margin-top: 16px; font-size: 17px; line-height: 1.6; }
   .sheet__items { margin-top: 12px; }
   .sheet__items li { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.6; }
+  .sheet__items.check-list li { padding: 16px 0 16px 36px; font-size: 16px; line-height: 1.6; }
+  .sheet__items.check-list li::before { top: 17px; background: var(--check-icon) center / 14px no-repeat, var(--accent); }
 
   /* Ilustrações: a conta de cada planilha, com valores de exemplo */
-  .calc { padding: 24px; border: 1px solid #262626; border-radius: 6px; background: #121212; font-size: 14px; line-height: 1.4; }
+  .calc { padding: 24px; border: 1px solid var(--card-line); border-radius: 6px; background: var(--card); font-size: 14px; line-height: 1.4; }
   .calc__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; color: var(--white); font-weight: 700; }
   .calc__tag { padding: 3px 9px; border: 1px solid var(--seal-line); border-radius: 100px; color: var(--gold-1); font-size: 11px; font-weight: 600; }
   .calc__row { display: flex; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
   .calc__row b { flex: none; color: var(--white); font-weight: 600; font-variant-numeric: tabular-nums; }
   .calc__row--total, .calc__row--total b { color: var(--gold-1); font-weight: 700; }
-  .calc__tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); }
-  .calc__tiles div { padding: 12px; border: 1px solid #262626; border-radius: 4px; color: var(--muted); font-size: 12.5px; }
-  .calc__tiles b { display: block; margin-top: 4px; color: var(--white); font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums; }
   .calc__label { margin-top: 18px; color: var(--muted); }
-  .calc__bars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; align-items: end; height: 132px; margin-top: 10px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-  .calc__bar { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; text-align: center; color: var(--white); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .calc__bar i { display: block; margin-top: 6px; border-radius: 2px 2px 0 0; background: var(--gold-2); }
-  .calc__bar small { margin-top: 6px; color: var(--muted); font-size: 11px; font-weight: 400; }
-  .calc__result { margin-top: 16px; padding: 16px 18px; border: 1px solid #3f2f19; border-radius: 4px; background: #1b150c; color: var(--muted); }
-  .calc__result strong { display: block; margin: 2px 0; color: var(--gold-1); font-size: 32px; font-weight: 800; line-height: 1.2; letter-spacing: -.5px; font-variant-numeric: tabular-nums; }
+  .calc__tl { margin-top: 14px; }
+  .calc__tl li { position: relative; display: grid; grid-template-columns: 14px 1fr auto; gap: 12px; align-items: start; padding-bottom: 16px; color: var(--text); }
+  .calc__tl li::after { content: ""; position: absolute; left: 6px; top: 18px; bottom: 0; width: 2px; background: var(--line-strong); }
+  .calc__tl li:last-child { padding-bottom: 4px; }
+  .calc__tl li:last-child::after { display: none; }
+  .calc__tl i { width: 14px; height: 14px; margin-top: 3px; border: 3px solid var(--accent, var(--gold-2)); border-radius: 50%; background: var(--card); }
+  .calc__tl small { display: block; color: var(--accent-text, var(--gold-1)); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .calc__tl b { color: var(--white); font-weight: 600; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .calc__result { margin-top: 16px; padding: 16px 18px; border: 1px solid var(--result-line); border-radius: 4px; background: var(--result-bg); color: var(--muted); }
+  .calc__result strong { display: block; margin: 2px 0; color: var(--gold-1); font-size: 32px; font-weight: 800; line-height: 1.2; letter-spacing: -.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
   /* Animação dos quadros: só vale com a classe colocada pelo script */
   .calc--anim .calc__step { opacity: 0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; }
   .calc--anim .calc__step.is-on { opacity: 1; transform: none; }
-  .calc--anim .calc__bar i { transform: scaleY(0); transform-origin: bottom; transition: transform .45s ease; }
-  .calc--anim .calc__bar.is-on i { transform: none; }
   .sheet .close-line { margin-top: 20px; font-size: 16.5px; }
   .cta { margin-top: 56px; text-align: center; }
 
@@ -224,9 +258,9 @@
     width: 102px;
     height: 102px;
     margin-left: -51px;
-    border: 1px solid #8a8a88;
+    border: 1px solid var(--badge-line);
     border-radius: 50%;
-    background: radial-gradient(circle at 50% 30%, #4b4b4a, #151515 75%);
+    background: radial-gradient(circle at 50% 30%, var(--badge-1), var(--badge-2) 75%);
   }
 
   /* 5. Autoridade */
@@ -245,7 +279,7 @@
     padding: 56px 48px;
     border: 1px solid var(--offer-line);
     border-radius: 10px;
-    background: linear-gradient(180deg, rgba(14, 14, 14, .97) 0%, rgba(30, 23, 15, .97) 55%, rgba(8, 8, 8, .98) 100%);
+    background: var(--offer-bg);
     box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
   }
   .offer__lead { margin-top: 32px; color: var(--white); font-size: 16px; font-weight: 700; }
@@ -259,7 +293,7 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: var(--check) center / 14px no-repeat, linear-gradient(165deg, #45e866, #137a2b);
+    background: var(--check-icon) center / 14px no-repeat, var(--check-bg);
   }
   .price-block { margin-top: 28px; text-align: center; }
   .price-block__intro { color: var(--muted); font-size: 15px; }
@@ -307,7 +341,7 @@
     padding: 64px 72px;
     border: 1px solid var(--seal-line);
     border-radius: 5px;
-    background: linear-gradient(180deg, #111 0%, #060606 100%);
+    background: var(--final-bg);
   }
   .final h2 { font-size: 44px; }
   .final h2 em { font-weight: 800; padding-right: .08em; }
@@ -326,7 +360,7 @@
   /* Simulador */
   .sim { display: grid; grid-template-columns: 5fr 6fr; gap: 56px; align-items: center; }
   .sim__intro { margin-top: 20px; font-size: 17px; }
-  .sim__card { padding: 28px; border: 1px solid #262626; border-radius: 6px; background: #121212; }
+  .sim__card { padding: 28px; border: 1px solid var(--card-line); border-radius: 6px; background: var(--card); }
   .sim__field + .sim__field { margin-top: 22px; }
   .sim__label { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 14px; }
   .sim__label output { color: var(--white); font-weight: 700; font-variant-numeric: tabular-nums; }
@@ -338,13 +372,46 @@
   /* Barra fixa de compra: só no celular */
   .buybar { display: none; }
 
+  /* Tema verde floresta: vale em /doloteaobra-verde ou com ?tema=verde */
+  html.tema-verde {
+    --black: #0b2218;
+    --panel: #0f2a1e;
+    --panel-line: #1f4433;
+    --brown-1: #0e271c;
+    --brown-2: #163d2b;
+    --card: #123322;
+    --card-line: #24503d;
+    --result-bg: #0d2419;
+    --result-line: #2f5b47;
+    --hero-glow: #1f5a3c;
+    --offer-line: #2f5b47;
+    --offer-bg: linear-gradient(180deg, rgba(18, 51, 34, .97) 0%, rgba(14, 40, 28, .97) 55%, rgba(10, 32, 22, .98) 100%);
+    --final-bg: linear-gradient(180deg, #12331f 0%, #0a2017 100%);
+    --footer: #081b13;
+    --bar: rgba(11, 34, 24, .97);
+    --badge-1: #2b5a45;
+    --badge-2: #0e271c;
+    --badge-line: #6f8f80;
+    --line: rgba(255, 255, 255, .1);
+    --text: #e2e8e4;
+    --muted: #bfcbc4;
+    --faint: #93a59b;
+    --btn-bg: linear-gradient(180deg, #ffdb97 0%, #e9a048 100%);
+    --btn-border: #ffdb97;
+    --btn-shadow: 0 12px 40px rgba(233, 160, 72, .22);
+    --btn-text: #1c1a16;
+    --btn-arrow: #1c1a16;
+    --check-bg: linear-gradient(165deg, #ffdb97, #e9a048);
+    --check-icon: var(--check-dark);
+  }
+
   /* Efeitos de entrada: só valem com a classe colocada pelo script do <head> */
   .reveal-on .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
   .reveal-on .reveal--side { transform: translateX(36px); }
   .reveal-on .reveal--pop { transform: scale(.5); }
   .reveal-on .reveal.is-in { opacity: 1; transform: none; }
 
-  footer { padding: 40px 24px; background: #111; color: var(--faint); font-size: 13px; text-align: center; }
+  footer { padding: 40px 24px; background: var(--footer); color: var(--faint); font-size: 13px; text-align: center; }
 
   @media (max-width: 960px) {
     .sim { grid-template-columns: 1fr; gap: 32px; }
@@ -361,7 +428,7 @@
       gap: 12px;
       padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
       border-top: 1px solid var(--line-strong);
-      background: rgba(18, 18, 18, .97);
+      background: var(--bar);
       transform: translateY(110%);
       transition: transform .3s ease;
     }
@@ -399,8 +466,8 @@
     .sheet { padding: 24px 20px; }
     .sheet h3 { font-size: 24px; }
     .calc { padding: 18px 16px; }
-    .calc__bars { gap: 6px; }
-    .calc__bar { font-size: 11px; }
+    .calc__tl li { grid-template-columns: 14px 1fr; gap: 2px 10px; }
+    .calc__tl b { grid-column: 2; text-align: left; font-size: 14px; }
     .easy-sec { padding-bottom: 110px; }
     .about-sec { padding-top: 120px; }
     .about { padding: 20px; }
@@ -409,6 +476,7 @@
     .final-card { padding: 36px 20px; }
   }
   @media (max-width: 380px) {
+    .calc__result strong { font-size: 27px; }
     .buybar__info small { font-size: 9.5px; letter-spacing: .4px; }
     .buybar__btn.btn { padding: 12px 14px; font-size: 13px; }
     .buybar__btn.btn::after { display: none; }
@@ -437,16 +505,17 @@
       </div>
       <!-- Ilustração animada: a planilha preenche e a casa é construída. O script monta as linhas da planilha. -->
       <div class="hero__media reveal reveal--side">
-        <svg class="hero__art" viewBox="0 0 480 510" aria-hidden="true">
+        <svg class="hero__art" viewBox="0 0 480 554" aria-hidden="true">
           <!-- Janela da planilha -->
-          <rect x="8" y="8" width="464" height="228" rx="8" fill="#121212" stroke="#2c2c2c"/>
-          <path d="M8 44h464" stroke="#2c2c2c"/>
+          <rect class="hv-sheet" x="8" y="8" width="464" height="268" rx="8"/>
+          <path class="hv-sheet-line" d="M8 44h464"/>
           <g id="hv-tabs"></g>
           <rect x="396" y="17" width="62" height="19" rx="9.5" fill="none" stroke="#74542d"/>
           <text x="427" y="30.5" fill="#ffdb97" font-size="11" font-weight="600" text-anchor="middle">Exemplo</text>
           <g id="hv-pages"></g>
-          <rect id="hv-select" class="hv-select" x="330" y="52" width="130" height="32" rx="3" fill="#e9a048" fill-opacity=".12" stroke="#e9a048" stroke-width="1.5"/>
+          <rect id="hv-select" class="hv-select" x="330" y="53" width="130" height="24" rx="3" fill="#e9a048" fill-opacity=".12" stroke="#e9a048" stroke-width="1.5"/>
 
+          <g transform="translate(0 44)">
           <!-- Guindaste -->
           <g id="hv-crane" class="hv-crane" fill="none" stroke="#a88a5e" stroke-width="1.6">
             <path d="M58 490V262M72 490V262M58 490l14-19-14-19 14-19-14-19 14-19-14-19 14-19-14-19 14-19-14-19 14-19"/>
@@ -518,6 +587,7 @@
             <circle cx="424" cy="316" r="28" fill="#1fa53c"/>
             <path d="M411 317l9 9 17-19" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
           </g>
+          </g>
         </svg>
       </div>
     </div>
@@ -531,7 +601,13 @@
 <!-- 2. O PROBLEMA -->
 <section class="sec problem center">
   <div class="wrap">
-    <h2 class="reveal">Antes de pedir o financiamento, você já sabe <span class="hl">tudo o que a sua obra vai custar?</span></h2>
+    <h2 class="reveal">Antes de pedir o financiamento, você já sabe <span class="hl">o seu potencial financeiro?</span></h2>
+    <ul class="check-list problem__checks reveal">
+      <li>Sabe quanto direcionar para a obra?</li>
+      <li>Qual o custo médio da obra na sua região e no seu padrão?</li>
+      <li>Quanto do orçamento fica para o lote?</li>
+      <li>E o fluxo de valores em geral?</li>
+    </ul>
     <p class="problem__list reveal">Juros de obra, ITBI, escritura, taxas do banco, habite-se, averbação e INSS da obra.</p>
     <p class="problem__text reveal">São despesas que podem comprometer seu orçamento quando não entram no planejamento.</p>
     <div class="callout reveal">
@@ -573,14 +649,14 @@
     <div class="sheets">
       <article class="sheet reveal">
         <div class="sheet__head">
-          <p class="eyebrow">01 — Controle Financeiro</p>
+          <p class="eyebrow">01 — Controle Pessoal de Finanças</p>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#e9a048" stroke-width="1.4" aria-hidden="true"><rect x="1" y="1" width="16" height="16" rx="1.5"/><path d="M1 6.3h16M1 11.7h16M6.3 1v16"/></svg>
         </div>
         <div class="sheet__body">
           <div>
             <h3>Quanto falta para você conseguir dar a entrada da sua casa?</h3>
             <p class="sheet__lede">Pare de juntar dinheiro sem saber quando vai alcançar seu objetivo.</p>
-            <ul class="sheet__items">
+            <ul class="sheet__items check-list">
               <li><strong>Controle sua renda e seus gastos:</strong> registre entradas e saídas mensais, seja empregado, autônomo ou empresário.</li>
               <li><strong>Descubra quanto consegue guardar:</strong> acompanhe o saldo mensal e o acumulado do ano automaticamente.</li>
               <li><strong>Calcule o dinheiro necessário para começar:</strong> estime a entrada do imóvel, ITBI e escritura.</li>
@@ -590,7 +666,7 @@
           </div>
           <!-- Ilustração: sobra do mês e tempo até juntar o valor -->
           <div class="calc" aria-hidden="true">
-            <div class="calc__top"><span>Controle Financeiro</span><span class="calc__tag">Exemplo</span></div>
+            <div class="calc__top"><span>Controle Pessoal de Finanças</span><span class="calc__tag">Exemplo</span></div>
             <div class="calc__row"><span>Renda do mês</span><b>R$ 6.000</b></div>
             <div class="calc__row"><span>Gastos do mês</span><b>− R$ 4.500</b></div>
             <div class="calc__row calc__row--total"><span>Saldo do mês</span><b>R$ 1.500</b></div>
@@ -615,7 +691,7 @@
           <div>
             <h3>Qual casa você realmente consegue financiar com a sua renda?</h3>
             <p class="sheet__lede">Antes de escolher o imóvel, descubra o que cabe no seu orçamento.</p>
-            <ul class="sheet__items">
+            <ul class="sheet__items check-list">
               <li><strong>Estime seu poder de financiamento:</strong> descubra a parcela máxima estimada de acordo com sua renda.</li>
               <li><strong>Compare modalidades:</strong> simule condições do Minha Casa Minha Vida (PRICE) e do SBPE (SAC).</li>
               <li><strong>Visualize os valores:</strong> estime quanto poderá financiar, quanto precisará dar de entrada e o valor total do imóvel.</li>
@@ -628,16 +704,13 @@
             <div class="calc__top"><span>Planejamento Financeiro</span><span class="calc__tag">Exemplo</span></div>
             <div class="calc__row"><span>Renda mensal</span><b>R$ 8.000</b></div>
             <div class="calc__row calc__row--total"><span>Parcela máxima (30%)</span><b>R$ 2.400</b></div>
-            <div class="calc__tiles">
-              <div>MCMV (PRICE)<b>R$ 327 mil</b></div>
-              <div>SBPE (SAC)<b>R$ 200 mil</b></div>
-            </div>
+            <div class="calc__row"><span>Valor de financiamento</span><b>R$ 327.000</b></div>
             <div class="calc__row"><span>Financiamento + entrada</span><b>R$ 360.000</b></div>
             <div class="calc__row"><span>Terreno</span><b>− R$ 100.000</b></div>
             <div class="calc__row calc__row--total"><span>Para a obra</span><b>R$ 260.000</b></div>
             <div class="calc__result">
-              R$ 260.000 ÷ R$ 2.600 por m²
-              <strong>100 m²</strong>
+              R$ 260.000 ÷ R$ 3.000 por m²
+              <strong>86 m²</strong>
               para construir
             </div>
           </div>
@@ -646,14 +719,14 @@
 
       <article class="sheet reveal">
         <div class="sheet__head">
-          <p class="eyebrow">03 — Fluxo Financeiro</p>
+          <p class="eyebrow">03 — Fluxo de Valores</p>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#e9a048" stroke-width="1.4" aria-hidden="true"><rect x="1" y="1" width="16" height="16" rx="1.5"/><path d="M1 6.3h16M1 11.7h16M6.3 1v16"/></svg>
         </div>
         <div class="sheet__body">
           <div>
             <h3>Quanto dinheiro vai sair do seu bolso enquanto a casa estiver sendo construída?</h3>
             <p class="sheet__lede">O financiamento não é a única despesa que você terá durante a obra.</p>
-            <ul class="sheet__items">
+            <ul class="sheet__items check-list">
               <li><strong>Organize os gastos iniciais:</strong> entrada e parcelas do terreno, projeto e taxas.</li>
               <li><strong>Simule a liberação do financiamento:</strong> visualize o cronograma estimado de recursos por etapa da construção.</li>
               <li><strong>Calcule os juros de obra:</strong> estime quanto poderá pagar mês a mês, inclusive a parcela relacionada ao terreno.</li>
@@ -661,25 +734,21 @@
             </ul>
             <p class="close-line">Saiba quais despesas podem aparecer durante a construção antes que elas surpreendam seu bolso.</p>
           </div>
-          <!-- Ilustração: juros de obra por etapa e soma dos custos extras -->
+          <!-- Ilustração: linha do tempo dos pagamentos, do início da obra até a chave -->
           <div class="calc" aria-hidden="true">
-            <div class="calc__top"><span>Fluxo Financeiro</span><span class="calc__tag">Exemplo</span></div>
-            <p class="calc__label">Juros de obra por mês</p>
-            <div class="calc__bars">
-              <div class="calc__bar">R$ 400<i style="height:18%"></i><small>Etapa 1</small></div>
-              <div class="calc__bar">R$ 800<i style="height:36%"></i><small>Etapa 2</small></div>
-              <div class="calc__bar">R$ 1.200<i style="height:54%"></i><small>Etapa 3</small></div>
-              <div class="calc__bar">R$ 1.600<i style="height:72%"></i><small>Etapa 4</small></div>
-            </div>
-            <div class="calc__row"><span>ITBI</span><b>R$ 6.000</b></div>
-            <div class="calc__row"><span>Registro</span><b>+ R$ 3.000</b></div>
-            <div class="calc__row"><span>Taxas bancárias</span><b>+ R$ 2.500</b></div>
-            <div class="calc__row"><span>Habite-se e averbação</span><b>+ R$ 1.500</b></div>
-            <div class="calc__row"><span>INSS da obra</span><b>+ R$ 5.000</b></div>
+            <div class="calc__top"><span>Fluxo de Valores</span><span class="calc__tag">Exemplo</span></div>
+            <p class="calc__label">Quando cada valor sai do seu bolso</p>
+            <ol class="calc__tl">
+              <li><i></i><span><small>Mês 0</small>Entrada do imóvel</span><b>R$ 120.000</b></li>
+              <li><i></i><span><small>Mês 1</small>Projetos</span><b>R$ 10.000</b></li>
+              <li><i></i><span><small>Mês 2</small>Taxas, ITBI e registro</span><b>R$ 20.000</b></li>
+              <li><i></i><span><small>Meses 3 a 14</small>Juros de obra, subindo a cada etapa</span><b>R$ 400–1.600</b></li>
+              <li><i></i><span><small>Mês 15</small>Chave na mão: começa a parcela</span><b>R$ 4.000</b></li>
+            </ol>
             <div class="calc__result">
-              Soma dos custos extras
-              <strong>R$ 18.000</strong>
-              além do financiamento
+              Antes da primeira parcela
+              <strong>R$ 150.000</strong>
+              mais os juros de obra durante a construção
             </div>
           </div>
         </div>
@@ -744,7 +813,7 @@
       <h2 class="reveal">Mais de 100 obras acompanhadas. Mais de 10 anos no mercado imobiliário.</h2>
       <p class="reveal">Richard e Tamires já acompanharam a jornada de mais de 100 obras, desde o planejamento até a realização da casa própria.</p>
       <p class="reveal">E perceberam um problema recorrente: pessoas assumindo compromissos financeiros sem conhecer todos os custos envolvidos.</p>
-      <p class="reveal">Foi para ajudar a mudar essa realidade que nasceu o DOBRA.</p>
+      <p class="reveal">Foi para ajudar a mudar essa realidade que nasceu o DOBRA, o método completo para construir do lote à obra. O Kit Financeiro reúne as planilhas desse método.</p>
       <p class="close-line reveal">Experiência de quem conhece os desafios de construir uma casa do zero.</p>
     </div>
   </div>
@@ -756,11 +825,11 @@
     <h2 class="center">Antes de investir milhares de reais na sua casa, <span class="hl">invista no planejamento.</span></h2>
     <p class="offer__lead">Com o Kit Financeiro DOBRA, você recebe:</p>
     <ul class="check-list">
-      <li><strong>Controle Financeiro:</strong> saiba quanto guardar e quando poderá dar a entrada.</li>
+      <li><strong>Controle Pessoal de Finanças:</strong> saiba quanto guardar e quando poderá dar a entrada.</li>
       <li><strong>Planejamento Financeiro:</strong> estime quanto pode financiar e o tamanho da casa que cabe no orçamento.</li>
-      <li><strong>Fluxo Financeiro:</strong> simule juros de obra e despesas extras durante a construção.</li>
+      <li><strong>Fluxo de Valores:</strong> simule juros de obra e despesas extras durante a construção.</li>
       <li>Tutoriais de utilização das 3 planilhas.</li>
-      <li>Entrega digital por e-mail.</li>
+      <li>Após a confirmação do pagamento, você recebe o acesso ao Kit DOBRA por e-mail, com as 3 planilhas e os tutoriais para começar a utilizar.</li>
       <li>Garantia de 7 dias.</li>
     </ul>
     <div class="price-block">
@@ -788,7 +857,7 @@
       </details>
       <details class="reveal">
         <summary>As planilhas calculam os juros durante a construção?</summary>
-        <p>Sim. A Planilha de Fluxo Financeiro estima os juros de obra mês a mês, considerando os dados informados e o cronograma simulado.</p>
+        <p>Sim. A planilha de Fluxo de Valores estima os juros de obra mês a mês, considerando os dados informados e o cronograma simulado.</p>
       </details>
       <details class="reveal">
         <summary>Consigo calcular os custos além do financiamento?</summary>
@@ -800,7 +869,7 @@
       </details>
       <details class="reveal">
         <summary>Serve para quem é autônomo ou tem empresa?</summary>
-        <p>Sim. O Controle Financeiro possui campos para organização de renda e gastos de pessoa jurídica, além das finanças pessoais.</p>
+        <p>Sim. O Controle Pessoal de Finanças possui campos para organização de renda e gastos de pessoa jurídica, além das finanças pessoais.</p>
       </details>
       <details class="reveal">
         <summary>Como recebo as planilhas?</summary>
@@ -895,8 +964,8 @@
 
   if ("IntersectionObserver" in window && !reduceMotion) {
     document.querySelectorAll(".calc").forEach((calc) => {
-      const steps = [...calc.querySelectorAll(".calc__label, .calc__row, .calc__tiles, .calc__bar, .calc__result")];
-      const values = [...calc.querySelectorAll(".calc__row b, .calc__tiles b, .calc__result strong")];
+      const steps = [...calc.querySelectorAll(".calc__label, .calc__row, .calc__tl li, .calc__result")];
+      const values = [...calc.querySelectorAll(".calc__row b, .calc__tl b, .calc__result strong")];
       const interval = Math.min(420, CALC_SEQUENCE_MS / steps.length);
       let timers = [];
 
@@ -939,39 +1008,45 @@
   }
 
   // Primeira dobra: cada valor preenchido na planilha avança uma etapa da casa.
-  // Fica em loop enquanto estiver na tela. Com "reduzir movimento", mostra a casa pronta.
-  const HERO_ROW_MS = 620;
+  // Fica em loop enquanto estiver na tela. Clicar numa aba mostra aquela planilha preenchida,
+  // e o loop volta sozinho depois de alguns segundos. Com "reduzir movimento", mostra a casa pronta.
+  const HERO_ROW_MS = 560;
   const HERO_HOLD_MS = 3500;
+  const HERO_RESUME_MS = 12000;
   const HERO_PAGES = [
-    { tab: "Controle", x: 28, width: 60, rows: [
+    { tab: "Controle", x: 28, width: 60, total: 4, rows: [
       ["Renda do mês", "R$ 6.000"], ["Gastos do mês", "− R$ 4.500"], ["Saldo do mês", "R$ 1.500"],
       ["Valor necessário", "R$ 36.000"], ["Tempo para juntar", "24 meses"] ] },
-    { tab: "Planejamento", x: 112, width: 88, rows: [
+    { tab: "Planejamento", x: 112, width: 88, total: 4, rows: [
       ["Renda mensal", "R$ 8.000"], ["Parcela máxima", "R$ 2.400"], ["Financiamento + entrada", "R$ 360.000"],
-      ["Para a obra", "R$ 260.000"], ["Tamanho da casa", "100 m²"] ] },
-    { tab: "Fluxo", x: 224, width: 38, rows: [
-      ["ITBI", "R$ 6.000"], ["Registro", "+ R$ 3.000"], ["Taxas e habite-se", "+ R$ 4.000"],
-      ["INSS da obra", "+ R$ 5.000"], ["Custos extras", "R$ 18.000"] ] },
+      ["Para a obra", "R$ 260.000"], ["Tamanho da casa", "86 m²"] ] },
+    { tab: "Fluxo", x: 224, width: 38, total: 0, rows: [
+      ["Total do imóvel", "R$ 600.000"], ["Construção de 120 m²", "R$ 450.000"], ["Terreno", "R$ 150.000"],
+      ["Entrada", "R$ 120.000"], ["Parcela", "R$ 4.000"], ["Total de taxas", "R$ 20.000"], ["Projetos", "R$ 10.000"] ] },
   ];
+  // Posição do gancho do guindaste em cada uma das 15 etapas da casa.
   const HERO_HOOK_X = [240, 160, 160, 290, 240, 280, 226, 240, 280, 280, 280, 160, 145, 145, 145];
+  const HERO_LAST_STEP = HERO_HOOK_X.length - 1;
 
   const heroArt = document.querySelector(".hero__art");
   if (heroArt) {
-    const ROW_TOP = 52;
-    const ROW_HEIGHT = 36;
+    const ROW_TOP = 50;
+    const ROW_HEIGHT = 30;
+    const totalRows = HERO_PAGES.reduce((sum, page) => sum + page.rows.length, 0);
 
-    heroArt.querySelector("#hv-tabs").innerHTML = HERO_PAGES.map((page) =>
+    heroArt.querySelector("#hv-tabs").innerHTML = HERO_PAGES.map((page, index) =>
       `<text class="hv-tab" x="${page.x}" y="31">${page.tab}</text>` +
-      `<rect class="hv-underline" x="${page.x}" y="42" width="${page.width}" height="3" fill="#e9a048"/>`
+      `<rect class="hv-underline" x="${page.x}" y="42" width="${page.width}" height="3" fill="#e9a048"/>` +
+      `<rect class="hv-hit" data-page="${index}" x="${page.x - 10}" y="10" width="${page.width + 20}" height="34" fill="transparent"/>`
     ).join("");
 
     heroArt.querySelector("#hv-pages").innerHTML = HERO_PAGES.map((page) =>
       `<g class="hv-page">` + page.rows.map(([label, value], row) => {
         const y = ROW_TOP + row * ROW_HEIGHT;
-        return `<g class="${row === page.rows.length - 1 ? "hv-total" : ""}">` +
-          `<text class="hv-label" x="28" y="${y + 21}">${label}</text>` +
-          `<text class="hv-value" x="450" y="${y + 21}" text-anchor="end">${value}</text>` +
-          (row < page.rows.length - 1 ? `<path d="M20 ${y + ROW_HEIGHT - 2}h440" stroke="#232323"/>` : "") +
+        return `<g class="${row === page.total ? "hv-total" : ""}">` +
+          `<text class="hv-label" x="28" y="${y + 19}">${label}</text>` +
+          `<text class="hv-value" x="450" y="${y + 19}" text-anchor="end">${value}</text>` +
+          (row < page.rows.length - 1 ? `<path class="hv-sep" d="M20 ${y + ROW_HEIGHT - 1}h440"/>` : "") +
         `</g>`;
       }).join("") + `</g>`
     ).join("");
@@ -985,6 +1060,8 @@
     const crane = heroArt.querySelector("#hv-crane");
     const hook = heroArt.querySelector("#hv-hook");
     let timers = [];
+    let resumeTimer = null;
+    let playing = false;
 
     const showPage = (index) => {
       [tabs, underlines, pages].forEach((group) => {
@@ -998,15 +1075,27 @@
         value.classList.remove("is-on");
       });
     };
-    const buildStep = (step) => {
-      pieces.filter((piece) => Number(piece.dataset.step) === step).forEach((piece) => piece.classList.add("is-on"));
+    const buildUpTo = (step) => {
+      pieces.filter((piece) => Number(piece.dataset.step) <= step).forEach((piece) => piece.classList.add("is-on"));
     };
     const reset = () => {
       timers.forEach(clearTimeout);
       timers = [];
+      clearTimeout(resumeTimer);
       showPage(-1);
       clearValues();
       pieces.forEach((piece) => piece.classList.remove("is-on"));
+      select.classList.remove("is-on");
+      crane.classList.remove("is-on");
+    };
+    // Aba clicada: planilha inteira preenchida e casa pronta, sem animação.
+    const showFilled = (index) => {
+      timers.forEach(clearTimeout);
+      timers = [];
+      showPage(index);
+      clearValues();
+      pages[index].querySelectorAll(".hv-value").forEach((value) => value.classList.add("is-on"));
+      buildUpTo(HERO_LAST_STEP);
       select.classList.remove("is-on");
       crane.classList.remove("is-on");
     };
@@ -1014,20 +1103,22 @@
     const play = () => {
       const at = (time, action) => timers.push(setTimeout(action, time));
       let time = 300;
+      let filled = 0;
       at(0, () => crane.classList.add("is-on"));
       HERO_PAGES.forEach((page, pageIndex) => {
         at(time, () => { showPage(pageIndex); select.classList.add("is-on"); });
         time += 300;
         page.rows.forEach((_, row) => {
-          const step = pageIndex * page.rows.length + row;
+          const step = Math.round((filled * HERO_LAST_STEP) / (totalRows - 1));
+          filled += 1;
           at(time, () => {
             select.style.transform = `translateY(${row * ROW_HEIGHT}px)`;
             const value = pages[pageIndex].querySelectorAll(".hv-value")[row];
             value.classList.add("is-on");
             countUp(value, value.dataset.final, HERO_ROW_MS * 0.7);
             hook.style.transform = `translateX(${HERO_HOOK_X[step]}px)`;
-            buildStep(step);
-            if (step === 13) crane.classList.remove("is-on");
+            buildUpTo(step);
+            if (step >= 13) crane.classList.remove("is-on");
           });
           time += HERO_ROW_MS;
         });
@@ -1039,8 +1130,15 @@
       });
     };
 
+    heroArt.addEventListener("click", (event) => {
+      const hit = event.target.closest(".hv-hit");
+      if (!hit) return;
+      showFilled(Number(hit.dataset.page));
+      clearTimeout(resumeTimer);
+      if (playing) resumeTimer = setTimeout(() => { reset(); play(); }, HERO_RESUME_MS);
+    });
+
     if ("IntersectionObserver" in window && !reduceMotion) {
-      let playing = false;
       new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting && !playing) {
           playing = true;
@@ -1051,9 +1149,7 @@
         }
       }).observe(heroArt);
     } else {
-      showPage(HERO_PAGES.length - 1);
-      heroArt.querySelectorAll(".hv-page.is-on .hv-value").forEach((value) => value.classList.add("is-on"));
-      pieces.forEach((piece) => piece.classList.add("is-on"));
+      showFilled(HERO_PAGES.length - 1);
     }
   }
 
@@ -1121,7 +1217,7 @@
   }
 
   // Faixa decorativa: repete os nomes o bastante para o loop não ter emenda.
-  const STRIP_ITEMS = ["Controle Financeiro", "Planejamento Financeiro", "Fluxo Financeiro"];
+  const STRIP_ITEMS = ["Controle Pessoal de Finanças", "Planejamento Financeiro", "Fluxo de Valores"];
   document.querySelectorAll(".strip__track").forEach((track) => {
     track.innerHTML = STRIP_ITEMS.map((item) => `<span>${item}</span>`).join("").repeat(8);
   });
