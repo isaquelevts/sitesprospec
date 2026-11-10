@@ -6,7 +6,8 @@
 <title>Kit Financeiro DOBRA</title>
 <meta name="description" content="Descubra quanto você pode financiar, quanto vai gastar durante a obra e quando terá dinheiro para dar a entrada.">
 <script>
-  if (/-verde\/?$/.test(location.pathname) || /[?&]tema=verde/.test(location.search)) {
+  // Verde floresta é o tema padrão. Para ver a versão preta, use ?tema=preto no endereço.
+  if (!/[?&]tema=preto/.test(location.search)) {
     document.documentElement.classList.add("tema-verde");
   }
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -387,7 +388,7 @@
   /* Barra fixa de compra: só no celular */
   .buybar { display: none; }
 
-  /* Tema verde floresta: vale em /doloteaobra-verde ou com ?tema=verde */
+  /* Tema verde floresta: padrão da página (a versão preta só aparece com ?tema=preto) */
   html.tema-verde {
     --black: #0b2218;
     --panel: #0f2a1e;
