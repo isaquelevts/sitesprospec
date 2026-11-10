@@ -413,14 +413,20 @@
     --text: #e2e8e4;
     --muted: #bfcbc4;
     --faint: #93a59b;
-    --btn-bg: linear-gradient(180deg, #ffdb97 0%, #e9a048 100%);
-    --btn-border: #ffdb97;
-    --btn-shadow: 0 12px 40px rgba(233, 160, 72, .22);
+    --btn-bg: linear-gradient(#f59e0b, #f59e0b);
+    --btn-border: #f59e0b;
+    --btn-shadow: 0 12px 32px rgba(245, 158, 11, .25);
     --btn-text: #1c1a16;
     --btn-arrow: #1c1a16;
     --check-bg: linear-gradient(165deg, #ffdb97, #e9a048);
     --check-icon: var(--check-dark);
   }
+
+  /* Depoimentos */
+  .depo__intro { max-width: 620px; margin: 16px auto 0; font-size: 17px; }
+  .depo__grid { margin-top: 40px; column-count: 3; column-gap: 18px; }
+  .depo__item { margin: 0 0 18px; break-inside: avoid; }
+  .depo__item .pp__open { background: var(--card); }
 
   /* Efeitos de entrada: só valem com a classe colocada pelo script do <head> */
   .reveal-on .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
@@ -431,6 +437,7 @@
   footer { padding: 40px 24px; background: var(--footer); color: var(--faint); font-size: 13px; text-align: center; }
 
   @media (max-width: 960px) {
+    .depo__grid { column-count: 2; }
     .sim { grid-template-columns: 1fr; gap: 32px; }
     .who__list { grid-template-columns: 1fr; }
     .buybar {
@@ -459,6 +466,8 @@
     .hero__grid { grid-template-columns: 1fr; gap: 40px; }
     .hero__media { width: 100%; max-width: 480px; margin: 0 auto; }
     .problem__prints { grid-template-columns: 1fr; gap: 22px; margin-top: 28px; }
+    .depo__grid { display: flex; gap: 14px; margin: 32px -20px 0; padding: 0 20px 8px; overflow-x: auto; column-count: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .depo__item { flex: 0 0 78%; margin: 0; scroll-snap-align: center; }
     .sheet__body { grid-template-columns: 1fr; gap: 28px; padding: 24px 0 4px; }
     .about { grid-template-columns: 1fr; gap: 36px; padding: 28px; }
     .about img { max-width: 420px; margin: 0 auto; }
@@ -510,7 +519,7 @@
     <div class="hero__grid">
       <div class="hero__copy">
         <p class="eyebrow hero__eyebrow reveal">Vai construir ou financiar?</p>
-        <h1 class="reveal">Planeje sua casa própria <span class="hl">antes de assumir um financiamento.</span></h1>
+        <h1 class="reveal">Planeje sua construção <span class="hl">antes de fechar qualquer negócio.</span></h1>
         <p class="hero__support reveal">Descubra quanto você pode financiar, quanto precisa juntar para a entrada e quais custos terá durante a construção — tudo com 3 planilhas automatizadas.</p>
         <ul class="chips reveal">
           <li>3 planilhas automatizadas</li>
@@ -849,6 +858,31 @@
       <p class="reveal">E perceberam um problema recorrente: pessoas assumindo compromissos financeiros sem conhecer todos os custos envolvidos.</p>
       <p class="reveal">Foi para ajudar a mudar essa realidade que nasceu o DOBRA, o método completo para construir do lote à obra. O Kit Financeiro reúne as planilhas desse método.</p>
       <p class="close-line reveal">Experiência de quem conhece os desafios de construir uma casa do zero.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="sec depo">
+  <div class="wrap wrap--wide">
+    <h2 class="center reveal">Quem já construiu com <span class="hl">Richard e Tamires</span></h2>
+    <p class="depo__intro center reveal">Depoimentos de clientes que eles acompanharam do lote à obra. Toque em um depoimento para ampliar.</p>
+    <div class="depo__grid reveal">
+      <figure class="depo__item">
+        <button class="pp__open" type="button" aria-label="Ampliar depoimento"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/06/image_4-6.webp" width="739" height="1160" loading="lazy" alt="Depoimento de Roseane no WhatsApp: agradece à Do Lote a Obra, comprou um lote e está na fase do projeto arquitetônico"></button>
+      </figure>
+      <figure class="depo__item">
+        <button class="pp__open" type="button" aria-label="Ampliar depoimento"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/06/image_22-2.webp" width="739" height="1038" loading="lazy" alt="Depoimento de Wagner S no WhatsApp: com a orientação de Richard e da equipe, comprou o lote e está prestes a iniciar a obra com planejamento"></button>
+      </figure>
+      <figure class="depo__item">
+        <button class="pp__open" type="button" aria-label="Ampliar depoimento"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/06/image_5-5.webp" width="1170" height="1044" loading="lazy" alt="Depoimento de Cesar Augusto no WhatsApp: Richard e Tamires o auxiliaram da escolha e compra do lote até a assessoria para a construção"></button>
+      </figure>
+      <figure class="depo__item">
+        <button class="pp__open" type="button" aria-label="Ampliar depoimento"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/07/whatsapp_image_2026_07_03_at_17_50_10_1-1.webp" width="739" height="1061" loading="lazy" alt="Depoimento de Talles Sant'Ana no WhatsApp: contratou o serviço de arquitetura e construção e teve uma experiência positiva do começo ao fim"></button>
+      </figure>
+      <figure class="depo__item">
+        <button class="pp__open" type="button" aria-label="Ampliar depoimento"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/06/image_23.webp" width="739" height="833" loading="lazy" alt="Depoimento de Lucas Carey no WhatsApp: agradece pelo suporte na escolha do terreno e no encaminhamento para projeto e construção"></button>
+      </figure>
     </div>
   </div>
 </section>
