@@ -147,12 +147,9 @@
   .hero__grid { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; align-items: center; }
   .hero__eyebrow { margin-bottom: 16px; }
   .hero__support { margin-top: 20px; font-size: 17px; }
-  .hero__copy .btn { margin-top: 18px; }
+  .hero__copy .btn { margin-top: 28px; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
   .chips li { padding: 5px 11px; border: 1px solid var(--line-strong); border-radius: 4px; color: var(--text); font-size: 13px; line-height: 1.5; }
-  .hero__price { margin-top: 22px; line-height: 1; }
-  .hero__price .price { font-size: 44px; line-height: 1.1; }
-  .hero__price .price small { font-size: 20px; }
   .hero .micro { margin-top: 20px; }
   .hero__art { display: block; width: 100%; height: auto; font-family: Inter, sans-serif; }
 
@@ -314,6 +311,7 @@
   }
   .price-block { margin-top: 28px; text-align: center; }
   .price-block__intro { color: var(--muted); font-size: 15px; }
+  .price-parcel { margin: 2px 0 6px; color: var(--white); font-size: 17px; font-weight: 600; }
   .price { display: inline-block; font-size: 68px; font-weight: 800; line-height: 1.25; letter-spacing: -1px; white-space: nowrap; }
   .price small { margin-right: 6px; font-size: 26px; font-weight: 800; letter-spacing: 0; }
   .price-block__note { color: var(--muted); font-size: 14px; font-style: italic; font-weight: 700; }
@@ -424,8 +422,9 @@
 
   /* Depoimentos */
   .depo__intro { max-width: 620px; margin: 16px auto 0; font-size: 17px; }
-  .depo__grid { margin-top: 40px; column-count: 3; column-gap: 18px; }
-  .depo__item { margin: 0 0 18px; break-inside: avoid; }
+  .depo__grid { display: flex; align-items: flex-start; gap: 18px; margin-top: 40px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .depo__grid::-webkit-scrollbar { display: none; }
+  .depo__item { flex: 0 0 calc((100% - 36px) / 3); margin: 0; scroll-snap-align: start; }
   .depo__item .pp__open { background: var(--card); }
 
   /* Efeitos de entrada: só valem com a classe colocada pelo script do <head> */
@@ -437,7 +436,7 @@
   footer { padding: 40px 24px; background: var(--footer); color: var(--faint); font-size: 13px; text-align: center; }
 
   @media (max-width: 960px) {
-    .depo__grid { column-count: 2; }
+    .depo__item { flex-basis: calc((100% - 18px) / 2); }
     .sim { grid-template-columns: 1fr; gap: 32px; }
     .who__list { grid-template-columns: 1fr; }
     .buybar {
@@ -466,8 +465,8 @@
     .hero__grid { grid-template-columns: 1fr; gap: 40px; }
     .hero__media { width: 100%; max-width: 480px; margin: 0 auto; }
     .problem__prints { grid-template-columns: 1fr; gap: 22px; margin-top: 28px; }
-    .depo__grid { display: flex; gap: 14px; margin: 32px -20px 0; padding: 0 20px 8px; overflow-x: auto; column-count: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-    .depo__item { flex: 0 0 78%; margin: 0; scroll-snap-align: center; }
+    .depo__grid { gap: 14px; margin: 32px -20px 0; padding: 0 20px; scroll-padding: 0 20px; }
+    .depo__item { flex-basis: 78%; }
     .sheet__body { grid-template-columns: 1fr; gap: 28px; padding: 24px 0 4px; }
     .about { grid-template-columns: 1fr; gap: 36px; padding: 28px; }
     .about img { max-width: 420px; margin: 0 auto; }
@@ -526,7 +525,6 @@
           <li>Tutoriais inclusos</li>
           <li>Acesso digital</li>
         </ul>
-        <p class="hero__price reveal"><span class="price"><small>R$</small>37,00</span></p>
         <a class="btn reveal" data-checkout href="#oferta">QUERO PLANEJAR MINHA CASA</a>
         <p class="micro reveal">Pagamento único | Garantia de 7 dias</p>
       </div>
@@ -902,7 +900,8 @@
     </ul>
     <div class="price-block">
       <p class="price-block__intro">Tudo isso por apenas</p>
-      <p class="price"><small>R$</small>37,00</p>
+      <p class="price"><small>R$</small>67,00</p>
+      <p class="price-parcel">ou 12x de R$ 5,58</p>
       <p class="price-block__note">Pagamento único. Sem mensalidades.</p>
     </div>
     <a class="btn" data-checkout href="#oferta">QUERO GARANTIR MEU KIT DOBRA</a>
@@ -963,7 +962,8 @@
       <h2>Não assine um financiamento sem antes entender <em>quanto a sua casa pode custar.</em></h2>
       <p class="final__text">Descubra quanto pode financiar, quando conseguirá juntar a entrada e quais despesas poderá enfrentar durante a construção.</p>
       <p class="final__kit">3 planilhas automatizadas + tutoriais</p>
-      <p class="price"><small>R$</small>37,00</p>
+      <p class="price"><small>R$</small>67,00</p>
+      <p class="price-parcel">ou 12x de R$ 5,58</p>
       <div><a class="btn" data-checkout href="#oferta">QUERO PLANEJAR MINHA CASA AGORA</a></div>
       <p class="micro">Pagamento único | Entrega por e-mail | Garantia de 7 dias</p>
     </div>
@@ -988,7 +988,7 @@
 
 <!-- Barra fixa de compra no celular: aparece fora da primeira dobra, da oferta e da última chamada -->
 <div class="buybar" id="buybar">
-  <div class="buybar__info"><small>Kit Financeiro DOBRA</small><b>R$ 37,00</b></div>
+  <div class="buybar__info"><small>Kit Financeiro DOBRA</small><b>R$ 67,00</b></div>
   <a class="btn buybar__btn" data-checkout href="#oferta">QUERO COMPRAR</a>
 </div>
 
@@ -1308,6 +1308,28 @@
     lightbox.addEventListener("click", (event) => {
       if (event.target === lightbox || event.target.classList.contains("lightbox__scroll")) lightbox.close();
     });
+  }
+
+  // Depoimentos: carrossel que avança sozinho e volta ao início no fim.
+  // Pausa enquanto a pessoa interage, com o depoimento ampliado ou com a aba em segundo plano.
+  const DEPO_INTERVAL_MS = 4000;
+  const DEPO_RESUME_MS = 6000;
+  const depoTrack = document.querySelector(".depo__grid");
+  if (depoTrack && !reduceMotion) {
+    let pausedUntil = 0;
+    const pause = (ms) => { pausedUntil = Date.now() + ms; };
+    ["pointerenter", "touchstart", "focusin", "wheel"].forEach((type) =>
+      depoTrack.addEventListener(type, () => pause(DEPO_RESUME_MS), { passive: true }));
+    depoTrack.addEventListener("pointerleave", () => pause(1500));
+    setInterval(() => {
+      const zoomed = document.getElementById("lightbox")?.open;
+      if (document.hidden || zoomed || Date.now() < pausedUntil) return;
+      const [first, second] = depoTrack.children;
+      const step = second.offsetLeft - first.offsetLeft;
+      const atEnd = depoTrack.scrollLeft >= depoTrack.scrollWidth - depoTrack.clientWidth - 4;
+      if (atEnd) depoTrack.scrollTo({ left: 0, behavior: "smooth" });
+      else depoTrack.scrollBy({ left: step, behavior: "smooth" });
+    }, DEPO_INTERVAL_MS);
   }
 
   // Faixa decorativa: repete os nomes o bastante para o loop não ter emenda.
