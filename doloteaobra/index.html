@@ -426,6 +426,18 @@
   .depo__grid::-webkit-scrollbar { display: none; }
   .depo__item { flex: 0 0 calc((100% - 36px) / 3); margin: 0; scroll-snap-align: start; }
   .depo__item .pp__open { background: var(--card); }
+  .depo__grid { cursor: grab; }
+  .depo__grid.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+  .depo__grid.is-dragging .pp__open { pointer-events: none; }
+  .depo__item img { -webkit-user-drag: none; user-select: none; }
+  .depo__nav { display: flex; justify-content: center; align-items: center; gap: 14px; margin-top: 24px; }
+  .depo__arrow { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--card); color: var(--white); cursor: pointer; transition: border-color .2s ease, color .2s ease; }
+  .depo__arrow:hover { border-color: var(--gold-2); color: var(--gold-1); }
+  .depo__arrow:focus-visible, .depo__dot:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 2px; }
+  .depo__dots { display: flex; align-items: center; gap: 2px; }
+  .depo__dot { display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
+  .depo__dot::before { content: ""; width: 8px; height: 8px; border-radius: 4px; background: var(--line-strong); transition: width .25s ease, background .25s ease; }
+  .depo__dot.is-on::before { width: 20px; background: var(--gold-2); }
 
   /* Efeitos de entrada: só valem com a classe colocada pelo script do <head> */
   .reveal-on .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
@@ -882,6 +894,11 @@
         <button class="pp__open" type="button" aria-label="Ampliar depoimento"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/06/image_23.webp" width="739" height="833" loading="lazy" alt="Depoimento de Lucas Carey no WhatsApp: agradece pelo suporte na escolha do terreno e no encaminhamento para projeto e construção"></button>
       </figure>
     </div>
+    <div class="depo__nav reveal">
+      <button class="depo__arrow" type="button" data-dir="-1" aria-label="Depoimento anterior"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 3 5 9l6 6"/></svg></button>
+      <div class="depo__dots" role="group" aria-label="Escolher depoimentos"></div>
+      <button class="depo__arrow" type="button" data-dir="1" aria-label="Próximo depoimento"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 3 6 6-6 6"/></svg></button>
+    </div>
   </div>
 </section>
 
@@ -1310,26 +1327,106 @@
     });
   }
 
-  // Depoimentos: carrossel que avança sozinho e volta ao início no fim.
-  // Pausa enquanto a pessoa interage, com o depoimento ampliado ou com a aba em segundo plano.
+  // Depoimentos: carrossel com setas, bolinhas, arrastar com o mouse e avanço automático.
+  // O avanço automático pausa enquanto a pessoa interage, com o depoimento ampliado ou com a aba em segundo plano.
   const DEPO_INTERVAL_MS = 4000;
   const DEPO_RESUME_MS = 6000;
+  const DEPO_DRAG_THRESHOLD = 6;
   const depoTrack = document.querySelector(".depo__grid");
-  if (depoTrack && !reduceMotion) {
+  const depoDots = document.querySelector(".depo__dots");
+  if (depoTrack && depoDots) {
+    let stops = [];
     let pausedUntil = 0;
-    const pause = (ms) => { pausedUntil = Date.now() + ms; };
+    let drag = null;
+    let suppressClick = false;
+    const pause = (ms = DEPO_RESUME_MS) => { pausedUntil = Date.now() + ms; };
+
+    // Posições onde o carrossel para: uma por depoimento, sem passar do fim da faixa.
+    const buildStops = () => {
+      const first = depoTrack.children[0].offsetLeft;
+      const max = Math.round(depoTrack.scrollWidth - depoTrack.clientWidth);
+      stops = [...new Set([...depoTrack.children].map((item) => Math.min(Math.round(item.offsetLeft - first), max)))];
+      depoDots.innerHTML = stops.map((_, i) =>
+        `<button class="depo__dot" type="button" aria-label="Mostrar depoimentos, posição ${i + 1} de ${stops.length}"></button>`).join("");
+      updateDots();
+    };
+    const current = () => stops.reduce((best, stop, i) =>
+      Math.abs(stop - depoTrack.scrollLeft) < Math.abs(stops[best] - depoTrack.scrollLeft) ? i : best, 0);
+    const updateDots = () => {
+      const active = current();
+      [...depoDots.children].forEach((dot, i) => {
+        dot.classList.toggle("is-on", i === active);
+        dot.setAttribute("aria-current", i === active ? "true" : "false");
+      });
+    };
+    const goTo = (index) => {
+      const target = stops[(index + stops.length) % stops.length];
+      depoTrack.scrollTo({ left: target, behavior: reduceMotion ? "auto" : "smooth" });
+    };
+
+    document.querySelectorAll(".depo__arrow").forEach((arrow) => {
+      arrow.addEventListener("click", () => { pause(); goTo(current() + Number(arrow.dataset.dir)); });
+    });
+    depoDots.addEventListener("click", (event) => {
+      const dot = event.target.closest(".depo__dot");
+      if (!dot) return;
+      pause();
+      goTo([...depoDots.children].indexOf(dot));
+    });
+
+    let dotsFrame = 0;
+    depoTrack.addEventListener("scroll", () => {
+      cancelAnimationFrame(dotsFrame);
+      dotsFrame = requestAnimationFrame(updateDots);
+    }, { passive: true });
+    window.addEventListener("resize", buildStops);
+
+    // Arrastar com o mouse (no toque, o navegador já arrasta sozinho).
+    depoTrack.querySelectorAll("img").forEach((img) => { img.draggable = false; });
+    depoTrack.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "mouse" || event.button !== 0) return;
+      drag = { x: event.clientX, left: depoTrack.scrollLeft, moved: false };
+      pause();
+    });
+    window.addEventListener("pointermove", (event) => {
+      if (!drag) return;
+      const dx = event.clientX - drag.x;
+      if (!drag.moved && Math.abs(dx) < DEPO_DRAG_THRESHOLD) return;
+      if (!drag.moved) {
+        drag.moved = true;
+        depoTrack.classList.add("is-dragging");
+      }
+      depoTrack.scrollLeft = drag.left - dx;
+    });
+    window.addEventListener("pointerup", () => {
+      if (!drag) return;
+      const moved = drag.moved;
+      drag = null;
+      if (!moved) return;
+      depoTrack.classList.remove("is-dragging");
+      goTo(current());
+      // O clique que vem logo depois de arrastar não abre o depoimento ampliado.
+      suppressClick = true;
+      setTimeout(() => { suppressClick = false; }, 0);
+    });
+    depoTrack.addEventListener("click", (event) => {
+      if (!suppressClick) return;
+      event.preventDefault();
+      event.stopPropagation();
+    }, true);
+
     ["pointerenter", "touchstart", "focusin", "wheel"].forEach((type) =>
-      depoTrack.addEventListener(type, () => pause(DEPO_RESUME_MS), { passive: true }));
-    depoTrack.addEventListener("pointerleave", () => pause(1500));
-    setInterval(() => {
-      const zoomed = document.getElementById("lightbox")?.open;
-      if (document.hidden || zoomed || Date.now() < pausedUntil) return;
-      const [first, second] = depoTrack.children;
-      const step = second.offsetLeft - first.offsetLeft;
-      const atEnd = depoTrack.scrollLeft >= depoTrack.scrollWidth - depoTrack.clientWidth - 4;
-      if (atEnd) depoTrack.scrollTo({ left: 0, behavior: "smooth" });
-      else depoTrack.scrollBy({ left: step, behavior: "smooth" });
-    }, DEPO_INTERVAL_MS);
+      depoTrack.addEventListener(type, () => pause(), { passive: true }));
+    depoTrack.addEventListener("pointerleave", () => { if (!drag) pause(1500); });
+
+    buildStops();
+    if (!reduceMotion) {
+      setInterval(() => {
+        const zoomed = document.getElementById("lightbox")?.open;
+        if (document.hidden || zoomed || drag || Date.now() < pausedUntil) return;
+        goTo(current() + 1);
+      }, DEPO_INTERVAL_MS);
+    }
   }
 
   // Faixa decorativa: repete os nomes o bastante para o loop não ter emenda.
