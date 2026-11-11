@@ -9,6 +9,14 @@
       "destination": "/doloteaobra/index.html"
     },
     {
+      "source": "/doloteaobra/obrigado",
+      "destination": "/doloteaobra/obrigado/index.html"
+    },
+    {
+      "source": "/doloteaobra/obrigado/",
+      "destination": "/doloteaobra/obrigado/index.html"
+    },
+    {
       "source": "/doloteaobra-verde",
       "destination": "/doloteaobra/index.html"
     },

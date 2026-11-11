@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Obrigado! | Kit Financeiro DOBRA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+  /* Mesmas cores do tema verde da LP (index.html) */
+  :root {
+    --black: #0b2218;
+    --panel: #0f2a1e;
+    --panel-line: #1f4433;
+    --brown-1: #0e271c;
+    --card: #123322;
+    --card-line: #24503d;
+    --hero-glow: #1f5a3c;
+    --line: rgba(255, 255, 255, .1);
+    --line-strong: rgba(255, 255, 255, .16);
+    --gold-1: #ffdb97;
+    --gold-2: #e9a048;
+    --gold-grad: linear-gradient(90deg, var(--gold-1) 26.7%, var(--gold-2) 73.4%);
+    --amber: #f59e0b;
+    --white: #fff;
+    --text: #e2e8e4;
+    --muted: #bfcbc4;
+    --faint: #93a59b;
+    --ink: #1c1a16;
+    --footer: #081b13;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--black); color: var(--text); font: 400 18px/1.7 Inter, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, p, ul, ol { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  strong { color: var(--white); font-weight: 600; }
+  .wrap { max-width: 1084px; margin: 0 auto; }
+  .sec { padding: 88px 24px; }
+  .sec + .sec { border-top: 1px solid var(--line); }
+  .center { text-align: center; }
+  h1, h2 { color: var(--white); font-weight: 800; letter-spacing: -1px; text-wrap: balance; }
+  h1 { font-size: 44px; line-height: 1.12; }
+  h2 { font-size: 34px; line-height: 1.15; }
+  .hl { background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .eyebrow { color: var(--gold-1); font-size: 11px; font-weight: 700; line-height: 1.5; letter-spacing: 3px; text-transform: uppercase; }
+  .micro { color: var(--faint); font-size: 13.5px; line-height: 1.6; }
+
+  .btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 32px; border: 1px solid var(--amber); border-radius: 6px; background: var(--amber); box-shadow: 0 12px 32px rgba(245, 158, 11, .25); color: var(--ink); font-size: 15px; font-weight: 800; letter-spacing: .01em; text-decoration: none; transition: transform .15s ease, filter .15s ease; }
+  .btn::after { content: ""; width: 12px; height: 12px; background: var(--ink); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M1.5 1.5l10 10M12.5 2.5v10h-10'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M1.5 1.5l10 10M12.5 2.5v10h-10'/%3E%3C/svg%3E") center / contain no-repeat; }
+  .btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+  .btn--ghost { border-color: var(--line-strong); background: transparent; box-shadow: none; color: var(--white); }
+  .btn--ghost::after { background: var(--gold-1); }
+  .btn:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 3px; }
+
+  /* Topo */
+  .hero { padding: 96px 24px 88px; background: radial-gradient(90% 620px at 50% 0, var(--hero-glow) 0%, var(--brown-1) 55%, var(--black) 100%); }
+  .hero__grid { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; align-items: center; }
+  .hero h1 { margin-top: 16px; }
+  .hero__text { margin-top: 22px; font-size: 19px; }
+  .hero .micro { margin-top: 18px; }
+  .hero__art { display: block; width: 100%; height: auto; }
+  .hero__copy, .hero__art { animation: entra .8s cubic-bezier(.2, .7, .2, 1) both; }
+  .hero__art { animation-delay: .15s; }
+  @keyframes entra { from { opacity: 0; transform: translateY(20px); } }
+  @media (prefers-reduced-motion: reduce) { .hero__copy, .hero__art { animation: none; } }
+
+  /* Próximos passos */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; counter-reset: passo; }
+  .step { padding: 30px 26px; border: 1px solid var(--panel-line); border-top: 2px solid var(--gold-2); border-radius: 6px; background: var(--panel); }
+  .step::before { counter-increment: passo; content: counter(passo, decimal-leading-zero); display: block; color: var(--gold-1); font-size: 13px; font-weight: 700; letter-spacing: 3px; }
+  .step h3 { margin-top: 12px; color: var(--white); font-size: 20px; font-weight: 800; line-height: 1.25; letter-spacing: -.3px; }
+  .step p { margin-top: 10px; font-size: 16px; line-height: 1.6; }
+
+  /* O que você recebe */
+  .kit { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: start; }
+  .kit__card { padding: 30px 32px; border: 1px solid var(--panel-line); border-radius: 6px; background: var(--panel); }
+  .check-list li { position: relative; padding: 11px 0 11px 36px; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.55; }
+  .check-list li:last-child { border-bottom: 0; }
+  .check-list li::before { content: ""; position: absolute; left: 0; top: 12px; width: 24px; height: 24px; border-radius: 50%; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%231c1a16' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.6'/%3E%3C/svg%3E") center / 14px no-repeat, linear-gradient(165deg, var(--gold-1), var(--gold-2)); }
+
+  /* Ajuda e DOBRA */
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .box { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 34px 32px; border: 1px solid var(--panel-line); border-radius: 6px; background: var(--card); }
+  .box h2 { font-size: 26px; }
+  .box p { font-size: 16px; line-height: 1.6; }
+  .box .btn { margin-top: auto; }
+
+  footer { padding: 40px 24px; background: var(--footer); color: var(--faint); font-size: 13px; text-align: center; }
+
+  @media (max-width: 960px) {
+    .hero__grid, .kit, .duo { grid-template-columns: 1fr; gap: 36px; }
+    .hero__art { max-width: 460px; margin: 0 auto; }
+    .steps { grid-template-columns: 1fr; gap: 12px; }
+    .duo { gap: 14px; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .sec { padding: 64px 20px; }
+    .hero { padding: 56px 20px 64px; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 28px; }
+    .box h2 { font-size: 24px; }
+    .hero__text { font-size: 17px; }
+    .kit__card, .box { padding: 26px 22px; }
+    .btn { width: 100%; justify-content: center; padding: 17px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">Pedido recebido</p>
+      <h1>Obrigado! Seu <span class="hl">Kit DOBRA</span> está a caminho.</h1>
+      <p class="hero__text">Assim que o pagamento for confirmado, você recebe no e-mail usado na compra o acesso às 3 planilhas e aos tutoriais.</p>
+      <p class="micro">Pagou por boleto? A confirmação pode levar alguns dias úteis. No cartão e no Pix, costuma ser rápida.</p>
+    </div>
+    <svg class="hero__art" viewBox="0 270 480 232" aria-hidden="true">
+          <path d="M16 490h448" stroke="#74542d"/>
+          <rect x="100" y="480" width="280" height="10" fill="#8d8478"/>
+          <g fill="#8d8478">
+            <rect x="110" y="404" width="8" height="76"/><rect x="204" y="404" width="8" height="76"/><rect x="362" y="404" width="8" height="76"/>
+          </g>
+          <!-- Térreo -->
+          <rect x="110" y="404" width="102" height="76" fill="#efe6d6"/>
+          <rect x="212" y="404" width="158" height="76" fill="#dfd2bb"/>
+          <rect x="98" y="396" width="284" height="8" fill="#2f2a25"/>
+          <!-- Andar de cima -->
+          <path d="M190 328 370 308v88H190z" fill="#efe6d6"/>
+          <g>
+            <path d="M190 328 262 320v76h-72z" fill="#a86e34"/>
+            <path d="M199 327v69M208 326v70M217 325v71M226 324v72M235 323v73M244 322v74M253 321v75" stroke="#7d4f22" stroke-width="1.5"/>
+          </g>
+          <!-- Vãos -->
+          <g fill="#17110a">
+            <rect x="122" y="414" width="76" height="66"/>
+            <rect x="222" y="424" width="84" height="56"/>
+            <rect x="318" y="420" width="36" height="60"/>
+            <rect x="276" y="334" width="82" height="50"/>
+          </g>
+          <!-- Telhado -->
+          <path d="M190 328V322M226 324V318M262 320V314M298 316V310M334 312V306M370 308V302" stroke="#8d8478" stroke-width="3"/>
+          <path d="M174 322 386 298v10L174 332z" fill="#e9a048"/>
+          <!-- Garagem e porta -->
+          <g>
+            <rect x="222" y="424" width="84" height="56" fill="#3a332c"/>
+            <path d="M222 435h84M222 446h84M222 457h84M222 468h84" stroke="#574d43" stroke-width="1.5"/>
+            <rect x="318" y="420" width="36" height="60" fill="#a86e34"/>
+            <path d="M330 420v60M342 420v60" stroke="#7d4f22" stroke-width="1.5"/>
+            <rect x="347" y="440" width="3" height="20" rx="1.5" fill="#ffdb97"/>
+          </g>
+          <!-- Janelas acesas -->
+          <g>
+            <rect x="122" y="414" width="76" height="66" fill="#ffdb97"/>
+            <path d="M122 462 158 414h26l-49 66h-13z" fill="#fff1cf"/>
+            <rect x="276" y="334" width="82" height="50" fill="#ffdb97"/>
+            <path d="M276 372 304 334h20l-37 50h-11z" fill="#fff1cf"/>
+            <path d="M147 414v66M172 414v66M303 334v50M331 334v50" stroke="#2f2a25" stroke-width="2.5"/>
+          </g>
+          <!-- Terraço com guarda-corpo de vidro e luminária -->
+          <g>
+            <rect x="104" y="370" width="82" height="26" fill="#ffdb97" fill-opacity=".18" stroke="#ffdb97" stroke-width="1.5"/>
+            <path d="M104 370h82" stroke="#ffdb97" stroke-width="3"/>
+            <rect x="312" y="426" width="3" height="10" fill="#2f2a25"/>
+          </g>
+          <!-- Jardim -->
+          <g>
+            <rect x="16" y="490" width="448" height="5" fill="#2f5a2b"/>
+            <rect x="72" y="438" width="4" height="52" fill="#7d4f22"/>
+            <circle cx="74" cy="426" r="22" fill="#3f7a3a"/><circle cx="64" cy="438" r="13" fill="#336a30"/><circle cx="86" cy="436" r="12" fill="#4b8a45"/>
+            <rect x="406" y="452" width="4" height="38" fill="#7d4f22"/>
+            <circle cx="408" cy="442" r="16" fill="#3f7a3a"/><circle cx="416" cy="450" r="9" fill="#4b8a45"/>
+            <path d="M96 490a10 10 0 0 1 20 0zM112 490a8 8 0 0 1 16 0zM372 490a9 9 0 0 1 18 0z" fill="#4b8a45"/>
+          </g>
+          <g>
+            <circle cx="424" cy="316" r="28" fill="#1fa53c"/>
+            <path d="M411 317l9 9 17-19" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+    </svg>
+  </div>
+</header>
+
+<main>
+
+<section class="sec">
+  <div class="wrap">
+    <h2 class="center">Seus <span class="hl">próximos passos</span></h2>
+    <ol class="steps">
+      <li class="step">
+        <h3>Abra seu e-mail</h3>
+        <p>Procure a mensagem com o acesso ao Kit DOBRA. Se não estiver na caixa de entrada, confira também o spam e a aba de promoções.</p>
+      </li>
+      <li class="step">
+        <h3>Assista aos tutoriais</h3>
+        <p>Eles mostram como preencher cada planilha, para você chegar a resultados corretos desde a primeira vez.</p>
+      </li>
+      <li class="step">
+        <h3>Comece pelo Controle Pessoal de Finanças</h3>
+        <p>Com sua renda e seus gastos organizados, o Planejamento Financeiro e o Fluxo de Valores ficam mais precisos.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap kit">
+    <div>
+      <p class="eyebrow">Kit Financeiro DOBRA</p>
+      <h2 style="margin-top:14px">O que você vai <span class="hl">receber</span></h2>
+      <p style="margin-top:16px;font-size:17px">Tudo para planejar sua construção antes de fechar qualquer negócio.</p>
+    </div>
+    <ul class="check-list kit__card">
+      <li><strong>Controle Pessoal de Finanças:</strong> saiba quanto guardar e quando poderá dar a entrada.</li>
+      <li><strong>Planejamento Financeiro:</strong> estime quanto pode financiar e o tamanho da casa que cabe no orçamento.</li>
+      <li><strong>Fluxo de Valores:</strong> simule juros de obra e despesas extras durante a construção.</li>
+      <li>Tutoriais de utilização das 3 planilhas.</li>
+      <li>Garantia de 7 dias.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap duo">
+    <div class="box">
+      <h2>Não encontrou o e-mail?</h2>
+      <p>Confira o spam, a aba de promoções e se o e-mail informado na compra está certo. Você também encontra sua compra na sua conta da Hotmart, entrando com o mesmo e-mail usado no pagamento.</p>
+      <a class="btn btn--ghost" href="https://consumer.hotmart.com/" target="_blank" rel="noopener">ACESSAR MINHAS COMPRAS</a>
+    </div>
+    <div class="box">
+      <h2>Quer o caminho completo, <span class="hl">do lote à obra?</span></h2>
+      <p>O Kit Financeiro nasceu do DOBRA, o método completo de Richard e Tamires para construir com clareza, do terreno à chave na mão.</p>
+      <a class="btn" href="https://doloteaobra.com.br/dobra-construa-com-clareza-d/">CONHECER O DOBRA</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>© Todos os direitos reservados — DOBRA</footer>
+
+</body>
+</html>
