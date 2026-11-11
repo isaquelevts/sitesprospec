@@ -81,8 +81,8 @@
   .check-list li:last-child { border-bottom: 0; }
   .check-list li::before { content: ""; position: absolute; left: 0; top: 12px; width: 24px; height: 24px; border-radius: 50%; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%231c1a16' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.6'/%3E%3C/svg%3E") center / 14px no-repeat, linear-gradient(165deg, var(--gold-1), var(--gold-2)); }
 
-  /* Ajuda e DOBRA */
-  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  /* Ajuda */
+  .duo { max-width: 680px; }
   .box { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 34px 32px; border: 1px solid var(--panel-line); border-radius: 6px; background: var(--card); }
   .box h2 { font-size: 26px; }
   .box p { font-size: 16px; line-height: 1.6; }
@@ -91,10 +91,9 @@
   footer { padding: 40px 24px; background: var(--footer); color: var(--faint); font-size: 13px; text-align: center; }
 
   @media (max-width: 960px) {
-    .hero__grid, .kit, .duo { grid-template-columns: 1fr; gap: 36px; }
+    .hero__grid, .kit { grid-template-columns: 1fr; gap: 36px; }
     .hero__art { max-width: 460px; margin: 0 auto; }
     .steps { grid-template-columns: 1fr; gap: 12px; }
-    .duo { gap: 14px; }
   }
   @media (max-width: 600px) {
     body { font-size: 17px; }
@@ -229,11 +228,6 @@
       <h2>Não encontrou o e-mail?</h2>
       <p>Confira o spam, a aba de promoções e se o e-mail informado na compra está certo. Você também encontra sua compra na sua conta da Hotmart, entrando com o mesmo e-mail usado no pagamento.</p>
       <a class="btn btn--ghost" href="https://consumer.hotmart.com/" target="_blank" rel="noopener">ACESSAR MINHAS COMPRAS</a>
-    </div>
-    <div class="box">
-      <h2>Quer o caminho completo, <span class="hl">do lote à obra?</span></h2>
-      <p>O Kit Financeiro nasceu do DOBRA, o método completo de Richard e Tamires para construir com clareza, do terreno à chave na mão.</p>
-      <a class="btn" href="https://doloteaobra.com.br/dobra-construa-com-clareza-d/">CONHECER O DOBRA</a>
     </div>
   </div>
 </section>
