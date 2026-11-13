@@ -538,7 +538,7 @@
           <li>Tutoriais inclusos</li>
           <li>Acesso digital</li>
         </ul>
-        <a class="btn reveal" data-checkout href="#oferta">QUERO PLANEJAR MINHA CASA</a>
+        <a class="btn reveal" href="#oferta">QUERO PLANEJAR MINHA CASA</a>
         <p class="micro reveal">Pagamento único | Garantia de 7 dias</p>
       </div>
       <!-- Ilustração animada: a planilha preenche e a casa é construída. O script monta as linhas da planilha. -->
@@ -809,7 +809,7 @@
       </article>
     </div>
 
-    <div class="cta reveal"><a class="btn" data-checkout href="#oferta">QUERO AS 3 PLANILHAS</a></div>
+    <div class="cta reveal"><a class="btn" href="#oferta">QUERO AS 3 PLANILHAS</a></div>
   </div>
 </section>
 
@@ -982,7 +982,7 @@
       <p class="final__kit">3 planilhas automatizadas + tutoriais</p>
       <p class="price"><small>R$</small>67,00</p>
       <p class="price-parcel">ou 12x de R$ 5,58</p>
-      <div><a class="btn" data-checkout href="#oferta">QUERO PLANEJAR MINHA CASA AGORA</a></div>
+      <div><a class="btn" href="#oferta">QUERO PLANEJAR MINHA CASA AGORA</a></div>
       <p class="micro">Pagamento único | Entrega por e-mail | Garantia de 7 dias</p>
     </div>
     <svg class="seal" viewBox="0 0 400 400" role="img" aria-label="Selo de garantia de 7 dias">
@@ -1007,7 +1007,7 @@
 <!-- Barra fixa de compra no celular: aparece fora da primeira dobra, da oferta e da última chamada -->
 <div class="buybar" id="buybar">
   <div class="buybar__info"><small>Kit Financeiro DOBRA</small><b>R$ 67,00</b></div>
-  <a class="btn buybar__btn" data-checkout href="#oferta">QUERO COMPRAR</a>
+  <a class="btn buybar__btn" href="#oferta">QUERO COMPRAR</a>
 </div>
 
 <!-- Print ampliado: abre ao tocar num print da seção da dor -->
@@ -1019,8 +1019,8 @@
 <footer>© Todos os direitos reservados — DOBRA</footer>
 
 <script>
-  // Cole aqui o link do checkout: todos os botões passam a apontar para ele.
-  // Enquanto estiver vazio, os botões levam até a seção de oferta.
+  // Link do checkout: só o botão da oferta (data-checkout) vai para ele.
+  // Os outros botões levam até a seção de oferta, para a pessoa ver o preço antes de comprar.
   const CHECKOUT_URL = "https://pay.hotmart.com/D108468549S?bid=1794573855771";
 
   if (CHECKOUT_URL) {
