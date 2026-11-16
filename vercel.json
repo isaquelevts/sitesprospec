@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/ebooks",
+      "destination": "/ebooks/index.html"
+    },
+    {
+      "source": "/ebooks/",
+      "destination": "/ebooks/index.html"
+    },
+    {
       "source": "/doloteaobra",
       "destination": "/doloteaobra/index.html"
     },

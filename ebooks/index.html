@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coleção Do Lote à Obra: 5 e-books para construir do zero</title>
+<meta name="description" content="5 e-books, 330 páginas: dinheiro, terreno, projeto, financiamento e obra na ordem certa, escritos por corretores que passaram pelo processo.">
+<script>
+  // Verde floresta é o tema padrão. Para ver a versão preta, use ?tema=preto no endereço.
+  if (!/[?&]tema=preto/.test(location.search)) {
+    document.documentElement.classList.add("tema-verde");
+  }
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("reveal-on");
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,800;1,500;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000;
+    --panel: #0a0a0a;
+    --panel-line: #1a1a1a;
+    --brown-1: #17110a;
+    --brown-2: #2a1f12;
+    --cream: #fffcf5;
+    --cream-2: #fbf7ec;
+    --cream-3: #f7f2e4;
+    --cream-line: #ece5d6;
+    --line: rgba(255, 255, 255, .09);
+    --line-strong: rgba(255, 255, 255, .16);
+    --gold-1: #ffdb97;
+    --gold-2: #e9a048;
+    --gold-dark: #8f5c1c;
+    --gold-grad: linear-gradient(90deg, var(--gold-1) 26.7%, var(--gold-2) 73.4%);
+    --offer-line: #444443;
+    --seal-line: #74542d;
+    --white: #fff;
+    --text: #dbdbdb;
+    --muted: #bcbcbc;
+    --faint: #8f8f8f;
+    --ink: #1c1a16;
+    --card: #121212;
+    --card-line: #262626;
+    --result-bg: #1b150c;
+    --result-line: #3f2f19;
+    --hero-glow: #3a2a14;
+    --offer-bg: linear-gradient(180deg, rgba(14, 14, 14, .97) 0%, rgba(30, 23, 15, .97) 55%, rgba(8, 8, 8, .98) 100%);
+    --final-bg: linear-gradient(180deg, #111 0%, #060606 100%);
+    --footer: #111;
+    --bar: rgba(18, 18, 18, .97);
+    --badge-1: #4b4b4a;
+    --badge-2: #151515;
+    --badge-line: #8a8a88;
+    --btn-bg: linear-gradient(165deg, rgba(69, 255, 102, .73) 2%, rgba(30, 213, 63, .73) 21%, rgba(53, 190, 78, .73) 34%, rgba(0, 87, 16, .73) 93%), linear-gradient(90deg, rgba(255, 219, 151, .4) 27%, rgba(233, 160, 72, .4) 73%);
+    --btn-border: #2fff00;
+    --btn-shadow: 0 0 98px rgba(68, 173, 30, .22), 0 0 87px rgba(21, 82, 0, .63);
+    --btn-text: var(--white);
+    --btn-arrow: var(--gold-1);
+    --check-bg: linear-gradient(165deg, #45e866, #137a2b);
+    --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M1.5 1.5l10 10M12.5 2.5v10h-10'/%3E%3C/svg%3E");
+    --check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.6'/%3E%3C/svg%3E");
+    --check-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%231c1a16' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.6'/%3E%3C/svg%3E");
+    --check-icon: var(--check);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--text);
+    font: 400 18px/1.7 Inter, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, p, ul { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  strong { color: var(--white); font-weight: 600; }
+  img { display: block; max-width: 100%; }
+
+  .sec { position: relative; padding: 96px 24px; background: var(--black); }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  .wrap--wide { max-width: 1084px; }
+  .center { text-align: center; }
+
+  h1, h2 { color: var(--white); font-weight: 800; letter-spacing: -1px; text-wrap: balance; }
+  h1 { font-size: 40px; line-height: 1.15; }
+  h2 { font-size: 38px; line-height: 1.15; }
+  .hl, .final h2 em, .price {
+    background: var(--gold-grad);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+  }
+  .close-line { color: var(--gold-1); font-style: italic; font-weight: 500; line-height: 1.5; }
+
+  /* Botão verde */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 40px;
+    border: 1px solid var(--btn-border);
+    border-radius: 6px;
+    background-image: var(--btn-bg);
+    box-shadow: var(--btn-shadow);
+    color: var(--btn-text);
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: .01em;
+    text-align: center;
+    text-decoration: none;
+    transition: transform .15s ease, filter .15s ease;
+  }
+  .btn::after {
+    content: "";
+    flex: none;
+    width: 13px;
+    height: 13px;
+    background: var(--btn-arrow);
+    -webkit-mask: var(--arrow) center / contain no-repeat;
+            mask: var(--arrow) center / contain no-repeat;
+  }
+  .btn:hover { transform: translateY(-2px); filter: brightness(1.12); }
+  .btn:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 3px; }
+  .micro { color: var(--faint); font-size: 13.5px; line-height: 1.6; }
+
+  /* Faixa com a marca */
+  .strip { overflow: hidden; padding: 54px 0; background: var(--black); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .strip--brown { background: var(--brown-1); }
+  .strip__track { display: flex; width: max-content; animation: strip 75s linear infinite; }
+  .strip__track span { display: flex; align-items: center; gap: 40px; padding-right: 40px; color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: 3px; line-height: 19px; text-transform: uppercase; white-space: nowrap; }
+  .strip__track span::after { content: "\2726"; color: var(--gold-2); font-size: 15px; letter-spacing: 0; }
+  @keyframes strip { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .strip__track { animation: none; } }
+
+  /* 1. Primeira dobra */
+  .hero { position: relative; padding: 120px 24px 96px; background: radial-gradient(90% 620px at 50% 0, var(--hero-glow) 0%, var(--brown-1) 55%, var(--black) 100%); overflow: hidden; }
+  .hero .wrap { position: relative; z-index: 1; max-width: 1084px; }
+  .hero__grid { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; align-items: center; }
+  .hero__eyebrow { margin-bottom: 16px; }
+  .hero__support { margin-top: 20px; font-size: 17px; }
+  .hero__copy .btn { margin-top: 28px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .chips li { padding: 5px 11px; border: 1px solid var(--line-strong); border-radius: 4px; color: var(--text); font-size: 13px; line-height: 1.5; }
+  .hero .micro { margin-top: 20px; }
+  .hero__art { display: block; width: 100%; height: auto; font-family: Inter, sans-serif; }
+
+  /* Animação da primeira dobra: o script liga cada peça com .is-on */
+  .hv-piece { opacity: 0; transition: opacity .3s ease, transform .45s cubic-bezier(.2, 1.3, .4, 1); transform-box: fill-box; }
+  .hv-drop { transform: translateY(-30px); }
+  .hv-grow { transform: scaleX(0); transform-origin: left; }
+  .hv-pop { transform: scale(.3); transform-origin: center; }
+  .hv-piece.is-on { opacity: 1; transform: none; }
+  .hv-crane { opacity: 0; transform: translateY(24px); transition: opacity .4s ease, transform .5s ease; }
+  .hv-crane.is-on { opacity: 1; transform: none; }
+  .hv-hook { transition: transform .45s ease; }
+  .hv-tab { fill: var(--faint); font-size: 13px; font-weight: 600; transition: fill .25s ease; }
+  .hv-tab.is-on { fill: var(--white); }
+  .hv-underline { opacity: 0; transition: opacity .25s ease; }
+  .hv-underline.is-on { opacity: 1; }
+  .hv-page { opacity: 0; transition: opacity .25s ease; }
+  .hv-page.is-on { opacity: 1; }
+  .hv-label { fill: var(--muted); font-size: 14px; }
+  .hv-value { fill: var(--white); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; opacity: 0; transition: opacity .15s ease; }
+  .hv-value.is-on { opacity: 1; }
+  .hv-total .hv-label, .hv-total .hv-value { fill: var(--gold-1); font-weight: 700; }
+  .hv-select { opacity: 0; transition: transform .22s ease, opacity .2s ease; }
+  .hv-select.is-on { opacity: 1; }
+  .hv-sheet { fill: var(--card); stroke: var(--card-line); }
+  .hv-sheet-line, .hv-sep { stroke: var(--card-line); }
+  .hv-hit { cursor: pointer; }
+
+  /* 2. Problema */
+  .problem { background: linear-gradient(180deg, var(--brown-1) 0%, var(--brown-2) 100%); }
+  .problem .wrap { max-width: 910px; }
+  .problem__list { margin-top: 28px; color: var(--white); font-size: 20px; font-weight: 600; line-height: 1.5; }
+  .problem__text { margin-top: 12px; }
+  .problem__checks { width: fit-content; max-width: 100%; margin: 28px auto 8px; text-align: left; }
+  .problem__checks li { color: var(--white); font-size: 18px; font-weight: 600; }
+  .problem__checks li::before { top: 11px; }
+  .problem__prints { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 36px 0 0; }
+  .pp { margin: 0; min-width: 0; }
+  .pp--wide { grid-column: 1 / -1; }
+  .pp__open { display: block; width: 100%; padding: 0; border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: none; cursor: zoom-in; transition: transform .2s ease, border-color .2s ease; }
+  .pp__open:hover { transform: translateY(-2px); border-color: var(--gold-2); }
+  .pp__open:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 3px; }
+  .pp__open img { display: block; width: 100%; height: auto; }
+  .pp figcaption { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+  .problem__prints-note { margin-top: 14px; color: var(--faint); font-size: 13px; }
+
+  /* Print ampliado */
+  .lightbox { width: 100vw; max-width: none; height: 100vh; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; }
+  .lightbox::backdrop { background: rgba(0, 0, 0, .88); }
+  .lightbox__scroll { display: flex; width: 100%; height: 100%; overflow: auto; padding: 56px 16px 24px; }
+  .lightbox__scroll img { display: block; max-width: none; height: auto; margin: auto; border-radius: 6px; }
+  .lightbox__close { position: fixed; top: 12px; right: 12px; z-index: 1; width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--card); color: var(--white); font-size: 26px; line-height: 1; cursor: pointer; }
+  .callout { margin-top: 40px; padding: 36px 40px; border: 1px solid var(--line-strong); border-radius: 6px; background: rgba(0, 0, 0, .28); font-size: 18px; }
+  .callout strong { display: block; margin-top: 8px; font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.3px; }
+
+  /* 3. Planilhas */
+  .sheets { display: grid; gap: 20px; margin-top: 56px; }
+  .sheet { padding: 30px; border: 1px solid var(--panel-line); border-radius: 3px; background: var(--panel); }
+  .sheet__head { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 23px; border-bottom: 1px solid var(--line); }
+  .sheet__head svg { flex: none; }
+  .eyebrow { color: var(--gold-1); font-size: 11px; font-weight: 700; line-height: 1.5; letter-spacing: 3px; text-transform: uppercase; }
+  .sheet__body { display: grid; grid-template-columns: 6fr 5fr; gap: 56px; align-items: center; padding: 28px 14px 14px; }
+  .sheet h3 { color: var(--white); font-size: 27px; font-weight: 800; line-height: 1.2; letter-spacing: -.5px; }
+  .sheet { --accent: var(--gold-2); --accent-text: var(--gold-1); border-top: 2px solid var(--accent); }
+  .sheet:nth-child(2) { --accent: #3fb37a; --accent-text: #8fe0b4; }
+  .sheet:nth-child(3) { --accent: #e07b4f; --accent-text: #f5b394; }
+  .sheet .eyebrow, .sheet .close-line, .sheet .calc__tag, .sheet .calc__row--total, .sheet .calc__row--total b, .sheet .calc__result strong { color: var(--accent-text); }
+  .sheet .calc__tag, .sheet .calc__result { border-color: var(--accent); }
+  .sheet__head svg { stroke: var(--accent); }
+  .sheet { min-width: 0; }
+  .sheet__lede { margin-top: 16px; font-size: 17px; line-height: 1.6; }
+  .sheet__items { margin-top: 12px; }
+  .sheet__items li { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.6; }
+  .sheet__items.check-list li { padding: 16px 0 16px 36px; font-size: 16px; line-height: 1.6; }
+  .sheet__items.check-list li::before { top: 17px; background: var(--check-icon) center / 14px no-repeat, var(--accent); }
+
+  /* Ilustrações: a conta de cada planilha, com valores de exemplo */
+  .calc { padding: 24px; border: 1px solid var(--card-line); border-radius: 6px; background: var(--card); font-size: 14px; line-height: 1.4; }
+  .calc__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; color: var(--white); font-weight: 700; }
+  .calc__tag { padding: 3px 9px; border: 1px solid var(--seal-line); border-radius: 100px; color: var(--gold-1); font-size: 11px; font-weight: 600; }
+  .calc__row { display: flex; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+  .calc__row b { flex: none; color: var(--white); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .calc__row--total, .calc__row--total b { color: var(--gold-1); font-weight: 700; }
+  .calc__label { margin-top: 18px; color: var(--muted); }
+  .calc__tl { margin-top: 14px; }
+  .calc__tl li { position: relative; display: grid; grid-template-columns: 14px 1fr auto; gap: 12px; align-items: start; padding-bottom: 16px; color: var(--text); }
+  .calc__tl li::after { content: ""; position: absolute; left: 6px; top: 18px; bottom: 0; width: 2px; background: var(--line-strong); }
+  .calc__tl li:last-child { padding-bottom: 4px; }
+  .calc__tl li:last-child::after { display: none; }
+  .calc__tl i { width: 14px; height: 14px; margin-top: 3px; border: 3px solid var(--accent, var(--gold-2)); border-radius: 50%; background: var(--card); }
+  .calc__tl small { display: block; color: var(--accent-text, var(--gold-1)); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .calc__tl b { color: var(--white); font-weight: 600; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .calc__result { margin-top: 16px; padding: 16px 18px; border: 1px solid var(--result-line); border-radius: 4px; background: var(--result-bg); color: var(--muted); }
+  .calc__result strong { display: block; margin: 2px 0; color: var(--gold-1); font-size: 32px; font-weight: 800; line-height: 1.2; letter-spacing: -.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* Animação dos quadros: só vale com a classe colocada pelo script */
+  .calc--anim .calc__step { opacity: 0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; }
+  .calc--anim .calc__step.is-on { opacity: 1; transform: none; }
+  .sheet .close-line { margin-top: 20px; font-size: 16.5px; }
+  .cta { margin-top: 56px; text-align: center; }
+
+  /* 4. Facilidade (seção creme) */
+  .easy-sec {
+    padding-bottom: 130px;
+    background: radial-gradient(circle at 50% 50%, #fff 0, #fff 300px, var(--cream) 301px, var(--cream) 560px, var(--cream-2) 561px, var(--cream-2) 830px, var(--cream-3) 831px);
+    color: var(--ink);
+  }
+  .easy-sec h2 { color: var(--ink); }
+  .easy-sec .hl { background-image: linear-gradient(90deg, #b57a2c, var(--gold-dark)); }
+  .easy { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+  .easy p { padding: 30px 26px; border: 1px solid var(--cream-line); border-radius: 3px; background: var(--white); color: var(--ink); font-size: 17px; line-height: 1.55; }
+  .easy-close { margin-top: 36px; color: var(--gold-dark); font-size: 20px; }
+  .badge {
+    position: absolute;
+    left: 50%;
+    bottom: -51px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 102px;
+    height: 102px;
+    margin-left: -51px;
+    border: 1px solid var(--badge-line);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 30%, var(--badge-1), var(--badge-2) 75%);
+  }
+
+  /* 5. Autoridade */
+  .about-sec { padding-top: 150px; }
+  .about { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; padding: 48px; border: 1px solid var(--panel-line); border-radius: 3px; background: var(--panel); }
+  .about img { width: 100%; height: auto; border-radius: 3px; }
+  .about h2 { font-size: 34px; }
+  .about p { margin-top: 20px; font-size: 17px; }
+  .about .close-line { margin-top: 24px; font-size: 18px; }
+
+  /* 6. Oferta */
+  .offer {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 56px 48px;
+    border: 1px solid var(--offer-line);
+    border-radius: 10px;
+    background: var(--offer-bg);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
+  }
+  .offer__lead { margin-top: 32px; color: var(--white); font-size: 16px; font-weight: 700; }
+  .check-list { margin-top: 16px; }
+  .check-list li { position: relative; padding: 9px 0 9px 36px; font-size: 15px; line-height: 1.55; }
+  .check-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--check-icon) center / 14px no-repeat, var(--check-bg);
+  }
+  .price-block { margin-top: 28px; text-align: center; }
+  .price-block__intro { color: var(--muted); font-size: 15px; }
+  .price-parcel { margin: 2px 0 6px; color: var(--white); font-size: 17px; font-weight: 600; }
+  .price { display: inline-block; font-size: 68px; font-weight: 800; line-height: 1.25; letter-spacing: -1px; white-space: nowrap; }
+  .price small { margin-right: 6px; font-size: 26px; font-weight: 800; letter-spacing: 0; }
+  .price-block__note { color: var(--muted); font-size: 14px; font-style: italic; font-weight: 700; }
+  .offer .btn { display: flex; margin-top: 28px; padding: 20px 16px; }
+
+  /* 7. FAQ */
+  .faq-sec { background: linear-gradient(180deg, var(--brown-1) 0%, var(--black) 70%); }
+  .faq-sec::before { content: ""; position: absolute; inset: 0 0 auto; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-2), transparent); opacity: .6; }
+  .faq-icon { display: block; margin: 0 auto 24px; }
+  .faq { margin-top: 40px; display: grid; gap: 9px; }
+  .faq details { border-radius: 3px; }
+  .faq summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 18px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--white);
+    font-size: 15.5px;
+    font-weight: 700;
+    line-height: 1.4;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; flex: none; color: var(--white); font-size: 22px; font-weight: 400; line-height: 1; }
+  .faq details[open] summary { border-color: transparent; background: linear-gradient(180deg, var(--gold-1), var(--gold-2)); color: #000; }
+  .faq details[open] summary::after { content: "\2212"; color: #000; }
+  .faq summary:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 2px; }
+  .faq details p { padding: 18px 10px 14px; color: var(--white); font-size: 15.5px; line-height: 1.65; }
+  .disclaimer { margin-top: 28px; color: var(--faint); font-size: 13.5px; line-height: 1.6; }
+  .disclaimer strong { color: var(--muted); }
+
+  /* 8. Última chamada */
+  .final-card {
+    display: grid;
+    grid-template-columns: 1fr 386px;
+    gap: 50px;
+    align-items: center;
+    padding: 64px 72px;
+    border: 1px solid var(--seal-line);
+    border-radius: 5px;
+    background: var(--final-bg);
+  }
+  .final h2 { font-size: 44px; }
+  .final h2 em { font-weight: 800; padding-right: .08em; }
+  .final__text { margin-top: 24px; font-size: 18px; }
+  .final__kit { margin-top: 28px; color: var(--white); font-size: 16px; font-weight: 600; }
+  .final .btn { margin-top: 20px; }
+  .final .micro { margin-top: 20px; }
+  .seal { width: 100%; height: auto; }
+
+  /* Para quem é */
+  .who__card { max-width: 860px; margin: 40px auto 0; padding: 36px 40px; border: 1px solid var(--panel-line); border-radius: 6px; background: var(--panel); }
+  .who__lead { color: var(--white); font-size: 18px; font-weight: 700; }
+  .who__list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; margin-top: 16px; }
+  .who__note { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--white); font-size: 16px; font-weight: 600; }
+
+  /* Simulador */
+  .sim { display: grid; grid-template-columns: 5fr 6fr; gap: 56px; align-items: center; }
+  .sim__intro { margin-top: 20px; font-size: 17px; }
+  .sim__card { padding: 28px; border: 1px solid var(--card-line); border-radius: 6px; background: var(--card); }
+  .sim__field + .sim__field { margin-top: 22px; }
+  .sim__label { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 14px; }
+  .sim__label output { color: var(--white); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .sim__field input { width: 100%; margin: 12px 0 0; accent-color: var(--gold-2); cursor: pointer; }
+  .sim__result { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  .sim__result strong { display: block; margin: 4px 0; color: var(--gold-1); font-size: 40px; font-weight: 800; line-height: 1.15; letter-spacing: -.5px; font-variant-numeric: tabular-nums; }
+  .sim__note { margin-top: 16px; color: var(--faint); font-size: 12.5px; line-height: 1.5; }
+
+  /* Barra fixa de compra: só no celular */
+  .buybar { display: none; }
+
+  /* Tema verde floresta: padrão da página (a versão preta só aparece com ?tema=preto) */
+  html.tema-verde {
+    --black: #0b2218;
+    --panel: #0f2a1e;
+    --panel-line: #1f4433;
+    --brown-1: #0e271c;
+    --brown-2: #163d2b;
+    --card: #123322;
+    --card-line: #24503d;
+    --result-bg: #0d2419;
+    --result-line: #2f5b47;
+    --hero-glow: #1f5a3c;
+    --offer-line: #2f5b47;
+    --offer-bg: linear-gradient(180deg, rgba(18, 51, 34, .97) 0%, rgba(14, 40, 28, .97) 55%, rgba(10, 32, 22, .98) 100%);
+    --final-bg: linear-gradient(180deg, #12331f 0%, #0a2017 100%);
+    --footer: #081b13;
+    --bar: rgba(11, 34, 24, .97);
+    --badge-1: #2b5a45;
+    --badge-2: #0e271c;
+    --badge-line: #6f8f80;
+    --line: rgba(255, 255, 255, .1);
+    --text: #e2e8e4;
+    --muted: #bfcbc4;
+    --faint: #93a59b;
+    --btn-bg: linear-gradient(#f59e0b, #f59e0b);
+    --btn-border: #f59e0b;
+    --btn-shadow: 0 12px 32px rgba(245, 158, 11, .25);
+    --btn-text: #1c1a16;
+    --btn-arrow: #1c1a16;
+    --check-bg: linear-gradient(165deg, #ffdb97, #e9a048);
+    --check-icon: var(--check-dark);
+  }
+
+  /* Depoimentos */
+  .depo__intro { max-width: 620px; margin: 16px auto 0; font-size: 17px; }
+  .depo__grid { display: flex; align-items: flex-start; gap: 18px; margin-top: 40px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .depo__grid::-webkit-scrollbar { display: none; }
+  .depo__item { flex: 0 0 calc((100% - 36px) / 3); margin: 0; scroll-snap-align: start; }
+  .depo__item .pp__open { background: var(--card); }
+  .depo__grid { cursor: grab; }
+  .depo__grid.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+  .depo__grid.is-dragging .pp__open { pointer-events: none; }
+  .depo__item img { -webkit-user-drag: none; user-select: none; }
+  .depo__nav { display: flex; justify-content: center; align-items: center; gap: 14px; margin-top: 24px; }
+  .depo__arrow { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--card); color: var(--white); cursor: pointer; transition: border-color .2s ease, color .2s ease; }
+  .depo__arrow:hover { border-color: var(--gold-2); color: var(--gold-1); }
+  .depo__arrow:focus-visible, .depo__dot:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 2px; }
+  .depo__dots { display: flex; align-items: center; gap: 2px; }
+  .depo__dot { display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
+  .depo__dot::before { content: ""; width: 8px; height: 8px; border-radius: 4px; background: var(--line-strong); transition: width .25s ease, background .25s ease; }
+  .depo__dot.is-on::before { width: 20px; background: var(--gold-2); }
+
+  /* ===== Coleção de e-books ===== */
+  .pains { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; text-align: left; }
+  .pain { padding: 24px 26px; border: 1px solid var(--line-strong); border-radius: 6px; background: rgba(0, 0, 0, .28); }
+  .pain h3 { color: var(--white); font-size: 19px; font-weight: 800; line-height: 1.3; letter-spacing: -.3px; }
+  .pain p { margin-top: 8px; font-size: 16px; line-height: 1.6; }
+  .who__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 980px; margin: 40px auto 0; }
+  .who__cols .who__card { margin: 0; }
+  .x-list { margin-top: 16px; }
+  .x-list li { position: relative; padding: 9px 0 9px 36px; font-size: 15px; line-height: 1.55; }
+  .x-list li::before { content: "\00d7"; position: absolute; left: 0; top: 9px; display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid var(--line-strong); border-radius: 50%; color: var(--muted); font-size: 17px; line-height: 1; }
+  .order__text { max-width: 640px; margin: 18px auto 0; font-size: 18px; }
+  .order { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 44px; }
+  .order::before { content: ""; position: absolute; top: 22px; left: 10%; right: 10%; height: 2px; background: var(--line-strong); }
+  .order li { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+  .order__n { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 10px; border: 2px solid var(--gold-2); border-radius: 50%; background: var(--black); color: var(--gold-1); font-weight: 800; }
+  .order b { color: var(--white); font-size: 16px; font-weight: 700; line-height: 1.3; }
+  .order small { color: var(--muted); font-size: 14px; line-height: 1.4; }
+  .contents-title { margin-top: 88px; }
+  .sheet:nth-child(4) { --accent: #5fb3a8; --accent-text: #a5ddd5; }
+  .sheet:nth-child(5) { --accent: #d9b44a; --accent-text: #f0d98c; }
+  .cta .micro { margin-top: 14px; }
+  .tools__list { margin-top: 22px; }
+  .tool__title { color: var(--white); font-size: 16px; font-weight: 700; }
+  .tool__title--gap { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .tool__sub { margin-top: 2px; color: var(--muted); font-size: 14px; }
+  .gauge { position: relative; height: 14px; margin-top: 16px; border-radius: 7px; background: var(--line); }
+  .gauge__seg { position: absolute; top: 0; bottom: 0; }
+  .gauge__seg--ok, .gauge__dot--ok { background: #3fb37a; }
+  .gauge__seg--warn, .gauge__dot--warn { background: #e8c547; }
+  .gauge__seg--risk, .gauge__dot--risk { background: #e0614f; }
+  .gauge__seg--risk { border-radius: 0 7px 7px 0; }
+  .gauge__ticks { display: flex; justify-content: space-between; margin-top: 6px; color: var(--faint); font-size: 12px; }
+  .gauge__legend { margin-top: 12px; display: grid; gap: 6px; font-size: 14px; }
+  .gauge__legend li { display: flex; align-items: center; gap: 10px; }
+  .gauge__dot { width: 10px; height: 10px; border-radius: 50%; }
+  .stack { margin-top: 12px; }
+  .stack__label { display: flex; justify-content: space-between; margin-top: 12px; color: var(--muted); font-size: 14px; }
+  .stack__label b { color: var(--white); }
+  .stack__bar { display: flex; margin-top: 6px; border-radius: 4px; overflow: hidden; font-size: 12px; font-weight: 700; line-height: 30px; white-space: nowrap; }
+  .stack__bar span { overflow: hidden; padding: 0 8px; text-overflow: ellipsis; }
+  .stack__lote { background: var(--gold-2); color: var(--ink); }
+  .stack__obra { background: #3fb37a; color: #0b2218; }
+  .offer-list { margin-top: 28px; }
+  .offer-list li { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .offer-list b { flex: none; color: var(--white); font-weight: 700; }
+  .offer-list__sum { border-bottom: 0 !important; color: var(--muted); }
+  .offer-list__sum s { color: var(--muted); opacity: .8; font-weight: 700; }
+  .offer__micro { margin-top: 14px; text-align: center; }
+  .offer__pay { margin-top: 2px; text-align: center; }
+  .avulso { margin-top: 18px; text-align: center; }
+  .avulso summary { color: var(--muted); font-size: 14px; text-decoration: underline; cursor: pointer; }
+  .avulso ul { margin-top: 10px; display: grid; gap: 6px; }
+  .avulso a { color: var(--gold-1); font-size: 14px; }
+  .guarantee { padding-bottom: 96px; }
+  .guarantee__text { max-width: 640px; margin: 18px auto 0; color: var(--ink); font-size: 18px; }
+  footer p + p { margin-top: 8px; }
+
+  /* Efeitos de entrada: só valem com a classe colocada pelo script do <head> */
+  .reveal-on .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+  .reveal-on .reveal--side { transform: translateX(36px); }
+  .reveal-on .reveal--pop { transform: scale(.5); }
+  .reveal-on .reveal.is-in { opacity: 1; transform: none; }
+
+  footer { padding: 40px 24px; background: var(--footer); color: var(--faint); font-size: 13px; text-align: center; }
+
+  @media (max-width: 960px) {
+    .pains, .who__cols { grid-template-columns: 1fr; }
+    .order { grid-template-columns: 1fr; gap: 18px; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .order::before { top: 22px; bottom: 22px; left: 21px; right: auto; width: 2px; height: auto; }
+    .order li { display: grid; grid-template-columns: 44px 1fr; grid-template-rows: auto auto; column-gap: 16px; align-items: center; text-align: left; }
+    .order__n { grid-row: span 2; margin: 0; }
+    .contents-title { margin-top: 64px; }
+    .depo__item { flex-basis: calc((100% - 18px) / 2); }
+    .sim { grid-template-columns: 1fr; gap: 32px; }
+    .who__list { grid-template-columns: 1fr; }
+    .buybar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--line-strong);
+      background: var(--bar);
+      transform: translateY(110%);
+      transition: transform .3s ease;
+    }
+    .buybar.is-on { transform: none; }
+    .buybar__info { display: flex; flex-direction: column; line-height: 1.2; }
+    .buybar__info small { color: var(--gold-1); font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+    .buybar__info b { color: var(--white); font-size: 20px; font-weight: 800; }
+    .buybar__btn.btn { display: inline-flex; flex: none; padding: 13px 18px; font-size: 14px; box-shadow: none; }
+    footer { padding-bottom: 110px; }
+    .hero { padding-top: 88px; }
+    .hero__grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero__media { width: 100%; max-width: 480px; margin: 0 auto; }
+    .problem__prints { grid-template-columns: 1fr; gap: 22px; margin-top: 28px; }
+    .depo__grid { gap: 14px; margin: 32px -20px 0; padding: 0 20px; scroll-padding: 0 20px; }
+    .depo__item { flex-basis: 78%; }
+    .sheet__body { grid-template-columns: 1fr; gap: 28px; padding: 24px 0 4px; }
+    .about { grid-template-columns: 1fr; gap: 36px; padding: 28px; }
+    .about img { max-width: 420px; margin: 0 auto; }
+    .easy { grid-template-columns: 1fr; gap: 12px; }
+    .final-card { grid-template-columns: 1fr; padding: 44px 32px; text-align: center; }
+    .seal { max-width: 300px; margin: 0 auto; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .sec { padding: 72px 20px; }
+    .hero { padding: 64px 20px 72px; }
+    .strip { padding: 34px 0; }
+    h1 { font-size: 30px; }
+    h2, .about h2 { font-size: 29px; }
+    .final h2 { font-size: 31px; }
+    .hero__support { font-size: 16px; }
+    .btn { display: flex; padding: 19px 18px; }
+    .callout { padding: 28px 24px; }
+    .who__card { padding: 26px 20px; }
+    .sim__card { padding: 22px 18px; }
+    .sim__result strong { font-size: 34px; }
+    .callout strong { font-size: 22px; }
+    .sheet { padding: 24px 20px; }
+    .sheet h3 { font-size: 24px; }
+    .calc { padding: 18px 16px; }
+    .calc__tl li { grid-template-columns: 14px 1fr; gap: 2px 10px; }
+    .calc__tl b { grid-column: 2; text-align: left; font-size: 14px; }
+    .easy-sec { padding-bottom: 110px; }
+    .about-sec { padding-top: 120px; }
+    .about { padding: 20px; }
+    .offer { padding: 40px 22px 34px; }
+    .price { font-size: 60px; }
+    .final-card { padding: 36px 20px; }
+  }
+  @media (max-width: 380px) {
+    .calc__result strong { font-size: 27px; }
+    .buybar__info small { font-size: 9.5px; letter-spacing: .4px; }
+    .buybar__btn.btn { padding: 12px 14px; font-size: 13px; }
+    .buybar__btn.btn::after { display: none; }
+    h1 { font-size: 27px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. PRIMEIRA DOBRA -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow hero__eyebrow reveal">Coleção Do Lote à Obra · 5 e-books</p>
+        <h1 class="reveal">Antes de comprar o terreno, <span class="hl">leia isto.</span></h1>
+        <p class="hero__support reveal">O erro mais caro de quem constrói acontece antes do primeiro tijolo. Em 330 páginas, um casal de corretores que viveu o processo mostra a ordem certa: dinheiro, terreno, projeto, financiamento e obra.</p>
+        <ul class="chips reveal">
+          <li>330 páginas</li>
+          <li>5 etapas na ordem real</li>
+          <li>Regras de 2026</li>
+        </ul>
+        <a class="btn reveal" data-checkout data-position="hero" href="#oferta">Quero os 5 e-books por R$ 59</a>
+        <p class="micro reveal">Pagamento único · Acesso imediato · 7 dias de garantia</p>
+      </div>
+      <!-- Ilustração animada: cada etapa da coleção é lida e a casa é construída. O script monta as linhas. -->
+      <div class="hero__media reveal reveal--side">
+        <svg class="hero__art" viewBox="0 0 480 470" aria-hidden="true">
+          <!-- Janela da planilha -->
+          <rect class="hv-sheet" x="8" y="8" width="464" height="172" rx="8"/>
+          <path class="hv-sheet-line" d="M8 44h464"/>
+          <g id="hv-tabs"></g>
+          <rect x="396" y="17" width="62" height="19" rx="9.5" fill="none" stroke="#74542d"/>
+          <text x="427" y="30.5" fill="#ffdb97" font-size="11" font-weight="600" text-anchor="middle">Exemplo</text>
+          <g id="hv-pages"></g>
+          <rect id="hv-select" class="hv-select" x="330" y="53" width="130" height="24" rx="3" fill="#e9a048" fill-opacity=".12" stroke="#e9a048" stroke-width="1.5"/>
+
+          <g transform="translate(0 -40)">
+          <!-- Guindaste -->
+          <g id="hv-crane" class="hv-crane" fill="none" stroke="#a88a5e" stroke-width="1.6">
+            <path d="M58 490V262M72 490V262M58 490l14-19-14-19 14-19-14-19 14-19-14-19 14-19-14-19 14-19-14-19 14-19"/>
+            <path d="M28 262h330M28 274h330M28 274l12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12"/>
+            <g id="hv-hook" class="hv-hook" style="transform: translateX(240px)">
+              <path d="M0 274v44"/>
+              <rect x="-15" y="318" width="30" height="10" fill="#e9a048" stroke="none"/>
+            </g>
+          </g>
+
+          <!-- Casa -->
+          <path d="M16 490h448" stroke="#74542d"/>
+          <rect class="hv-piece hv-grow" data-step="0" x="100" y="480" width="280" height="10" fill="#8d8478"/>
+          <g class="hv-piece hv-drop" data-step="1" fill="#8d8478">
+            <rect x="110" y="404" width="8" height="76"/><rect x="204" y="404" width="8" height="76"/><rect x="362" y="404" width="8" height="76"/>
+          </g>
+          <!-- Térreo -->
+          <rect class="hv-piece hv-drop" data-step="2" x="110" y="404" width="102" height="76" fill="#efe6d6"/>
+          <rect class="hv-piece hv-drop" data-step="3" x="212" y="404" width="158" height="76" fill="#dfd2bb"/>
+          <rect class="hv-piece hv-grow" data-step="4" x="98" y="396" width="284" height="8" fill="#2f2a25"/>
+          <!-- Andar de cima -->
+          <path class="hv-piece hv-drop" data-step="5" d="M190 328 370 308v88H190z" fill="#efe6d6"/>
+          <g class="hv-piece hv-drop" data-step="6">
+            <path d="M190 328 262 320v76h-72z" fill="#a86e34"/>
+            <path d="M199 327v69M208 326v70M217 325v71M226 324v72M235 323v73M244 322v74M253 321v75" stroke="#7d4f22" stroke-width="1.5"/>
+          </g>
+          <!-- Vãos -->
+          <g class="hv-piece" data-step="7" fill="#17110a">
+            <rect x="122" y="414" width="76" height="66"/>
+            <rect x="222" y="424" width="84" height="56"/>
+            <rect x="318" y="420" width="36" height="60"/>
+            <rect x="276" y="334" width="82" height="50"/>
+          </g>
+          <!-- Telhado -->
+          <path class="hv-piece hv-drop" data-step="8" d="M190 328V322M226 324V318M262 320V314M298 316V310M334 312V306M370 308V302" stroke="#8d8478" stroke-width="3"/>
+          <path class="hv-piece hv-drop" data-step="9" d="M174 322 386 298v10L174 332z" fill="#e9a048"/>
+          <!-- Garagem e porta -->
+          <g class="hv-piece" data-step="10">
+            <rect x="222" y="424" width="84" height="56" fill="#3a332c"/>
+            <path d="M222 435h84M222 446h84M222 457h84M222 468h84" stroke="#574d43" stroke-width="1.5"/>
+            <rect x="318" y="420" width="36" height="60" fill="#a86e34"/>
+            <path d="M330 420v60M342 420v60" stroke="#7d4f22" stroke-width="1.5"/>
+            <rect x="347" y="440" width="3" height="20" rx="1.5" fill="#ffdb97"/>
+          </g>
+          <!-- Janelas acesas -->
+          <g class="hv-piece" data-step="11">
+            <rect x="122" y="414" width="76" height="66" fill="#ffdb97"/>
+            <path d="M122 462 158 414h26l-49 66h-13z" fill="#fff1cf"/>
+            <rect x="276" y="334" width="82" height="50" fill="#ffdb97"/>
+            <path d="M276 372 304 334h20l-37 50h-11z" fill="#fff1cf"/>
+            <path d="M147 414v66M172 414v66M303 334v50M331 334v50" stroke="#2f2a25" stroke-width="2.5"/>
+          </g>
+          <!-- Terraço com guarda-corpo de vidro e luminária -->
+          <g class="hv-piece" data-step="12">
+            <rect x="104" y="370" width="82" height="26" fill="#ffdb97" fill-opacity=".18" stroke="#ffdb97" stroke-width="1.5"/>
+            <path d="M104 370h82" stroke="#ffdb97" stroke-width="3"/>
+            <rect x="312" y="426" width="3" height="10" fill="#2f2a25"/>
+          </g>
+          <!-- Jardim -->
+          <g class="hv-piece hv-pop" data-step="13">
+            <rect x="16" y="490" width="448" height="5" fill="#2f5a2b"/>
+            <rect x="72" y="438" width="4" height="52" fill="#7d4f22"/>
+            <circle cx="74" cy="426" r="22" fill="#3f7a3a"/><circle cx="64" cy="438" r="13" fill="#336a30"/><circle cx="86" cy="436" r="12" fill="#4b8a45"/>
+            <rect x="406" y="452" width="4" height="38" fill="#7d4f22"/>
+            <circle cx="408" cy="442" r="16" fill="#3f7a3a"/><circle cx="416" cy="450" r="9" fill="#4b8a45"/>
+            <path d="M96 490a10 10 0 0 1 20 0zM112 490a8 8 0 0 1 16 0zM372 490a9 9 0 0 1 18 0z" fill="#4b8a45"/>
+          </g>
+          <g class="hv-piece hv-pop" data-step="14">
+            <circle cx="424" cy="316" r="28" fill="#1fa53c"/>
+            <path d="M411 317l9 9 17-19" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip strip--brown" aria-hidden="true"><div class="strip__track"></div></div>
+
+<main>
+
+<!-- 2. O PROBLEMA -->
+<section class="sec problem center">
+  <div class="wrap">
+    <h2 class="reveal">Você já pesquisou preço, salvou referência e viu vídeo. <span class="hl">E continua no mesmo lugar.</span></h2>
+    <p class="problem__list reveal">Não é falta de informação. É falta de ordem.</p>
+    <p class="problem__text reveal">Cada profissional conhece só a parte dele: o corretor vende o lote, o arquiteto desenha, o banco aprova, a construtora executa. Quem junta tudo é você, e é aí que o dinheiro escapa.</p>
+    <div class="pains">
+      <div class="pain reveal"><h3>Terreno que engole o orçamento</h3><p>Quando o lote passa de 40% do total, a casa começa a encolher.</p></div>
+      <div class="pain reveal"><h3>Projeto que não cabe no bolso</h3><p>O arquiteto desenha o sonho. O orçamento só aparece depois, e refazer dói duas vezes.</p></div>
+      <div class="pain reveal"><h3>Crédito menor que a simulação</h3><p>O banco financia até 80% da avaliação dele, não do preço que você combinou.</p></div>
+      <div class="pain reveal"><h3>Obra parada</h3><p>Faltou dinheiro no meio. O tempo estraga o que já foi feito.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. PARA QUEM É -->
+<section class="sec who">
+  <div class="wrap wrap--wide">
+    <h2 class="center reveal">Para quem é a <span class="hl">Coleção Do Lote à Obra</span></h2>
+    <div class="who__cols">
+      <div class="who__card reveal">
+        <p class="who__lead">É para você se</p>
+        <ul class="check-list">
+          <li>Quer construir do zero e não sabe por onde começar.</li>
+          <li>Tem um terreno ou está procurando um.</li>
+          <li>Vai financiar e quer entender antes de assinar.</li>
+          <li>Quer conversar de igual para igual com corretor, arquiteto e construtora.</li>
+        </ul>
+      </div>
+      <div class="who__card reveal">
+        <p class="who__lead">Não é para você se</p>
+        <ul class="x-list">
+          <li>Procura curso de pedreiro ou técnica de execução.</li>
+          <li>Já está com a obra no acabamento.</li>
+          <li>Espera uma fórmula para construir sem dinheiro.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true"><div class="strip__track"></div></div>
+
+<!-- 3. A ORDEM e 4. O QUE TEM DENTRO -->
+<section class="sec">
+  <div class="wrap wrap--wide">
+    <div class="wrap center">
+      <h2 class="reveal">Existe uma ordem. <span class="hl">Quase ninguém segue.</span></h2>
+      <p class="order__text reveal">O dinheiro vai primeiro para a calculadora. Depois para o lote. Depois para a planta. Por último, para a obra.</p>
+    </div>
+    <ol class="order reveal">
+      <li><span class="order__n">1</span><b>Planejamento financeiro</b><small>Quanto posso investir?</small></li>
+      <li><span class="order__n">2</span><b>Terreno</b><small>Onde e qual lote?</small></li>
+      <li><span class="order__n">3</span><b>Projeto</b><small>Que casa cabe?</small></li>
+      <li><span class="order__n">4</span><b>Financiamento</b><small>Como o banco paga?</small></li>
+      <li><span class="order__n">5</span><b>Obra</b><small>Quem constrói?</small></li>
+    </ol>
+
+    <div class="wrap center contents-title">
+      <h2 class="reveal">330 páginas, 50 capítulos, <span class="hl">5 e-books</span></h2>
+    </div>
+    <div class="sheets">
+      <article class="sheet reveal">
+        <div class="sheet__head">
+          <p class="eyebrow">E-book 1 — Planejamento Financeiro · 71 páginas</p>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#e9a048" stroke-width="1.4" aria-hidden="true"><path d="M4 2h7l3 3v11H4z"/><path d="M11 2v3h3M6.5 9h5M6.5 12h5"/></svg>
+        </div>
+        <div class="sheet__body">
+          <div>
+            <h3>Quanto posso investir?</h3>
+          </div>
+          <div>
+            <ul class="sheet__items check-list">
+              <li>Como o banco calcula: 30% da renda bruta, 80% do imóvel.</li>
+              <li>MCMV, SBPE e Pró-Cotista: onde você se encaixa.</li>
+              <li>Diagnóstico financeiro em 3 cenários.</li>
+              <li>Quanto do orçamento pode ir para o terreno.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article class="sheet reveal">
+        <div class="sheet__head">
+          <p class="eyebrow">E-book 2 — Terreno · 62 páginas</p>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#e9a048" stroke-width="1.4" aria-hidden="true"><path d="M4 2h7l3 3v11H4z"/><path d="M11 2v3h3M6.5 9h5M6.5 12h5"/></svg>
+        </div>
+        <div class="sheet__body">
+          <div>
+            <h3>Onde e qual lote?</h3>
+          </div>
+          <div>
+            <ul class="sheet__items check-list">
+              <li>Aclive, declive e o custo escondido do lote barato.</li>
+              <li>Orientação solar: qual fachada para qual rotina.</li>
+              <li>Loteadora ou proprietário, na planta ou pronto.</li>
+              <li>Documentos e cláusulas para conferir antes de assinar.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article class="sheet reveal">
+        <div class="sheet__head">
+          <p class="eyebrow">E-book 3 — Projeto · 77 páginas</p>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#e9a048" stroke-width="1.4" aria-hidden="true"><path d="M4 2h7l3 3v11H4z"/><path d="M11 2v3h3M6.5 9h5M6.5 12h5"/></svg>
+        </div>
+        <div class="sheet__body">
+          <div>
+            <h3>Que casa cabe?</h3>
+          </div>
+          <div>
+            <ul class="sheet__items check-list">
+              <li>Tabela de metragens por cômodo.</li>
+              <li>Área útil e área total: onde a maioria erra.</li>
+              <li>Térrea ou sobrado em 6 perguntas.</li>
+              <li>9 pontos do contrato com o arquiteto.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article class="sheet reveal">
+        <div class="sheet__head">
+          <p class="eyebrow">E-book 4 — Financiamento · 58 páginas</p>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#e9a048" stroke-width="1.4" aria-hidden="true"><path d="M4 2h7l3 3v11H4z"/><path d="M11 2v3h3M6.5 9h5M6.5 12h5"/></svg>
+        </div>
+        <div class="sheet__body">
+          <div>
+            <h3>Como o banco paga?</h3>
+          </div>
+          <div>
+            <ul class="sheet__items check-list">
+              <li>Juros, correção, SAC e PRICE sem economês.</li>
+              <li>Quando o FGTS entra e quando não entra.</li>
+              <li>Custos que o financiamento não cobre.</li>
+              <li>Liberação por etapas e juros de obra.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article class="sheet reveal">
+        <div class="sheet__head">
+          <p class="eyebrow">E-book 5 — Obra · 62 páginas</p>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#e9a048" stroke-width="1.4" aria-hidden="true"><path d="M4 2h7l3 3v11H4z"/><path d="M11 2v3h3M6.5 9h5M6.5 12h5"/></svg>
+        </div>
+        <div class="sheet__body">
+          <div>
+            <h3>Quem constrói?</h3>
+          </div>
+          <div>
+            <ul class="sheet__items check-list">
+              <li>5 métodos construtivos comparados.</li>
+              <li>Empreitada global ou administração.</li>
+              <li>7 cuidados para escolher a construtora.</li>
+              <li>Checklist de visita e 8 pontos do contrato.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cta reveal">
+      <a class="btn" data-checkout data-position="pos_conteudo" href="#oferta">Quero os 5 e-books por R$ 59</a>
+      <p class="micro">Pagamento único · Acesso imediato · 7 dias de garantia</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FERRAMENTAS -->
+<section class="sec sim-sec">
+  <div class="wrap wrap--wide sim">
+    <div class="reveal">
+      <h2>Para usar <span class="hl">no mesmo dia</span></h2>
+      <ul class="check-list tools__list">
+        <li>Semáforo do terreno.</li>
+        <li>Mensagens prontas para o corretor e para 5 construtoras.</li>
+        <li>Tabela de metragens: mínimo, médio e generoso.</li>
+        <li>Passo a passo do simulador da Caixa.</li>
+        <li>Checklist de visita à obra.</li>
+        <li>Lista de acabamentos por padrão.</li>
+      </ul>
+    </div>
+    <div class="sim__card reveal">
+      <p class="tool__title">Semáforo do terreno</p>
+      <p class="tool__sub">Quanto do orçamento total vai para o lote</p>
+      <div class="gauge" role="img" aria-label="De 20% a 30% do orçamento no lote, pode avançar. De 35% a 40%, atenção. De 50% para cima, risco.">
+        <span class="gauge__seg gauge__seg--ok" style="left:33.33%;width:16.67%"></span>
+        <span class="gauge__seg gauge__seg--warn" style="left:58.33%;width:8.33%"></span>
+        <span class="gauge__seg gauge__seg--risk" style="left:83.33%;width:16.67%"></span>
+      </div>
+      <div class="gauge__ticks" aria-hidden="true"><span>0%</span><span>20%</span><span>40%</span><span>60%</span></div>
+      <ul class="gauge__legend">
+        <li><i class="gauge__dot gauge__dot--ok"></i>20% a 30% · pode avançar</li>
+        <li><i class="gauge__dot gauge__dot--warn"></i>35% a 40% · atenção</li>
+        <li><i class="gauge__dot gauge__dot--risk"></i>50% ou mais · risco</li>
+      </ul>
+
+      <p class="tool__title tool__title--gap">A entrada não é paga de uma vez</p>
+      <div class="stack">
+        <p class="stack__label"><span>Imóvel</span><b>R$ 500.000</b></p>
+        <div class="stack__bar"><span class="stack__lote" style="width:30%">Lote R$ 150.000</span><span class="stack__obra" style="width:70%">Obra R$ 350.000</span></div>
+        <p class="stack__label"><span>Entrada de 20%</span><b>R$ 100.000</b></p>
+        <div class="stack__bar"><span class="stack__lote" style="width:30%">Lote R$ 30.000</span><span class="stack__obra" style="width:70%">Obra R$ 70.000</span></div>
+      </div>
+      <p class="sim__note">Exemplo do e-book 1.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. QUEM ESCREVEU -->
+<section class="sec about-sec">
+  <div class="wrap wrap--wide about">
+    <img class="reveal" src="https://doloteaobra.com.br/wp-content/uploads/2026/07/richard-e-tamires.png" width="846" height="956" loading="lazy" alt="Tamires e Richard, autores da Coleção Do Lote à Obra, comemorando em frente ao notebook">
+    <div>
+      <h2 class="reveal">Escrito por quem <span class="hl">passou por isso</span></h2>
+      <p class="reveal">Somos Tamires e Richard, corretores de imóveis. Quando fomos escolher terreno, projeto, financiamento e obra, descobrimos que ninguém conhecia o caminho inteiro. Cada um sabia só da sua parte.</p>
+      <p class="reveal">Sentimos na pele o que isso custa e viramos especialistas em juntar as cinco etapas. Estes e-books são o resumo escrito do nosso curso, o Dobra.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. OFERTA -->
+<section class="sec offer-sec" id="oferta">
+  <div class="offer reveal">
+    <h2 class="center">Tudo o que <span class="hl">você leva</span></h2>
+    <ul class="offer-list">
+      <li><span>E-book 1 · Planejamento Financeiro</span><b>R$ 27</b></li>
+      <li><span>E-book 2 · Terreno</span><b>R$ 27</b></li>
+      <li><span>E-book 3 · Projeto</span><b>R$ 27</b></li>
+      <li><span>E-book 4 · Financiamento</span><b>R$ 27</b></li>
+      <li><span>E-book 5 · Obra</span><b>R$ 27</b></li>
+      <li><span>Guia Comece por aqui</span><b>incluído</b></li>
+      <li class="offer-list__sum"><span>Total avulso</span><s>R$ 135</s></li>
+    </ul>
+    <div class="price-block">
+      <p class="price"><small>R$</small>59</p>
+      <p class="price-block__note">À vista, pagamento único.</p>
+      <p class="price-parcel">0,015% do valor de uma casa de R$ 400 mil.</p>
+    </div>
+    <a class="btn" data-checkout data-position="oferta" href="#oferta">Quero os 5 e-books por R$ 59</a>
+    <p class="micro offer__micro">Pagamento único · Acesso imediato · 7 dias de garantia</p>
+    <p class="micro offer__pay">Pix · Cartão · Boleto</p>
+    <details class="avulso" hidden>
+      <summary>Prefiro comprar só um e-book por R$ 27</summary>
+      <ul>
+        <li><a data-avulso="1" href="#oferta">E-book 1 · Planejamento Financeiro · R$ 27</a></li>
+        <li><a data-avulso="2" href="#oferta">E-book 2 · Terreno · R$ 27</a></li>
+        <li><a data-avulso="3" href="#oferta">E-book 3 · Projeto · R$ 27</a></li>
+        <li><a data-avulso="4" href="#oferta">E-book 4 · Financiamento · R$ 27</a></li>
+        <li><a data-avulso="5" href="#oferta">E-book 5 · Obra · R$ 27</a></li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- 10. GARANTIA -->
+<section class="sec easy-sec guarantee">
+  <div class="wrap center">
+    <h2 class="reveal">7 dias para <span class="hl">ler e decidir</span></h2>
+    <p class="guarantee__text reveal">Se você ler e achar que não valeu, pede o reembolso dentro da própria Hotmart em até 7 dias e recebe 100% do valor. Sem formulário e sem justificativa.</p>
+  </div>
+</section>
+
+<!-- 11. PERGUNTAS FREQUENTES -->
+<section class="sec faq-sec">
+  <div class="wrap">
+    <svg class="faq-icon reveal" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#e9a048" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M12 12.5a4 4 0 1 1 6.2 3.3c-1.4.9-2.2 1.7-2.2 3.2"/><path d="M16 23.5v.01"/></svg>
+    <h2 class="center reveal">Perguntas frequentes</h2>
+    <div class="faq">
+      <details class="reveal" open>
+        <summary>Como recebo os e-books?</summary>
+        <p>Na hora, por e-mail e na área de membros da Hotmart. São arquivos PDF que abrem no celular, no computador ou impressos.</p>
+      </details>
+      <details class="reveal">
+        <summary>Serve para qualquer cidade?</summary>
+        <p>Sim. As regras de financiamento são nacionais. O que muda de uma cidade para outra, como recuos e taxas, o e-book ensina a consultar.</p>
+      </details>
+      <details class="reveal">
+        <summary>Já tenho terreno. Vale a pena?</summary>
+        <p>Vale. Três dos cinco e-books tratam do que vem depois: projeto, financiamento e obra. E o primeiro mostra se o orçamento da casa fecha.</p>
+      </details>
+      <details class="reveal">
+        <summary>Isso não tem de graça na internet?</summary>
+        <p>Tem em pedaços. O que não tem é a ordem, nem alguém mostrando como a escolha do terreno trava o financiamento lá na frente.</p>
+      </details>
+      <details class="reveal">
+        <summary>Os e-books substituem arquiteto, engenheiro ou correspondente?</summary>
+        <p>Não. Eles ensinam a escolher, contratar e cobrar esses profissionais.</p>
+      </details>
+      <details class="reveal">
+        <summary>Qual a diferença para o curso Dobra?</summary>
+        <p>Os e-books são o resumo escrito de cada módulo do curso.</p>
+      </details>
+      <details class="reveal">
+        <summary>Posso comprar só um?</summary>
+        <p>Pode, por R$ 27. Mas cada etapa depende da outra, e o kit sai por menos que três avulsos.</p>
+      </details>
+      <details class="reveal">
+        <summary>As informações estão atualizadas?</summary>
+        <p>Sim. As faixas do Minha Casa Minha Vida e as regras de financiamento foram revisadas em abril de 2026.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 12. FECHO -->
+<section class="sec final">
+  <div class="wrap wrap--wide final-card reveal">
+    <div>
+      <h2>Daqui a alguns meses você vai estar escolhendo um terreno. <em>Melhor chegar lá sabendo quanto pode pagar.</em></h2>
+      <div><a class="btn" data-checkout data-position="fecho" href="#oferta">Quero os 5 e-books por R$ 59</a></div>
+      <p class="micro">Pagamento único · Acesso imediato · 7 dias de garantia</p>
+    </div>
+    <svg class="seal" viewBox="0 0 400 400" role="img" aria-label="Selo de garantia de 7 dias">
+      <defs>
+        <linearGradient id="seal-gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffdb97"/><stop offset="1" stop-color="#e9a048"/></linearGradient>
+        <path id="seal-ring" d="M200 88a112 112 0 1 1 -.01 0"/>
+      </defs>
+      <g fill="none" stroke="#e9a048" stroke-width="12" stroke-dasharray="1.6 9" opacity=".6">
+        <path d="M322.1 54.5A190 190 0 0 1 322.1 345.5"/>
+        <path d="M77.9 54.5A190 190 0 0 0 77.9 345.5"/>
+      </g>
+      <circle cx="200" cy="200" r="146" fill="none" stroke="#fff" stroke-opacity=".45"/>
+      <text fill="#fff" font-family="Inter, sans-serif" font-size="19" font-weight="700" letter-spacing="5"><textPath href="#seal-ring" textLength="696">7 DIAS DE GARANTIA — 7 DIAS DE GARANTIA — </textPath></text>
+      <circle cx="200" cy="200" r="84" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="1.6 7.2" opacity=".85"/>
+      <text x="200" y="240" fill="url(#seal-gold)" font-family="Inter, sans-serif" font-size="112" font-weight="800" text-anchor="middle">7</text>
+    </svg>
+  </div>
+</section>
+
+</main>
+
+<!-- Barra fixa de compra no celular: aparece fora da primeira dobra, da oferta e da última chamada -->
+<div class="buybar" id="buybar">
+  <div class="buybar__info"><small>5 e-books</small><b>R$ 59</b></div>
+  <a class="btn buybar__btn" data-checkout data-position="barra" href="#oferta">Comprar</a>
+</div>
+
+<footer>
+  <p>Este material é educativo e não garante aprovação de crédito. As regras de financiamento podem mudar.</p>
+  <p>© Todos os direitos reservados — Do Lote à Obra</p>
+</footer>
+
+<script>
+  // Links do checkout (Hotmart). Todos os botões de compra (data-checkout) abrem o kit, na mesma aba.
+  // A visita repassa as UTMs e o fbclid ao checkout; utm_content também vai como sck, o parâmetro de origem da Hotmart.
+  // Enquanto o link estiver vazio, os botões levam até a seção de oferta.
+  const CHECKOUT_URL = "";
+  // Checkout de cada e-book avulso, na ordem de 1 a 5. A lista "comprar só um" só aparece quando houver links.
+  const AVULSO_URLS = ["", "", "", "", ""];
+
+  const withTracking = (url) => {
+    const target = new URL(url);
+    const visit = new URLSearchParams(location.search);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "fbclid"].forEach((key) => {
+      if (visit.get(key)) target.searchParams.set(key, visit.get(key));
+    });
+    if (visit.get("utm_content") && !target.searchParams.get("sck")) target.searchParams.set("sck", visit.get("utm_content"));
+    return target.toString();
+  };
+  if (CHECKOUT_URL) {
+    document.querySelectorAll("[data-checkout]").forEach((link) => {
+      link.href = withTracking(CHECKOUT_URL);
+      link.addEventListener("click", () => {
+        link.textContent = "Abrindo o checkout";
+        link.style.pointerEvents = "none";
+        setTimeout(() => { link.style.pointerEvents = ""; }, 4000);
+      });
+    });
+  }
+  if (AVULSO_URLS.some(Boolean)) {
+    document.querySelectorAll("[data-avulso]").forEach((link) => {
+      const url = AVULSO_URLS[Number(link.dataset.avulso) - 1];
+      if (url) link.href = withTracking(url);
+      else link.closest("li").remove();
+    });
+    document.querySelector(".avulso").hidden = false;
+  }
+
+  // Quadros das planilhas: linha por linha, com os valores contando, até o resultado.
+  // Toca ao entrar na tela e recomeça se a pessoa sair e voltar.
+  // Sem suporte ou com "reduzir movimento" ligado, o quadro fica parado no resultado final.
+  const CALC_SEQUENCE_MS = 3200;
+  const CALC_COUNT_MS = 500;
+  const CALC_RESULT_COUNT_MS = 900;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function countUp(el, finalText, duration) {
+    const match = finalText.match(/\d[\d.]*/);
+    const target = Number(match[0].replace(/\./g, ""));
+    const start = performance.now();
+    const run = (el.countRun = (el.countRun || 0) + 1);
+    const tick = (now) => {
+      if (el.countRun !== run) return;
+      const progress = Math.min(Math.max((now - start) / duration, 0), 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = progress === 1
+        ? finalText
+        : finalText.replace(match[0], Math.round(target * eased).toLocaleString("pt-BR"));
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    document.querySelectorAll(".calc").forEach((calc) => {
+      const steps = [...calc.querySelectorAll(".calc__label, .calc__row, .calc__tl li, .calc__result")];
+      const values = [...calc.querySelectorAll(".calc__row b, .calc__tl b, .calc__result strong")];
+      const interval = Math.min(420, CALC_SEQUENCE_MS / steps.length);
+      let timers = [];
+
+      steps.forEach((step) => step.classList.add("calc__step"));
+      values.forEach((value) => { value.dataset.final = value.textContent; });
+
+      const reset = () => {
+        timers.forEach(clearTimeout);
+        timers = [];
+        steps.forEach((step) => step.classList.remove("is-on"));
+        values.forEach((value) => {
+          value.countRun = (value.countRun || 0) + 1;
+          value.textContent = value.dataset.final;
+        });
+      };
+
+      const play = () => {
+        steps.forEach((step, index) => {
+          timers.push(setTimeout(() => {
+            step.classList.add("is-on");
+            step.querySelectorAll("b").forEach((value) => countUp(value, value.dataset.final, CALC_COUNT_MS));
+            const result = step.querySelector("strong");
+            if (result) countUp(result, result.dataset.final, CALC_RESULT_COUNT_MS);
+          }, index * interval));
+        });
+      };
+
+      calc.classList.add("calc--anim");
+      let playing = false;
+      new IntersectionObserver(([entry]) => {
+        if (entry.intersectionRatio >= 0.35 && !playing) {
+          playing = true;
+          play();
+        } else if (!entry.isIntersecting && playing) {
+          playing = false;
+          reset();
+        }
+      }, { threshold: [0, 0.35] }).observe(calc);
+    });
+  }
+
+  // Primeira dobra: cada valor preenchido na planilha avança uma etapa da casa.
+  // Fica em loop enquanto estiver na tela. Clicar numa aba mostra aquela planilha preenchida,
+  // e o loop volta sozinho depois de alguns segundos. Com "reduzir movimento", mostra a casa pronta.
+  const HERO_ROW_MS = 560;
+  const HERO_HOLD_MS = 3500;
+  const HERO_RESUME_MS = 12000;
+  const HERO_PAGES = [
+    { tab: "Dinheiro", x: 28, width: 58, total: 3, rows: [
+      ["Parcela máxima", "30% da renda"], ["Financiamento", "até 80% do imóvel"],
+      ["Lote no orçamento", "até 30%"], ["Entrada (exemplo)", "R$ 100.000"] ] },
+    { tab: "Terreno", x: 100, width: 52, total: 1, rows: [
+      ["Lote de R$ 150.000", "30% do total"], ["Faixa segura", "20% a 30%"],
+      ["Atenção", "35% a 40%"], ["Risco", "50% ou mais"] ] },
+    { tab: "Projeto", x: 166, width: 50, total: -1, rows: [
+      ["Páginas", "77"], ["Térrea ou sobrado", "6 perguntas"], ["Pontos do contrato", "9"] ] },
+    { tab: "Financiamento", x: 230, width: 92, total: -1, rows: [
+      ["Renda comprometida", "até 30%"], ["Financiamento", "até 80%"], ["Modalidades comparadas", "3"] ] },
+    { tab: "Obra", x: 336, width: 32, total: -1, rows: [
+      ["Métodos comparados", "5"], ["Cuidados com a construtora", "7"], ["Pontos do contrato", "8"] ] },
+  ];
+  // Posição do gancho do guindaste em cada uma das 15 etapas da casa.
+  const HERO_HOOK_X = [240, 160, 160, 290, 240, 280, 226, 240, 280, 280, 280, 160, 145, 145, 145];
+  const HERO_LAST_STEP = HERO_HOOK_X.length - 1;
+
+  const heroArt = document.querySelector(".hero__art");
+  if (heroArt) {
+    const ROW_TOP = 50;
+    const ROW_HEIGHT = 30;
+    const totalRows = HERO_PAGES.reduce((sum, page) => sum + page.rows.length, 0);
+
+    heroArt.querySelector("#hv-tabs").innerHTML = HERO_PAGES.map((page, index) =>
+      `<text class="hv-tab" x="${page.x}" y="31">${page.tab}</text>` +
+      `<rect class="hv-underline" x="${page.x}" y="42" width="${page.width}" height="3" fill="#e9a048"/>` +
+      `<rect class="hv-hit" data-page="${index}" x="${page.x - 10}" y="10" width="${page.width + 20}" height="34" fill="transparent"/>`
+    ).join("");
+
+    heroArt.querySelector("#hv-pages").innerHTML = HERO_PAGES.map((page) =>
+      `<g class="hv-page">` + page.rows.map(([label, value], row) => {
+        const y = ROW_TOP + row * ROW_HEIGHT;
+        return `<g class="${row === page.total ? "hv-total" : ""}">` +
+          `<text class="hv-label" x="28" y="${y + 19}">${label}</text>` +
+          `<text class="hv-value" x="450" y="${y + 19}" text-anchor="end">${value}</text>` +
+          (row < page.rows.length - 1 ? `<path class="hv-sep" d="M20 ${y + ROW_HEIGHT - 1}h440"/>` : "") +
+        `</g>`;
+      }).join("") + `</g>`
+    ).join("");
+
+    const tabs = [...heroArt.querySelectorAll(".hv-tab")];
+    const underlines = [...heroArt.querySelectorAll(".hv-underline")];
+    const pages = [...heroArt.querySelectorAll(".hv-page")];
+    const pieces = [...heroArt.querySelectorAll(".hv-piece")];
+    heroArt.querySelectorAll(".hv-value").forEach((value) => { value.dataset.final = value.textContent; });
+    const select = heroArt.querySelector("#hv-select");
+    const crane = heroArt.querySelector("#hv-crane");
+    const hook = heroArt.querySelector("#hv-hook");
+    let timers = [];
+    let resumeTimer = null;
+    let playing = false;
+
+    const showPage = (index) => {
+      [tabs, underlines, pages].forEach((group) => {
+        group.forEach((el, i) => el.classList.toggle("is-on", i === index));
+      });
+    };
+    const clearValues = () => {
+      heroArt.querySelectorAll(".hv-value").forEach((value) => {
+        value.countRun = (value.countRun || 0) + 1;
+        value.textContent = value.dataset.final;
+        value.classList.remove("is-on");
+      });
+    };
+    const buildUpTo = (step) => {
+      pieces.filter((piece) => Number(piece.dataset.step) <= step).forEach((piece) => piece.classList.add("is-on"));
+    };
+    const reset = () => {
+      timers.forEach(clearTimeout);
+      timers = [];
+      clearTimeout(resumeTimer);
+      showPage(-1);
+      clearValues();
+      pieces.forEach((piece) => piece.classList.remove("is-on"));
+      select.classList.remove("is-on");
+      crane.classList.remove("is-on");
+    };
+    // Aba clicada: planilha inteira preenchida e casa pronta, sem animação.
+    const showFilled = (index) => {
+      timers.forEach(clearTimeout);
+      timers = [];
+      showPage(index);
+      clearValues();
+      pages[index].querySelectorAll(".hv-value").forEach((value) => value.classList.add("is-on"));
+      buildUpTo(HERO_LAST_STEP);
+      select.classList.remove("is-on");
+      crane.classList.remove("is-on");
+    };
+
+    const play = () => {
+      const at = (time, action) => timers.push(setTimeout(action, time));
+      let time = 300;
+      let filled = 0;
+      at(0, () => crane.classList.add("is-on"));
+      HERO_PAGES.forEach((page, pageIndex) => {
+        at(time, () => { showPage(pageIndex); select.classList.add("is-on"); });
+        time += 300;
+        page.rows.forEach((_, row) => {
+          const step = Math.round((filled * HERO_LAST_STEP) / (totalRows - 1));
+          filled += 1;
+          at(time, () => {
+            select.style.transform = `translateY(${row * ROW_HEIGHT}px)`;
+            const value = pages[pageIndex].querySelectorAll(".hv-value")[row];
+            value.classList.add("is-on");
+            countUp(value, value.dataset.final, HERO_ROW_MS * 0.7);
+            hook.style.transform = `translateX(${HERO_HOOK_X[step]}px)`;
+            buildUpTo(step);
+            if (step >= 13) crane.classList.remove("is-on");
+          });
+          time += HERO_ROW_MS;
+        });
+      });
+      at(time, () => select.classList.remove("is-on"));
+      at(time + HERO_HOLD_MS, () => {
+        reset();
+        at(600, play);
+      });
+    };
+
+    heroArt.addEventListener("click", (event) => {
+      const hit = event.target.closest(".hv-hit");
+      if (!hit) return;
+      showFilled(Number(hit.dataset.page));
+      clearTimeout(resumeTimer);
+      if (playing) resumeTimer = setTimeout(() => { reset(); play(); }, HERO_RESUME_MS);
+    });
+
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && !playing) {
+          playing = true;
+          play();
+        } else if (!entry.isIntersecting && playing) {
+          playing = false;
+          reset();
+        }
+      }).observe(heroArt);
+    } else {
+      showFilled(HERO_PAGES.length - 1);
+    }
+  }
+
+  // Efeitos de entrada: o que entra junto na tela aparece em sequência.
+  // Depois da entrada, as classes saem para não atrapalhar o hover dos botões.
+  const REVEAL_STAGGER_MS = 90;
+  const REVEAL_DONE_MS = 1000;
+  if (document.documentElement.classList.contains("reveal-on")) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.filter((entry) => entry.isIntersecting).forEach((entry, index) => {
+        const el = entry.target;
+        const delay = index * REVEAL_STAGGER_MS;
+        revealObserver.unobserve(el);
+        el.style.transitionDelay = `${delay}ms`;
+        el.classList.add("is-in");
+        setTimeout(() => {
+          el.classList.remove("reveal", "reveal--side", "reveal--pop", "is-in");
+          el.style.transitionDelay = "";
+        }, delay + REVEAL_DONE_MS);
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+  }
+
+  // Barra fixa do celular: some enquanto a primeira dobra, a oferta ou a última chamada estão na tela,
+  // onde já existe um botão de compra visível.
+  const buybar = document.getElementById("buybar");
+  if (buybar && "IntersectionObserver" in window) {
+    const ctaAreas = [".hero", ".cta", "#oferta", ".final"].map((selector) => document.querySelector(selector));
+    const visible = new Set();
+    const buybarObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => (entry.isIntersecting ? visible.add(entry.target) : visible.delete(entry.target)));
+      buybar.classList.toggle("is-on", visible.size === 0);
+    });
+    ctaAreas.forEach((area) => buybarObserver.observe(area));
+  }
+
+  // Faixa decorativa: repete os nomes o bastante para o loop não ter emenda.
+  const STRIP_ITEMS = ["Planejamento financeiro", "Terreno", "Projeto", "Financiamento", "Obra"];
+  document.querySelectorAll(".strip__track").forEach((track) => {
+    track.innerHTML = STRIP_ITEMS.map((item) => `<span>${item}</span>`).join("").repeat(8);
+  });
+</script>
+</body>
+</html>
