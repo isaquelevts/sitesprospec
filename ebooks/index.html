@@ -272,32 +272,8 @@
   .rota b { margin-top: 2px; font-size: 18px; line-height: 25px; font-weight: 700; }
   .rota em { color: var(--texto-suave); font-size: 15px; line-height: 22px; font-style: normal; }
 
-  /* ===== 5. O que tem dentro: abas ===== */
+  /* ===== 5. O que tem dentro ===== */
   .abas { margin-top: 44px; }
-  .abas__lista { display: none; }
-  .abas-on .abas__lista {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .aba {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 14px;
-    border: 1px solid var(--linha-forte);
-    border-radius: 10px;
-    background: transparent;
-    color: var(--marrom);
-    font: 600 15px/1.2 Montserrat, sans-serif;
-    text-align: left;
-    cursor: pointer;
-  }
-  .aba span { display: grid; flex: none; place-items: center; width: 30px; height: 30px; border: 1.5px solid var(--ouro); border-radius: 50%; color: var(--marrom); font-weight: 800; }
-  .aba[aria-selected="true"] { border-color: var(--tinta); background: var(--tinta); color: var(--papel); }
-  .aba[aria-selected="true"] span { border-color: var(--ouro-claro); color: var(--ouro-claro); }
-  .aba:focus-visible { outline: 3px solid var(--terracota); outline-offset: 2px; }
   .livro {
     display: grid;
     grid-template-columns: 210px 1fr;
@@ -309,8 +285,6 @@
     background: var(--papel);
   }
   .livro + .livro { margin-top: 16px; }
-  .abas-on .livro + .livro { margin-top: 0; }
-  .livro[hidden] { display: none; }
   .livro img { width: 100%; filter: drop-shadow(0 14px 22px rgba(42, 23, 9, .25)); }
   .livro__meta { color: var(--ouro-texto); font-size: 14px; line-height: 20px; font-weight: 700; }
   .livro h3 { margin-top: 6px; font-size: 26px; line-height: 32px; font-weight: 800; letter-spacing: -.01em; }
@@ -455,11 +429,7 @@
     .rota li:last-child { padding-bottom: 0; }
     .rota__ponto { grid-row: span 3; margin: 0; }
     .rota small { padding-top: 4px; }
-    .abas-on .abas__lista { display: flex; overflow-x: auto; margin: 0 -24px 18px; padding: 2px 24px; scroll-padding: 0 24px; scrollbar-width: none; }
-    .abas__lista::-webkit-scrollbar { display: none; }
-    .aba { flex: none; }
     .livro { display: block; padding: 26px 24px; }
-    .livro[hidden] { display: none; }
     .livro img { float: left; width: 92px; margin: 0 18px 8px 0; }
     .livro::after { content: ""; display: table; clear: both; }
     .livro .check-list { clear: both; padding-top: 6px; }
@@ -520,7 +490,6 @@
     .dor p { font-size: 13px; line-height: 19px; }
     .quem__card { padding: 24px 20px; }
     .rota-wrap, .abas, .quem { margin-top: 36px; }
-    .aba { padding: 10px 12px; font-size: 14px; }
     .livro { padding: 22px 18px; }
     .livro h3 { font-size: 21px; line-height: 27px; }
     .painel { padding: 22px 18px; }
@@ -533,7 +502,6 @@
     .faq summary { padding: 16px; }
     .faq details p { padding: 0 16px 18px; }
     .amostra { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
-    .abas-on .abas__lista { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
   }
 </style>
 </head>
@@ -671,14 +639,7 @@
   <div class="wrap">
     <h2 class="center reveal"><span class="leve">330 páginas, 50 capítulos,</span> 5 e-books</h2>
     <div class="abas reveal">
-      <div class="abas__lista" role="tablist" aria-label="Os 5 e-books da Bússola">
-        <button class="aba" role="tab" id="aba-1" aria-controls="livro-1" aria-selected="true"><span>1</span>Dinheiro</button>
-        <button class="aba" role="tab" id="aba-2" aria-controls="livro-2" aria-selected="false" tabindex="-1"><span>2</span>Terreno</button>
-        <button class="aba" role="tab" id="aba-3" aria-controls="livro-3" aria-selected="false" tabindex="-1"><span>3</span>Projeto</button>
-        <button class="aba" role="tab" id="aba-4" aria-controls="livro-4" aria-selected="false" tabindex="-1"><span>4</span>Financiamento</button>
-        <button class="aba" role="tab" id="aba-5" aria-controls="livro-5" aria-selected="false" tabindex="-1"><span>5</span>Obra</button>
-      </div>
-      <article class="livro" id="livro-1" role="tabpanel" aria-labelledby="aba-1">
+      <article class="livro" id="livro-1">
         <img src="/ebooks/img/capa-1.webp" width="320" height="485" loading="lazy" alt="Capa do e-book 1, Módulo 1: Planejamento Financeiro">
         <div class="livro__corpo">
           <p class="livro__meta">Etapa 01 de 05 · 71 páginas</p>
@@ -692,7 +653,7 @@
           </ul>
         </div>
       </article>
-      <article class="livro" id="livro-2" role="tabpanel" aria-labelledby="aba-2">
+      <article class="livro" id="livro-2">
         <img src="/ebooks/img/capa-2.webp" width="320" height="487" loading="lazy" alt="Capa do e-book 2, Módulo 2: Terreno">
         <div class="livro__corpo">
           <p class="livro__meta">Etapa 02 de 05 · 62 páginas</p>
@@ -706,7 +667,7 @@
           </ul>
         </div>
       </article>
-      <article class="livro" id="livro-3" role="tabpanel" aria-labelledby="aba-3">
+      <article class="livro" id="livro-3">
         <img src="/ebooks/img/capa-3.webp" width="320" height="498" loading="lazy" alt="Capa do e-book 3, Módulo 3: Projeto">
         <div class="livro__corpo">
           <p class="livro__meta">Etapa 03 de 05 · 77 páginas</p>
@@ -720,7 +681,7 @@
           </ul>
         </div>
       </article>
-      <article class="livro" id="livro-4" role="tabpanel" aria-labelledby="aba-4">
+      <article class="livro" id="livro-4">
         <img src="/ebooks/img/capa-4.webp" width="320" height="506" loading="lazy" alt="Capa do e-book 4, Módulo 4: Financiamento">
         <div class="livro__corpo">
           <p class="livro__meta">Etapa 04 de 05 · 58 páginas</p>
@@ -734,7 +695,7 @@
           </ul>
         </div>
       </article>
-      <article class="livro" id="livro-5" role="tabpanel" aria-labelledby="aba-5">
+      <article class="livro" id="livro-5">
         <img src="/ebooks/img/capa-5.webp" width="320" height="521" loading="lazy" alt="Capa do e-book 5, Módulo 5: Construção">
         <div class="livro__corpo">
           <p class="livro__meta">Etapa 05 de 05 · 62 páginas</p>
@@ -1031,32 +992,6 @@
     });
     document.querySelector(".avulso").hidden = false;
   }
-
-  // ===== Abas dos e-books =====
-  // Sem script, os 5 e-books aparecem um embaixo do outro.
-  const abas = [...document.querySelectorAll(".aba")];
-  const livros = [...document.querySelectorAll(".livro")];
-  document.querySelector(".abas").classList.add("abas-on");
-  const abrir = (i, foco) => {
-    abas.forEach((aba, j) => {
-      const on = i === j;
-      aba.setAttribute("aria-selected", on);
-      aba.tabIndex = on ? 0 : -1;
-      livros[j].hidden = !on;
-    });
-    if (foco) abas[i].focus();
-    abas[i].scrollIntoView({ block: "nearest", inline: "nearest" });
-  };
-  abas.forEach((aba, i) => {
-    aba.addEventListener("click", () => abrir(i, false));
-    aba.addEventListener("keydown", (e) => {
-      const passo = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
-      if (passo) { e.preventDefault(); abrir((i + passo + abas.length) % abas.length, true); }
-      if (e.key === "Home") { e.preventDefault(); abrir(0, true); }
-      if (e.key === "End") { e.preventDefault(); abrir(abas.length - 1, true); }
-    });
-  });
-  livros.forEach((livro, j) => { livro.hidden = j !== 0; });
 
   // ===== Efeitos de entrada =====
   const REVEAL_STAGGER_MS = 80;
