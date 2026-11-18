@@ -297,7 +297,14 @@
   /* ===== 6. Amostra ===== */
   .amostra { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
   .amostra figure { margin: 0; }
+  .amostra__abrir { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; transition: transform .2s ease; }
+  .amostra__abrir:hover { transform: translateY(-3px); }
+  .amostra__abrir:focus-visible { outline: 3px solid var(--terracota); outline-offset: 3px; }
   .amostra img { width: 100%; border: 1px solid var(--linha); border-radius: 4px; box-shadow: 0 18px 36px rgba(42, 23, 9, .16); background: #fff; }
+  .zoom { width: 100vw; max-width: none; height: 100vh; max-height: none; margin: 0; padding: 56px 16px 24px; border: 0; background: transparent; overflow: auto; }
+  .zoom::backdrop { background: rgba(30, 18, 10, .9); }
+  .zoom img { width: 100%; max-width: 720px; margin: 0 auto; border-radius: 4px; background: #fff; }
+  .zoom__fechar { position: fixed; top: 10px; right: 10px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--papel); color: var(--tinta); font-size: 28px; line-height: 1; cursor: pointer; }
   .amostra figcaption { margin-top: 12px; color: var(--texto-suave); font-size: 14px; line-height: 20px; text-align: center; }
 
   /* ===== 7. Ferramentas ===== */
@@ -717,21 +724,23 @@
   </div>
 </section>
 
-<!-- 6. AMOSTRA: fica escondida até as 3 páginas reais chegarem.
-     Salvar /ebooks/img/amostra-1.webp, amostra-2.webp e amostra-3.webp (cerca de 720 px de largura,
-     proporção de página A4) e mudar AMOSTRA_PRONTA para true no script. Até lá nenhuma imagem é pedida. -->
-<section class="sec sec--alt" id="amostra" hidden>
+<!-- 6. AMOSTRA: páginas reais (e-book 1 p. 59, e-book 3 p. 26, e-book 5 p. 49) -->
+<section class="sec sec--alt" id="amostra">
   <div class="wrap">
     <div class="wrap--narrow center" style="margin:0 auto">
       <h2 class="reveal">Abra antes de comprar</h2>
       <p class="lede reveal">Três páginas reais da Bússola. São 330 como estas, com tabela, checklist e conta pronta.</p>
     </div>
     <div class="amostra">
-      <figure><img data-src="/ebooks/img/amostra-1.webp" width="720" height="1018" loading="lazy" alt="Página do e-book com o semáforo do terreno"><figcaption>O semáforo do terreno</figcaption></figure>
-      <figure><img data-src="/ebooks/img/amostra-2.webp" width="720" height="1018" loading="lazy" alt="Página do e-book com a tabela de metragens"><figcaption>A tabela de metragens</figcaption></figure>
-      <figure><img data-src="/ebooks/img/amostra-3.webp" width="720" height="1018" loading="lazy" alt="Página do e-book com o checklist de visita à obra"><figcaption>O checklist de visita à obra</figcaption></figure>
+      <figure><button class="amostra__abrir" type="button" aria-label="Ampliar: O semáforo do terreno"><img src="/ebooks/img/amostra-1.webp" width="720" height="1125" loading="lazy" alt="Página 59 do e-book 1: o semáforo do terreno, com as faixas de 20% a 30%, 35% a 40% e acima de 50% do orçamento"></button><figcaption>O semáforo do terreno</figcaption></figure>
+      <figure><button class="amostra__abrir" type="button" aria-label="Ampliar: A tabela de metragens"><img src="/ebooks/img/amostra-2.webp" width="720" height="1125" loading="lazy" alt="Página 26 do e-book 3: a tabela de metragens mínimas, médias e generosas de cada cômodo"></button><figcaption>A tabela de metragens</figcaption></figure>
+      <figure><button class="amostra__abrir" type="button" aria-label="Ampliar: O checklist de visita à obra"><img src="/ebooks/img/amostra-3.webp" width="720" height="1125" loading="lazy" alt="Página 49 do e-book 5: o checklist de visita à obra da construtora"></button><figcaption>O checklist de visita à obra</figcaption></figure>
     </div>
-    <p class="micro center" style="margin-top:16px">Páginas reais da Bússola</p>
+    <p class="micro center" style="margin-top:16px">Páginas reais da Bússola · Toque para ampliar</p>
+    <dialog class="zoom" id="zoom" aria-label="Página ampliada">
+      <button class="zoom__fechar" type="button" aria-label="Fechar">&times;</button>
+      <img alt="">
+    </dialog>
   </div>
 </section>
 
@@ -907,15 +916,13 @@
   // Link do checkout da Hotmart. Todos os botões de compra (data-checkout) abrem o kit, na mesma aba.
   // A visita repassa as UTMs e o fbclid ao checkout; utm_content também vai como sck, o parâmetro de origem da Hotmart.
   // Enquanto o link estiver vazio, os botões levam até a seção de oferta.
-  const CHECKOUT_URL = "";
+  const CHECKOUT_URL = "https://pay.hotmart.com/X108424614M";
   // Checkout de cada e-book avulso, na ordem de 1 a 5. A lista "comprar só um" só aparece quando houver links.
   const AVULSO_URLS = ["", "", "", "", ""];
   // Rastreamento: cada um só carrega quando o ID estiver preenchido.
   const META_PIXEL_ID = "";   // ex.: "123456789012345"
   const GA4_ID = "";          // ex.: "G-XXXXXXXXXX"
   const CLARITY_ID = "";      // ex.: "abcd1234ef"
-  // Mudar para true depois de subir amostra-1.webp, amostra-2.webp e amostra-3.webp em /ebooks/img/
-  const AMOSTRA_PRONTA = false;
   const PRODUTO = { content_name: "Bússola Do Lote à Obra", content_ids: ["bussola"], content_type: "product", value: 59, currency: "BRL" };
 
   // ===== Rastreamento =====
@@ -996,11 +1003,19 @@
   }
 
   // ===== Amostra das páginas =====
-  // A seção fica escondida, sem pedir nenhuma imagem, até AMOSTRA_PRONTA ser true.
-  if (AMOSTRA_PRONTA) {
-    const amostra = document.getElementById("amostra");
-    amostra.querySelectorAll("img[data-src]").forEach((img) => { img.src = img.dataset.src; });
-    amostra.hidden = false;
+  // Toque na página abre a versão grande; fecha no X, no Esc ou tocando fora da imagem.
+  const zoom = document.getElementById("zoom");
+  if (zoom && zoom.showModal) {
+    const zoomImg = zoom.querySelector("img");
+    document.querySelectorAll(".amostra__abrir").forEach((btn) => btn.addEventListener("click", () => {
+      const img = btn.querySelector("img");
+      zoomImg.src = img.currentSrc || img.src;
+      zoomImg.alt = img.alt;
+      zoom.showModal();
+      track.ga("amostra_zoom", { pagina: btn.closest("figure").querySelector("figcaption").textContent });
+    }));
+    zoom.querySelector(".zoom__fechar").addEventListener("click", () => zoom.close());
+    zoom.addEventListener("click", (e) => { if (e.target === zoom) zoom.close(); });
   }
 
   // ===== Efeitos de entrada =====
