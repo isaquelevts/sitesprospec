@@ -531,7 +531,7 @@
 <header class="hero curvas">
   <div class="wrap">
     <!-- Logo: trocar o texto por <img src="/ebooks/img/logo.svg" width="140" alt="Do Lote à Obra"> quando o arquivo chegar -->
-    <p class="logo">DO LOTE À OBRA</p>
+    <p class="logo">Do Lote à Obra</p>
     <div class="hero__grid">
       <div class="hero__copy">
         <p class="selo reveal"><svg class="rosa" width="24" height="24"><use href="#rosa-mini"/></svg><span><b>BÚSSOLA</b> · 5 guias do lote à obra</span></p>
@@ -545,8 +545,8 @@
         <a class="btn reveal" id="btn-hero" data-checkout data-position="hero" href="#oferta">Quero a Bússola por R$&nbsp;59</a>
         <p class="micro reveal">Acesso imediato · Pagamento único · 7 dias de garantia</p>
       </div>
-      <div class="leque" role="img" aria-label="As capas dos 5 e-books da Bússola: Planejamento Financeiro, Terreno, Projeto, Financiamento e Construção">
-        <img class="c4" src="/ebooks/img/capa-4.webp" width="320" height="506" alt="">
+      <div class="leque">
+        <img class="c4" src="/ebooks/img/capa-4.webp" width="320" height="506" alt="As capas dos 5 e-books da Bússola Do Lote à Obra: Planejamento Financeiro, Terreno, Projeto, Financiamento e Construção">
         <img class="c1" src="/ebooks/img/capa-1.webp" width="320" height="485" alt="">
         <img class="c2" src="/ebooks/img/capa-2.webp" width="320" height="487" alt="">
         <img class="c5" src="/ebooks/img/capa-5.webp" width="320" height="521" alt="">
@@ -718,8 +718,8 @@
 </section>
 
 <!-- 6. AMOSTRA: fica escondida até as 3 páginas reais chegarem.
-     Salvar como /ebooks/img/amostra-1.webp, amostra-2.webp e amostra-3.webp (cerca de 720 px de largura),
-     conferir width/height de cada imagem e tirar o atributo hidden da seção. -->
+     Salvar /ebooks/img/amostra-1.webp, amostra-2.webp e amostra-3.webp (cerca de 720 px de largura,
+     proporção de página A4) e mudar AMOSTRA_PRONTA para true no script. Até lá nenhuma imagem é pedida. -->
 <section class="sec sec--alt" id="amostra" hidden>
   <div class="wrap">
     <div class="wrap--narrow center" style="margin:0 auto">
@@ -727,9 +727,9 @@
       <p class="lede reveal">Três páginas reais da Bússola. São 330 como estas, com tabela, checklist e conta pronta.</p>
     </div>
     <div class="amostra">
-      <figure><img src="/ebooks/img/amostra-1.webp" width="720" height="1018" loading="lazy" alt="Página do e-book com o semáforo do terreno"><figcaption>O semáforo do terreno</figcaption></figure>
-      <figure><img src="/ebooks/img/amostra-2.webp" width="720" height="1018" loading="lazy" alt="Página do e-book com a tabela de metragens"><figcaption>A tabela de metragens</figcaption></figure>
-      <figure><img src="/ebooks/img/amostra-3.webp" width="720" height="1018" loading="lazy" alt="Página do e-book com o checklist de visita à obra"><figcaption>O checklist de visita à obra</figcaption></figure>
+      <figure><img data-src="/ebooks/img/amostra-1.webp" width="720" height="1018" loading="lazy" alt="Página do e-book com o semáforo do terreno"><figcaption>O semáforo do terreno</figcaption></figure>
+      <figure><img data-src="/ebooks/img/amostra-2.webp" width="720" height="1018" loading="lazy" alt="Página do e-book com a tabela de metragens"><figcaption>A tabela de metragens</figcaption></figure>
+      <figure><img data-src="/ebooks/img/amostra-3.webp" width="720" height="1018" loading="lazy" alt="Página do e-book com o checklist de visita à obra"><figcaption>O checklist de visita à obra</figcaption></figure>
     </div>
     <p class="micro center" style="margin-top:16px">Páginas reais da Bússola</p>
   </div>
@@ -891,7 +891,7 @@
 
 <footer>
   <!-- Logo: trocar pelo arquivo quando chegar (mesma <img> do topo, com 120 px) -->
-  <p class="logo">DO LOTE À OBRA</p>
+  <p class="logo">Do Lote à Obra</p>
   <p>Bússola Do Lote à Obra · 5 guias para construir do lote à obra, na ordem certa.</p>
   <p>© Todos os direitos reservados — Do Lote à Obra</p>
 </footer>
@@ -914,6 +914,8 @@
   const META_PIXEL_ID = "";   // ex.: "123456789012345"
   const GA4_ID = "";          // ex.: "G-XXXXXXXXXX"
   const CLARITY_ID = "";      // ex.: "abcd1234ef"
+  // Mudar para true depois de subir amostra-1.webp, amostra-2.webp e amostra-3.webp em /ebooks/img/
+  const AMOSTRA_PRONTA = false;
   const PRODUTO = { content_name: "Bússola Do Lote à Obra", content_ids: ["bussola"], content_type: "product", value: 59, currency: "BRL" };
 
   // ===== Rastreamento =====
@@ -991,6 +993,14 @@
       } else link.closest("li").remove();
     });
     document.querySelector(".avulso").hidden = false;
+  }
+
+  // ===== Amostra das páginas =====
+  // A seção fica escondida, sem pedir nenhuma imagem, até AMOSTRA_PRONTA ser true.
+  if (AMOSTRA_PRONTA) {
+    const amostra = document.getElementById("amostra");
+    amostra.querySelectorAll("img[data-src]").forEach((img) => { img.src = img.dataset.src; });
+    amostra.hidden = false;
   }
 
   // ===== Efeitos de entrada =====
