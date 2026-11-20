@@ -913,9 +913,10 @@
 
 <script>
   // ===== Configuração =====
-  // Link do checkout da Hotmart. Todos os botões de compra (data-checkout) abrem o kit, na mesma aba.
+  // Link do checkout da Hotmart. Só o botão da oferta (data-position="oferta") abre o checkout, na mesma aba;
+  // os outros botões de compra levam até a oferta.
   // A visita repassa as UTMs e o fbclid ao checkout; utm_content também vai como sck, o parâmetro de origem da Hotmart.
-  // Enquanto o link estiver vazio, os botões levam até a seção de oferta.
+  // Enquanto o link estiver vazio, o botão da oferta também fica parado na oferta.
   const CHECKOUT_URL = "https://pay.hotmart.com/X108424614M";
   // Checkout de cada e-book avulso, na ordem de 1 a 5. A lista "comprar só um" só aparece quando houver links.
   const AVULSO_URLS = ["", "", "", "", ""];
@@ -978,11 +979,12 @@
     return target.toString();
   };
   document.querySelectorAll("[data-checkout]").forEach((link) => {
-    if (CHECKOUT_URL) link.href = withTracking(CHECKOUT_URL);
+    const vaiAoCheckout = CHECKOUT_URL && link.dataset.position === "oferta";
+    if (vaiAoCheckout) link.href = withTracking(CHECKOUT_URL);
     link.addEventListener("click", () => {
       const posicao = link.dataset.position;
       track.ga("cta_click", { position: posicao });
-      if (!CHECKOUT_URL) return;
+      if (!vaiAoCheckout) return;
       track.meta("InitiateCheckout", PRODUTO);
       track.ga("begin_checkout", { currency: "BRL", value: 59, position: posicao, items: [{ item_id: "bussola", item_name: PRODUTO.content_name, price: 59 }] });
       const texto = link.textContent;
