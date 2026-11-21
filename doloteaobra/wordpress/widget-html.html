@@ -7,9 +7,7 @@
     document.documentElement.classList.add("reveal-on");
   }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,800;1,500;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://doloteaobra.com.br/wp-content/uploads/2026/11/kit-dobra-planilha-1.webp" as="image" fetchpriority="high">
 <style>
   .lp-dobra-root, .lp-dobra-root > .e-con-inner { padding: 0 !important; margin: 0 !important; max-width: none !important; gap: 0 !important; }
   .lp-dobra-root .elementor-widget-html, .lp-dobra-root .elementor-widget-container { width: 100%; margin: 0 !important; }
@@ -534,115 +532,51 @@
     .buybar__btn.btn::after { display: none; }
     h1 { font-size: 27px; }
   }
+  /* Primeira dobra nova (20/11): texto, print da planilha, preço e botão na primeira tela */
+  .hero { padding: 72px 24px 80px; }
+  .hero .wrap { max-width: 900px; text-align: center; }
+  .hero h1 { font-size: 44px; line-height: 1.15; }
+  .hero__support { max-width: 720px; margin: 18px auto 0; font-size: 18px; }
+  .hero__print { margin: 32px auto 0; }
+  .hero__print img { width: 100%; height: auto; border-radius: 6px; }
+  .hero__print figcaption { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+  .hero__buy { margin-top: 26px; }
+  .hero__price { color: var(--text); font-size: 16px; line-height: 1.5; }
+  .hero__price strong { color: var(--white); font-size: 20px; font-weight: 800; }
+  .hero__buy .btn { margin-top: 14px; }
+  .problem__prints { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 600px) {
+    .hero { padding: 28px 16px 56px; }
+    .hero h1 { font-size: 26px; line-height: 1.2; }
+    .hero__eyebrow { margin-bottom: 10px; }
+    .hero__support { margin-top: 12px; font-size: 15px; line-height: 1.55; }
+    .hero__print { margin-top: 18px; }
+    .hero__print figcaption { font-size: 12px; }
+    .hero__buy { margin-top: 16px; }
+    .hero__price { font-size: 14px; }
+    .hero__price strong { font-size: 18px; }
+    .hero__buy .btn { margin-top: 10px; }
+    .problem__prints { grid-template-columns: 1fr; }
+  }
 </style>
-<!-- 1. PRIMEIRA DOBRA -->
+<!-- 1. PRIMEIRA DOBRA: sem efeito de entrada, para o conteúdo aparecer na hora -->
 <header class="hero">
   <div class="wrap">
-    <div class="hero__grid">
-      <div class="hero__copy">
-        <p class="eyebrow hero__eyebrow reveal">Vai construir ou financiar?</p>
-        <h1 class="reveal">Planeje sua construção <span class="hl">antes de fechar qualquer negócio.</span></h1>
-        <p class="hero__support reveal">Descubra quanto você pode financiar, quanto precisa juntar para a entrada e quais custos terá durante a construção — tudo com 3 planilhas automatizadas.</p>
-        <ul class="chips reveal">
-          <li>3 planilhas automatizadas</li>
-          <li>Tutoriais inclusos</li>
-          <li>Acesso digital</li>
-        </ul>
-        <a class="btn reveal" href="#oferta">QUERO PLANEJAR MINHA CASA</a>
-        <p class="micro reveal">Pagamento único | Garantia de 7 dias</p>
-      </div>
-      <!-- Ilustração animada: a planilha preenche e a casa é construída. O script monta as linhas da planilha. -->
-      <div class="hero__media reveal reveal--side">
-        <svg class="hero__art" viewBox="0 0 480 554" aria-hidden="true">
-          <!-- Janela da planilha -->
-          <rect class="hv-sheet" x="8" y="8" width="464" height="268" rx="8"/>
-          <path class="hv-sheet-line" d="M8 44h464"/>
-          <g id="hv-tabs"></g>
-          <rect x="396" y="17" width="62" height="19" rx="9.5" fill="none" stroke="#74542d"/>
-          <text x="427" y="30.5" fill="#ffdb97" font-size="11" font-weight="600" text-anchor="middle">Exemplo</text>
-          <g id="hv-pages"></g>
-          <rect id="hv-select" class="hv-select" x="330" y="53" width="130" height="24" rx="3" fill="#e9a048" fill-opacity=".12" stroke="#e9a048" stroke-width="1.5"/>
-
-          <g transform="translate(0 44)">
-          <!-- Guindaste -->
-          <g id="hv-crane" class="hv-crane" fill="none" stroke="#a88a5e" stroke-width="1.6">
-            <path d="M58 490V262M72 490V262M58 490l14-19-14-19 14-19-14-19 14-19-14-19 14-19-14-19 14-19-14-19 14-19"/>
-            <path d="M28 262h330M28 274h330M28 274l12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12 12-12 12 12"/>
-            <g id="hv-hook" class="hv-hook" style="transform: translateX(240px)">
-              <path d="M0 274v44"/>
-              <rect x="-15" y="318" width="30" height="10" fill="#e9a048" stroke="none"/>
-            </g>
-          </g>
-
-          <!-- Casa -->
-          <path d="M16 490h448" stroke="#74542d"/>
-          <rect class="hv-piece hv-grow" data-step="0" x="100" y="480" width="280" height="10" fill="#8d8478"/>
-          <g class="hv-piece hv-drop" data-step="1" fill="#8d8478">
-            <rect x="110" y="404" width="8" height="76"/><rect x="204" y="404" width="8" height="76"/><rect x="362" y="404" width="8" height="76"/>
-          </g>
-          <!-- Térreo -->
-          <rect class="hv-piece hv-drop" data-step="2" x="110" y="404" width="102" height="76" fill="#efe6d6"/>
-          <rect class="hv-piece hv-drop" data-step="3" x="212" y="404" width="158" height="76" fill="#dfd2bb"/>
-          <rect class="hv-piece hv-grow" data-step="4" x="98" y="396" width="284" height="8" fill="#2f2a25"/>
-          <!-- Andar de cima -->
-          <path class="hv-piece hv-drop" data-step="5" d="M190 328 370 308v88H190z" fill="#efe6d6"/>
-          <g class="hv-piece hv-drop" data-step="6">
-            <path d="M190 328 262 320v76h-72z" fill="#a86e34"/>
-            <path d="M199 327v69M208 326v70M217 325v71M226 324v72M235 323v73M244 322v74M253 321v75" stroke="#7d4f22" stroke-width="1.5"/>
-          </g>
-          <!-- Vãos -->
-          <g class="hv-piece" data-step="7" fill="#17110a">
-            <rect x="122" y="414" width="76" height="66"/>
-            <rect x="222" y="424" width="84" height="56"/>
-            <rect x="318" y="420" width="36" height="60"/>
-            <rect x="276" y="334" width="82" height="50"/>
-          </g>
-          <!-- Telhado -->
-          <path class="hv-piece hv-drop" data-step="8" d="M190 328V322M226 324V318M262 320V314M298 316V310M334 312V306M370 308V302" stroke="#8d8478" stroke-width="3"/>
-          <path class="hv-piece hv-drop" data-step="9" d="M174 322 386 298v10L174 332z" fill="#e9a048"/>
-          <!-- Garagem e porta -->
-          <g class="hv-piece" data-step="10">
-            <rect x="222" y="424" width="84" height="56" fill="#3a332c"/>
-            <path d="M222 435h84M222 446h84M222 457h84M222 468h84" stroke="#574d43" stroke-width="1.5"/>
-            <rect x="318" y="420" width="36" height="60" fill="#a86e34"/>
-            <path d="M330 420v60M342 420v60" stroke="#7d4f22" stroke-width="1.5"/>
-            <rect x="347" y="440" width="3" height="20" rx="1.5" fill="#ffdb97"/>
-          </g>
-          <!-- Janelas acesas -->
-          <g class="hv-piece" data-step="11">
-            <rect x="122" y="414" width="76" height="66" fill="#ffdb97"/>
-            <path d="M122 462 158 414h26l-49 66h-13z" fill="#fff1cf"/>
-            <rect x="276" y="334" width="82" height="50" fill="#ffdb97"/>
-            <path d="M276 372 304 334h20l-37 50h-11z" fill="#fff1cf"/>
-            <path d="M147 414v66M172 414v66M303 334v50M331 334v50" stroke="#2f2a25" stroke-width="2.5"/>
-          </g>
-          <!-- Terraço com guarda-corpo de vidro e luminária -->
-          <g class="hv-piece" data-step="12">
-            <rect x="104" y="370" width="82" height="26" fill="#ffdb97" fill-opacity=".18" stroke="#ffdb97" stroke-width="1.5"/>
-            <path d="M104 370h82" stroke="#ffdb97" stroke-width="3"/>
-            <rect x="312" y="426" width="3" height="10" fill="#2f2a25"/>
-          </g>
-          <!-- Jardim -->
-          <g class="hv-piece hv-pop" data-step="13">
-            <rect x="16" y="490" width="448" height="5" fill="#2f5a2b"/>
-            <rect x="72" y="438" width="4" height="52" fill="#7d4f22"/>
-            <circle cx="74" cy="426" r="22" fill="#3f7a3a"/><circle cx="64" cy="438" r="13" fill="#336a30"/><circle cx="86" cy="436" r="12" fill="#4b8a45"/>
-            <rect x="406" y="452" width="4" height="38" fill="#7d4f22"/>
-            <circle cx="408" cy="442" r="16" fill="#3f7a3a"/><circle cx="416" cy="450" r="9" fill="#4b8a45"/>
-            <path d="M96 490a10 10 0 0 1 20 0zM112 490a8 8 0 0 1 16 0zM372 490a9 9 0 0 1 18 0z" fill="#4b8a45"/>
-          </g>
-          <g class="hv-piece hv-pop" data-step="14">
-            <circle cx="424" cy="316" r="28" fill="#1fa53c"/>
-            <path d="M411 317l9 9 17-19" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </g>
-          </g>
-        </svg>
-      </div>
+    <div class="hero__copy">
+      <p class="eyebrow hero__eyebrow">Vai construir ou financiar?</p>
+      <h1>Descubra quanto a sua casa vai custar de verdade, <span class="hl">antes de assinar com o banco.</span></h1>
+      <p class="hero__support">3 planilhas automáticas: quanto você precisa juntar, qual casa cabe na sua renda e quanto sai do bolso até as chaves. Você preenche, elas calculam.</p>
+    </div>
+    <figure class="hero__print">
+      <button class="pp__open" type="button" aria-label="Ampliar o print da planilha de Planejamento Financeiro"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/kit-dobra-planilha-1.webp" width="1182" height="236" fetchpriority="high" alt="Print da planilha de Planejamento Financeiro com renda mensal, taxa de juros, parcela estimada, financiamento, entrada, total do imóvel, cota do lote, cota da obra e tamanho em m² para rendas de R$ 6.000 a R$ 12.000"></button>
+      <figcaption>Print real da planilha de Planejamento Financeiro. Toque para ampliar.</figcaption>
+    </figure>
+    <div class="hero__buy">
+      <p class="hero__price"><strong>R$ 67 à vista</strong> · acesso imediato · garantia de 7 dias</p>
+      <a class="btn" data-checkout data-src="topo" href="#oferta">QUERO MINHAS 3 PLANILHAS</a>
     </div>
   </div>
 </header>
-
-<div class="strip strip--brown" aria-hidden="true"><div class="strip__track"></div></div>
 
 <main>
 
@@ -657,10 +591,6 @@
       <li>E o fluxo de valores em geral?</li>
     </ul>
     <div class="problem__prints reveal">
-      <figure class="pp pp--wide">
-        <button class="pp__open" type="button" aria-label="Ampliar: Planejamento Financeiro: quanto cada renda financia e quantos m² cabem no orçamento"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/kit-dobra-planilha-1.webp" width="1182" height="236" loading="lazy" alt="Print da planilha de Planejamento Financeiro com renda mensal, taxa de juros, parcela estimada, financiamento, entrada, total do imóvel, cota do lote, cota da obra e tamanho em m² para rendas de R$ 6.000 a R$ 12.000"></button>
-        <figcaption>Planejamento Financeiro: quanto cada renda financia e quantos m² cabem no orçamento</figcaption>
-      </figure>
       <figure class="pp">
         <button class="pp__open" type="button" aria-label="Ampliar: Fluxo de Valores: liberação e juros de obra mês a mês"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/kit-dobra-planilha-2.webp" width="771" height="414" loading="lazy" alt="Print da planilha de Fluxo de Valores: cronograma de liberação e juros de obra com terreno, mês a mês, com percentual liberado, valor liberado, saldo devedor, juros do mês e juros acumulados"></button>
         <figcaption>Fluxo de Valores: liberação e juros de obra mês a mês</figcaption>
@@ -700,8 +630,6 @@
   </div>
 </section>
 
-<div class="strip" aria-hidden="true"><div class="strip__track"></div></div>
-
 <!-- 3. CONHEÇA AS 3 PLANILHAS -->
 <section class="sec">
   <div class="wrap wrap--wide">
@@ -718,14 +646,11 @@
         <div class="sheet__body">
           <div>
             <h3>Quanto falta para você conseguir dar a entrada da sua casa?</h3>
-            <p class="sheet__lede">Pare de juntar dinheiro sem saber quando vai alcançar seu objetivo.</p>
             <ul class="sheet__items check-list">
-              <li><strong>Controle sua renda e seus gastos:</strong> registre entradas e saídas mensais, seja empregado, autônomo ou empresário.</li>
-              <li><strong>Descubra quanto consegue guardar:</strong> acompanhe o saldo mensal e o acumulado do ano automaticamente.</li>
-              <li><strong>Calcule o dinheiro necessário para começar:</strong> estime a entrada do imóvel, ITBI e escritura.</li>
-              <li><strong>Saiba quando poderá comprar:</strong> veja em quantos meses você pode juntar o valor necessário, mantendo seu ritmo financeiro.</li>
+              <li>Registre renda e gastos do mês, seja empregado, autônomo ou empresário.</li>
+              <li>Some entrada, ITBI e escritura para saber o valor necessário.</li>
+              <li>Veja em quantos meses você junta esse valor no seu ritmo.</li>
             </ul>
-            <p class="close-line">Saiba quanto precisa juntar e quanto tempo falta para dar o primeiro passo.</p>
           </div>
           <!-- Ilustração: sobra do mês e tempo até juntar o valor -->
           <div class="calc" aria-hidden="true">
@@ -753,14 +678,11 @@
         <div class="sheet__body">
           <div>
             <h3>Qual casa você realmente consegue financiar com a sua renda?</h3>
-            <p class="sheet__lede">Antes de escolher o imóvel, descubra o que cabe no seu orçamento.</p>
             <ul class="sheet__items check-list">
-              <li><strong>Estime seu poder de financiamento:</strong> descubra a parcela máxima estimada de acordo com sua renda.</li>
-              <li><strong>Compare modalidades:</strong> simule condições do Minha Casa Minha Vida (PRICE) e do SBPE (SAC).</li>
-              <li><strong>Visualize os valores:</strong> estime quanto poderá financiar, quanto precisará dar de entrada e o valor total do imóvel.</li>
-              <li><strong>Planeje o tamanho da construção:</strong> estime quanto do orçamento será destinado ao terreno, quanto restará para a obra e quantos metros quadrados poderá construir.</li>
+              <li>Parcela máxima estimada pela sua renda, no MCMV (PRICE) e no SBPE (SAC).</li>
+              <li>Quanto financia, quanto dá de entrada e o valor total do imóvel.</li>
+              <li>Quanto vai para o lote, quanto sobra para a obra e quantos m² cabem.</li>
             </ul>
-            <p class="close-line">Descubra o tamanho do seu sonho antes de assumir uma dívida maior do que pode pagar.</p>
           </div>
           <!-- Ilustração: da renda até os metros quadrados -->
           <div class="calc" aria-hidden="true">
@@ -789,14 +711,11 @@
         <div class="sheet__body">
           <div>
             <h3>Quanto dinheiro vai sair do seu bolso enquanto a casa estiver sendo construída?</h3>
-            <p class="sheet__lede">O financiamento não é a única despesa que você terá durante a obra.</p>
             <ul class="sheet__items check-list">
-              <li><strong>Organize os gastos iniciais:</strong> entrada e parcelas do terreno, projeto e taxas.</li>
-              <li><strong>Simule a liberação do financiamento:</strong> visualize o cronograma estimado de recursos por etapa da construção.</li>
-              <li><strong>Calcule os juros de obra:</strong> estime quanto poderá pagar mês a mês, inclusive a parcela relacionada ao terreno.</li>
-              <li><strong>Antecipe custos extras:</strong> estime ITBI, registro, taxas bancárias, habite-se, averbação e INSS da obra.</li>
+              <li>Entrada e parcelas do terreno, projeto e taxas, mês a mês.</li>
+              <li>Liberação do financiamento por etapa e juros de obra, inclusive do terreno.</li>
+              <li>ITBI, registro, taxas do banco, habite-se, averbação e INSS da obra.</li>
             </ul>
-            <p class="close-line">Saiba quais despesas podem aparecer durante a construção antes que elas surpreendam seu bolso.</p>
           </div>
           <!-- Ilustração: linha do tempo dos pagamentos, do início da obra até a chave -->
           <div class="calc" aria-hidden="true">
@@ -819,7 +738,62 @@
       </article>
     </div>
 
-    <div class="cta reveal"><a class="btn" href="#oferta">QUERO AS 3 PLANILHAS</a></div>
+    <div class="cta reveal"><a class="btn" data-checkout data-src="meio" href="#oferta">QUERO AS 3 PLANILHAS</a></div>
+  </div>
+</section>
+
+<!-- PERGUNTAS FREQUENTES: logo depois das 3 planilhas, antes dos depoimentos -->
+<section class="sec faq-sec">
+  <div class="wrap">
+    <svg class="faq-icon reveal" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#e9a048" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M12 12.5a4 4 0 1 1 6.2 3.3c-1.4.9-2.2 1.7-2.2 3.2"/><path d="M16 23.5v.01"/></svg>
+    <h2 class="center reveal">Perguntas frequentes</h2>
+    <div class="faq">
+      <details class="reveal" open>
+        <summary>Preciso saber Excel?</summary>
+        <p>Não. Você só preenche os campos amarelos. Todo o resto está travado e calcula sozinho. Cada planilha vem com um vídeo explicando.</p>
+      </details>
+      <details class="reveal">
+        <summary>Funciona para a minha renda e a minha cidade?</summary>
+        <p>Sim. Você coloca a sua renda, o valor do m² da sua região e as taxas do seu banco. A planilha calcula com os seus números.</p>
+      </details>
+      <details class="reveal">
+        <summary>Serve se eu já tenho o terreno? E se eu for comprar casa pronta?</summary>
+        <p>Sim para os dois. Com terreno, você usa as três. Para casa pronta, use o Controle e o Planejamento.</p>
+      </details>
+      <details class="reveal">
+        <summary>As taxas estão atualizadas?</summary>
+        <p>As planilhas vêm com valores de referência, e você pode trocar pela taxa da simulação do seu banco a qualquer momento.</p>
+      </details>
+      <details class="reveal">
+        <summary>Abre no celular?</summary>
+        <p>Abre no Excel e no Google Planilhas, no computador ou no celular. No computador fica mais confortável de preencher.</p>
+      </details>
+      <details class="reveal">
+        <summary>Como recebo?</summary>
+        <p>Logo depois do pagamento, por e-mail, com as 3 planilhas e os vídeos.</p>
+      </details>
+      <details class="reveal">
+        <summary>E se eu não gostar?</summary>
+        <p>Você tem 7 dias para pedir o dinheiro de volta pela Hotmart, sem precisar explicar o motivo.</p>
+      </details>
+      <details class="reveal">
+        <summary>Consigo descobrir quanto o banco pode me emprestar?</summary>
+        <p>Você consegue fazer uma estimativa com base na sua renda, utilizando simulações do Minha Casa Minha Vida e do SBPE. A aprovação e as condições finais dependem da análise do banco.</p>
+      </details>
+      <details class="reveal">
+        <summary>As planilhas calculam os juros durante a construção?</summary>
+        <p>Sim. A planilha de Fluxo de Valores estima os juros de obra mês a mês, considerando os dados informados e o cronograma simulado.</p>
+      </details>
+      <details class="reveal">
+        <summary>Serve para quem é autônomo ou tem empresa?</summary>
+        <p>Sim. O Controle Pessoal de Finanças possui campos para organização de renda e gastos de pessoa jurídica, além das finanças pessoais.</p>
+      </details>
+      <details class="reveal">
+        <summary>Preciso pagar mensalidade?</summary>
+        <p>Não. O pagamento é único.</p>
+      </details>
+    </div>
+    <p class="disclaimer reveal"><strong>Importante:</strong> os cálculos e simulações são estimativas de planejamento e não substituem propostas oficiais de financiamento, avaliações técnicas ou orientações tributárias.</p>
   </div>
 </section>
 
@@ -872,7 +846,7 @@
 <!-- 5. AUTORIDADE -->
 <section class="sec about-sec">
   <div class="wrap wrap--wide about">
-    <img class="reveal" src="https://doloteaobra.com.br/wp-content/uploads/2026/07/richard-e-tamires.png" width="846" height="956" loading="lazy" alt="Richard e Tamires, criadores do DOBRA, comemorando em frente ao notebook">
+    <img class="reveal" src="https://doloteaobra.com.br/wp-content/uploads/2026/11/autores-846.webp" srcset="https://doloteaobra.com.br/wp-content/uploads/2026/11/autores-420.webp 420w, https://doloteaobra.com.br/wp-content/uploads/2026/11/autores-846.webp 846w" sizes="(max-width: 960px) min(420px, calc(100vw - 40px)), 420px" width="846" height="956" loading="lazy" alt="Richard e Tamires, criadores do DOBRA, comemorando em frente ao notebook">
     <div>
       <h2 class="reveal">Mais de 100 obras acompanhadas. Mais de 10 anos no mercado imobiliário.</h2>
       <p class="reveal">Richard e Tamires já acompanharam a jornada de mais de 100 obras, desde o planejamento até a realização da casa própria.</p>
@@ -887,7 +861,7 @@
 <section class="sec depo">
   <div class="wrap wrap--wide">
     <h2 class="center reveal">Quem já construiu com <span class="hl">Richard e Tamires</span></h2>
-    <p class="depo__intro center reveal">Depoimentos de clientes que eles acompanharam do lote à obra. Toque em um depoimento para ampliar.</p>
+    <p class="depo__intro center reveal">Estes depoimentos são de clientes de obra, que Richard e Tamires acompanharam do lote à casa pronta. Toque em um depoimento para ampliar.</p>
     <div class="depo__grid reveal">
       <figure class="depo__item">
         <button class="pp__open" type="button" aria-label="Ampliar depoimento"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/06/image_4-6.webp" width="739" height="1160" loading="lazy" alt="Depoimento de Roseane no WhatsApp: agradece à Do Lote a Obra, comprou um lote e está na fase do projeto arquitetônico"></button>
@@ -932,56 +906,11 @@
       <p class="price-parcel">ou 12x de R$ 6,93</p>
       <p class="price-block__note">Pagamento único. Sem mensalidades.</p>
     </div>
-    <a class="btn" data-checkout href="#oferta">QUERO GARANTIR MEU KIT DOBRA</a>
+    <a class="btn" data-checkout data-src="oferta" href="#oferta">QUERO GARANTIR MEU KIT DOBRA</a>
   </div>
 </section>
 
-<!-- 7. PERGUNTAS FREQUENTES -->
-<section class="sec faq-sec">
-  <div class="wrap">
-    <svg class="faq-icon reveal" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#e9a048" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M12 12.5a4 4 0 1 1 6.2 3.3c-1.4.9-2.2 1.7-2.2 3.2"/><path d="M16 23.5v.01"/></svg>
-    <h2 class="center reveal">Perguntas frequentes</h2>
-    <div class="faq">
-      <details class="reveal" open>
-        <summary>As planilhas servem para quem ainda não começou a construir?</summary>
-        <p>Sim. Você pode estimar quanto consegue financiar, quanto precisa juntar para a entrada e quais despesas considerar antes de começar.</p>
-      </details>
-      <details class="reveal">
-        <summary>Consigo descobrir quanto o banco pode me emprestar?</summary>
-        <p>Você consegue fazer uma estimativa com base na sua renda, utilizando simulações do Minha Casa Minha Vida e do SBPE. A aprovação e as condições finais dependem da análise do banco.</p>
-      </details>
-      <details class="reveal">
-        <summary>As planilhas calculam os juros durante a construção?</summary>
-        <p>Sim. A planilha de Fluxo de Valores estima os juros de obra mês a mês, considerando os dados informados e o cronograma simulado.</p>
-      </details>
-      <details class="reveal">
-        <summary>Consigo calcular os custos além do financiamento?</summary>
-        <p>Sim. O kit permite estimar despesas como ITBI, registro, taxas bancárias, habite-se, averbação e INSS da obra.</p>
-      </details>
-      <details class="reveal">
-        <summary>Preciso entender de Excel?</summary>
-        <p>Não. Basta preencher os campos indicados. As planilhas são automatizadas e acompanham tutoriais.</p>
-      </details>
-      <details class="reveal">
-        <summary>Serve para quem é autônomo ou tem empresa?</summary>
-        <p>Sim. O Controle Pessoal de Finanças possui campos para organização de renda e gastos de pessoa jurídica, além das finanças pessoais.</p>
-      </details>
-      <details class="reveal">
-        <summary>Como recebo as planilhas?</summary>
-        <p>Você receberá o material digitalmente no e-mail informado na compra.</p>
-      </details>
-      <details class="reveal">
-        <summary>Preciso pagar mensalidade?</summary>
-        <p>Não. O pagamento é único.</p>
-      </details>
-      <details class="reveal">
-        <summary>Tenho garantia?</summary>
-        <p>Sim. Você tem 7 dias para solicitar o reembolso, conforme as condições da oferta.</p>
-      </details>
-    </div>
-    <p class="disclaimer reveal"><strong>Importante:</strong> os cálculos e simulações são estimativas de planejamento e não substituem propostas oficiais de financiamento, avaliações técnicas ou orientações tributárias.</p>
-  </div>
-</section>
+
 
 <!-- 8. ÚLTIMA CHAMADA -->
 <section class="sec final">
@@ -992,7 +921,7 @@
       <p class="final__kit">3 planilhas automatizadas + tutoriais</p>
       <p class="price"><small>R$</small>67,00</p>
       <p class="price-parcel">ou 12x de R$ 6,93</p>
-      <div><a class="btn" href="#oferta">QUERO PLANEJAR MINHA CASA AGORA</a></div>
+      <div><a class="btn" data-checkout data-src="final" href="#oferta">QUERO PLANEJAR MINHA CASA AGORA</a></div>
       <p class="micro">Pagamento único | Entrega por e-mail | Garantia de 7 dias</p>
     </div>
     <svg class="seal" viewBox="0 0 400 400" role="img" aria-label="Selo de garantia de 7 dias">
@@ -1017,7 +946,7 @@
 <!-- Barra fixa de compra no celular: aparece fora da primeira dobra, da oferta e da última chamada -->
 <div class="buybar" id="buybar">
   <div class="buybar__info"><small>Kit Financeiro DOBRA</small><b>R$ 67,00</b></div>
-  <a class="btn buybar__btn" href="#oferta">QUERO COMPRAR</a>
+  <a class="btn buybar__btn" data-checkout data-src="barra" href="#oferta">QUERO COMPRAR</a>
 </div>
 
 <!-- Print ampliado: abre ao tocar num print da seção da dor -->
@@ -1029,13 +958,22 @@
 <footer>© Todos os direitos reservados — DOBRA</footer>
 
 <script>
-  // Link do checkout: só o botão da oferta (data-checkout) vai para ele.
-  // Os outros botões levam até a seção de oferta, para a pessoa ver o preço antes de comprar.
-  const CHECKOUT_URL = "https://pay.hotmart.com/D108468549S?bid=1794573855771";
+  // Link do checkout: todos os botões de compra (data-checkout) vão direto para ele.
+  // Cada botão manda a sua origem no parâmetro src da Hotmart (topo, meio, oferta, final, barra),
+  // que aparece no relatório de vendas. A visita repassa as UTMs e o fbclid; utm_content vai também como sck.
+  // Sem o link, os botões levam até a oferta.
+  const CHECKOUT_URL = "https://pay.hotmart.com/D108468549S";
 
   if (CHECKOUT_URL) {
+    const visita = new URLSearchParams(location.search);
     document.querySelectorAll("[data-checkout]").forEach((link) => {
-      link.href = CHECKOUT_URL;
+      const destino = new URL(CHECKOUT_URL);
+      ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "fbclid"].forEach((chave) => {
+        if (visita.get(chave)) destino.searchParams.set(chave, visita.get(chave));
+      });
+      if (visita.get("utm_content")) destino.searchParams.set("sck", visita.get("utm_content"));
+      if (link.dataset.src) destino.searchParams.set("src", link.dataset.src);
+      link.href = destino.toString();
     });
   }
 
@@ -1107,152 +1045,6 @@
         }
       }, { threshold: [0, 0.35] }).observe(calc);
     });
-  }
-
-  // Primeira dobra: cada valor preenchido na planilha avança uma etapa da casa.
-  // Fica em loop enquanto estiver na tela. Clicar numa aba mostra aquela planilha preenchida,
-  // e o loop volta sozinho depois de alguns segundos. Com "reduzir movimento", mostra a casa pronta.
-  const HERO_ROW_MS = 560;
-  const HERO_HOLD_MS = 3500;
-  const HERO_RESUME_MS = 12000;
-  const HERO_PAGES = [
-    { tab: "Controle", x: 28, width: 60, total: 4, rows: [
-      ["Renda do mês", "R$ 6.000"], ["Gastos do mês", "− R$ 4.500"], ["Saldo do mês", "R$ 1.500"],
-      ["Valor necessário", "R$ 36.000"], ["Tempo para juntar", "24 meses"] ] },
-    { tab: "Planejamento", x: 112, width: 88, total: 4, rows: [
-      ["Renda mensal", "R$ 8.000"], ["Parcela estimada", "R$ 2.320"], ["Total do imóvel", "R$ 389.779"],
-      ["Para a obra", "R$ 272.845"], ["Tamanho da casa", "109 m²"] ] },
-    { tab: "Fluxo", x: 224, width: 38, total: 0, rows: [
-      ["Total do imóvel", "R$ 600.000"], ["Construção de 120 m²", "R$ 450.000"], ["Terreno", "R$ 150.000"],
-      ["Entrada", "R$ 120.000"], ["Parcela", "R$ 4.000"], ["Total de taxas", "R$ 20.000"], ["Projetos", "R$ 10.000"] ] },
-  ];
-  // Posição do gancho do guindaste em cada uma das 15 etapas da casa.
-  const HERO_HOOK_X = [240, 160, 160, 290, 240, 280, 226, 240, 280, 280, 280, 160, 145, 145, 145];
-  const HERO_LAST_STEP = HERO_HOOK_X.length - 1;
-
-  const heroArt = document.querySelector(".hero__art");
-  if (heroArt) {
-    const ROW_TOP = 50;
-    const ROW_HEIGHT = 30;
-    const totalRows = HERO_PAGES.reduce((sum, page) => sum + page.rows.length, 0);
-
-    heroArt.querySelector("#hv-tabs").innerHTML = HERO_PAGES.map((page, index) =>
-      `<text class="hv-tab" x="${page.x}" y="31">${page.tab}</text>` +
-      `<rect class="hv-underline" x="${page.x}" y="42" width="${page.width}" height="3" fill="#e9a048"/>` +
-      `<rect class="hv-hit" data-page="${index}" x="${page.x - 10}" y="10" width="${page.width + 20}" height="34" fill="transparent"/>`
-    ).join("");
-
-    heroArt.querySelector("#hv-pages").innerHTML = HERO_PAGES.map((page) =>
-      `<g class="hv-page">` + page.rows.map(([label, value], row) => {
-        const y = ROW_TOP + row * ROW_HEIGHT;
-        return `<g class="${row === page.total ? "hv-total" : ""}">` +
-          `<text class="hv-label" x="28" y="${y + 19}">${label}</text>` +
-          `<text class="hv-value" x="450" y="${y + 19}" text-anchor="end">${value}</text>` +
-          (row < page.rows.length - 1 ? `<path class="hv-sep" d="M20 ${y + ROW_HEIGHT - 1}h440"/>` : "") +
-        `</g>`;
-      }).join("") + `</g>`
-    ).join("");
-
-    const tabs = [...heroArt.querySelectorAll(".hv-tab")];
-    const underlines = [...heroArt.querySelectorAll(".hv-underline")];
-    const pages = [...heroArt.querySelectorAll(".hv-page")];
-    const pieces = [...heroArt.querySelectorAll(".hv-piece")];
-    heroArt.querySelectorAll(".hv-value").forEach((value) => { value.dataset.final = value.textContent; });
-    const select = heroArt.querySelector("#hv-select");
-    const crane = heroArt.querySelector("#hv-crane");
-    const hook = heroArt.querySelector("#hv-hook");
-    let timers = [];
-    let resumeTimer = null;
-    let playing = false;
-
-    const showPage = (index) => {
-      [tabs, underlines, pages].forEach((group) => {
-        group.forEach((el, i) => el.classList.toggle("is-on", i === index));
-      });
-    };
-    const clearValues = () => {
-      heroArt.querySelectorAll(".hv-value").forEach((value) => {
-        value.countRun = (value.countRun || 0) + 1;
-        value.textContent = value.dataset.final;
-        value.classList.remove("is-on");
-      });
-    };
-    const buildUpTo = (step) => {
-      pieces.filter((piece) => Number(piece.dataset.step) <= step).forEach((piece) => piece.classList.add("is-on"));
-    };
-    const reset = () => {
-      timers.forEach(clearTimeout);
-      timers = [];
-      clearTimeout(resumeTimer);
-      showPage(-1);
-      clearValues();
-      pieces.forEach((piece) => piece.classList.remove("is-on"));
-      select.classList.remove("is-on");
-      crane.classList.remove("is-on");
-    };
-    // Aba clicada: planilha inteira preenchida e casa pronta, sem animação.
-    const showFilled = (index) => {
-      timers.forEach(clearTimeout);
-      timers = [];
-      showPage(index);
-      clearValues();
-      pages[index].querySelectorAll(".hv-value").forEach((value) => value.classList.add("is-on"));
-      buildUpTo(HERO_LAST_STEP);
-      select.classList.remove("is-on");
-      crane.classList.remove("is-on");
-    };
-
-    const play = () => {
-      const at = (time, action) => timers.push(setTimeout(action, time));
-      let time = 300;
-      let filled = 0;
-      at(0, () => crane.classList.add("is-on"));
-      HERO_PAGES.forEach((page, pageIndex) => {
-        at(time, () => { showPage(pageIndex); select.classList.add("is-on"); });
-        time += 300;
-        page.rows.forEach((_, row) => {
-          const step = Math.round((filled * HERO_LAST_STEP) / (totalRows - 1));
-          filled += 1;
-          at(time, () => {
-            select.style.transform = `translateY(${row * ROW_HEIGHT}px)`;
-            const value = pages[pageIndex].querySelectorAll(".hv-value")[row];
-            value.classList.add("is-on");
-            countUp(value, value.dataset.final, HERO_ROW_MS * 0.7);
-            hook.style.transform = `translateX(${HERO_HOOK_X[step]}px)`;
-            buildUpTo(step);
-            if (step >= 13) crane.classList.remove("is-on");
-          });
-          time += HERO_ROW_MS;
-        });
-      });
-      at(time, () => select.classList.remove("is-on"));
-      at(time + HERO_HOLD_MS, () => {
-        reset();
-        at(600, play);
-      });
-    };
-
-    heroArt.addEventListener("click", (event) => {
-      const hit = event.target.closest(".hv-hit");
-      if (!hit) return;
-      showFilled(Number(hit.dataset.page));
-      clearTimeout(resumeTimer);
-      if (playing) resumeTimer = setTimeout(() => { reset(); play(); }, HERO_RESUME_MS);
-    });
-
-    if ("IntersectionObserver" in window && !reduceMotion) {
-      new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting && !playing) {
-          playing = true;
-          play();
-        } else if (!entry.isIntersecting && playing) {
-          playing = false;
-          reset();
-        }
-      }).observe(heroArt);
-    } else {
-      showFilled(HERO_PAGES.length - 1);
-    }
   }
 
   // Efeitos de entrada: o que entra junto na tela aparece em sequência.
@@ -1439,10 +1231,4 @@
       }, DEPO_INTERVAL_MS);
     }
   }
-
-  // Faixa decorativa: repete os nomes o bastante para o loop não ter emenda.
-  const STRIP_ITEMS = ["Controle Pessoal de Finanças", "Planejamento Financeiro", "Fluxo de Valores"];
-  document.querySelectorAll(".strip__track").forEach((track) => {
-    track.innerHTML = STRIP_ITEMS.map((item) => `<span>${item}</span>`).join("").repeat(8);
-  });
 </script>
