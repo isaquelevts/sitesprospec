@@ -503,11 +503,32 @@
     .amostra { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
   }
 </style>
-
+<style>
+  /* Container do Elementor sem margens */
+  .lp-dobra-root, .lp-dobra-root > .e-con-inner { padding: 0 !important; margin: 0 !important; max-width: none !important; gap: 0 !important; }
+  .lp-dobra-root .elementor-widget-html, .lp-dobra-root .elementor-widget-container { width: 100%; margin: 0 !important; }
+  /* Kit do site: .elementor-kit-8 svg { width: 20px } */
+  .lp-dobra-root svg.rosa { width: auto; }
+  .lp-dobra-root .selo .rosa { width: 24px; }
+  .lp-dobra-root .garantia .rosa { width: 64px; }
+  .lp-dobra-root .fecho .rosa { width: 100%; }
+  .lp-dobra-root .dor svg { width: 28px; }
+  .lp-dobra-root .rota__linha { width: 80%; }
+  .lp-dobra-root .sprite { width: 0; height: 0; }
+  @media (max-width: 600px) { .lp-dobra-root .garantia .rosa { width: 48px; } }
+  /* Reset do tema Hello em links e botões */
+  .lp-dobra-root a.btn, .lp-dobra-root a.btn:hover, .lp-dobra-root a.btn:focus { color: #fff; text-decoration: none; }
+  .lp-dobra-root .amostra__abrir, .lp-dobra-root .amostra__abrir:hover, .lp-dobra-root .amostra__abrir:focus { padding: 0; border: 0; border-radius: 0; background: none; color: inherit; }
+  .lp-dobra-root .zoom__fechar, .lp-dobra-root .zoom__fechar:hover, .lp-dobra-root .zoom__fechar:focus { padding: 0; border: 0; border-radius: 50%; background: var(--papel); color: var(--tinta); }
+  .lp-dobra-root .avulso a:hover { color: var(--ouro-claro); }
+  .lp-dobra-root figcaption { font-style: normal; }
+  .lp-dobra-root h1, .lp-dobra-root h2 { font-family: Montserrat, sans-serif; }
+  .lp-dobra-root h3 { font-family: Montserrat, sans-serif; }
+</style>
 
 
 <!-- Rosa dos ventos, usada no selo, na garantia e no fecho -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="rosa" viewBox="0 0 100 100">
     <g fill="none" stroke="currentColor" stroke-width="1.2">
       <circle cx="50" cy="50" r="46"/>
