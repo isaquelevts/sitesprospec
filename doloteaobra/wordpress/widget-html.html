@@ -8,6 +8,10 @@
   }
 </script>
 <link rel="preload" href="https://doloteaobra.com.br/wp-content/uploads/2026/11/kit-dobra-planilha-1.webp" as="image" fetchpriority="high">
+<!-- A Inter "local" do kit aponta para o domínio antigo de testes (hostingersite) e não carrega; por isso a do Google fica. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,800;1,500;1,700;1,800&display=swap" rel="stylesheet">
 <style>
   .lp-dobra-root, .lp-dobra-root > .e-con-inner { padding: 0 !important; margin: 0 !important; max-width: none !important; gap: 0 !important; }
   .lp-dobra-root .elementor-widget-html, .lp-dobra-root .elementor-widget-container { width: 100%; margin: 0 !important; }
@@ -959,8 +963,9 @@
 
 <script>
   // Link do checkout: todos os botões de compra (data-checkout) vão direto para ele.
-  // Cada botão manda a sua origem no parâmetro src da Hotmart (topo, meio, oferta, final, barra),
-  // que aparece no relatório de vendas. A visita repassa as UTMs e o fbclid; utm_content vai também como sck.
+  // Cada botão manda a sua posição no parâmetro xcod da Hotmart (topo, meio, oferta, final, barra).
+  // src e sck ficam com o Google Tag Manager do site (GTM-P8P29XQL), que os reescreve a partir das UTMs.
+  // A visita repassa as UTMs e o fbclid.
   // Sem o link, os botões levam até a oferta.
   const CHECKOUT_URL = "https://pay.hotmart.com/D108468549S";
 
@@ -972,7 +977,7 @@
         if (visita.get(chave)) destino.searchParams.set(chave, visita.get(chave));
       });
       if (visita.get("utm_content")) destino.searchParams.set("sck", visita.get("utm_content"));
-      if (link.dataset.src) destino.searchParams.set("src", link.dataset.src);
+      if (link.dataset.src) destino.searchParams.set("xcod", link.dataset.src);
       link.href = destino.toString();
     });
   }
