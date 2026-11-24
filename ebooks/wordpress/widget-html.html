@@ -5,7 +5,7 @@
 <meta property="og:title" content="Bússola: 5 guias para construir do lote à obra, por R$ 59">
 <meta property="og:description" content="Antes do primeiro tijolo, saiba o caminho inteiro. 330 páginas na ordem certa: dinheiro, terreno, projeto, financiamento e obra.">
 <meta property="og:url" content="https://doloteaobra.com.br/ebooks/">
-<meta property="og:image" content="https://heliossites.vercel.app/ebooks/img/og.jpg">
+<meta property="og:image" content="https://doloteaobra.com.br/wp-content/uploads/2026/11/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="As capas dos 5 e-books da Bússola Do Lote à Obra, por R$ 59">
@@ -19,14 +19,14 @@
   }
 </script>
 <link rel="preload" href="https://heliossites.vercel.app/ebooks/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://heliossites.vercel.app/ebooks/img/capa-3.webp" as="image" fetchpriority="high">
+<link rel="preload" href="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-3.webp" as="image" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Bússola Do Lote à Obra",
   "description": "5 e-books, 330 páginas, para construir do lote à obra na ordem certa: planejamento financeiro, terreno, projeto, financiamento e obra.",
-  "image": "https://heliossites.vercel.app/ebooks/img/og.jpg",
+  "image": "https://doloteaobra.com.br/wp-content/uploads/2026/11/og.jpg",
   "brand": { "@type": "Brand", "name": "Do Lote à Obra" },
   "offers": {
     "@type": "Offer",
@@ -48,7 +48,6 @@
     { "@type": "Question", "name": "Isso não tem de graça na internet?", "acceptedAnswer": { "@type": "Answer", "text": "Tem em pedaços. O que não tem é a ordem, nem alguém mostrando como a escolha do terreno trava o financiamento lá na frente." } },
     { "@type": "Question", "name": "Os e-books substituem arquiteto, engenheiro ou correspondente?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Eles ensinam a escolher, contratar e cobrar esses profissionais." } },
     { "@type": "Question", "name": "Qual a diferença para o curso DOBRA?", "acceptedAnswer": { "@type": "Answer", "text": "O DOBRA tem mais de 90 aulas e 20 horas de vídeo. A Bússola é o mesmo método, por escrito, para ler em 3 horas e consultar sempre que precisar." } },
-    { "@type": "Question", "name": "Posso comprar só um?", "acceptedAnswer": { "@type": "Answer", "text": "Pode, por R$ 27. Mas cada etapa depende da outra, e a Bússola completa sai por menos que três avulsos." } },
     { "@type": "Question", "name": "As informações estão atualizadas?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. As faixas do Minha Casa Minha Vida e as regras de financiamento foram revisadas em abril de 2026." } }
   ]
 }
@@ -85,6 +84,7 @@
   }
 
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
@@ -189,7 +189,8 @@
     text-align: center;
   }
   .logo span { display: block; margin-top: 4px; color: var(--ouro-texto); font-size: 11px; font-weight: 600; }
-  .logo img { width: 180px; }
+  .logo img { width: 180px; height: auto; }
+  footer .logo img { width: 120px; }
   .hero__grid { display: grid; grid-template-columns: 6fr 5fr; gap: 56px; align-items: center; }
   .selo {
     display: inline-flex;
@@ -468,7 +469,7 @@
     .micro { font-size: 13px; line-height: 18px; }
     .rotulo { font-size: 13px; line-height: 18px; }
     .hero { padding: 24px 20px 64px; }
-    .logo { margin-bottom: 20px; font-size: 17px; white-space: nowrap; }
+    .logo { margin-bottom: 18px; font-size: 17px; white-space: nowrap; }
     .logo img { width: 140px; }
     .selo { margin-bottom: 16px; }
     .hero__sub { margin-top: 16px; }
@@ -547,30 +548,29 @@
   </symbol>
 </svg>
 
-<!-- 1. PRIMEIRA DOBRA -->
+<!-- 1. PRIMEIRA DOBRA: sem efeito de entrada, para o conteúdo aparecer na hora -->
 <header class="hero curvas">
   <div class="wrap">
-    <!-- Logo: trocar o texto por <img src="https://heliossites.vercel.app/ebooks/img/logo.svg" width="140" alt="Do Lote à Obra"> quando o arquivo chegar -->
-    <p class="logo">Do Lote à Obra</p>
+    <p class="logo"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/logo.webp" width="360" height="162" alt="Do Lote à Obra"></p>
     <div class="hero__grid">
       <div class="hero__copy">
-        <p class="selo reveal"><svg class="rosa" width="24" height="24"><use href="#rosa-mini"/></svg><span><b>BÚSSOLA</b> · 5 guias do lote à obra</span></p>
-        <h1 class="reveal"><span class="leve">Antes do primeiro tijolo,</span> saiba o caminho inteiro.</h1>
-        <p class="hero__sub reveal">O erro mais caro da obra acontece antes dela começar. Em 330 páginas, quem trabalha há mais de 10 anos só com terreno e construção mostra a ordem certa: dinheiro, terreno, projeto, financiamento e obra.</p>
-        <ul class="chips reveal">
+        <p class="selo"><svg class="rosa" width="24" height="24"><use href="#rosa-mini"/></svg><span><b>BÚSSOLA</b> · 5 guias do lote à obra</span></p>
+        <h1><span class="leve">Antes do primeiro tijolo,</span> saiba o caminho inteiro.</h1>
+        <p class="hero__sub">O erro mais caro da obra acontece antes dela começar. Em 330 páginas, quem trabalha há mais de 10 anos só com terreno e construção mostra a ordem certa: dinheiro, terreno, projeto, financiamento e obra.</p>
+        <ul class="chips">
           <li>330 páginas</li>
           <li>Leitura em 3 horas</li>
           <li>Regras de 2026</li>
         </ul>
-        <a class="btn reveal" id="btn-hero" data-checkout data-position="hero" href="#oferta">Quero a Bússola por R$&nbsp;59</a>
-        <p class="micro reveal">Acesso imediato · Pagamento único · 7 dias de garantia</p>
+        <a class="btn" id="btn-hero" data-checkout data-position="hero" href="#oferta">Quero a Bússola por R$&nbsp;59</a>
+        <p class="micro">Acesso imediato · Pagamento único · 7 dias de garantia</p>
       </div>
       <div class="leque">
-        <img class="c4" src="https://heliossites.vercel.app/ebooks/img/capa-4.webp" width="320" height="506" alt="As capas dos 5 e-books da Bússola Do Lote à Obra: Planejamento Financeiro, Terreno, Projeto, Financiamento e Construção">
-        <img class="c1" src="https://heliossites.vercel.app/ebooks/img/capa-1.webp" width="320" height="485" alt="">
-        <img class="c2" src="https://heliossites.vercel.app/ebooks/img/capa-2.webp" width="320" height="487" alt="">
-        <img class="c5" src="https://heliossites.vercel.app/ebooks/img/capa-5.webp" width="320" height="521" alt="">
-        <img class="c3" src="https://heliossites.vercel.app/ebooks/img/capa-3.webp" width="320" height="498" fetchpriority="high" alt="">
+        <img class="c4" src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-4.webp" width="320" height="506" alt="As capas dos 5 e-books da Bússola Do Lote à Obra: Planejamento Financeiro, Terreno, Projeto, Financiamento e Construção">
+        <img class="c1" src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-1.webp" width="320" height="485" alt="">
+        <img class="c2" src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-2.webp" width="320" height="487" alt="">
+        <img class="c5" src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-5.webp" width="320" height="521" alt="">
+        <img class="c3" src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-3.webp" width="320" height="498" fetchpriority="high" alt="">
       </div>
     </div>
   </div>
@@ -660,7 +660,7 @@
     <h2 class="center reveal"><span class="leve">330 páginas, 50 capítulos,</span> 5 e-books</h2>
     <div class="abas reveal">
       <article class="livro" id="livro-1">
-        <img src="https://heliossites.vercel.app/ebooks/img/capa-1.webp" width="320" height="485" loading="lazy" alt="Capa do e-book 1, Módulo 1: Planejamento Financeiro">
+        <img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-1.webp" width="320" height="485" loading="lazy" alt="Capa do e-book 1, Módulo 1: Planejamento Financeiro">
         <div class="livro__corpo">
           <p class="livro__meta">Etapa 01 de 05 · 71 páginas</p>
           <h3>Quanto posso investir?</h3>
@@ -674,7 +674,7 @@
         </div>
       </article>
       <article class="livro" id="livro-2">
-        <img src="https://heliossites.vercel.app/ebooks/img/capa-2.webp" width="320" height="487" loading="lazy" alt="Capa do e-book 2, Módulo 2: Terreno">
+        <img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-2.webp" width="320" height="487" loading="lazy" alt="Capa do e-book 2, Módulo 2: Terreno">
         <div class="livro__corpo">
           <p class="livro__meta">Etapa 02 de 05 · 62 páginas</p>
           <h3>Onde e qual lote?</h3>
@@ -688,7 +688,7 @@
         </div>
       </article>
       <article class="livro" id="livro-3">
-        <img src="https://heliossites.vercel.app/ebooks/img/capa-3.webp" width="320" height="498" loading="lazy" alt="Capa do e-book 3, Módulo 3: Projeto">
+        <img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-3.webp" width="320" height="498" loading="lazy" alt="Capa do e-book 3, Módulo 3: Projeto">
         <div class="livro__corpo">
           <p class="livro__meta">Etapa 03 de 05 · 77 páginas</p>
           <h3>Que casa cabe?</h3>
@@ -702,7 +702,7 @@
         </div>
       </article>
       <article class="livro" id="livro-4">
-        <img src="https://heliossites.vercel.app/ebooks/img/capa-4.webp" width="320" height="506" loading="lazy" alt="Capa do e-book 4, Módulo 4: Financiamento">
+        <img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-4.webp" width="320" height="506" loading="lazy" alt="Capa do e-book 4, Módulo 4: Financiamento">
         <div class="livro__corpo">
           <p class="livro__meta">Etapa 04 de 05 · 58 páginas</p>
           <h3>Como o banco paga?</h3>
@@ -716,7 +716,7 @@
         </div>
       </article>
       <article class="livro" id="livro-5">
-        <img src="https://heliossites.vercel.app/ebooks/img/capa-5.webp" width="320" height="521" loading="lazy" alt="Capa do e-book 5, Módulo 5: Construção">
+        <img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-5.webp" width="320" height="521" loading="lazy" alt="Capa do e-book 5, Módulo 5: Construção">
         <div class="livro__corpo">
           <p class="livro__meta">Etapa 05 de 05 · 62 páginas</p>
           <h3>Quem constrói?</h3>
@@ -745,9 +745,9 @@
       <p class="lede reveal">Três páginas reais da Bússola. São 330 como estas, com tabela, checklist e conta pronta.</p>
     </div>
     <div class="amostra">
-      <figure><button class="amostra__abrir" type="button" aria-label="Ampliar: O semáforo do terreno"><img src="https://heliossites.vercel.app/ebooks/img/amostra-1.webp" width="720" height="1125" loading="lazy" alt="Página 59 do e-book 1: o semáforo do terreno, com as faixas de 20% a 30%, 35% a 40% e acima de 50% do orçamento"></button><figcaption>O semáforo do terreno</figcaption></figure>
-      <figure><button class="amostra__abrir" type="button" aria-label="Ampliar: A tabela de metragens"><img src="https://heliossites.vercel.app/ebooks/img/amostra-2.webp" width="720" height="1125" loading="lazy" alt="Página 26 do e-book 3: a tabela de metragens mínimas, médias e generosas de cada cômodo"></button><figcaption>A tabela de metragens</figcaption></figure>
-      <figure><button class="amostra__abrir" type="button" aria-label="Ampliar: O checklist de visita à obra"><img src="https://heliossites.vercel.app/ebooks/img/amostra-3.webp" width="720" height="1125" loading="lazy" alt="Página 49 do e-book 5: o checklist de visita à obra da construtora"></button><figcaption>O checklist de visita à obra</figcaption></figure>
+      <figure><button class="amostra__abrir" type="button" aria-label="Ampliar: O semáforo do terreno"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/amostra-1.webp" width="720" height="1125" loading="lazy" alt="Página 59 do e-book 1: o semáforo do terreno, com as faixas de 20% a 30%, 35% a 40% e acima de 50% do orçamento"></button><figcaption>O semáforo do terreno</figcaption></figure>
+      <figure><button class="amostra__abrir" type="button" aria-label="Ampliar: A tabela de metragens"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/amostra-2.webp" width="720" height="1125" loading="lazy" alt="Página 26 do e-book 3: a tabela de metragens mínimas, médias e generosas de cada cômodo"></button><figcaption>A tabela de metragens</figcaption></figure>
+      <figure><button class="amostra__abrir" type="button" aria-label="Ampliar: O checklist de visita à obra"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/amostra-3.webp" width="720" height="1125" loading="lazy" alt="Página 49 do e-book 5: o checklist de visita à obra da construtora"></button><figcaption>O checklist de visita à obra</figcaption></figure>
     </div>
     <p class="micro center" style="margin-top:16px">Páginas reais da Bússola · Toque para ampliar</p>
     <dialog class="zoom" id="zoom" aria-label="Página ampliada">
@@ -801,7 +801,7 @@
 <!-- 8. QUEM ESCREVEU -->
 <section class="sec sec--alt">
   <div class="wrap autores">
-    <img class="reveal" src="https://heliossites.vercel.app/ebooks/img/autores-846.webp" srcset="https://heliossites.vercel.app/ebooks/img/autores-420.webp 420w, https://heliossites.vercel.app/ebooks/img/autores-846.webp 846w" sizes="(max-width: 960px) min(420px, calc(100vw - 40px)), 420px" width="846" height="956" loading="lazy" alt="Tamires e Richard, autores da Bússola Do Lote à Obra, comemorando em frente ao notebook">
+    <img class="reveal" src="https://doloteaobra.com.br/wp-content/uploads/2026/11/autores-846.webp" srcset="https://doloteaobra.com.br/wp-content/uploads/2026/11/autores-420.webp 420w, https://doloteaobra.com.br/wp-content/uploads/2026/11/autores-846.webp 846w" sizes="(max-width: 960px) min(420px, calc(100vw - 40px)), 420px" width="846" height="956" loading="lazy" alt="Tamires e Richard, autores da Bússola Do Lote à Obra, comemorando em frente ao notebook">
     <div>
       <h2 class="reveal"><span class="leve">Escrito por quem</span> vive isso todo dia</h2>
       <p class="reveal">Somos Tamires e Richard. Quando fomos construir, descobrimos que ninguém conhecia o caminho inteiro: cada profissional sabia só da sua parte. Há mais de 10 anos trabalhamos só com terreno e construção. A Bússola é o mesmo método do nosso curso DOBRA, escrito para ler em 3 horas.</p>
@@ -819,7 +819,7 @@
 <section class="sec noite curvas" id="oferta">
   <div class="wrap oferta">
     <h2 class="center reveal"><span class="leve">Tudo o que vem na</span> Bússola</h2>
-    <img class="oferta__capas" src="https://heliossites.vercel.app/ebooks/img/oferta-720.webp" srcset="https://heliossites.vercel.app/ebooks/img/oferta-360.webp 360w, https://heliossites.vercel.app/ebooks/img/oferta-720.webp 720w, https://heliossites.vercel.app/ebooks/img/oferta-1100.webp 1100w" sizes="(max-width: 600px) calc(100vw - 40px), 560px" width="1100" height="425" loading="lazy" alt="As capas dos 5 e-books da Bússola em leque">
+    <img class="oferta__capas" src="https://doloteaobra.com.br/wp-content/uploads/2026/11/oferta-720.webp" srcset="https://doloteaobra.com.br/wp-content/uploads/2026/11/oferta-360.webp 360w, https://doloteaobra.com.br/wp-content/uploads/2026/11/oferta-720.webp 720w, https://doloteaobra.com.br/wp-content/uploads/2026/11/oferta-1100.webp 1100w" sizes="(max-width: 600px) calc(100vw - 40px), 560px" width="1100" height="425" loading="lazy" alt="As capas dos 5 e-books da Bússola em leque">
     <ul class="oferta-lista">
       <li><span>E-book 1 · Planejamento Financeiro</span><b>R$&nbsp;27</b></li>
       <li><span>E-book 2 · Terreno</span><b>R$&nbsp;27</b></li>
@@ -837,7 +837,7 @@
       <p class="preco__comp">Menos de 0,015% do valor de uma casa de R$&nbsp;400&nbsp;mil.</p>
     </div>
     <a class="btn" data-checkout data-position="oferta" href="#oferta">Quero a Bússola por R$&nbsp;59</a>
-    <p class="micro oferta__pag">Pix · Cartão · Boleto</p>
+    <p class="micro oferta__pag">Pix · Cartão</p>
     <div class="garantia">
       <svg class="rosa" width="64" height="64" aria-hidden="true"><use href="#rosa"/></svg>
       <p><strong>Satisfação garantida.</strong> Leia por 7 dias. Se não fizer sentido para você, peça o reembolso na própria Hotmart e receba 100% do valor, sem justificativa.</p>
@@ -884,7 +884,7 @@
         <summary>Qual a diferença para o curso DOBRA?</summary>
         <p>O DOBRA tem mais de 90 aulas e 20 horas de vídeo. A Bússola é o mesmo método, por escrito, para ler em 3 horas e consultar sempre que precisar.</p>
       </details>
-      <details>
+      <details data-faq-avulso hidden>
         <summary>Posso comprar só um?</summary>
         <p>Pode, por R$ 27. Mas cada etapa depende da outra, e a Bússola completa sai por menos que três avulsos.</p>
       </details>
@@ -912,8 +912,7 @@
 </main>
 
 <footer>
-  <!-- Logo: trocar pelo arquivo quando chegar (mesma <img> do topo, com 120 px) -->
-  <p class="logo">Do Lote à Obra</p>
+  <p class="logo"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/logo.webp" width="360" height="162" loading="lazy" alt="Do Lote à Obra"></p>
   <p>Bússola Do Lote à Obra · 5 guias para construir do lote à obra, na ordem certa.</p>
   <p>© Todos os direitos reservados — Do Lote à Obra</p>
 </footer>
@@ -926,15 +925,20 @@
 
 <script>
   // ===== Configuração =====
-  // Link do checkout da Hotmart. Só o botão da oferta (data-position="oferta") abre o checkout, na mesma aba;
-  // os outros botões de compra levam até a oferta.
-  // A visita repassa as UTMs e o fbclid ao checkout; utm_content também vai como sck, o parâmetro de origem da Hotmart.
-  // Enquanto o link estiver vazio, o botão da oferta também fica parado na oferta.
+  // Link do checkout da Hotmart. Os botões do hero, da oferta e da barra fixa abrem o checkout, na mesma aba;
+  // os do meio da página e do fecho levam até a oferta (ver CHECKOUT_DIRETO).
+  // A visita repassa as UTMs e o fbclid ao checkout; utm_content também vai como sck, e a posição do botão vai em xcod.
+  // No WordPress, o Google Tag Manager do site (GTM-P8P29XQL) reescreve src e sck a partir das UTMs; xcod fica.
+  // Enquanto o link estiver vazio, todos os botões levam até a oferta.
   const CHECKOUT_URL = "https://pay.hotmart.com/X108424614M";
   // Checkout de cada e-book avulso, na ordem de 1 a 5. A lista "comprar só um" só aparece quando houver links.
   const AVULSO_URLS = ["", "", "", "", ""];
+  // Posições (data-position) cujos botões vão direto ao checkout.
+  const CHECKOUT_DIRETO = ["hero", "oferta", "barra"];
   // Rastreamento: cada um só carrega quando o ID estiver preenchido.
-  const META_PIXEL_ID = "";   // ex.: "123456789012345"
+  // O Pixel da Meta: no WordPress ele já vem pelo Google Tag Manager do site, com o PageView.
+  // A página só manda ViewContent e InitiateCheckout; o Pixel e o PageView daqui só entram se o site não tiver carregado nenhum.
+  const META_PIXEL_ID = "822088457122587";
   const GA4_ID = "";          // ex.: "G-XXXXXXXXXX"
   const CLARITY_ID = "";      // ex.: "abcd1234ef"
   const PRODUTO = { content_name: "Bússola Do Lote à Obra", content_ids: ["bussola"], content_type: "product", value: 59, currency: "BRL" };
@@ -942,10 +946,24 @@
   // ===== Rastreamento =====
   const track = { meta() {}, ga() {} };
   if (META_PIXEL_ID) {
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
-    fbq("init", META_PIXEL_ID);
-    fbq("track", "PageView");
-    track.meta = (event, data) => fbq("track", event, data);
+    const PIXEL_ESPERA_MS = 4000;
+    const pendentes = [];
+    const enviar = (event, data) => window.fbq("trackSingle", META_PIXEL_ID, event, data);
+    track.meta = (event, data) => (window.fbq ? enviar(event, data) : pendentes.push([event, data]));
+    const inicio = Date.now();
+    const esperar = setInterval(() => {
+      if (window.fbq) {
+        clearInterval(esperar);
+        pendentes.splice(0).forEach(([event, data]) => enviar(event, data));
+      } else if (Date.now() - inicio > PIXEL_ESPERA_MS) {
+        // Nenhum Pixel do site: carrega o daqui.
+        clearInterval(esperar);
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", META_PIXEL_ID);
+        fbq("track", "PageView");
+        pendentes.splice(0).forEach(([event, data]) => enviar(event, data));
+      }
+    }, 200);
   }
   if (GA4_ID) {
     const s = document.createElement("script");
@@ -992,8 +1010,12 @@
     return target.toString();
   };
   document.querySelectorAll("[data-checkout]").forEach((link) => {
-    const vaiAoCheckout = CHECKOUT_URL && link.dataset.position === "oferta";
-    if (vaiAoCheckout) link.href = withTracking(CHECKOUT_URL);
+    const vaiAoCheckout = CHECKOUT_URL && CHECKOUT_DIRETO.includes(link.dataset.position);
+    if (vaiAoCheckout) {
+      const destino = new URL(withTracking(CHECKOUT_URL));
+      destino.searchParams.set("xcod", link.dataset.position);
+      link.href = destino.toString();
+    }
     link.addEventListener("click", () => {
       const posicao = link.dataset.position;
       track.ga("cta_click", { position: posicao });
@@ -1015,6 +1037,7 @@
       } else link.closest("li").remove();
     });
     document.querySelector(".avulso").hidden = false;
+    document.querySelector("[data-faq-avulso]").hidden = false;
   }
 
   // ===== Amostra das páginas =====

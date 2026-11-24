@@ -4,7 +4,9 @@ Uso: python3 ebooks/wordpress/build.py
 Saída: ebooks/wordpress/widget-html.html (vai inteiro no widget HTML da página, igual à /planilhas)
 
 - O WordPress já gera charset, viewport, title e canonical; esses saem daqui.
-- Imagens e fonte continuam servidas pela Vercel (heliossites.vercel.app/ebooks/...).
+- As imagens vêm da biblioteca de mídia do WordPress (wp-content/uploads/2026/11/, mesmos nomes de arquivo).
+  Imagem nova: subir na mídia e acrescentar o nome em IMAGENS_WP.
+- A fonte (woff2) e as curvas de nível (svg) continuam servidas pela Vercel (heliossites.vercel.app/ebooks/...).
 - O bloco COMPAT desfaz estilos globais do tema Hello e do kit do Elementor (kit 8),
   que de outro modo mexem em svg, botões e links. O container usa a classe lp-dobra-root.
 """
@@ -14,6 +16,12 @@ import re
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 VERCEL = "https://heliossites.vercel.app/ebooks/"
 ENDERECO = "https://doloteaobra.com.br/ebooks/"
+MIDIA_WP = "https://doloteaobra.com.br/wp-content/uploads/2026/11/"
+IMAGENS_WP = [
+    "capa-1.webp", "capa-2.webp", "capa-3.webp", "capa-4.webp", "capa-5.webp",
+    "oferta-360.webp", "oferta-720.webp", "oferta-1100.webp", "og.jpg", "logo.webp",
+    "amostra-1.webp", "amostra-2.webp", "amostra-3.webp", "autores-420.webp", "autores-846.webp",
+]
 
 COMPAT = """<style>
   /* Container do Elementor sem margens */
@@ -51,9 +59,15 @@ def main():
     w = head.strip() + "\n" + COMPAT + body
     w = w.replace('https://heliossites.vercel.app/ebooks"', ENDERECO + '"')
     w = w.replace('content="https://heliossites.vercel.app/ebooks"', 'content="' + ENDERECO + '"')
+    for nome in IMAGENS_WP:
+        w = w.replace(VERCEL + "img/" + nome, MIDIA_WP + nome)
+        w = re.sub(r'(?<![\w.])/ebooks/img/' + re.escape(nome), MIDIA_WP + nome, w)
     w = re.sub(r'(["( ])/ebooks/(img|fonts)/', lambda m: m.group(1) + VERCEL + m.group(2) + "/", w)
     w = w.replace('<svg width="0" height="0" style="position:absolute"', '<svg class="sprite" width="0" height="0" style="position:absolute"')
     assert '"/ebooks/' not in w, "sobrou caminho relativo"
+    sobra = sorted(set(re.findall(r'heliossites\.vercel\.app/ebooks/[^"\' )]+', w)))
+    assert all(x.endswith((".woff2", ".svg")) for x in sobra), sobra
+    assert "vercel.apphttps" not in w
     assert 'class="sprite"' in w
     saida = pathlib.Path(__file__).with_name("widget-html.html")
     saida.write_text(w.strip() + "\n")
