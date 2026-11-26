@@ -1,0 +1,212 @@
+<!-- Página de obrigado da Bússola: doloteaobra.com.br/ebooks-obrigado/ (página Elementor Canvas, container lp-dobra-root com este widget HTML).
+     Não dispara Purchase: a compra vai para a Meta pela integração da Hotmart com o Pixel. -->
+<style>
+  @font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 300 800;
+    font-display: swap;
+    src: url("https://heliossites.vercel.app/ebooks/fonts/montserrat-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  :root {
+    --papel: #F3ECE0; --papel-2: #E8DCC8; --tinta: #2A1709; --marrom: #5E3313; --texto-suave: #6B5A48;
+    --terracota: #A4472A; --terracota-escuro: #8E3C22; --ouro: #B88A3E; --ouro-texto: #8C6420; --ouro-claro: #D9B56A;
+    --verde: #565F45; --noite: #1E120A; --linha: rgba(42, 23, 9, .14); --linha-forte: rgba(42, 23, 9, .24);
+    --check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.6'/%3E%3C/svg%3E");
+    --seta: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E");
+  }
+  /* Container do Elementor sem margens e correções do tema Hello / kit 8 */
+  .lp-dobra-root, .lp-dobra-root > .e-con-inner { padding: 0 !important; margin: 0 !important; max-width: none !important; gap: 0 !important; }
+  .lp-dobra-root .elementor-widget-html, .lp-dobra-root .elementor-widget-container { width: 100%; margin: 0 !important; }
+  .lp-dobra-root svg.rosa { width: auto; }
+  .lp-dobra-root .ok svg { width: 64px; }
+  .lp-dobra-root .sprite { width: 0; height: 0; }
+  .lp-dobra-root a.btn, .lp-dobra-root a.btn:hover, .lp-dobra-root a.btn:focus { color: #fff; text-decoration: none; }
+  .lp-dobra-root a.btn--linha, .lp-dobra-root a.btn--linha:hover, .lp-dobra-root a.btn--linha:focus { color: var(--tinta); }
+  .lp-dobra-root h1, .lp-dobra-root h2, .lp-dobra-root h3 { font-family: Montserrat, sans-serif; }
+
+  .bo * { box-sizing: border-box; }
+  .bo { background: var(--papel); color: var(--tinta); font: 400 18px/29px Montserrat, -apple-system, "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  .bo h1, .bo h2, .bo h3, .bo p, .bo ul, .bo ol { margin: 0; padding: 0; }
+  .bo ul, .bo ol { list-style: none; }
+  .bo img { display: block; max-width: 100%; height: auto; }
+  .bo h1, .bo h2 { color: var(--tinta); font-weight: 800; letter-spacing: -.02em; text-wrap: balance; }
+  .bo h1 { font-size: 52px; line-height: 58px; }
+  .bo h2 { font-size: 36px; line-height: 42px; }
+  .bo .leve { font-weight: 300; }
+  .bo .sec { position: relative; padding: 88px 24px; }
+  .bo .sec--alt { background: var(--papel-2); }
+  .bo .wrap { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+  .bo .center { text-align: center; }
+  .bo .curvas::before { content: ""; position: absolute; inset: 0; background: url("https://heliossites.vercel.app/ebooks/img/curvas.svg") center / cover no-repeat; opacity: .12; pointer-events: none; }
+  .bo .micro { color: var(--texto-suave); font-size: 14px; line-height: 20px; font-weight: 500; }
+  .bo .rotulo { color: var(--ouro-texto); font-size: 14px; line-height: 20px; font-weight: 700; }
+
+  .bo .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    min-height: 56px; padding: 16px 30px; border: 0; border-radius: 8px;
+    background: var(--terracota); color: #fff; font: 700 17px/1.25 Montserrat, sans-serif; text-align: center; text-decoration: none;
+    transition: background-color .15s ease, transform .15s ease;
+  }
+  .bo .btn::after { content: ""; flex: none; width: 16px; height: 16px; background: currentColor; -webkit-mask: var(--seta) center / contain no-repeat; mask: var(--seta) center / contain no-repeat; }
+  .bo .btn:hover { background: var(--terracota-escuro); transform: translateY(-1px); }
+  .bo .btn:focus-visible { outline: 3px solid var(--terracota-escuro); outline-offset: 3px; }
+  .bo .btn--linha { background: transparent; border: 1.5px solid var(--tinta); color: var(--tinta); }
+  .bo .btn--linha:hover { background: rgba(42, 23, 9, .06); }
+
+  /* Topo */
+  .bo .hero { padding: 40px 24px 88px; overflow: hidden; }
+  .bo .logo { display: block; width: fit-content; margin: 0 auto 48px; }
+  .bo .logo img { width: 160px; }
+  .bo .ok { display: grid; place-items: center; width: 96px; height: 96px; margin: 0 auto 24px; border-radius: 50%; background: var(--verde); color: #fff; box-shadow: 0 0 0 10px rgba(86, 95, 69, .12); }
+  .bo .hero p.rotulo { margin-bottom: 12px; }
+  .bo .hero__texto { max-width: 620px; margin: 20px auto 0; color: var(--marrom); }
+  .bo .aviso { max-width: 560px; margin: 24px auto 0; padding: 14px 18px; border: 1px solid var(--linha-forte); border-radius: 10px; background: var(--papel); }
+
+  /* Próximos passos */
+  .bo .passos { margin-top: 40px; }
+  .bo .passo { position: relative; display: grid; grid-template-columns: 56px 1fr; column-gap: 20px; padding-bottom: 28px; }
+  .bo .passo:last-child { padding-bottom: 0; }
+  .bo .passo::before { content: ""; position: absolute; left: 27px; top: 56px; bottom: 0; border-left: 2.5px dotted var(--ouro); }
+  .bo .passo:last-child::before { display: none; }
+  .bo .passo__n { display: grid; place-items: center; width: 56px; height: 56px; border: 2px solid var(--ouro); border-radius: 50%; background: var(--papel); color: var(--marrom); font-size: 20px; font-weight: 800; }
+  .bo .passo h3 { padding-top: 12px; font-size: 20px; line-height: 27px; font-weight: 700; }
+  .bo .passo p { margin-top: 6px; color: var(--marrom); font-size: 16px; line-height: 26px; }
+
+  /* A ordem de leitura */
+  .bo .capas { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 36px; }
+  .bo .capas li { text-align: center; }
+  .bo .capas img { width: 100%; filter: drop-shadow(0 12px 18px rgba(42, 23, 9, .22)); }
+  .bo .capas small { display: block; margin-top: 10px; color: var(--ouro-texto); font-size: 12px; line-height: 16px; font-weight: 700; }
+  .bo .capas b { display: block; font-size: 14px; line-height: 19px; font-weight: 700; }
+
+  /* Ajuda */
+  .bo .ajuda { display: grid; gap: 14px; margin-top: 28px; }
+  .bo .ajuda li { position: relative; padding-left: 36px; color: var(--marrom); font-size: 16px; line-height: 25px; }
+  .bo .ajuda li::before { content: ""; position: absolute; left: 0; top: 1px; width: 24px; height: 24px; border-radius: 50%; background: var(--check) center / 13px no-repeat, var(--verde); }
+  .bo .ajuda + .btn { margin-top: 28px; }
+
+  /* Próximo passo: Kit de planilhas */
+  .bo .noite { background: var(--noite); color: var(--papel); }
+  .bo .noite h2 { color: var(--papel); }
+  .bo .noite.curvas::before { opacity: .16; }
+  .bo .kit p { margin-top: 16px; color: rgba(243, 236, 224, .82); }
+  .bo .kit .btn { margin-top: 28px; }
+  .bo .kit .rotulo { color: var(--ouro-claro); }
+
+  .bo footer { padding: 44px 24px; border-top: 1px solid var(--linha); color: var(--texto-suave); font-size: 13px; line-height: 20px; text-align: center; }
+  .bo footer .logo { margin-bottom: 16px; }
+  .bo footer .logo img { width: 110px; }
+
+  @media (max-width: 760px) {
+    .bo .capas { grid-template-columns: repeat(5, 116px); overflow-x: auto; margin-left: -20px; margin-right: -20px; padding: 0 20px 12px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .bo .capas::-webkit-scrollbar { display: none; }
+    .bo .capas li { scroll-snap-align: start; }
+  }
+  @media (max-width: 600px) {
+    .bo { font-size: 17px; line-height: 27px; }
+    .bo .sec { padding: 64px 20px; }
+    .bo .hero { padding: 24px 20px 64px; }
+    .bo .logo { margin-bottom: 32px; }
+    .bo .logo img { width: 140px; }
+    .bo h1 { font-size: 34px; line-height: 39px; }
+    .bo h2 { font-size: 27px; line-height: 33px; }
+    .bo .ok { width: 80px; height: 80px; }
+    .lp-dobra-root .ok svg { width: 52px; }
+    .bo .btn { display: flex; width: 100%; padding: 16px 18px; }
+    .bo .passo { grid-template-columns: 48px 1fr; column-gap: 16px; }
+    .bo .passo::before { left: 23px; top: 48px; }
+    .bo .passo__n { width: 48px; height: 48px; font-size: 18px; }
+    .bo .passo h3 { padding-top: 9px; font-size: 18px; line-height: 25px; }
+  }
+</style>
+
+<div class="bo">
+
+<header class="hero curvas center">
+  <div class="wrap">
+    <p class="logo"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/logo.webp" width="360" height="162" alt="Do Lote à Obra"></p>
+    <div class="ok" aria-hidden="true"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <p class="rotulo">Pedido recebido</p>
+    <h1><span class="leve">Obrigado!</span> Sua Bússola já está a caminho.</h1>
+    <p class="hero__texto">Assim que o pagamento for confirmado, você recebe no e-mail usado na compra o acesso aos 5 e-books, na área de membros da Hotmart.</p>
+    <p class="aviso micro">No Pix e no cartão, a confirmação costuma sair em poucos minutos. O e-mail vem da Hotmart.</p>
+  </div>
+</header>
+
+<main>
+
+<section class="sec sec--alt">
+  <div class="wrap">
+    <h2 class="center"><span class="leve">Seus</span> próximos passos</h2>
+    <ol class="passos">
+      <li class="passo">
+        <span class="passo__n">1</span>
+        <div>
+          <h3>Abra o e-mail da Hotmart</h3>
+          <p>Procure a mensagem com o acesso à Bússola. Se não estiver na caixa de entrada, confira o spam e a aba de promoções.</p>
+        </div>
+      </li>
+      <li class="passo">
+        <span class="passo__n">2</span>
+        <div>
+          <h3>Comece pelo guia "Comece por aqui"</h3>
+          <p>Ele mostra como usar os 5 e-books e quanto tempo dedicar a cada um. São 3 horas de leitura no total.</p>
+        </div>
+      </li>
+      <li class="passo">
+        <span class="passo__n">3</span>
+        <div>
+          <h3>Leia na ordem da obra</h3>
+          <p>Dinheiro, terreno, projeto, financiamento e obra. Cada etapa depende da anterior, por isso o e-book 1 vem primeiro, mesmo que você já tenha o terreno.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap center">
+    <h2><span class="leve">A rota</span> da sua leitura</h2>
+    <ol class="capas">
+      <li><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-1.webp" width="320" height="485" loading="lazy" alt="Capa do e-book 1, Planejamento Financeiro"><small>Etapa 01</small><b>Dinheiro</b></li>
+      <li><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-2.webp" width="320" height="487" loading="lazy" alt="Capa do e-book 2, Terreno"><small>Etapa 02</small><b>Terreno</b></li>
+      <li><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-3.webp" width="320" height="498" loading="lazy" alt="Capa do e-book 3, Projeto"><small>Etapa 03</small><b>Projeto</b></li>
+      <li><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-4.webp" width="320" height="506" loading="lazy" alt="Capa do e-book 4, Financiamento"><small>Etapa 04</small><b>Financiamento</b></li>
+      <li><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/capa-5.webp" width="320" height="521" loading="lazy" alt="Capa do e-book 5, Construção"><small>Etapa 05</small><b>Obra</b></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec sec--alt">
+  <div class="wrap">
+    <h2><span class="leve">Não encontrou</span> o e-mail?</h2>
+    <ul class="ajuda">
+      <li>Confira o spam, a aba de promoções e se o e-mail informado na compra está certo.</li>
+      <li>Sua compra também fica na sua conta da Hotmart. Entre com o mesmo e-mail usado no pagamento.</li>
+      <li>Você tem 7 dias de garantia: se não fizer sentido para você, peça o reembolso na própria Hotmart.</li>
+    </ul>
+    <a class="btn btn--linha" href="https://consumer.hotmart.com/" target="_blank" rel="noopener">Acessar minhas compras na Hotmart</a>
+  </div>
+</section>
+
+<!-- Próximo passo da linha de produtos: o Kit de planilhas (as contas do caminho). Pode ser removido sem afetar o resto. -->
+<section class="sec noite curvas">
+  <div class="wrap kit center">
+    <p class="rotulo">Para quando chegar a hora das contas</p>
+    <h2 style="margin-top:12px"><span class="leve">A Bússola mostra o caminho.</span> As planilhas fazem as contas.</h2>
+    <p>O Kit Financeiro DOBRA tem 3 planilhas automáticas: quanto você precisa juntar, qual casa cabe na sua renda e quanto sai do bolso até as chaves.</p>
+    <a class="btn" href="https://doloteaobra.com.br/planilhas/?utm_source=bussola&amp;utm_medium=pagina_obrigado&amp;utm_campaign=kit_planilhas">Conhecer o Kit de planilhas</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="logo"><img src="https://doloteaobra.com.br/wp-content/uploads/2026/11/logo.webp" width="360" height="162" loading="lazy" alt="Do Lote à Obra"></p>
+  <p>Bússola Do Lote à Obra · 5 guias para construir do lote à obra, na ordem certa.</p>
+  <p>© Todos os direitos reservados — Do Lote à Obra</p>
+</footer>
+
+</div>
